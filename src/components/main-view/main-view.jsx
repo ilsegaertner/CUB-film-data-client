@@ -6,16 +6,17 @@ import { PropTypes } from "prop-types";
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
 
+
   useEffect(() => {
-    fetch("https://cub-film-data-dc72bcc7ff05.herokuapp.com/")
+    fetch("https://cub-film-data-dc72bcc7ff05.herokuapp.com/movies")
       .then((response) => response.json())
-      .then((data) => {
-        const moviesFromApi = data.docs.map((doc) => {
+      .then((movie) => {
+        const moviesFromApi = movies.map((movie) => {
           return {
-            id: doc.key,
-            title: doc.title,
+            id: movie.id,
+            title: movie.title,
             image: `https://covers.openlibrary.org/b/id/${doc.cover_i}-L.jpg`,
-            director: doc.author_name?.[0]
+            director: movie.author_name?.[0]
           };
         });
 
