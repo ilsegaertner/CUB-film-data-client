@@ -10,13 +10,13 @@ export const MainView = () => {
   useEffect(() => {
     fetch("https://cub-film-data-dc72bcc7ff05.herokuapp.com/movies")
       .then((response) => response.json())
-      .then((movie) => {
-        const moviesFromApi = movies.map((movie) => {
+      .then((moviesFromAPI) => {
+        const moviesFromApi = moviesFromAPI.map((movie) => {
           return {
             id: movie.id,
-            title: movie.title,
-            image: `https://covers.openlibrary.org/b/id/${doc.cover_i}-L.jpg`,
-            director: movie.author_name?.[0]
+            title: movie.Title,
+            image: ``,
+            director: movie.Director.Name
           };
         });
 
