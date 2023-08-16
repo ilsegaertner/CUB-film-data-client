@@ -6,17 +6,21 @@ import { PropTypes } from "prop-types";
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
 
-
   useEffect(() => {
     fetch("https://cub-film-data-dc72bcc7ff05.herokuapp.com/movies")
       .then((response) => response.json())
-      .then((movie) => {
-        const moviesFromApi = movies.map((movie) => {
+      .then((data) => {
+        const moviesFromApi = data.map((movie) => {
           return {
             id: movie.id,
-            title: movie.title,
-            image: `https://covers.openlibrary.org/b/id/${doc.cover_i}-L.jpg`,
-            director: movie.author_name?.[0]
+            title: movie.Title,
+            description: movie.Description,
+            image: movie.ImagePath,
+            director: movie.Director.Name,
+            bio: movie.Director.Bio,
+            birth: movie.Director.Birth,
+            year: movie.Year,
+            actors: movie.Actors
           };
         });
 
@@ -66,8 +70,9 @@ MainView.propTypes = {
     }).isRequired,
     director: PropTypes.shape({
       name: PropTypes.string.isRequired,
-      bio: PropTypes.string.isRequired
-    }).isRequired, 
+      bio: PropTypes.string.isRequired,
+      birth: PropTypes.string
+    }).isRequired,
     year: PropTypes.string,
     actors: PropTypes.string
   }).isRequired,
