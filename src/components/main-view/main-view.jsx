@@ -16,6 +16,8 @@ export const MainView = () => {
             title: movie.Title,
             description: movie.Description,
             image: movie.ImagePath,
+            genre: movie.Genre.Name,
+            genreDescription: movie.Genre.Description,
             director: movie.Director.Name,
             bio: movie.Director.Bio,
             birth: movie.Director.Birth,
@@ -31,11 +33,29 @@ export const MainView = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   if (selectedMovie) {
+    let similarMovies = movies.filter(
+      (movie) => movie.genre === selectedMovie.genre.name
+    );
+
     return (
-      <MovieView
-        movie={selectedMovie}
-        onBackClick={() => setSelectedMovie(null)}
-      />
+      <>
+        <MovieView
+          movie={selectedMovie}
+          onBackClick={() => setSelectedMovie(null)}
+        />
+        <hr />
+        <h2>Similar Movies</h2>
+        {similarMovies.map((movie) => (
+          <MovieCard
+            key={movie.id}
+            movie={movie}
+            onMovieClick={(newSelectedMovie) => {
+              //onClick function doesnt work here
+              setSelectedMovie(newSelectedMovie);
+            }}
+          />
+        ))}
+      </>
     );
   }
 
@@ -62,7 +82,7 @@ export const MainView = () => {
 MainView.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    descriptions: PropTypes.string,
+    description: PropTypes.string,
     image: PropTypes.string.isRequired,
     genre: PropTypes.shape({
       name: PropTypes.string.isRequired,
