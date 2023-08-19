@@ -12,7 +12,7 @@ export const LoginView = ({ onLoggedIn }) => {
       secret: password
     };
 
-    fetch("https://openlibrary.org/account/login.json", {
+    fetch("https://cub-film-data-dc72bcc7ff05.herokuapp.com/login", {
       method: "POST",
       body: JSON.stringify(data)
     }).then((response) => {
