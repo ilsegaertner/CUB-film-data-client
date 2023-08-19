@@ -1,79 +1,66 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view"; // .jsx format ending not needed here
+import { PropTypes } from "prop-types";
+import { LoginView } from "../login-view/login-view";
 
 export const MainView = () => {
-  const [movies, setMovies] = useState([
-    {
-      id: 1,
-      title: "Breathless",
-      director: "Jean-Luc Godard",
-      description:
-        "A young, impulsive criminal in Paris is constantly on the run from the police after killing a policeman. He seeks refuge with his American girlfriend and engages in philosophical discussions amidst their rebellious activities.",
-      genre: "Crime",
-      image:
-        "https://media.gettyimages.com/id/1137163673/de/foto/breathless-poster-french-poster-jean-seberg-jean-paul-belmondo-1960.jpg?s=612x612&w=gi&k=20&c=CA-2stYuz4KoKhanhROzNUfpDLjaHwPHjuEPJuwDHJ8=",
-      year: "1983",
-      actors: ["Jean-Paul Belmondo ", "Jean Seberg ", "Van Doude"]
-    },
-    {
-      id: 2,
-      title: "Persona",
-      director: "Ingmar Bergman",
-      description:
-        "A nurse is assigned to take care of an actress who has decided to stop speaking. As they spend time together on a remote island, their identities begin to blur, blurring the lines between reality and illusion.",
-      genre: "Psychological",
-      image:
-        "https://www.crew-united.com/Media/Images/1267/1267643/1267643.entity.jpg",
-      year: "1966",
-      actors: ["Bibi Andersson ", "Liv Ullmann ", "Margaretha Krook"]
-    },
-    {
-      id: 3,
-      title: "Blue Velvet",
-      director: "David Lynch",
-      description:
-        "A dark and surreal exploration of a young man's journey into a small town's seedy underbelly after he discovers a severed ear. His curiosity leads him into a web of intrigue, violence, and psychological torment.",
-      genre: "Thriller",
-      image:
-        "https://de.web.img3.acsta.net/c_310_420/medias/nmedia/18/63/48/37/18692774.jpg",
-      year: "1986",
-      actors: ["Isabella Rossellini ", "Kyle MacLachlan ", "Dennis Hopper"]
-    },
-    {
-      id: 4,
-      title: "Wings of Desire",
-      director: "Wim Wenders",
-      description:
-        "Set in divided Berlin, the film follows invisible angels who listen to the thoughts of human beings. One angel falls in love with a trapeze artist and decides to become human, experiencing the joys and pains of mortal life.",
-      genre: "Fantasy",
-      image:
-        "https://i.discogs.com/v_dJWVP7v4qzdH3u1BfpursO71XNhVjIS_DS7dH0luo/rs:fit/g:sm/q:90/h:600/w:564/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTYyMDM4/My0xNDU1NzA5MDk2/LTE2MTcuanBlZw.jpeg",
-      year: "1987",
-      actors: ["Bruno Ganz ", "Solveig Dommartin ", "Otto Sander"]
-    },
-    {
-      id: 5,
-      title: "The Elephant Man",
-      director: "David Lynch",
-      description:
-        "Based on a true story, the film follows the life of Joseph Merrick, a severely deformed man who becomes a popular figure in Victorian society while facing exploitation and loneliness.",
-      genre: "Drama",
-      image:
-        "https://pics.filmaffinity.com/The_Elephant_Man-932575144-large.jpg",
-      year: "1980",
-      actors: ["Anthony Hopkins ", "John Hurt ", "Anne Bancroft"]
-    }
-  ]);
-
+  const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    fetch("https://cub-film-data-dc72bcc7ff05.herokuapp.com/movies")
+      .then((response) => response.json())
+      .then((data) => {
+        const moviesFromApi = data.map((movie) => {
+          return {
+            id: movie.id,
+            title: movie.Title,
+            description: movie.Description,
+            image: movie.ImagePath,
+            genre: movie.Genre.Name,
+            genreDescription: movie.Genre.Description,
+            director: movie.Director.Name,
+            bio: movie.Director.Bio,
+            birth: movie.Director.Birth,
+            year: movie.Year,
+            actors: movie.Actors
+          };
+        });
+
+        setMovies(moviesFromApi);
+      });
+  }, []);
+
+  if (!user) {
+    return <LoginView onLoggedIn={(user) => setUser(user)} />;
+  }
 
   if (selectedMovie) {
+    let similarMovies = movies.filter(
+      (movie) => movie.genre === selectedMovie.genre.name
+    );
+
     return (
-      <MovieView
-        movie={selectedMovie}
-        onBackClick={() => setSelectedMovie(null)}
-      />
+      <>
+        <MovieView
+          movie={selectedMovie}
+          onBackClick={() => setSelectedMovie(null)}
+        />
+        <hr />
+        <h2>Similar Movies</h2>
+        {similarMovies.map((movie) => (
+          <MovieCard
+            key={movie.id}
+            movie={movie}
+            onMovieClick={(newSelectedMovie) => {
+              //onClick function doesnt work here
+              setSelectedMovie(newSelectedMovie);
+            }}
+          />
+        ))}
+      </>
     );
   }
 
@@ -82,17 +69,46 @@ export const MainView = () => {
   }
 
   return (
-    <div>
-      {movies.map((movie) => (
-        <MovieCard
-          key={movie.id}
-          movie={movie}
-          onMovieClick={(newSelectedMovie) => {
-            //onClick function doesnt work here
-            setSelectedMovie(newSelectedMovie);
-          }}
-        />
-      ))}
-    </div>
+    <>
+      <div>
+        {movies.map((movie) => (
+          <MovieCard
+            key={movie.id}
+            movie={movie}
+            onMovieClick={(newSelectedMovie) => {
+              //onClick function doesnt work here
+              setSelectedMovie(newSelectedMovie);
+            }}
+          />
+        ))}
+      </div>
+      <button
+        onClick={() => {
+          setUser(null);
+        }}
+      >
+        Logout
+      </button>
+    </>
   );
+};
+
+MainView.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    image: PropTypes.string.isRequired,
+    genre: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired
+    }).isRequired,
+    director: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      bio: PropTypes.string.isRequired,
+      birth: PropTypes.string
+    }).isRequired,
+    year: PropTypes.string,
+    actors: PropTypes.string
+  }).isRequired,
+  onMovieClick: PropTypes.func.isRequired
 };
