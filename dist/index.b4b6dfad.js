@@ -28496,8 +28496,8 @@ const LoginView = ({ onLoggedIn })=>{
         // this prevents the default behaviour of the form which is to reload the entire page
         event.preventDefault();
         const data = {
-            access: username,
-            secret: password
+            Username: username,
+            Password: password
         };
         fetch("https://cub-film-data-dc72bcc7ff05.herokuapp.com/login", {
             method: "POST",
