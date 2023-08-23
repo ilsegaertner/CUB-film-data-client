@@ -36,6 +36,8 @@ export const LoginView = ({ onLoggedIn }) => {
   };
 
   return (
+    <>
+    <div>Login:</div>
     <form onSubmit={handleSubmit}>
       <label>
         Username:
@@ -59,5 +61,6 @@ export const LoginView = ({ onLoggedIn }) => {
       </label>
       <button type="submit">Submit</button>
     </form>
+    </>
   );
 };
