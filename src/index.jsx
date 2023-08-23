@@ -10,7 +10,7 @@ import "./index.scss";
 
 // Main component (will eventually use all the others)
 const App = () => {
-  return <Container><MainView /></Container>
+  return <Container style={{ border: "1px solid red" }}><MainView /></Container>
   };
 
 // Finds the root of your app

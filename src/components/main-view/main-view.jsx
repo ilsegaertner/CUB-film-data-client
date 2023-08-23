@@ -45,12 +45,13 @@ export const MainView = () => {
   if (!user) {
     return (
       <>
+      <hr></hr>
       <LoginView
         onLoggedIn={(user, token) => {
           setUser(user);
           setToken(token);
         }}
-      /> or <SignupView />
+      /> <hr></hr> <SignupView />
       </>
     );
   }
