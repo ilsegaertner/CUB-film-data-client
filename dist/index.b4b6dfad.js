@@ -142,7 +142,7 @@
       this[globalName] = mainExports;
     }
   }
-})({"f6Qfu":[function(require,module,exports) {
+})({"1ARds":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
@@ -573,9 +573,9 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
     });
 }
 
-},{}],"2rx5P":[function(require,module,exports) {
-var Refresh = require("5a0265d994f1b31d");
-var ErrorOverlay = require("fda1c9ebcf4fe9b2");
+},{}],"dOp4p":[function(require,module,exports) {
+var Refresh = require("a23253871283796a");
+var ErrorOverlay = require("69e06049f463eec9");
 Refresh.injectIntoGlobalHook(window);
 window.$RefreshReg$ = function() {};
 window.$RefreshSig$ = function() {
@@ -594,11 +594,11 @@ window.addEventListener("parcelhmraccept", ()=>{
     ErrorOverlay.dismissRuntimeErrors();
 });
 
-},{"5a0265d994f1b31d":"9PvLc","fda1c9ebcf4fe9b2":"f2lZz"}],"9PvLc":[function(require,module,exports) {
+},{"a23253871283796a":"kQAkb","69e06049f463eec9":"cuhyC"}],"kQAkb":[function(require,module,exports) {
 "use strict";
-module.exports = require("6aa16dac6e6e9b8");
+module.exports = require("1c78912cd6310b6f");
 
-},{"6aa16dac6e6e9b8":"eDueM"}],"eDueM":[function(require,module,exports) {
+},{"1c78912cd6310b6f":"iBz2H"}],"iBz2H":[function(require,module,exports) {
 /** @license React v0.9.0
  * react-refresh-runtime.development.js
  *
@@ -1058,8 +1058,8 @@ module.exports = require("6aa16dac6e6e9b8");
     exports.setSignature = setSignature;
 })();
 
-},{}],"f2lZz":[function(require,module,exports) {
-var process = require("b423f175d29c9989");
+},{}],"cuhyC":[function(require,module,exports) {
+var process = require("42783491a032c995");
 !function(e, t) {
     module.exports = t();
 }(window, function() {
@@ -2789,7 +2789,7 @@ var process = require("b423f175d29c9989");
     ]);
 });
 
-},{"b423f175d29c9989":"d5jf4"}],"d5jf4":[function(require,module,exports) {
+},{"42783491a032c995":"d5jf4"}],"d5jf4":[function(require,module,exports) {
 // shim for using process in browser
 var process = module.exports = {};
 // cached from whatever global is present so that test runners that stub it
@@ -2985,7 +2985,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./components/main-view/main-view":"4gflv","react-bootstrap/Container":"hEdsw","bootstrap/dist/css/bootstrap.min.css":"i5LP7","./index.scss":"lJZlQ","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9QoVd"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./components/main-view/main-view":"4gflv","react-bootstrap/Container":"hEdsw","bootstrap/dist/css/bootstrap.min.css":"i5LP7","./index.scss":"lJZlQ","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c4My4"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("ee51401569654d91");
 
@@ -27362,7 +27362,7 @@ $RefreshReg$(_c, "MainView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx","prop-types":"7wKI2","../login-view/login-view":"9YtA0","../signup-view/signup-view":"4OGiN","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9QoVd"}],"bwuIu":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx","prop-types":"7wKI2","../login-view/login-view":"9YtA0","../signup-view/signup-view":"4OGiN","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c4My4"}],"bwuIu":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$67b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27394,7 +27394,7 @@ $RefreshReg$(_c, "MovieCard");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9QoVd"}],"k5UsK":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c4My4"}],"eCLcj":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -27424,9 +27424,9 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"9QoVd":[function(require,module,exports) {
+},{}],"c4My4":[function(require,module,exports) {
 "use strict";
-var Refresh = require("17a55de51c41a62a");
+var Refresh = require("57fc0902cdfd9e38");
 function debounce(func, delay) {
     {
         let timeout = undefined;
@@ -27562,7 +27562,7 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"17a55de51c41a62a":"9PvLc"}],"ggaUx":[function(require,module,exports) {
+},{"57fc0902cdfd9e38":"kQAkb"}],"ggaUx":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$e9f6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27723,7 +27723,7 @@ $RefreshReg$(_c, "MovieView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9QoVd"}],"7wKI2":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c4My4"}],"7wKI2":[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -28622,7 +28622,7 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap/Button":"aPzUt","react-bootstrap/Form":"iBZ80","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9QoVd"}],"aPzUt":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap/Button":"aPzUt","react-bootstrap/Form":"iBZ80","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c4My4"}],"aPzUt":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -28650,7 +28650,7 @@ const Button = /*#__PURE__*/ _react.forwardRef(({ as, bsPrefix, variant = "prima
 Button.displayName = "Button";
 exports.default = Button;
 
-},{"classnames":"jocGM","react":"21dqq","@restart/ui/Button":"8YUbR","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK"}],"jocGM":[function(require,module,exports) {
+},{"classnames":"jocGM","react":"21dqq","@restart/ui/Button":"8YUbR","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj"}],"jocGM":[function(require,module,exports) {
 /*!
 	Copyright (c) 2018 Jed Watson.
 	Licensed under the MIT License (MIT), see
@@ -28781,7 +28781,7 @@ const Button = /*#__PURE__*/ _react.forwardRef((_ref, ref)=>{
 Button.displayName = "Button";
 exports.default = Button;
 
-},{"react":"21dqq","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK"}],"6AEwr":[function(require,module,exports) {
+},{"react":"21dqq","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj"}],"6AEwr":[function(require,module,exports) {
 "use strict";
 module.exports = require("c4c10cbba9862d5f");
 
@@ -29711,7 +29711,7 @@ function createBootstrapComponent(Component, opts) {
 }
 exports.default = ThemeProvider;
 
-},{"react":"21dqq","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK"}],"iBZ80":[function(require,module,exports) {
+},{"react":"21dqq","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj"}],"iBZ80":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -29776,7 +29776,7 @@ exports.default = Object.assign(Form, {
     FloatingLabel: (0, _floatingLabelDefault.default)
 });
 
-},{"classnames":"jocGM","prop-types":"7wKI2","react":"21dqq","./FormCheck":"idkr0","./FormControl":"iynMc","./FormFloating":"aj346","./FormGroup":"1qBHH","./FormLabel":"66epi","./FormRange":"8zsCO","./FormSelect":"hHWyB","./FormText":"ffeC7","./Switch":"9O81i","./FloatingLabel":"coYzo","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK"}],"idkr0":[function(require,module,exports) {
+},{"classnames":"jocGM","prop-types":"7wKI2","react":"21dqq","./FormCheck":"idkr0","./FormControl":"iynMc","./FormFloating":"aj346","./FormGroup":"1qBHH","./FormLabel":"66epi","./FormRange":"8zsCO","./FormSelect":"hHWyB","./FormText":"ffeC7","./Switch":"9O81i","./FloatingLabel":"coYzo","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj"}],"idkr0":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -29842,7 +29842,7 @@ exports.default = Object.assign(FormCheck, {
     Label: (0, _formCheckLabelDefault.default)
 });
 
-},{"classnames":"jocGM","react":"21dqq","./Feedback":"aWeg2","./FormCheckInput":"dPzD9","./FormCheckLabel":"fGhS2","./FormContext":"gjvSt","./ThemeProvider":"dVixI","./ElementChildren":"fdyAp","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK"}],"aWeg2":[function(require,module,exports) {
+},{"classnames":"jocGM","react":"21dqq","./Feedback":"aWeg2","./FormCheckInput":"dPzD9","./FormCheckLabel":"fGhS2","./FormContext":"gjvSt","./ThemeProvider":"dVixI","./ElementChildren":"fdyAp","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj"}],"aWeg2":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -29870,7 +29870,7 @@ Feedback.displayName = "Feedback";
 Feedback.propTypes = propTypes;
 exports.default = Feedback;
 
-},{"classnames":"jocGM","react":"21dqq","prop-types":"7wKI2","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK"}],"dPzD9":[function(require,module,exports) {
+},{"classnames":"jocGM","react":"21dqq","prop-types":"7wKI2","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj"}],"dPzD9":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -29895,7 +29895,7 @@ as: Component = "input", ...props }, ref)=>{
 FormCheckInput.displayName = "FormCheckInput";
 exports.default = FormCheckInput;
 
-},{"classnames":"jocGM","react":"21dqq","./FormContext":"gjvSt","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK"}],"gjvSt":[function(require,module,exports) {
+},{"classnames":"jocGM","react":"21dqq","./FormContext":"gjvSt","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj"}],"gjvSt":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
@@ -29903,7 +29903,7 @@ var _react = require("react");
 const FormContext = /*#__PURE__*/ _react.createContext({});
 exports.default = FormContext;
 
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK"}],"fGhS2":[function(require,module,exports) {
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj"}],"fGhS2":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -29926,7 +29926,7 @@ const FormCheckLabel = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, h
 FormCheckLabel.displayName = "FormCheckLabel";
 exports.default = FormCheckLabel;
 
-},{"classnames":"jocGM","react":"21dqq","./FormContext":"gjvSt","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK"}],"fdyAp":[function(require,module,exports) {
+},{"classnames":"jocGM","react":"21dqq","./FormContext":"gjvSt","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj"}],"fdyAp":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "map", ()=>map);
@@ -29962,7 +29962,7 @@ var _react = require("react");
     return _react.Children.toArray(children).some((child)=>/*#__PURE__*/ _react.isValidElement(child) && child.type === type);
 }
 
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK"}],"iynMc":[function(require,module,exports) {
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj"}],"iynMc":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -30004,7 +30004,7 @@ exports.default = Object.assign(FormControl, {
     Feedback: (0, _feedbackDefault.default)
 });
 
-},{"classnames":"jocGM","react":"21dqq","warning":"eUVzU","./Feedback":"aWeg2","./FormContext":"gjvSt","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK"}],"eUVzU":[function(require,module,exports) {
+},{"classnames":"jocGM","react":"21dqq","warning":"eUVzU","./Feedback":"aWeg2","./FormContext":"gjvSt","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj"}],"eUVzU":[function(require,module,exports) {
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -30054,7 +30054,7 @@ var _createWithBsPrefix = require("./createWithBsPrefix");
 var _createWithBsPrefixDefault = parcelHelpers.interopDefault(_createWithBsPrefix);
 exports.default = (0, _createWithBsPrefixDefault.default)("form-floating");
 
-},{"./createWithBsPrefix":"itt7e","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK"}],"itt7e":[function(require,module,exports) {
+},{"./createWithBsPrefix":"itt7e","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj"}],"itt7e":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>createWithBsPrefix);
@@ -30083,7 +30083,7 @@ function createWithBsPrefix(prefix, { displayName = pascalCase(prefix), Componen
     return BsComponent;
 }
 
-},{"classnames":"jocGM","dom-helpers/camelize":"kbWDq","react":"21dqq","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK"}],"kbWDq":[function(require,module,exports) {
+},{"classnames":"jocGM","dom-helpers/camelize":"kbWDq","react":"21dqq","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj"}],"kbWDq":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>camelize);
@@ -30094,7 +30094,7 @@ function camelize(string) {
     });
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK"}],"1qBHH":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj"}],"1qBHH":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
@@ -30119,7 +30119,7 @@ as: Component = "div", ...props }, ref)=>{
 FormGroup.displayName = "FormGroup";
 exports.default = FormGroup;
 
-},{"react":"21dqq","./FormContext":"gjvSt","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK"}],"66epi":[function(require,module,exports) {
+},{"react":"21dqq","./FormContext":"gjvSt","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj"}],"66epi":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -30160,7 +30160,7 @@ as: Component = "label", bsPrefix, column = false, visuallyHidden = false, class
 FormLabel.displayName = "FormLabel";
 exports.default = FormLabel;
 
-},{"classnames":"jocGM","react":"21dqq","warning":"eUVzU","./Col":"2L2I6","./FormContext":"gjvSt","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK"}],"2L2I6":[function(require,module,exports) {
+},{"classnames":"jocGM","react":"21dqq","warning":"eUVzU","./Col":"2L2I6","./FormContext":"gjvSt","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj"}],"2L2I6":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "useCol", ()=>useCol);
@@ -30212,7 +30212,7 @@ const Col = /*#__PURE__*/ _react.forwardRef(// Need to define the default "as" d
 Col.displayName = "Col";
 exports.default = Col;
 
-},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK"}],"8zsCO":[function(require,module,exports) {
+},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj"}],"8zsCO":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -30236,7 +30236,7 @@ const FormRange = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, id, ..
 FormRange.displayName = "FormRange";
 exports.default = FormRange;
 
-},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","./FormContext":"gjvSt","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK"}],"hHWyB":[function(require,module,exports) {
+},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","./FormContext":"gjvSt","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj"}],"hHWyB":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -30260,7 +30260,7 @@ const FormSelect = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, size, htmlSize, 
 FormSelect.displayName = "FormSelect";
 exports.default = FormSelect;
 
-},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","./FormContext":"gjvSt","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK"}],"ffeC7":[function(require,module,exports) {
+},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","./FormContext":"gjvSt","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj"}],"ffeC7":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -30280,7 +30280,7 @@ const FormText = /*#__PURE__*/ _react.forwardRef(// Need to define the default "
 FormText.displayName = "FormText";
 exports.default = FormText;
 
-},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK"}],"9O81i":[function(require,module,exports) {
+},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj"}],"9O81i":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
@@ -30298,7 +30298,7 @@ exports.default = Object.assign(Switch, {
     Label: (0, _formCheckDefault.default).Label
 });
 
-},{"react":"21dqq","./FormCheck":"idkr0","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK"}],"coYzo":[function(require,module,exports) {
+},{"react":"21dqq","./FormCheck":"idkr0","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj"}],"coYzo":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -30327,7 +30327,7 @@ const FloatingLabel = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, ch
 FloatingLabel.displayName = "FloatingLabel";
 exports.default = FloatingLabel;
 
-},{"classnames":"jocGM","react":"21dqq","./FormGroup":"1qBHH","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK"}],"4OGiN":[function(require,module,exports) {
+},{"classnames":"jocGM","react":"21dqq","./FormGroup":"1qBHH","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj"}],"4OGiN":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$73d1 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -30531,7 +30531,7 @@ $RefreshReg$(_c, "SignupView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap/Button":"aPzUt","react-bootstrap/Form":"iBZ80","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9QoVd"}],"hEdsw":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap/Button":"aPzUt","react-bootstrap/Form":"iBZ80","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c4My4"}],"hEdsw":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -30552,6 +30552,6 @@ as: Component = "div", className, ...props }, ref)=>{
 Container.displayName = "Container";
 exports.default = Container;
 
-},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK"}],"i5LP7":[function() {},{}],"lJZlQ":[function() {},{}]},["f6Qfu","2rx5P","d8Dch"], "d8Dch", "parcelRequire9a4a")
+},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"eCLcj"}],"i5LP7":[function() {},{}],"lJZlQ":[function() {},{}]},["1ARds","dOp4p","d8Dch"], "d8Dch", "parcelRequire9a4a")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
