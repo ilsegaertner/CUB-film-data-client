@@ -4,21 +4,23 @@ import { MovieView } from "../movie-view/movie-view"; // .jsx format ending not 
 import { PropTypes } from "prop-types";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import { Button } from "react-bootstrap";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
-  const [user, setUser] = useState(storedUser? storedUser : null); //added logic for persisting a Login Session
-  const [token, setToken] = useState(storedToken? storedToken : null);
+  const [user, setUser] = useState(storedUser ? storedUser : null); //added logic for persisting a Login Session
+  const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
- 
 
   useEffect(() => {
     if (!token) return;
 
     fetch("https://cub-film-data-dc72bcc7ff05.herokuapp.com/movies", {
-      headers: { Authorization: `Bearer ${token}` }
+      headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
       .then((data) => {
@@ -34,7 +36,7 @@ export const MainView = () => {
             bio: movie.Director.Bio,
             birth: movie.Director.Birth,
             year: movie.Year,
-            actors: movie.Actors
+            actors: movie.Actors,
           };
         });
 
@@ -42,75 +44,47 @@ export const MainView = () => {
       });
   }, [token]);
 
-  if (!user) {
-    return (
-      <>
-      <hr></hr>
-      <LoginView
-        onLoggedIn={(user, token) => {
-          setUser(user);
-          setToken(token);
-        }}
-      /> <hr></hr> <SignupView />
-      </>
-    );
-  }
-
-  if (selectedMovie) {
-    let similarMovies = movies.filter(
-      (movie) => movie.genre === selectedMovie.genre.name
-    );
-
-    return (
-      <>
-        <MovieView
-          movie={selectedMovie}
-          onBackClick={() => setSelectedMovie(null)}
-        />
-        <hr />
-        <h2>Similar Movies</h2>
-        {similarMovies.map((movie) => (
-          <MovieCard
-            key={movie.id}
-            movie={movie}
-            onMovieClick={(newSelectedMovie) => {
-              //onClick function doesnt work here
-              setSelectedMovie(newSelectedMovie);
-            }}
-          />
-        ))}
-      </>
-    );
-  }
-
-  if (movies.length === 0) {
-    return <div>The list is empty!</div>;
-  }
-
   return (
-    <>
-      <div>
-        {movies.map((movie) => (
-          <MovieCard
-            key={movie.id}
-            movie={movie}
-            onMovieClick={(newSelectedMovie) => {
-              //onClick function doesnt work here
-              setSelectedMovie(newSelectedMovie);
-            }}
+    <Row className="justify-content-md-center">
+      {!user ? (
+        <Col md={5}>
+          <LoginView onLoggedIn={(user) => setUser(user)} />
+          or <SignupView />
+        </Col>
+      ) : selectedBook ? (
+        <Col md={8}>
+          <MovieView
+            movie={selectedMovie}
+            onBackClick={() => setSelectedMovie(null)}
           />
-        ))}
-      </div>
-      <button
-        onClick={() => {
-          setUser(null);
-          setToken(null);
-          localStorage.clear();
-        }}
-      >
-        Logout
-      </button>
-    </>
+        </Col>
+      ) : movies.length === 0 ? (
+        <div>The list is empty!</div>
+      ) : (
+        <>
+          {movies.map((movie) => (
+            <Col className="mb-5" key={movie.id} md={3}>
+              <MovieCard
+                movie={movie}
+                onMovieClick={(newSelectedMovie) => {
+                  //onClick function doesnt work here
+                  setSelectedMovie(newSelectedMovie);
+                }}
+              />
+            </Col>
+          ))}
+          <Button
+            onClick={() => {
+              setUser(null);
+              setToken(null);
+              localStorage.clear();
+            }}
+          >
+            Logout
+          </Button>
+        </>
+      )}
+    </Row>
   );
 };
 
@@ -121,15 +95,15 @@ MainView.propTypes = {
     image: PropTypes.string.isRequired,
     genre: PropTypes.shape({
       name: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired
+      description: PropTypes.string.isRequired,
     }).isRequired,
     director: PropTypes.shape({
       name: PropTypes.string.isRequired,
       bio: PropTypes.string.isRequired,
-      birth: PropTypes.string
+      birth: PropTypes.string,
     }).isRequired,
     year: PropTypes.string,
-    actors: PropTypes.string
+    actors: PropTypes.string,
   }).isRequired,
-  onMovieClick: PropTypes.func.isRequired
+  onMovieClick: PropTypes.func.isRequired,
 };

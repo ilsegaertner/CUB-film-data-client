@@ -11,61 +11,66 @@ export const LoginView = ({ onLoggedIn }) => {
 
     const data = {
       Username: username,
-      Password: password
+      Password: password,
     };
 
     fetch("https://cub-film-data-dc72bcc7ff05.herokuapp.com/login", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     })
-    .then((response) => response.json())
-    .then ((data) => {
-      console.log("Login response: " + data);
-      if (data.user) { 
-        localStorage.setItem("user", JSON.stringify(data.user)); //Persisting a Login Session via local storage
-        localStorage.setItem("token", data.token);
-        onLoggedIn(data.user, data.token);
-      } else {
-        alert("No such user");
-      }
-    })
-    .catch((e) => {
-      alert("Something went wrong");
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Login response: " + data);
+        if (data.user) {
+          localStorage.setItem("user", JSON.stringify(data.user)); //Persisting a Login Session via local storage
+          localStorage.setItem("token", data.token);
+          onLoggedIn(data.user, data.token);
+        } else {
+          alert("No such user");
+        }
+      })
+      .catch((e) => {
+        alert("Something went wrong");
+      });
   };
 
   return (
     <>
-    <Form>
-      <Form.Group><Form.Label>Login:</Form.Label></Form.Group></Form>
-    <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="formUsername">
-        <Form.Label>
-        Username:</Form.Label>
-        <Form.Control
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          minLength="5"
-          required
-        />
-      </Form.Group>
-      <Form.Group controlId="formPassword">
-      <Form.Label>
-        Password:</Form.Label>
-        <Form.Control
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          minLength="6"
-          required
-        />
-      </Form.Group>
-      <Button variant="primary" type="submit">Submit</Button>
-    </Form>
+      <Form>
+        <Form.Group>
+          <Form.Label>Login:</Form.Label>
+        </Form.Group>
+      </Form>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group className="mb-3" controlId="formUsername">
+          <Form.Label>Username:</Form.Label>
+          <Form.Control
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            minLength="5"
+            placeholder="Enter your username"
+            required
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formPassword">
+          <Form.Label>Password:</Form.Label>
+          <Form.Control
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            minLength="6"
+            placeholder="Password"
+            required
+          />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
     </>
   );
 };
