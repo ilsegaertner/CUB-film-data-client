@@ -47458,7 +47458,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default).Brand, {
                     as: (0, _reactRouterDom.Link),
                     to: "/",
-                    children: "Movies App"
+                    children: "CUB Film Data"
                 }, void 0, false, {
                     fileName: "src/components/navigation-bar/navigation-bar.jsx",
                     lineNumber: 11,

@@ -9,7 +9,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          Movies App
+          CUB Film Data
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
