@@ -77,7 +77,7 @@ export const SignupView = () => {
                     <Form.Group className="mb-3" controlId="formUsername">
                       <Form.Label>Username:</Form.Label>
                       <Form.Control
-                        type="username"
+                        type="text"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         minLength="5"

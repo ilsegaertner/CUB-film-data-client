@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { Button, Card, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 import "./movie-card.scss";
 

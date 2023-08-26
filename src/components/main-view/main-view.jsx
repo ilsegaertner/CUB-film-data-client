@@ -8,7 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Button } from "react-bootstrap";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -140,5 +140,4 @@ MainView.propTypes = {
     year: PropTypes.string,
     actors: PropTypes.string,
   }).isRequired,
-  onMovieClick: PropTypes.func.isRequired,
 };
