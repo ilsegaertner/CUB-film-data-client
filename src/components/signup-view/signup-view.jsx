@@ -44,11 +44,6 @@ export const SignupView = () => {
               <Card.Body>
                 <Card.Title>Please register</Card.Title>
                 <>
-                  <Form>
-                    <Form.Group>
-                      <Form.Label>Sign Up:</Form.Label>
-                    </Form.Group>
-                  </Form>
                   <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formEmail">
                       <Form.Label>Email:</Form.Label>

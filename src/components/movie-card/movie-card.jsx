@@ -20,7 +20,7 @@ export const MovieCard = ({ movie }) => {
   );
 };
 
-MainView.propTypes = {
+MovieCard.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.string,
