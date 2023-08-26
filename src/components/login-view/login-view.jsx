@@ -5,13 +5,14 @@ import Form from "react-bootstrap/Form";
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
   const handleSubmit = (event) => {
     // this prevents the default behaviour of the form which is to reload the entire page
     event.preventDefault();
 
     const data = {
-      Username: username,
-      Password: password,
+      access: username,
+      secret: password,
     };
 
     fetch("https://cub-film-data-dc72bcc7ff05.herokuapp.com/login", {
