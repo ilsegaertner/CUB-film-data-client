@@ -13,15 +13,15 @@ export const MovieView = ({ movie }) => {
         <img src={selectedMovie.image} />
       </div>
       <div>
-        <span>Title: </span>
+        <span>Title:</span>
         <span>{selectedMovie.title}</span>
       </div>
       <div>
-        <span>Description: </span>
+        <span>Description:</span>
         <span>{selectedMovie.description}</span>
       </div>
       <div>
-        <span>Director: </span>
+        <span>Director:</span>
         <span>{selectedMovie.director}</span>
       </div>
       <div>
