@@ -27198,14 +27198,11 @@ const MainView = ()=>{
     const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null); //added logic for persisting a Login Session
     const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
     const [movies, setMovies] = (0, _react.useState)([]);
-<<<<<<< Updated upstream
     // const onLoggedOut = () => {
     //   setUser(null);
     //   setToken(null);
     //   localStorage.clear();
     // };
-=======
->>>>>>> Stashed changes
     (0, _react.useEffect)(()=>{
         if (!token) return;
         fetch("https://cub-film-data-dc72bcc7ff05.herokuapp.com/movies", {
@@ -27237,7 +27234,7 @@ const MainView = ()=>{
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationBar.NavigationBar), {}, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 50,
+                lineNumber: 56,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
@@ -27256,7 +27253,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 53,
+                            lineNumber: 59,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27273,7 +27270,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 68,
+                            lineNumber: 74,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27310,11 +27307,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-<<<<<<< Updated upstream
                             lineNumber: 104,
-=======
-                            lineNumber: 83,
->>>>>>> Stashed changes
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27337,28 +27330,24 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-<<<<<<< Updated upstream
                             lineNumber: 121,
-=======
-                            lineNumber: 100,
->>>>>>> Stashed changes
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 52,
+                    lineNumber: 58,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 51,
+                lineNumber: 57,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 49,
+        lineNumber: 55,
         columnNumber: 5
     }, undefined);
 };
@@ -46917,7 +46906,7 @@ var _movieViewScss = require("./movie-view.scss");
 var _s = $RefreshSig$();
 const MovieView = ({ movie, movies })=>{
     _s();
-    const { movieId } = (0, _reactRouter.useParams)(); // used to access the movieId URL param
+    const { movieId } = (0, _reactRouter.useParams)();
     const selectedMovie = movies.find((movie)=>movie.id === movieId); //To render this data properly, you need to look at all the movies to find the one whose id matches. You need to do it this way because React Router will only give you access to the parameter inside the component that gets rendered (to be specific, the one you list in element prop in the <Route />). This is why you needed the full array of movies in order to perform the .find() operation on it to get the targeted movie.
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
