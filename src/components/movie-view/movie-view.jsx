@@ -2,7 +2,7 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import "./movie-view.scss";
 
-export const MovieView = ({ movie }) => {
+export const MovieView = ({ movie, movies }) => {
   const { movieId } = useParams();
 
   const selectedMovie = movies.find((movie) => movie.id === movieId);

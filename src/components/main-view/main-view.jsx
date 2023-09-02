@@ -17,11 +17,11 @@ export const MainView = () => {
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
 
-  const onLoggedOut = () => {
-    setUser(null);
-    setToken(null);
-    localStorage.clear();
-  };
+  // const onLoggedOut = () => {
+  //   setUser(null);
+  //   setToken(null);
+  //   localStorage.clear();
+  // };
 
   useEffect(() => {
     if (!token) return;
@@ -80,6 +80,21 @@ export const MainView = () => {
                 ) : (
                   <Col md={5}>
                     <LoginView onLoggedIn={(user) => setUser(user)} />
+                  </Col>
+                )}
+              </>
+            }
+          />
+
+          <Route
+            path="/logout"
+            element={
+              <>
+                {user ? (
+                  <Navigate to="/" />
+                ) : (
+                  <Col md={5}>
+                    <LoginView onLoggedOut={() => handleLogout()} />
                   </Col>
                 )}
               </>
