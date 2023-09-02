@@ -29,7 +29,7 @@ export const ProfileView = ({ movies }) => {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, []); // Passing an empty dependency array ([]) as a second argument to useEffect() telles React that your callback doesn't depend on any value changes in props or state, so it never needs to rerun(Equivalent to the componentDidMount() method)
 
   return (
     <Container>
