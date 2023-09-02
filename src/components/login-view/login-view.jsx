@@ -15,27 +15,27 @@ export const LoginView = ({ onLoggedIn }) => {
       secret: password,
     };
 
-    fetch("https://cub-film-data-dc72bcc7ff05.herokuapp.com/login", {
+    fetch(`https://cub-film-data-dc72bcc7ff05.herokuapp.com/login?Username=${username}&Password=${password}`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded"
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(data)
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Login response: " + data);
-        if (data.user) {
-          localStorage.setItem("user", JSON.stringify(data.user)); //Persisting a Login Session via local storage
-          localStorage.setItem("token", data.token);
-          onLoggedIn(data.user, data.token);
-        } else {
-          alert("No such user");
-        }
-      })
-      .catch((e) => {
-        alert("Something went wrong");
-      });
+    .then((response) => response.json())
+    .then ((data) => {
+      console.log("Login response: " + data);
+      if (data.user) { 
+        localStorage.setItem("user", JSON.stringify(data.user)); //Persisting a Login Session via local storage
+        localStorage.setItem("token", data.token);
+        onLoggedIn(data.user, data.token);
+      } else {
+        alert("No such user");
+      }
+    })
+    .catch((e) => {
+      alert("Something went wrong");
+    });
   };
 
   return (
