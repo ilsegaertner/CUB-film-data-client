@@ -18,12 +18,15 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   // const onLoggedOut = () => {
   //   setUser(null);
   //   setToken(null);
   //   localStorage.clear();
   // };
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   useEffect(() => {

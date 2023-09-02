@@ -3,8 +3,13 @@ import { Link } from "react-router-dom";
 import "./movie-view.scss";
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 export const MovieView = ({ movie, movies }) => {
   const { movieId } = useParams();
+=======
+export const MovieView = ({ movie }) => {
+  const { movieId } = useParams(); // used to access the movieId URL param
+>>>>>>> Stashed changes
 =======
 export const MovieView = ({ movie }) => {
   const { movieId } = useParams(); // used to access the movieId URL param
