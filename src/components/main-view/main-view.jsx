@@ -17,18 +17,12 @@ export const MainView = () => {
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
   // const onLoggedOut = () => {
   //   setUser(null);
   //   setToken(null);
   //   localStorage.clear();
   // };
 
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
   useEffect(() => {
     if (!token) return;
 
