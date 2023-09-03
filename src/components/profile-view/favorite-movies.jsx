@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Col, Row, Figure, Button, Card } from "react-bootstrap";
-import axios from "axios";
+// import axios from "axios";
 import "./profile-view.scss";
 
 export const FavoriteMovies = ({ favoriteMovieList }) => {
@@ -24,7 +24,7 @@ export const FavoriteMovies = ({ favoriteMovieList }) => {
           </Col>
         </Row>
         <Row>
-          {favoriteMovieList.map(({ ImagePath, Title, _id }) => {
+          {favoriteMovieList.map((movies) => {
             return (
               <Col xs={12} md={6} lg={3} key={_id} className="fav-movie">
                 <Figure>
