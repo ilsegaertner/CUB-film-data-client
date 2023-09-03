@@ -58,17 +58,6 @@ export const SignupView = () => {
                         We'll never share your email with anyone else.
                       </Form.Text>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formPassword">
-                      <Form.Label>Password:</Form.Label>
-                      <Form.Control
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        minLength="8"
-                        placeholder="Your Password must be 8 or more characters"
-                        required
-                      />
-                    </Form.Group>
                     <Form.Group className="mb-3" controlId="formUsername">
                       <Form.Label>Username:</Form.Label>
                       <Form.Control
@@ -80,6 +69,18 @@ export const SignupView = () => {
                         required
                       />
                     </Form.Group>
+                    <Form.Group className="mb-3" controlId="formPassword">
+                      <Form.Label>Password:</Form.Label>
+                      <Form.Control
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        minLength="8"
+                        placeholder="Your Password must be 8 or more characters"
+                        required
+                      />
+                    </Form.Group>
+
                     <Form.Group className="mb-3" controlId="formBirthday">
                       <Form.Label>Birthday:</Form.Label>
                       <Form.Control

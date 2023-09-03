@@ -27232,7 +27232,10 @@ const MainView = ()=>{
     ]);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.BrowserRouter), {
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationBar.NavigationBar), {}, void 0, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationBar.NavigationBar), {
+                user: user,
+                onLoggedOut: onLoggedOut
+            }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
                 lineNumber: 56,
                 columnNumber: 7
@@ -47303,21 +47306,21 @@ const SignupView = ()=>{
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
                                                 className: "mb-3",
-                                                controlId: "formPassword",
+                                                controlId: "formUsername",
                                                 children: [
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
-                                                        children: "Password:"
+                                                        children: "Username:"
                                                     }, void 0, false, {
                                                         fileName: "src/components/signup-view/signup-view.jsx",
                                                         lineNumber: 62,
                                                         columnNumber: 23
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
-                                                        type: "password",
-                                                        value: password,
-                                                        onChange: (e)=>setPassword(e.target.value),
-                                                        minLength: "8",
-                                                        placeholder: "Your Password must be 8 or more characters",
+                                                        type: "text",
+                                                        value: username,
+                                                        onChange: (e)=>setUsername(e.target.value),
+                                                        minLength: "5",
+                                                        placeholder: "Enter a username",
                                                         required: true
                                                     }, void 0, false, {
                                                         fileName: "src/components/signup-view/signup-view.jsx",
@@ -47332,21 +47335,21 @@ const SignupView = ()=>{
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
                                                 className: "mb-3",
-                                                controlId: "formUsername",
+                                                controlId: "formPassword",
                                                 children: [
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
-                                                        children: "Username:"
+                                                        children: "Password:"
                                                     }, void 0, false, {
                                                         fileName: "src/components/signup-view/signup-view.jsx",
                                                         lineNumber: 73,
                                                         columnNumber: 23
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
-                                                        type: "text",
-                                                        value: username,
-                                                        onChange: (e)=>setUsername(e.target.value),
-                                                        minLength: "5",
-                                                        placeholder: "Enter a username",
+                                                        type: "password",
+                                                        value: password,
+                                                        onChange: (e)=>setPassword(e.target.value),
+                                                        minLength: "8",
+                                                        placeholder: "Your Password must be 8 or more characters",
                                                         required: true
                                                     }, void 0, false, {
                                                         fileName: "src/components/signup-view/signup-view.jsx",
@@ -47367,7 +47370,7 @@ const SignupView = ()=>{
                                                         children: "Birthday:"
                                                     }, void 0, false, {
                                                         fileName: "src/components/signup-view/signup-view.jsx",
-                                                        lineNumber: 84,
+                                                        lineNumber: 85,
                                                         columnNumber: 23
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
@@ -47377,13 +47380,13 @@ const SignupView = ()=>{
                                                         required: true
                                                     }, void 0, false, {
                                                         fileName: "src/components/signup-view/signup-view.jsx",
-                                                        lineNumber: 85,
+                                                        lineNumber: 86,
                                                         columnNumber: 23
                                                     }, undefined)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/signup-view/signup-view.jsx",
-                                                lineNumber: 83,
+                                                lineNumber: 84,
                                                 columnNumber: 21
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
@@ -47393,7 +47396,7 @@ const SignupView = ()=>{
                                                 children: "Submit"
                                             }, void 0, false, {
                                                 fileName: "src/components/signup-view/signup-view.jsx",
-                                                lineNumber: 92,
+                                                lineNumber: 93,
                                                 columnNumber: 21
                                             }, undefined)
                                         ]
@@ -47526,26 +47529,24 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                         columnNumber: 17
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
-                                        onClick: onLoggedOut,
-                                        children: "Logout"
+                                        as: (0, _reactRouterDom.Link),
+                                        to: "/Users",
+                                        children: "User Info"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
                                         lineNumber: 32,
                                         columnNumber: 17
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
+                                        onClick: onLoggedOut,
+                                        children: "Logout"
+                                    }, void 0, false, {
+                                        fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                        lineNumber: 35,
+                                        columnNumber: 17
                                     }, undefined)
                                 ]
-                            }, void 0, true),
-                            user && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
-                                    as: (0, _reactRouterDom.Link),
-                                    to: "/Users",
-                                    children: "User Info"
-                                }, void 0, false, {
-                                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                    lineNumber: 37,
-                                    columnNumber: 17
-                                }, undefined)
-                            }, void 0, false)
+                            }, void 0, true)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
