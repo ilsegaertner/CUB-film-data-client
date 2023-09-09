@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap/Form";
 
 export const UpdateUser = ({ handleSubmit, handleUpdate }) => {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState(user.Username);
   const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [birthday, setBirthday] = useState("");
+  const [email, setEmail] = useState(user.Email);
+  const [birthday, setBirthday] = useState(user.Birthday);
+  const [favoriteMovies, setFavoriteMovies] = useState(user.FavoriteMovies);
 
   return (
     <Form>

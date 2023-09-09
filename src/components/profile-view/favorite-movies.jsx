@@ -24,7 +24,7 @@ export const FavoriteMovies = ({ favoriteMovieList }) => {
           </Col>
         </Row>
         <Row>
-          {favoriteMovieList.map((movies) => {
+          {favoriteMovieList.map(({ ImagePath, Title, _id }) => {
             return (
               <Col xs={12} md={6} lg={3} key={_id} className="fav-movie">
                 <Figure>
