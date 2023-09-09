@@ -12,13 +12,13 @@ export const MovieCard = ({ movie }) => {
       <Card.Body>
         <Card.Title>{movie.title}</Card.Title>
         <Card.Text>{movie.director}</Card.Text>
-        <Link to={`/movies/${encodeURIComponent(movie.id)}`}>   
+        <Link to={`/movies/${movie.title}`}>
           {/* // the key property you use to populate the id contains non-alphanumeric characters that dont work well when used as URL params. encodeURIComponent is used to replace these non-alphanumeric characters with URL-friendly characters  */}
           <Button variant="link">Open</Button>
         </Link>
-          <Link to={`/movies/${encodeURIComponent(movie.id)}`}>
-            <Button variant="link">Favorite</Button>
-          </Link>
+        <Link to={`/movies/${encodeURIComponent(movie.title)}`}>
+          <Button variant="link">Favorite</Button>
+        </Link>
       </Card.Body>
     </Card>
   );
