@@ -9,13 +9,17 @@ import { UpdateUser } from "./update-user";
 export const ProfileView = ({
   movies,
   token,
-  handleSubmit,
-  handleUpdate,
+  user,
   favoriteMovieList,
+  handleSubmit,
 }) => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
-  const [user, setUser] = useState(storedUser ? storedUser : null);
+  // const [user, setUser] = useState(
+  //   storedUser ? storedUser : { Username: "", mail: "", FavoriteMovies: [] }
+  // );
+
+  // const [user, setUser] = useState(storedUser ? storedUser : null);
   // const [user, setUser] = useState({
   //   Username: "",
   //   mail: "",
@@ -27,33 +31,107 @@ export const ProfileView = ({
   // );
 
   // const getUser = () => {
+  useEffect(() => {
+    fetch(
+      `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        const user = data.map((user) => {
+          return {
+            id: user.id,
+            username: user.Username,
+            email: user.Email,
+            favoriteMovies: user.FavoriteMovies,
+          };
+        });
+
+        setUser(user);
+      })
+      .catch((error) => {
+        console.error("Error fetching user data", error);
+      });
+  }, []);
+
+  // const handleUpdate = (e) => {
+  //   e.preventDefault();
+
+  //   const data = {
+  //     Username: user.Username,
+  //     Password: user.Password,
+  //     Email: user.Email,
+  //     Birthday: user.Birthday,
+  //     FavoriteMovies: user.FavoriteMovies,
+  //   };
+
   //   fetch(
   //     `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`,
   //     {
-  //       headers: { Authorization: `Bearer ${token}` },
+  //       method: "PUT",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //       body: JSON.stringify(data),
   //     }
   //   )
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       const userData = data.map((user) => {
-  //         return {
-  //           id: data.id,
-  //           username: data.Username,
-  //           email: data.Email,
-  //           favoriteMovies: data.FavoriteMovies,
-  //         };
-  //       });
+  //     .then((resolve) => {
+  //       if (resolve.ok) {
+  //         alert("Updated profile successfully. Please login again.");
+  //         localStorage.removeItem("token");
+  //         localStorage.removeItem("user");
+  //         window.location = "/login";
+  //       } else {
+  //         alert("Update failed");
+  //       }
+  //     })
+  //     .catch((error) => alert("Update failed" + error));
+  // };
 
-  //       setUser(userData);
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+
+  //   const data = {
+  //     Username: username,
+  //     Password: password,
+  //     Email: email,
+  //     Birthday: birthday,
+  //     FavoriteMovies: favoriteMovies,
+  //   };
+
+  //   if (!user.Username || !user.Email) {
+  //     alert("Username and Email are required.");
+  //     return;
+  //   }
+
+  //   fetch(
+  //     `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`,
+  //     {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //       body: JSON.stringify(data),
+  //     }
+  //   )
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         alert("Form submitted successfully.");
+  //         window.location = "/";
+  //       } else {
+  //         alert("Form submission failed.");
+  //       }
   //     })
   //     .catch((error) => {
-  //       console.error("Error fetching user data", error);
+  //       console.error("Error submitting form", error);
+  //       alert("Form submission failed.");
   //     });
   // };
 
-  // // const getUser = () => {};
-  // const handleSubmit = (e) => {};
-  // const handleUpdate = (e) => {};
   // const removeFav = (id) => {};
 
   // useEffect(() => {
@@ -67,19 +145,20 @@ export const ProfileView = ({
   return (
     <Container>
       <Row>
-        <Col xs={12} sm={4}>
+        <Col xs={12} sm={12}>
           <Card>
             <Card.Body>
               <UserInfo user={user} />
             </Card.Body>
           </Card>
         </Col>
-        <Col xs={12} sm={8}>
+        <Col xs={12} sm={12}>
           <Card>
             <Card.Body>
               <UpdateUser
                 handleSubmit={handleSubmit}
-                handleUpdate={handleUpdate}
+                user={user}
+                token={token}
               />
             </Card.Body>
           </Card>

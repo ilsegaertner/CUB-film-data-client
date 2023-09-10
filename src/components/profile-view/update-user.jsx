@@ -1,21 +1,65 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap/Form";
+import { Form, Button } from "react-bootstrap";
 
-export const UpdateUser = ({ handleSubmit, handleUpdate }) => {
+export const UpdateUser = ({ user, token }) => {
   const [username, setUsername] = useState(user.Username);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState(user.Email);
   const [birthday, setBirthday] = useState(user.Birthday);
   const [favoriteMovies, setFavoriteMovies] = useState(user.FavoriteMovies);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const data = {
+      Username: username,
+      Password: password,
+      Email: email,
+      Birthday: birthday,
+      FavoriteMovies: favoriteMovies,
+    };
+
+    if (!user.Username || !user.Email) {
+      alert("Username and Email are required.");
+      return;
+    }
+
+    fetch(
+      `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(data),
+      }
+    )
+      .then((response) => {
+        if (response.ok) {
+          alert("Your profile was updated.");
+          window.location = "/";
+        } else {
+          alert("Form submission failed.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error submitting form", error);
+        alert("Form submission failed.");
+      });
+  };
+
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
+      <Form.Group>
+        <h4>Update your Profile:</h4>
+      </Form.Group>
       <Form.Group className="mb-3" controlId="formUsername">
         <Form.Label>Username:</Form.Label>
         <Form.Control
           type="text"
           value={username}
-          onChange={(e) => handleUpdate(e)}
+          onChange={(e) => setUsername(e.target.value)}
           minLength="5"
           placeholder="Enter a username"
           required
@@ -26,7 +70,7 @@ export const UpdateUser = ({ handleSubmit, handleUpdate }) => {
         <Form.Control
           type="password"
           value={password}
-          onChange={(e) => handleUpdate(e)}
+          onChange={(e) => setPassword(e.target.value)}
           minLength="8"
           placeholder="Your Password must be 8 or more characters"
           required
@@ -37,7 +81,7 @@ export const UpdateUser = ({ handleSubmit, handleUpdate }) => {
         <Form.Control
           type="email"
           value={email}
-          onChange={(e) => handleUpdate(e)}
+          onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email address"
         />
       </Form.Group>
