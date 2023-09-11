@@ -5,36 +5,48 @@ import "./profile-view.scss";
 import { UserInfo } from "./user-info";
 import { UpdateUser } from "./update-user";
 import { DeleteProfile } from "./delete-profile";
-// import { FavoriteMovies } from "./favorite-movies";
+import { FavoriteMovies } from "./favorite-movies";
 
-export const ProfileView = ({ token, user, handleSubmit, onLoggedOut }) => {
-  const storedUser = JSON.parse(localStorage.getItem("user"));
-  const storedToken = localStorage.getItem("token");
+export const ProfileView = ({
+  token,
+  user,
+  movies,
+  handleSubmit,
+  onLoggedOut,
+  favoriteMovies,
+}) => {
+  // const storedUser = JSON.parse(localStorage.getItem("user"));
+  // const storedToken = localStorage.getItem("token");
 
-  useEffect(() => {
-    fetch(
-      `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`,
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        const user = data.map((user) => {
-          return {
-            id: user.id,
-            username: user.Username,
-            email: user.Email,
-            favoriteMovies: user.FavoriteMovies,
-          };
-        });
+  // useEffect(() => {
+  //   fetch(
+  //     `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`,
+  //     {
+  //       headers: { Authorization: `Bearer ${token}` },
+  //     }
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       const user = data.map((user) => {
+  //         return {
+  //           id: user.id,
+  //           username: user.Username,
+  //           email: user.Email,
+  //           favoriteMovies: user.FavoriteMovies,
+  //         };
+  //       });
 
-        setUser(user);
-      })
-      .catch((error) => {
-        console.error("Error fetching user data", error);
-      });
-  }, []);
+  //       setUser(user);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching user data", error);
+  //     });
+  // }, []);
+
+  // Filter movies based on user's favoriteMovies
+  const favoriteMovieList = movies.filter((movie) =>
+    user.favoriteMovies.includes(movie._id)
+  );
 
   return (
     <Container>
@@ -69,7 +81,11 @@ export const ProfileView = ({ token, user, handleSubmit, onLoggedOut }) => {
           </Card>
         </Col>
       </Row>
-      {/* <FavoriteMovies favoriteMovieList={favoriteMovieList} /> */}
+      <FavoriteMovies
+        user={user}
+        favoriteMovieList={favoriteMovieList}
+        token={token}
+      />
     </Container>
   );
 };

@@ -23,9 +23,7 @@ const DeleteProfile = ({ user, onLoggedOut, token }) => {
 
   return (
     <>
-      <Button variant="link" onClick={deleteProfileHandler}>
-        Delete Profile
-      </Button>
+      <Button onClick={deleteProfileHandler}>Delete Profile</Button>
     </>
   );
 };
