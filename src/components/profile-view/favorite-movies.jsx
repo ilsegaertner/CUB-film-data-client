@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { Col, Row, Figure, Button, Card } from "react-bootstrap";
 import "./profile-view.scss";
 
-export const FavoriteMovies = ({ user, Title, token, favoriteMovieList }) => {
+export const FavoriteMovies = ({ user, Title, token, movies }) => {
   const [userProfile, setUserProfile] = useState(null);
-  const favouriteMovies = user.FavouriteMovies || [];
+  const favoriteMovies = user.FavouriteMovies || [];
 
   //getUser
   useEffect(() => {
@@ -30,7 +30,7 @@ export const FavoriteMovies = ({ user, Title, token, favoriteMovieList }) => {
           id: data.id,
           username: data.Username,
           email: data.Email,
-          favouriteMovies: data.FavouriteMovies,
+          favoriteMovies: data.FavouriteMovies,
         });
       })
       .catch((error) => {
@@ -62,12 +62,18 @@ export const FavoriteMovies = ({ user, Title, token, favoriteMovieList }) => {
       });
   };
 
+  const favoriteMovieList = movies.filter((movie) =>
+    user.FavouriteMovies.includes(movie._id)
+  );
+
+  console.log(user);
+
   return (
     <Card>
       <Card.Body>
         <Row>
           <Col xs={12}>
-            <h2>Favourite Movies</h2>
+            <h2>Favorite Movies</h2>
           </Col>
         </Row>
         <Row>

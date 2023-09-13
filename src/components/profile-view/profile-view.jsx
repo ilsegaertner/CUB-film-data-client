@@ -43,9 +43,11 @@ export const ProfileView = ({
   // }, []);
 
   // Filter movies based on user's favoriteMovies
-  const favoriteMovieList = movies.filter((movie) =>
-    user.FavouriteMovies.includes(movie._id)
-  );
+  // const favoriteMovieList = movies.filter((movie) =>
+  //   user.FavouriteMovies.includes(movie._id)
+  // );
+
+  // const favoriteMovieList = [];
 
   return (
     <Container>
@@ -82,7 +84,7 @@ export const ProfileView = ({
         <Col xs={12} sm={12}>
           <FavoriteMovies
             user={user}
-            favoriteMovieList={favoriteMovieList}
+            favoriteMovieList={movies}
             token={token}
           />
         </Col>
