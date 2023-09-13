@@ -10,8 +10,8 @@ import { MovieView } from "../movie-view/movie-view"; // .jsx format ending not 
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { ProfileView } from "../profile-view/profile-view";
-import { UserInfo } from "../profile-view/user-info";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
+import { DeleteProfile } from "../profile-view/delete-profile";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -27,6 +27,7 @@ export const MainView = () => {
     localStorage.clear();
   };
 
+  //fetch Movies
   useEffect(() => {
     if (!token) return;
 
@@ -54,6 +55,25 @@ export const MainView = () => {
         setMovies(moviesFromApi);
       });
   }, [token]);
+
+  // const getUser = () => {
+  //   fetch(
+  //     `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`,
+  //     {
+  //       method: "GET",
+  //       headers: { Authorization: `Bearer ${token}` },
+  //     }
+  //   )
+  //     .then((response) => response.json())
+  //     .then((user) => {
+  //       setUser(user);
+  //     })
+  //     .catch((error) => {
+  //       alert("Something went wrong " + error);
+  //     });
+  // };
+
+  console.log(user);
 
   return (
     <BrowserRouter>
@@ -120,7 +140,7 @@ export const MainView = () => {
                   </Col>
                 </>
               ) : (
-                <Navigate to="/login replace" />
+                <Navigate to="/login" replace />
               )
             }
           />

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Container, Col, Row, Card } from "react-bootstrap";
 import "./profile-view.scss";
 
@@ -13,7 +13,6 @@ export const ProfileView = ({
   movies,
   handleSubmit,
   onLoggedOut,
-  favoriteMovies,
 }) => {
   // const storedUser = JSON.parse(localStorage.getItem("user"));
   // const storedToken = localStorage.getItem("token");
@@ -45,13 +44,13 @@ export const ProfileView = ({
 
   // Filter movies based on user's favoriteMovies
   const favoriteMovieList = movies.filter((movie) =>
-    user.favoriteMovies.includes(movie._id)
+    user.FavouriteMovies.includes(movie._id)
   );
 
   return (
     <Container>
       <Row>
-        <Col xs={12} sm={12}>
+        <Col xs={12} sm={12} lg={12}>
           <Card>
             <Card.Body className="profilecard1">
               <UserInfo user={user} />
@@ -80,12 +79,14 @@ export const ProfileView = ({
             </Card.Body>
           </Card>
         </Col>
+        <Col xs={12} sm={12}>
+          <FavoriteMovies
+            user={user}
+            favoriteMovieList={favoriteMovieList}
+            token={token}
+          />
+        </Col>
       </Row>
-      <FavoriteMovies
-        user={user}
-        favoriteMovieList={favoriteMovieList}
-        token={token}
-      />
     </Container>
   );
 };

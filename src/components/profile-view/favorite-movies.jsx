@@ -3,16 +3,11 @@ import { Link } from "react-router-dom";
 import { Col, Row, Figure, Button, Card } from "react-bootstrap";
 import "./profile-view.scss";
 
-export const FavoriteMovies = ({
-  user,
-  Title,
-  token,
-  movies,
-  favoriteMovieList,
-}) => {
+export const FavoriteMovies = ({ user, Title, token, favoriteMovieList }) => {
   const [userProfile, setUserProfile] = useState(null);
-  const favoriteMovies = user.favoriteMovies || [];
+  const favouriteMovies = user.FavouriteMovies || [];
 
+  //getUser
   useEffect(() => {
     fetchUserData();
   }, [user.Username, token]);
@@ -35,7 +30,7 @@ export const FavoriteMovies = ({
           id: data.id,
           username: data.Username,
           email: data.Email,
-          favoriteMovies: data.FavouriteMovies,
+          favouriteMovies: data.FavouriteMovies,
         });
       })
       .catch((error) => {
@@ -43,24 +38,9 @@ export const FavoriteMovies = ({
       });
   };
 
-  //     response.json())
-  //     .then((data) => {
-  //       const user = data.map((user) => {
-  //         return {
-  //           id: user.id,
-  //           username: user.Username,
-  //           email: user.Email,
-  //           favoriteMovies: user.FavoriteMovies,
-  //         };
-  //       });
+  //add Favorite
 
-  //       setUser(user);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching user data", error);
-  //     });
-  // }, []);
-
+  //remove Favorite
   const removeFav = (id) => {
     // Make a delete request to the API
     const url = `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${Title}`;
@@ -87,7 +67,7 @@ export const FavoriteMovies = ({
       <Card.Body>
         <Row>
           <Col xs={12}>
-            <h2>Favorite Movies</h2>
+            <h2>Favourite Movies</h2>
           </Col>
         </Row>
         <Row>

@@ -1,8 +1,11 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 
 const DeleteProfile = ({ user, onLoggedOut, token }) => {
   const storedToken = localStorage.getItem("token");
+  const storedUser = localStorage.getItem("user");
+
+  console.log(user);
 
   const deleteProfileHandler = () => {
     fetch(
@@ -18,12 +21,19 @@ const DeleteProfile = ({ user, onLoggedOut, token }) => {
           alert("Something went wrong");
         }
       })
-      .catch((error) => alert("Something went wrong" + error));
+      .catch((error) => {
+        console.error("Error deleting profile:", error);
+        alert("Something went wrong" + error);
+      });
   };
 
   return (
     <>
-      <Button onClick={deleteProfileHandler}>Delete Profile</Button>
+      <Card>
+        <Card.Body>
+          <Button onClick={deleteProfileHandler}>Delete Profile</Button>
+        </Card.Body>
+      </Card>
     </>
   );
 };
