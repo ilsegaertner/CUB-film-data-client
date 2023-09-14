@@ -36,7 +36,7 @@ export const MainView = () => {
       .then((data) => {
         const moviesFromApi = data.map((movie) => {
           return {
-            id: movie.id,
+            id: movie._id,
             title: movie.Title,
             description: movie.Description,
             image: movie.ImagePath,
@@ -72,6 +72,7 @@ export const MainView = () => {
   // };
 
   console.log(user);
+  console.log(movies);
 
   return (
     <BrowserRouter>
@@ -107,22 +108,6 @@ export const MainView = () => {
               </>
             }
           />
-
-          {/* <Route
-            path="/Users"
-            element={
-              user ? (
-                <>
-                  <Col md={3}>
-                    <UserInfo user={user} />
-                  </Col>
-                </>
-              ) : (
-                <Navigate to="/login replace" />
-              )
-            }
-          /> */}
-
           {/* Profile  */}
           <Route
             path="/profile"
@@ -134,6 +119,9 @@ export const MainView = () => {
                       user={user}
                       movies={movies}
                       token={storedToken}
+                      onLoggedOut={() => {
+                        setUser(null), setToken(null), localStorage.clear();
+                      }}
                     />
                   </Col>
                 </>
@@ -142,7 +130,6 @@ export const MainView = () => {
               )
             }
           />
-
           <Route
             path="/movies/:movieTitle"
             element={
@@ -159,7 +146,6 @@ export const MainView = () => {
               </>
             }
           />
-
           <Route
             path="/"
             element={

@@ -8,7 +8,7 @@ import "./movie-card.scss";
 export const MovieCard = ({ movie }) => {
   return (
     <Card className="h-100">
-      <Card.Img variant="top" src={movie.image} />
+      <Card.Img variant="top" src={movie.image} key={movie.id} />
       <Card.Body>
         <Card.Title>{movie.title}</Card.Title>
         <Card.Text>{movie.director}</Card.Text>
@@ -37,16 +37,12 @@ MovieCard.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string,
     image: PropTypes.string.isRequired,
-    genre: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-    }).isRequired,
-    director: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      bio: PropTypes.string.isRequired,
-      birth: PropTypes.string,
-    }).isRequired,
+    genre: PropTypes.string.isRequired,
+    genreDescription: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    bio: PropTypes.string.isRequired,
+    birth: PropTypes.string.isRequired,
     year: PropTypes.string,
-    actors: PropTypes.string,
+    actors: PropTypes.array,
   }).isRequired,
 };

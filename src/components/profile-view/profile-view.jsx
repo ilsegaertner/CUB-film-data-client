@@ -49,6 +49,16 @@ export const ProfileView = ({
 
   // const favoriteMovieList = [];
 
+  console.log(user);
+
+  if (user.FavouriteMovies) {
+    const favoriteMovieList = movies.filter((movie) =>
+      user.FavouriteMovies.includes(movie._id)
+    );
+  }
+
+  console.log(user);
+  console.log(movies);
   return (
     <Container>
       <Row>
@@ -73,11 +83,11 @@ export const ProfileView = ({
         <Col xs={12} sm={12}>
           <Card>
             <Card.Body>
-              {/* <DeleteProfile
+              <DeleteProfile
                 user={user}
                 onLoggedOut={onLoggedOut}
                 token={token}
-              /> */}
+              />
             </Card.Body>
           </Card>
         </Col>
@@ -86,6 +96,7 @@ export const ProfileView = ({
             user={user}
             favoriteMovieList={movies}
             token={token}
+            movies={movies}
           />
         </Col>
       </Row>

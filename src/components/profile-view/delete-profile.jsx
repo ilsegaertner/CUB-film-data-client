@@ -1,10 +1,7 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
 
-const DeleteProfile = ({ user, onLoggedOut, token }) => {
-  const storedToken = localStorage.getItem("token");
-  const storedUser = localStorage.getItem("user");
-
+export const DeleteProfile = ({ user, onLoggedOut, token }) => {
   console.log(user);
 
   const deleteProfileHandler = () => {
@@ -15,8 +12,8 @@ const DeleteProfile = ({ user, onLoggedOut, token }) => {
       .then((response) => {
         if (response.ok) {
           alert("Profile deleted");
+          window.location = "signup";
           onLoggedOut();
-          // window.location = "../signup";
         } else {
           alert("Something went wrong");
         }
@@ -30,9 +27,7 @@ const DeleteProfile = ({ user, onLoggedOut, token }) => {
   return (
     <>
       <Card>
-        <Card.Body>
-          <Button onClick={deleteProfileHandler}>Delete Profile</Button>
-        </Card.Body>
+        <Button onClick={deleteProfileHandler}>Delete Profile</Button>
       </Card>
     </>
   );

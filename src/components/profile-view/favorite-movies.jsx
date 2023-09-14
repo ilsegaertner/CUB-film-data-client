@@ -3,44 +3,43 @@ import { Link } from "react-router-dom";
 import { Col, Row, Figure, Button, Card } from "react-bootstrap";
 import "./profile-view.scss";
 
-export const FavoriteMovies = ({ user, Title, token, movies }) => {
-  const [userProfile, setUserProfile] = useState(null);
-  const favoriteMovies = user.FavouriteMovies || [];
+export const FavoriteMovies = ({ user, Title, token, favoriteMovieList }) => {
+  // const [userProfile, setUserProfile] = useState(null);
+  // // const favoriteMovies = user.FavouriteMovies || [];
 
-  //getUser
-  useEffect(() => {
-    fetchUserData();
-  }, [user.Username, token]);
+  // //getUser
+  // useEffect(() => {
+  //   fetchUserData();
+  // }, [user.Username, token]);
 
-  const fetchUserData = () => {
-    fetch(
-      `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`,
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch user data");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setUserProfile({
-          id: data.id,
-          username: data.Username,
-          email: data.Email,
-          favoriteMovies: data.FavouriteMovies,
-        });
-      })
-      .catch((error) => {
-        console.error("Error fetching user data", error);
-      });
-  };
-
-  //add Favorite
+  // const fetchUserData = () => {
+  //   fetch(
+  //     `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`,
+  //     {
+  //       headers: { Authorization: `Bearer ${token}` },
+  //     }
+  //   )
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         throw new Error("Failed to fetch user data");
+  //       }
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       setUserProfile({
+  //         id: data.id,
+  //         username: data.Username,
+  //         email: data.Email,
+  //         favoriteMovies: data.FavouriteMovies,
+  //       });
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching user data", error);
+  //     });
+  // };
 
   //remove Favorite
+
   const removeFav = (id) => {
     // Make a delete request to the API
     const url = `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${Title}`;
@@ -62,11 +61,7 @@ export const FavoriteMovies = ({ user, Title, token, movies }) => {
       });
   };
 
-  const favoriteMovieList = movies.filter((movie) =>
-    user.FavouriteMovies.includes(movie._id)
-  );
-
-  console.log(user);
+  //add Favorite
 
   return (
     <Card>
