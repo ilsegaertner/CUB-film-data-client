@@ -49,7 +49,6 @@ export const MainView = () => {
             actors: movie.Actors,
           };
         });
-
         setMovies(moviesFromApi);
       });
   }, [token]);
@@ -69,7 +68,28 @@ export const MainView = () => {
   //     .catch((error) => {
   //       alert("Something went wrong " + error);
   //     });
-  // };
+  // });
+
+  // console.log(setUser);
+
+  // useEffect(() => {
+  //   if (!token) return;
+
+  //   fetch(
+  //     "https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}",
+  //     {
+  //       method: "GET",
+  //       headers: { Authorization: `Bearer ${token}` },
+  //     }
+  //   )
+  //     .then((response) => response.json())
+  //     .then((user) => {
+  //       setUser(user);
+  //     })
+  //     .catch((error) => {
+  //       alert("Couldn't get user " + error);
+  //     });
+  // });
 
   console.log(user);
   console.log(movies);
@@ -114,7 +134,7 @@ export const MainView = () => {
             element={
               user ? (
                 <>
-                  <Col md={3}>
+                  <Col sm={12} md={10} lg={4}>
                     <ProfileView
                       user={user}
                       movies={movies}

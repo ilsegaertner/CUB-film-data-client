@@ -6,7 +6,7 @@ export const UpdateUser = ({ user, token }) => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState(user.Email);
   const [birthday, setBirthday] = useState(user.Birthday);
-  const [favoriteMovies, setFavoriteMovies] = useState(user.FavoriteMovies);
+  const [favouriteMovies, setFavouriteMovies] = useState(user.FavouriteMovies);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -16,7 +16,7 @@ export const UpdateUser = ({ user, token }) => {
       Password: password,
       Email: email,
       Birthday: birthday,
-      FavoriteMovies: favoriteMovies,
+      FavouriteMovies: favouriteMovies,
     };
 
     if (!user.Username || !user.Email) {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Col, Row, Figure, Button, Card } from "react-bootstrap";
 import "./profile-view.scss";
+import { UpdateUser } from "./update-user";
 
 export const FavoriteMovies = ({ user, Title, token, favoriteMovieList }) => {
   // const [userProfile, setUserProfile] = useState(null);
@@ -38,9 +39,13 @@ export const FavoriteMovies = ({ user, Title, token, favoriteMovieList }) => {
   //     });
   // };
 
-  //remove Favorite
+  const bothHandlers = () => {
+    UpdateUser();
+    addFavorite();
+  };
 
-  const removeFav = (id) => {
+  //remove Favorite
+  const removeFav = (_id) => {
     // Make a delete request to the API
     const url = `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${Title}`;
 
@@ -63,6 +68,29 @@ export const FavoriteMovies = ({ user, Title, token, favoriteMovieList }) => {
 
   //add Favorite
 
+  const addFavorite = (_id) => {
+    fetch(
+      `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${Title}`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((response) => {
+        if (response.ok) {
+          alert("Movie added to favorites");
+        } else {
+          throw new Error("Failed to add movie to favorites");
+        }
+      })
+      .catch((error) => {
+        console.error("Error adding movie to favorites", error);
+      });
+  };
+
   return (
     <Card>
       <Card.Body>
@@ -81,7 +109,10 @@ export const FavoriteMovies = ({ user, Title, token, favoriteMovieList }) => {
                     <Figure.Caption>{Title}</Figure.Caption>
                   </Link>
                 </Figure>
-                <Button variant="secondary" onClick={() => removeFav(_id)}>
+                <Button variant="secondary" onClick={bothHandlers}>
+                  Add
+                </Button>
+                <Button variant="secondary" onClick={() => addFavorite}>
                   Remove
                 </Button>
               </Col>
