@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Button, Card, Row, Col } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import "./movie-card.scss";
 
-export const MovieCard = ({ movie }) => {
+export const MovieCard = ({ movie, addFavorite }) => {
   return (
     <Card className="h-100">
       <Card.Img variant="top" src={movie.image} key={movie.id} />
@@ -18,9 +18,8 @@ export const MovieCard = ({ movie }) => {
             Open
           </Button>
         </Link>
-        <Link to={`/movies/${movie.title}`}>
-          <Button>{`❤️`}</Button>
-        </Link>
+
+        <Button onClick={addFavorite}>{`❤️`}</Button>
 
         {/* {FavoriteMovies.includes(movie.id) ? (
           <DeleteFavorite movieId={movie.id} updateUser={updateUser} />

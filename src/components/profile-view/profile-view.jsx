@@ -58,14 +58,14 @@ export const ProfileView = ({
   return (
     <Container>
       <Row>
-        <Col xs={12} sm={12} lg={12}>
+        <Col xs={5} sm={5} lg={5}>
           <Card>
             <Card.Body className="profilecard1">
               <UserInfo user={user} />
             </Card.Body>
           </Card>
         </Col>
-        <Col xs={12} sm={12}>
+        <Col xs={12} sm={5} lg={5}>
           <Card>
             <Card.Body className="profilecard2">
               <UpdateUser
@@ -76,7 +76,7 @@ export const ProfileView = ({
             </Card.Body>
           </Card>
         </Col>
-        <Col xs={12} sm={12}>
+        <Col xs={1} sm={3} lg={2}>
           <Card>
             <Card.Body>
               <DeleteProfile
@@ -87,7 +87,7 @@ export const ProfileView = ({
             </Card.Body>
           </Card>
         </Col>
-        <Col xs={12} sm={12}>
+        <Col xs={12} sm={12} lg={12}>
           <FavoriteMovies
             user={userProfile}
             favoriteMovieList={movies}

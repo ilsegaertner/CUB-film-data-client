@@ -4,7 +4,7 @@ import { Col, Row, Figure, Button, Card } from "react-bootstrap";
 import "./profile-view.scss";
 import { UpdateUser } from "./update-user";
 
-export const FavoriteMovies = ({ user, Title, token, favoriteMovieList }) => {
+export const FavoriteMovies = ({ user, title, token, favoriteMovieList }) => {
   // const [userProfile, setUserProfile] = useState(null);
   // // const favoriteMovies = user.FavouriteMovies || [];
 
@@ -45,7 +45,7 @@ export const FavoriteMovies = ({ user, Title, token, favoriteMovieList }) => {
   };
 
   //remove Favorite
-  const removeFav = (_id) => {
+  const removeFav = (id) => {
     // Make a delete request to the API
     const url = `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${Title}`;
 
@@ -68,7 +68,7 @@ export const FavoriteMovies = ({ user, Title, token, favoriteMovieList }) => {
 
   //add Favorite
 
-  const addFavorite = (_id) => {
+  const addFavorite = (id) => {
     fetch(
       `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${Title}`,
       {
@@ -100,13 +100,13 @@ export const FavoriteMovies = ({ user, Title, token, favoriteMovieList }) => {
           </Col>
         </Row>
         <Row>
-          {favoriteMovieList.map(({ ImagePath, Title, _id }) => {
+          {favoriteMovieList.map(({ image, title, id }) => {
             return (
-              <Col xs={12} md={6} lg={3} key={_id} className="fav-movie">
+              <Col xs={12} md={6} lg={3} key={id} className="fav-movie">
                 <Figure>
-                  <Link to={`/movies/${Title}`}>
-                    <Figure.Image src={ImagePath} alt={Title} />
-                    <Figure.Caption>{Title}</Figure.Caption>
+                  <Link to={`/movies/${title}`}>
+                    <Figure.Image src={image} alt={title} />
+                    <Figure.Caption>{title}</Figure.Caption>
                   </Link>
                 </Figure>
                 <Button variant="secondary" onClick={bothHandlers}>

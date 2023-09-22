@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Button } from "react-bootstrap";
 
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view"; // .jsx format ending not needed here
@@ -134,16 +133,14 @@ export const MainView = () => {
             element={
               user ? (
                 <>
-                  <Col sm={12} md={10} lg={4}>
-                    <ProfileView
-                      user={user}
-                      movies={movies}
-                      token={storedToken}
-                      onLoggedOut={() => {
-                        setUser(null), setToken(null), localStorage.clear();
-                      }}
-                    />
-                  </Col>
+                  <ProfileView
+                    user={user}
+                    movies={movies}
+                    token={storedToken}
+                    onLoggedOut={() => {
+                      setUser(null), setToken(null), localStorage.clear();
+                    }}
+                  />
                 </>
               ) : (
                 <Navigate to="/login" replace />
