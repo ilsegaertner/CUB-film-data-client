@@ -14,7 +14,8 @@ export const ProfileView = ({
   onLoggedOut,
   user,
 }) => {
-  const [userProfile, setUserProfile] = useState();
+  const [userProfile, setUserProfile] = useState({});
+  const [favoriteMovieList, setFavoriteMovieList] = useState([]);
 
   console.log(user);
 
@@ -33,15 +34,23 @@ export const ProfileView = ({
         }
         return response.json();
       })
-      .then((data) => {
-        console.log("API Response:", data);
+      .then((movie) => {
+        console.log("API Response:", movie);
         setUserProfile({
-          id: data._id,
-          username: data.Username,
-          email: data.Email,
-          birthday: data.Birthday,
-          favouriteMovies: data.FavouriteMovies,
+          id: movie._id,
+          username: movie.Username,
+          email: movie.Email,
+          birthday: movie.Birthday,
+          favouriteMovies: movie.FavouriteMovies,
         });
+
+        if (movie.FavouriteMovies) {
+          const newFavoriteMovieList = movies.filter(
+            (movie) =>
+              movie.FavouriteMovies && movie.FavouriteMovies.includes(movie._id)
+          );
+          setFavoriteMovieList(newFavoriteMovieList);
+        }
       })
       .catch((error) => {
         console.error("Error fetching user data", error);
@@ -50,13 +59,13 @@ export const ProfileView = ({
 
   console.log(movies);
   console.log(userProfile);
+  console.log(favoriteMovieList);
 
-  if (userProfile && userProfile.favouriteMovies) {
-    const favoriteMovieList = movies.filter((movie) =>
-      userProfile.favouriteMovies.includes(movie._id)
-    );
-    console.log(favoriteMovieList);
-  }
+  // if (userProfile && userProfile.favouriteMovies) {
+  //   const favoriteMovieList = movies.filter((movie) =>
+  //     userProfile.favouriteMovies.includes(movie._id)
+  //   );
+  //   console.log(favoriteMovieList);
 
   return (
     <Container>
@@ -93,8 +102,8 @@ export const ProfileView = ({
         </Col>
         <Col xs={12} sm={12} lg={12}>
           <FavoriteMovies
-            user={userProfile}
-            favoriteMovieList={movies}
+            userProfile={userProfile}
+            favoriteMovieList={favoriteMovieList}
             token={token}
           />
         </Col>
