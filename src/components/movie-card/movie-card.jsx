@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import "./movie-card.scss";
 
-export const MovieCard = ({ movie, addFavorite }) => {
+export const MovieCard = ({ movie, addHandler, title }) => {
   return (
     <Card className="h-100">
       <Card.Img variant="top" src={movie.image} key={movie.id} />
@@ -19,7 +19,7 @@ export const MovieCard = ({ movie, addFavorite }) => {
           </Button>
         </Link>
 
-        <Button onClick={addFavorite}>{`❤️`}</Button>
+        <Button onClick={() => addHandler(title)}>{`❤️`}</Button>
 
         {/* {FavoriteMovies.includes(movie.id) ? (
           <DeleteFavorite movieId={movie.id} updateUser={updateUser} />

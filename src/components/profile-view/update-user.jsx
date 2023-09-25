@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
-export const UpdateUser = ({ user, token }) => {
+export const UpdateUser = ({ user, token, userProfile }) => {
   const [username, setUsername] = useState(user.Username);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState(user.Email);
@@ -48,6 +48,7 @@ export const UpdateUser = ({ user, token }) => {
         alert("Form submission failed.");
       });
   };
+  console.log(userProfile);
 
   return (
     <Form onSubmit={handleSubmit}>

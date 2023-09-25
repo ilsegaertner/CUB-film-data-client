@@ -9,6 +9,7 @@ import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
+import { UpdateUser } from "../profile-view/update-user";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -17,6 +18,11 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser ? storedUser : null); //added logic for persisting a Login Session
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
+
+  const addHandler = (title) => {
+    UpdateUser();
+    addFavorite(title);
+  };
 
   const onLoggedOut = () => {
     setUser(null);
@@ -174,8 +180,14 @@ export const MainView = () => {
                 ) : (
                   <>
                     {movies.map((movie) => (
-                      <Col className="mb-5" key={movie.id} md={3}>
-                        <MovieCard movie={movie} />
+                      <Col
+                        className="mb-5"
+                        key={movie.id}
+                        md={7}
+                        sm={12}
+                        lg={3}
+                      >
+                        <MovieCard movie={movie} addHandler={addHandler} />
                       </Col>
                     ))}
                   </>

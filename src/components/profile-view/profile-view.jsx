@@ -14,7 +14,9 @@ export const ProfileView = ({
   onLoggedOut,
   user,
 }) => {
-  const [userProfile, setUserProfile] = useState(null);
+  const [userProfile, setUserProfile] = useState();
+
+  console.log(user);
 
   useEffect(() => {
     if (!user || !token) return;
@@ -47,6 +49,7 @@ export const ProfileView = ({
   }, [token, user]);
 
   console.log(movies);
+  console.log(userProfile);
 
   if (userProfile && userProfile.favouriteMovies) {
     const favoriteMovieList = movies.filter((movie) =>
@@ -58,20 +61,21 @@ export const ProfileView = ({
   return (
     <Container>
       <Row>
-        <Col xs={5} sm={5} lg={5}>
+        <Col xs={12} sm={9} lg={5}>
           <Card>
             <Card.Body className="profilecard1">
               <UserInfo user={user} />
             </Card.Body>
           </Card>
         </Col>
-        <Col xs={12} sm={5} lg={5}>
+        <Col xs={12} sm={6} lg={5}>
           <Card>
             <Card.Body className="profilecard2">
               <UpdateUser
                 handleSubmit={handleSubmit}
                 user={user}
                 token={token}
+                userProfile={userProfile}
               />
             </Card.Body>
           </Card>
@@ -92,7 +96,6 @@ export const ProfileView = ({
             user={userProfile}
             favoriteMovieList={movies}
             token={token}
-            movies={movies}
           />
         </Col>
       </Row>

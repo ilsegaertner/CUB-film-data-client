@@ -39,15 +39,20 @@ export const FavoriteMovies = ({ user, title, token, favoriteMovieList }) => {
   //     });
   // };
 
-  const bothHandlers = () => {
+  const addHandler = (title) => {
     UpdateUser();
-    addFavorite();
+    addFavorite(title);
+  };
+
+  const removeHandler = (title) => {
+    UpdateUser();
+    removeFav(title);
   };
 
   //remove Favorite
-  const removeFav = (id) => {
+  const removeFav = () => {
     // Make a delete request to the API
-    const url = `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${Title}`;
+    const url = `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${title}`;
 
     fetch(url, {
       method: "DELETE",
@@ -57,7 +62,9 @@ export const FavoriteMovies = ({ user, title, token, favoriteMovieList }) => {
       },
     })
       .then((response) => {
-        if (!response.ok) {
+        if (response.ok) {
+          alert("Movie removed from favorites");
+        } else {
           throw new Error("Failed to remove favorite movie");
         }
       })
@@ -67,10 +74,9 @@ export const FavoriteMovies = ({ user, title, token, favoriteMovieList }) => {
   };
 
   //add Favorite
-
-  const addFavorite = (id) => {
+  const addFavorite = () => {
     fetch(
-      `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${Title}`,
+      `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${title}`,
       {
         method: "POST",
         headers: {
@@ -109,10 +115,13 @@ export const FavoriteMovies = ({ user, title, token, favoriteMovieList }) => {
                     <Figure.Caption>{title}</Figure.Caption>
                   </Link>
                 </Figure>
-                <Button variant="secondary" onClick={bothHandlers}>
+                <Button variant="secondary" onClick={() => addHandler(title)}>
                   Add
                 </Button>
-                <Button variant="secondary" onClick={() => addFavorite}>
+                <Button
+                  variant="secondary"
+                  onClick={() => removeHandler(title)}
+                >
                   Remove
                 </Button>
               </Col>
