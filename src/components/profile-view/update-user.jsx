@@ -49,6 +49,7 @@ export const UpdateUser = ({ user, token, userProfile }) => {
       });
   };
   console.log(userProfile);
+  console.log(user);
 
   return (
     <Form onSubmit={handleSubmit}>

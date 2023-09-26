@@ -8,36 +8,8 @@ export const FavoriteMovies = ({ user, title, token, favoriteMovieList }) => {
   // const [userProfile, setUserProfile] = useState(null);
   // // const favoriteMovies = user.FavouriteMovies || [];
 
-  // //getUser
-  // useEffect(() => {
-  //   fetchUserData();
-  // }, [user.Username, token]);
-
-  // const fetchUserData = () => {
-  //   fetch(
-  //     `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`,
-  //     {
-  //       headers: { Authorization: `Bearer ${token}` },
-  //     }
-  //   )
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         throw new Error("Failed to fetch user data");
-  //       }
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       setUserProfile({
-  //         id: data.id,
-  //         username: data.Username,
-  //         email: data.Email,
-  //         favoriteMovies: data.FavouriteMovies,
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching user data", error);
-  //     });
-  // };
+  console.log(user);
+  console.log(title);
 
   const addHandler = (title) => {
     UpdateUser();

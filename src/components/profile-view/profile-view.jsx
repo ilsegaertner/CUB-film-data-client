@@ -13,6 +13,7 @@ export const ProfileView = ({
   handleSubmit,
   onLoggedOut,
   user,
+  title,
 }) => {
   const [userProfile, setUserProfile] = useState({});
   const [favoriteMovieList, setFavoriteMovieList] = useState([]);
@@ -34,17 +35,17 @@ export const ProfileView = ({
         }
         return response.json();
       })
-      .then((movie) => {
-        console.log("API Response:", movie);
+      .then((user) => {
+        console.log("API Response:", user);
         setUserProfile({
-          id: movie._id,
-          username: movie.Username,
-          email: movie.Email,
-          birthday: movie.Birthday,
-          favouriteMovies: movie.FavouriteMovies,
+          id: user._id,
+          username: user.Username,
+          email: user.Email,
+          birthday: user.Birthday,
+          favouriteMovies: user.FavouriteMovies,
         });
 
-        if (movie.FavouriteMovies) {
+        if (user.FavouriteMovies) {
           const newFavoriteMovieList = movies.filter(
             (movie) =>
               movie.FavouriteMovies && movie.FavouriteMovies.includes(movie._id)
@@ -58,7 +59,7 @@ export const ProfileView = ({
   }, [token, user]);
 
   console.log(movies);
-  console.log(userProfile);
+  console.log(user);
   console.log(favoriteMovieList);
 
   // if (userProfile && userProfile.favouriteMovies) {
@@ -105,6 +106,9 @@ export const ProfileView = ({
             userProfile={userProfile}
             favoriteMovieList={favoriteMovieList}
             token={token}
+            movies={movies}
+            user={user}
+            title={title}
           />
         </Col>
       </Row>
