@@ -1,8 +1,16 @@
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import "./movie-view.scss";
+import { AddFavorite } from "../view-favorites/add-favorite";
+import { RemoveFavorite } from "../view-favorites/remove-favorite";
 
-export const MovieView = ({ movies }) => {
+export const MovieView = ({
+  movies,
+  FavoriteMovieList,
+  updateUser,
+  user,
+  token,
+}) => {
   const { movieTitle } = useParams();
 
   const movie = movies.find((m) => m.title === movieTitle);
@@ -35,9 +43,28 @@ export const MovieView = ({ movies }) => {
       <Link to={`/`}>
         <button className="back-button">Back</button>
       </Link>
-      <Link to={`/`}>
+
+      {FavoriteMovieList.includes(movie.id) ? (
+        <RemoveFavorite
+          movieId={movie.id}
+          movie={movie}
+          updateUser={updateUser}
+          user={user}
+          token={token}
+        />
+      ) : (
+        <AddFavorite
+          movieId={movie.id}
+          movie={movie}
+          updateUser={updateUser}
+          user={user}
+          token={token}
+        />
+      )}
+
+      {/* <Link to={`/`}>
         <button className="fav-button">{`❤️`}</button>
-      </Link>
+      </Link> */}
     </div>
   );
 };

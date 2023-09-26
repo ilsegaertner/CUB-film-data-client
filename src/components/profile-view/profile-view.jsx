@@ -5,7 +5,7 @@ import "./profile-view.scss";
 import { UserInfo } from "./user-info";
 import { UpdateUser } from "./update-user";
 import { DeleteProfile } from "./delete-profile";
-import { FavoriteMovies } from "./favorite-movies";
+import { ViewFavorites } from "../view-favorites/view-favorites";
 
 export const ProfileView = ({
   token,
@@ -13,12 +13,12 @@ export const ProfileView = ({
   handleSubmit,
   onLoggedOut,
   user,
+  movie,
   title,
+  updateUser,
 }) => {
   const [userProfile, setUserProfile] = useState({});
-  const [favoriteMovieList, setFavoriteMovieList] = useState([]);
-
-  console.log(user);
+  // const [favoriteMovieList, setFavoriteMovieList] = useState([]);
 
   useEffect(() => {
     if (!user || !token) return;
@@ -44,23 +44,11 @@ export const ProfileView = ({
           birthday: user.Birthday,
           favouriteMovies: user.FavouriteMovies,
         });
-
-        if (user.FavouriteMovies) {
-          const newFavoriteMovieList = movies.filter(
-            (movie) =>
-              movie.FavouriteMovies && movie.FavouriteMovies.includes(movie._id)
-          );
-          setFavoriteMovieList(newFavoriteMovieList);
-        }
       })
       .catch((error) => {
         console.error("Error fetching user data", error);
       });
   }, [token, user]);
-
-  console.log(movies);
-  console.log(user);
-  console.log(favoriteMovieList);
 
   // if (userProfile && userProfile.favouriteMovies) {
   //   const favoriteMovieList = movies.filter((movie) =>
@@ -102,9 +90,10 @@ export const ProfileView = ({
           </Card>
         </Col>
         <Col xs={12} sm={12} lg={12}>
-          <FavoriteMovies
+          <ViewFavorites
             userProfile={userProfile}
-            favoriteMovieList={favoriteMovieList}
+            // favoriteMovieList={favoriteMovieList}
+            updateUser={updateUser}
             token={token}
             movies={movies}
             user={user}

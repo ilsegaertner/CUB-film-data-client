@@ -2,10 +2,18 @@ import PropTypes from "prop-types";
 import React from "react";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
+import { AddFavorite } from "../view-favorites/add-favorite";
+import { RemoveFavorite } from "../view-favorites/remove-favorite";
 import "./movie-card.scss";
 
-export const MovieCard = ({ movie, addHandler, title }) => {
+export const MovieCard = ({
+  movie,
+  user,
+  FavoriteMovieList,
+  updateUser,
+  token,
+  title,
+}) => {
   return (
     <Card className="h-100">
       <Card.Img variant="top" src={movie.image} key={movie.id} />
@@ -19,7 +27,27 @@ export const MovieCard = ({ movie, addHandler, title }) => {
           </Button>
         </Link>
 
-        <Button onClick={() => addHandler(title)}>{`❤️`}</Button>
+        {FavoriteMovieList.includes(movie.id) ? (
+          <RemoveFavorite
+            movieId={movie.id}
+            movie={movie}
+            updateUser={updateUser}
+            user={user}
+            title={title}
+            token={token}
+          />
+        ) : (
+          <AddFavorite
+            movieId={movie.id}
+            movie={movie}
+            updateUser={updateUser}
+            user={user}
+            title={title}
+            token={token}
+          />
+        )}
+
+        {/* <Button onClick={() => addHandler(title)}>{`❤️`}</Button> */}
 
         {/* {FavoriteMovies.includes(movie.id) ? (
           <DeleteFavorite movieId={movie.id} updateUser={updateUser} />

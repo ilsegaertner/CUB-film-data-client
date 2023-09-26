@@ -1,25 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Col, Row, Figure, Button, Card } from "react-bootstrap";
-import "./profile-view.scss";
-import { UpdateUser } from "./update-user";
+import "../profile-view/profile-view.scss";
+import { MovieCard } from "../movie-card/movie-card";
 
-export const FavoriteMovies = ({ user, title, token, favoriteMovieList }) => {
-  // const [userProfile, setUserProfile] = useState(null);
-  // // const favoriteMovies = user.FavouriteMovies || [];
-
-  console.log(user);
-  console.log(title);
-
-  const addHandler = (title) => {
-    UpdateUser();
-    addFavorite(title);
-  };
-
-  const removeHandler = (title) => {
-    UpdateUser();
-    removeFav(title);
-  };
+export const ViewFavorites = ({ user, movies, movie, updateUser }) => {
+  const FavoriteMovieList = movies.filter(
+    (movie) =>
+      movie.FavouriteMovies && movie.FavouriteMovies.includes(movie._id)
+  );
 
   return (
     <Card>
@@ -30,16 +19,17 @@ export const FavoriteMovies = ({ user, title, token, favoriteMovieList }) => {
           </Col>
         </Row>
         <Row>
-          {favoriteMovieList.map(({ image, title, id }) => {
+          {FavoriteMovieList.map(({ image, title, id }) => {
             return (
               <Col xs={12} md={6} lg={3} key={id} className="fav-movie">
-                <Figure>
+                <MovieCard movie={movie} user={user} updateUser={updateUser} />
+                {/* <Figure>
                   <Link to={`/movies/${title}`}>
                     <Figure.Image src={image} alt={title} />
                     <Figure.Caption>{title}</Figure.Caption>
                   </Link>
-                </Figure>
-                <Button variant="secondary" onClick={() => addHandler(title)}>
+                </Figure> */}
+                {/* <Button variant="secondary" onClick={() => addHandler(title)}>
                   Add
                 </Button>
                 <Button
@@ -47,7 +37,7 @@ export const FavoriteMovies = ({ user, title, token, favoriteMovieList }) => {
                   onClick={() => removeHandler(title)}
                 >
                   Remove
-                </Button>
+                </Button> */}
               </Col>
             );
           })}

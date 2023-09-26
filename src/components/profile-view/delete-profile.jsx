@@ -2,8 +2,6 @@ import React from "react";
 import { Button, Card } from "react-bootstrap";
 
 export const DeleteProfile = ({ user, onLoggedOut, token }) => {
-  console.log(user);
-
   const deleteProfileHandler = () => {
     fetch(
       `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`,

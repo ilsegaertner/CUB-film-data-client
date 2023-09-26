@@ -9,7 +9,6 @@ import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
-import { UpdateUser } from "../profile-view/update-user";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -19,15 +18,27 @@ export const MainView = () => {
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
 
-  const addHandler = (title) => {
-    UpdateUser();
-    addFavorite(title);
-  };
-
   const onLoggedOut = () => {
     setUser(null);
     setToken(null);
     localStorage.clear();
+  };
+
+  const updateUser = () => {
+    fetch(
+      `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`,
+      {
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    )
+      .then((response) => response.json())
+      .then((user) => {
+        setUser(user);
+      })
+      .catch((error) => {
+        alert("Something went wrong " + error);
+      });
   };
 
   //fetch Movies
@@ -57,47 +68,6 @@ export const MainView = () => {
         setMovies(moviesFromApi);
       });
   }, [token]);
-
-  // const getUser = () => {
-  //   fetch(
-  //     `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`,
-  //     {
-  //       method: "GET",
-  //       headers: { Authorization: `Bearer ${token}` },
-  //     }
-  //   )
-  //     .then((response) => response.json())
-  //     .then((user) => {
-  //       setUser(user);
-  //     })
-  //     .catch((error) => {
-  //       alert("Something went wrong " + error);
-  //     });
-  // });
-
-  // console.log(setUser);
-
-  // useEffect(() => {
-  //   if (!token) return;
-
-  //   fetch(
-  //     "https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}",
-  //     {
-  //       method: "GET",
-  //       headers: { Authorization: `Bearer ${token}` },
-  //     }
-  //   )
-  //     .then((response) => response.json())
-  //     .then((user) => {
-  //       setUser(user);
-  //     })
-  //     .catch((error) => {
-  //       alert("Couldn't get user " + error);
-  //     });
-  // });
-
-  console.log(user);
-  console.log(movies);
 
   return (
     <BrowserRouter>
@@ -143,6 +113,7 @@ export const MainView = () => {
                     user={user}
                     movies={movies}
                     token={storedToken}
+                    updateUser={updateUser}
                     onLoggedOut={() => {
                       setUser(null), setToken(null), localStorage.clear();
                     }}
@@ -163,7 +134,13 @@ export const MainView = () => {
                   <Col>The list is empty!</Col>
                 ) : (
                   <Col md={8}>
-                    <MovieView movies={movies} user={user} />
+                    <MovieView
+                      movies={movies}
+                      user={user}
+                      FavoriteMovieList={movies}
+                      updateUser={updateUser}
+                      token={token}
+                    />
                   </Col>
                 )}
               </>
@@ -187,7 +164,13 @@ export const MainView = () => {
                         sm={12}
                         lg={3}
                       >
-                        <MovieCard movie={movie} addHandler={addHandler} />
+                        <MovieCard
+                          movie={movie}
+                          user={user}
+                          FavoriteMovieList={movies}
+                          updateUser={updateUser}
+                          token={token}
+                        />
                       </Col>
                     ))}
                   </>
