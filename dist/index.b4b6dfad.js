@@ -46943,8 +46943,6 @@ var _reactBootstrap = require("react-bootstrap");
 const AddFavorite = ({ updateUser, user, movie, token })=>{
     // const storedUser = JSON.parse(localStorage.getItem("user"));
     // const storedToken = localStorage.getItem("token");
-    console.log(movie.title);
-    console.log("Token:", token);
     const bothHandlers = ()=>{
         updateUser();
         addFavoriteHandler();
@@ -46969,7 +46967,7 @@ const AddFavorite = ({ updateUser, user, movie, token })=>{
         children: "Add"
     }, void 0, false, {
         fileName: "src/components/view-favorites/add-favorite.jsx",
-        lineNumber: 39,
+        lineNumber: 37,
         columnNumber: 5
     }, undefined);
 };

@@ -5,8 +5,6 @@ import { Button } from "react-bootstrap";
 export const AddFavorite = ({ updateUser, user, movie, token }) => {
   // const storedUser = JSON.parse(localStorage.getItem("user"));
   // const storedToken = localStorage.getItem("token");
-  console.log(movie.title);
-  console.log("Token:", token);
 
   const bothHandlers = () => {
     updateUser();
