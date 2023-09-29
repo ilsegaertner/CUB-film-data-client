@@ -46939,10 +46939,17 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "AddFavorite", ()=>AddFavorite);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
 var _reactBootstrap = require("react-bootstrap");
-const AddFavorite = ({ updateUser, user, movie, token })=>{
-    // const storedUser = JSON.parse(localStorage.getItem("user"));
+var _s = $RefreshSig$();
+const AddFavorite = ({ updateUser, movie, token, movieId })=>{
+    _s();
+    const storedUser = JSON.parse(localStorage.getItem("user"));
     // const storedToken = localStorage.getItem("token");
+    const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null); //added logic for persisting a Login Session
+    console.log(user);
+    console.log(storedUser);
+    console.log(movie);
     const bothHandlers = ()=>{
         updateUser();
         addFavoriteHandler();
@@ -46955,8 +46962,13 @@ const AddFavorite = ({ updateUser, user, movie, token })=>{
                 "Content-Type": "application/json"
             }
         }).then((response)=>{
-            if (response.ok) alert("Movie added to favorites");
+            if (response.ok) return response.json();
             else throw new Error("Failed to add movie to favorites");
+        }).then((data)=>{
+            console.log("API Response:", data); // Log the response data
+            // If needed, update the local state or user's FavouriteMovies array
+            // ...
+            alert("Movie added to favorites");
         }).catch((error)=>{
             console.error("Error adding movie to favorites", error);
         });
@@ -46967,10 +46979,11 @@ const AddFavorite = ({ updateUser, user, movie, token })=>{
         children: "Add"
     }, void 0, false, {
         fileName: "src/components/view-favorites/add-favorite.jsx",
-        lineNumber: 37,
+        lineNumber: 54,
         columnNumber: 5
     }, undefined);
 };
+_s(AddFavorite, "drE/u6ltTGhNbJvlkllR9OyWTvc=");
 _c = AddFavorite;
 var _c;
 $RefreshReg$(_c, "AddFavorite");
@@ -46980,7 +46993,7 @@ $RefreshReg$(_c, "AddFavorite");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9QoVd","react-bootstrap":"3AD9A"}],"jtdAY":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9QoVd","react-bootstrap":"3AD9A","react":"21dqq"}],"jtdAY":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$0021 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
