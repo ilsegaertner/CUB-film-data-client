@@ -19,7 +19,7 @@ export const AddFavorite = ({ updateUser, movie, token, movieId }) => {
 
   const addFavoriteHandler = () => {
     fetch(
-      `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${movie.title}`,
+      `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${movieId}`,
       {
         method: "POST",
         headers: {
@@ -30,14 +30,18 @@ export const AddFavorite = ({ updateUser, movie, token, movieId }) => {
     )
       .then((response) => {
         if (response.ok) {
-          return response.json();
+          // return response.json();
           // If the movie was added successfully, update the local state
           // and user's FavouriteMovies array
           const updatedFavouriteMovies = [...user.FavouriteMovies, movieId];
           setUser({ ...user, FavouriteMovies: updatedFavouriteMovies });
           alert("Movie added to favorites");
         } else {
-          throw new Error("Failed to add movie to favorites");
+          return response.text().then((errorMessage) => {
+            throw new Error(
+              `Failed to add movie to favorites: ${errorMessage}`
+            );
+          });
         }
       })
       .then((data) => {
@@ -50,6 +54,7 @@ export const AddFavorite = ({ updateUser, movie, token, movieId }) => {
         console.error("Error adding movie to favorites", error);
       });
   };
+
   return (
     <Button size="sm" onClick={bothHandlers}>
       Add

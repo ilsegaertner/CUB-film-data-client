@@ -50,11 +50,12 @@ export const ProfileView = ({
       });
   }, [token, user]);
 
-  // if (userProfile && userProfile.favouriteMovies) {
-  //   const favoriteMovieList = movies.filter((movie) =>
-  //     userProfile.favouriteMovies.includes(movie._id)
-  //   );
-  //   console.log(favoriteMovieList);
+  if (userProfile && userProfile.favouriteMovies) {
+    const favoriteMovieList = movies.filter((movie) =>
+      userProfile.favouriteMovies.includes(movie._id)
+    );
+    console.log(favoriteMovieList);
+  }
 
   return (
     <Container>

@@ -44,9 +44,9 @@ export const MovieView = ({
         <button className="back-button">Back</button>
       </Link>
 
-      {FavoriteMovieList.includes(movie.id) ? (
+      {FavoriteMovieList.includes(movie._id) ? (
         <RemoveFavorite
-          movieId={movie.id}
+          movieId={movie._id}
           movie={movie}
           updateUser={updateUser}
           user={user}
@@ -54,7 +54,7 @@ export const MovieView = ({
         />
       ) : (
         <AddFavorite
-          movieId={movie.id}
+          movieId={movie._id}
           movie={movie}
           updateUser={updateUser}
           user={user}
