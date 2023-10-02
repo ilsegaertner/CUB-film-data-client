@@ -4,11 +4,19 @@ import { Col, Row, Figure, Button, Card } from "react-bootstrap";
 import "../profile-view/profile-view.scss";
 import { MovieCard } from "../movie-card/movie-card";
 
-export const ViewFavorites = ({ user, movies, movie, updateUser }) => {
+export const ViewFavorites = ({
+  user,
+  movies,
+  updateUserFavorite,
+  userProfile,
+}) => {
   const FavoriteMovieList = movies.filter(
     (movie) =>
-      movie.FavouriteMovies && movie.FavouriteMovies.includes(movie._id)
+      userProfile.FavouriteMovies &&
+      userProfile.FavouriteMovies.includes(movie.id)
   );
+
+  console.log(userProfile);
 
   return (
     <Card>
@@ -22,7 +30,12 @@ export const ViewFavorites = ({ user, movies, movie, updateUser }) => {
           {FavoriteMovieList.map(({ image, title, id }) => {
             return (
               <Col xs={12} md={6} lg={3} key={id} className="fav-movie">
-                <MovieCard movie={movie} user={user} updateUser={updateUser} />
+                <MovieCard
+                  user={user}
+                  userProfile={userProfile}
+                  FavoriteMovieList={movies}
+                  updateUserFavorite={updateUserFavorite}
+                />
                 {/* <Figure>
                   <Link to={`/movies/${title}`}>
                     <Figure.Image src={image} alt={title} />

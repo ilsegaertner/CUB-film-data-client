@@ -68,6 +68,7 @@ export const MainView = () => {
         setMovies(moviesFromApi);
       });
   }, [token]);
+  console.log(movies);
 
   return (
     <BrowserRouter>

@@ -13,9 +13,9 @@ export const ProfileView = ({
   handleSubmit,
   onLoggedOut,
   user,
-  movie,
   title,
   updateUser,
+  favoriteMovieList,
 }) => {
   const [userProfile, setUserProfile] = useState({});
   // const [favoriteMovieList, setFavoriteMovieList] = useState([]);
@@ -48,13 +48,16 @@ export const ProfileView = ({
       .catch((error) => {
         console.error("Error fetching user data", error);
       });
+    console.log(userProfile);
   }, [token, user]);
 
-  if (userProfile && userProfile.favouriteMovies) {
+  if (userProfile && userProfile.FavouriteMovies) {
     const favoriteMovieList = movies.filter((movie) =>
-      userProfile.favouriteMovies.includes(movie._id)
+      userProfile.FavouriteMovies.includes(movie.id)
     );
     console.log(favoriteMovieList);
+  } else {
+    console.log("userProfile or userProfile.FavouriteMovies is undefined");
   }
 
   return (
@@ -75,6 +78,7 @@ export const ProfileView = ({
                 user={user}
                 token={token}
                 userProfile={userProfile}
+                updateUser={updateUser}
               />
             </Card.Body>
           </Card>
@@ -92,13 +96,12 @@ export const ProfileView = ({
         </Col>
         <Col xs={12} sm={12} lg={12}>
           <ViewFavorites
-            userProfile={userProfile}
-            // favoriteMovieList={favoriteMovieList}
-            updateUser={updateUser}
+            favoriteMovieList={favoriteMovieList}
             token={token}
             movies={movies}
             user={user}
             title={title}
+            userProfile={userProfile}
           />
         </Col>
       </Row>
