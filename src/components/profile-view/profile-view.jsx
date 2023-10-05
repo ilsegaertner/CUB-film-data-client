@@ -15,10 +15,10 @@ export const ProfileView = ({
   user,
   title,
   updateUser,
-  favoriteMovieList,
+  movie,
 }) => {
   const [userProfile, setUserProfile] = useState({});
-  // const [favoriteMovieList, setFavoriteMovieList] = useState([]);
+  const [favoriteMovieList, setFavoriteMovieList] = useState([]);
 
   useEffect(() => {
     if (!user || !token) return;
@@ -44,21 +44,29 @@ export const ProfileView = ({
           birthday: user.Birthday,
           favouriteMovies: user.FavouriteMovies,
         });
+
+        console.log(user);
+
+        const updatedFavoriteMovieList = movies.filter((movie) =>
+          user.FavouriteMovies.includes(movie.id)
+        );
+        setFavoriteMovieList(updatedFavoriteMovieList);
       })
       .catch((error) => {
         console.error("Error fetching user data", error);
       });
-    console.log(userProfile);
+
+    // if (user && user.favouriteMovies) {
+    //   const favoriteMovieList = movies.filter((movie) =>
+    //     user.favouriteMovies.includes(movie.id)
+    //   );
+    //   console.log(favoriteMovieList);
+    // } else {
+    //   console.log("userProfile or userProfile.favouriteMovies is undefined");
+    // }
   }, [token, user]);
 
-  if (userProfile && userProfile.FavouriteMovies) {
-    const favoriteMovieList = movies.filter((movie) =>
-      userProfile.FavouriteMovies.includes(movie.id)
-    );
-    console.log(favoriteMovieList);
-  } else {
-    console.log("userProfile or userProfile.FavouriteMovies is undefined");
-  }
+  console.log(user);
 
   return (
     <Container>
@@ -101,7 +109,8 @@ export const ProfileView = ({
             movies={movies}
             user={user}
             title={title}
-            userProfile={userProfile}
+            movie={movie}
+            setUser={setUserProfile}
           />
         </Col>
       </Row>

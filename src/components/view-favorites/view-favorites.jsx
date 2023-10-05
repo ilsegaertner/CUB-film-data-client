@@ -6,17 +6,20 @@ import { MovieCard } from "../movie-card/movie-card";
 
 export const ViewFavorites = ({
   user,
-  movies,
   updateUserFavorite,
-  userProfile,
+  setUserProfile,
+  favoriteMovieList,
+  movie,
+  token,
 }) => {
-  const FavoriteMovieList = movies.filter(
-    (movie) =>
-      userProfile.FavouriteMovies &&
-      userProfile.FavouriteMovies.includes(movie.id)
-  );
+  // const favoriteMovieList = movies.filter(
+  //   (movie) =>
+  //     userProfile.FavouriteMovies &&
+  //     userProfile.FavouriteMovies.includes(movie.id)
+  // );
 
-  console.log(userProfile);
+  console.log("favoriteMovieList:", favoriteMovieList);
+  console.log("movie:", movie);
 
   return (
     <Card>
@@ -27,14 +30,16 @@ export const ViewFavorites = ({
           </Col>
         </Row>
         <Row>
-          {FavoriteMovieList.map(({ image, title, id }) => {
+          {favoriteMovieList.map((movie, id) => {
             return (
               <Col xs={12} md={6} lg={3} key={id} className="fav-movie">
                 <MovieCard
                   user={user}
-                  userProfile={userProfile}
-                  FavoriteMovieList={movies}
+                  setUserProfile={setUserProfile}
+                  favoriteMovieList={favoriteMovieList}
                   updateUserFavorite={updateUserFavorite}
+                  movie={movie}
+                  token={token}
                 />
                 {/* <Figure>
                   <Link to={`/movies/${title}`}>

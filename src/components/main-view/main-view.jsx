@@ -10,7 +10,7 @@ import { SignupView } from "../signup-view/signup-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 
-export const MainView = () => {
+export const MainView = ({ movie, setUserProfile }) => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
 
@@ -66,9 +66,12 @@ export const MainView = () => {
           };
         });
         setMovies(moviesFromApi);
+        console.log(moviesFromApi);
+        console.log("API Response:", data);
       });
   }, [token]);
-  console.log(movies);
+
+  console.log(movie);
 
   return (
     <BrowserRouter>
@@ -115,6 +118,7 @@ export const MainView = () => {
                     movies={movies}
                     token={storedToken}
                     updateUser={updateUser}
+                    movie={movie}
                     onLoggedOut={() => {
                       setUser(null), setToken(null), localStorage.clear();
                     }}
@@ -138,7 +142,7 @@ export const MainView = () => {
                     <MovieView
                       movies={movies}
                       user={user}
-                      FavoriteMovieList={movies}
+                      favoriteMovieList={movies}
                       updateUser={updateUser}
                       token={token}
                     />
@@ -168,9 +172,10 @@ export const MainView = () => {
                         <MovieCard
                           movie={movie}
                           user={user}
-                          FavoriteMovieList={movies}
+                          favoriteMovieList={movies}
                           updateUser={updateUser}
                           token={token}
+                          setUserProfile={setUserProfile}
                         />
                       </Col>
                     ))}

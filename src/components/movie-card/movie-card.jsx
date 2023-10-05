@@ -9,11 +9,18 @@ import "./movie-card.scss";
 export const MovieCard = ({
   movie,
   user,
-  FavoriteMovieList,
+  favoriteMovieList,
   updateUser,
   token,
   title,
+  setUserProfile,
 }) => {
+  console.log(movie);
+  console.log("Movie Image:", movie.image);
+
+  console.log("Movie ID:", movie.id);
+  console.log("Favorite Movie List:", favoriteMovieList);
+
   return (
     <Card className="h-100">
       <Card.Img variant="top" src={movie.image} key={movie.id} />
@@ -27,7 +34,7 @@ export const MovieCard = ({
           </Button>
         </Link>
 
-        {FavoriteMovieList.includes(movie.id) ? (
+        {favoriteMovieList.some((favMovie) => favMovie.id === movie.id) ? (
           <RemoveFavorite
             movieId={movie.id}
             movie={movie}
@@ -35,6 +42,7 @@ export const MovieCard = ({
             user={user}
             title={title}
             token={token}
+            setUserProfile={setUserProfile}
           />
         ) : (
           <AddFavorite
@@ -44,6 +52,7 @@ export const MovieCard = ({
             user={user}
             title={title}
             token={token}
+            setUserProfile={setUserProfile}
           />
         )}
 

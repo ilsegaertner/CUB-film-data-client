@@ -27190,7 +27190,7 @@ var _signupView = require("../signup-view/signup-view");
 var _profileView = require("../profile-view/profile-view");
 var _navigationBar = require("../navigation-bar/navigation-bar");
 var _s = $RefreshSig$();
-const MainView = ()=>{
+const MainView = ({ movie, setUserProfile })=>{
     _s();
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
@@ -27238,11 +27238,13 @@ const MainView = ()=>{
                 };
             });
             setMovies(moviesFromApi);
+            console.log(moviesFromApi);
+            console.log("API Response:", data);
         });
     }, [
         token
     ]);
-    console.log(movies);
+    console.log(movie);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.BrowserRouter), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationBar.NavigationBar), {
@@ -27250,7 +27252,7 @@ const MainView = ()=>{
                 onLoggedOut: onLoggedOut
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 75,
+                lineNumber: 78,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
@@ -27269,7 +27271,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 78,
+                            lineNumber: 81,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27286,7 +27288,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 93,
+                            lineNumber: 96,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27297,6 +27299,7 @@ const MainView = ()=>{
                                     movies: movies,
                                     token: storedToken,
                                     updateUser: updateUser,
+                                    movie: movie,
                                     onLoggedOut: ()=>{
                                         setUser(null), setToken(null), localStorage.clear();
                                     }
@@ -27307,7 +27310,7 @@ const MainView = ()=>{
                             }, void 0, false, void 0, void 0)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 108,
+                            lineNumber: 111,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27323,7 +27326,7 @@ const MainView = ()=>{
                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
                                         movies: movies,
                                         user: user,
-                                        FavoriteMovieList: movies,
+                                        favoriteMovieList: movies,
                                         updateUser: updateUser,
                                         token: token
                                     }, void 0, false, void 0, void 0)
@@ -27331,7 +27334,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 128,
+                            lineNumber: 132,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27351,33 +27354,34 @@ const MainView = ()=>{
                                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                                                 movie: movie,
                                                 user: user,
-                                                FavoriteMovieList: movies,
+                                                favoriteMovieList: movies,
                                                 updateUser: updateUser,
-                                                token: token
+                                                token: token,
+                                                setUserProfile: setUserProfile
                                             }, void 0, false, void 0, void 0)
                                         }, movie.id, false, void 0, void 0))
                                 }, void 0, false)
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 150,
+                            lineNumber: 154,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 77,
+                    lineNumber: 80,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 76,
+                lineNumber: 79,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 74,
+        lineNumber: 77,
         columnNumber: 5
     }, undefined);
 };
@@ -34366,7 +34370,11 @@ var _reactRouterDom = require("react-router-dom");
 var _addFavorite = require("../view-favorites/add-favorite");
 var _removeFavorite = require("../view-favorites/remove-favorite");
 var _movieCardScss = require("./movie-card.scss");
-const MovieCard = ({ movie, user, FavoriteMovieList, updateUser, token, title })=>{
+const MovieCard = ({ movie, user, favoriteMovieList, updateUser, token, title, setUserProfile })=>{
+    console.log(movie);
+    console.log("Movie Image:", movie.image);
+    console.log("Movie ID:", movie.id);
+    console.log("Favorite Movie List:", favoriteMovieList);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
         className: "h-100",
         children: [
@@ -34375,7 +34383,7 @@ const MovieCard = ({ movie, user, FavoriteMovieList, updateUser, token, title })
                 src: movie.image
             }, movie.id, false, {
                 fileName: "src/components/movie-card/movie-card.jsx",
-                lineNumber: 19,
+                lineNumber: 26,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
@@ -34384,14 +34392,14 @@ const MovieCard = ({ movie, user, FavoriteMovieList, updateUser, token, title })
                         children: movie.title
                     }, void 0, false, {
                         fileName: "src/components/movie-card/movie-card.jsx",
-                        lineNumber: 21,
+                        lineNumber: 28,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
                         children: movie.director
                     }, void 0, false, {
                         fileName: "src/components/movie-card/movie-card.jsx",
-                        lineNumber: 22,
+                        lineNumber: 29,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -34404,24 +34412,25 @@ const MovieCard = ({ movie, user, FavoriteMovieList, updateUser, token, title })
                             children: "Open"
                         }, void 0, false, {
                             fileName: "src/components/movie-card/movie-card.jsx",
-                            lineNumber: 25,
+                            lineNumber: 32,
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/movie-card/movie-card.jsx",
-                        lineNumber: 23,
+                        lineNumber: 30,
                         columnNumber: 9
                     }, undefined),
-                    FavoriteMovieList.includes(movie.id) ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _removeFavorite.RemoveFavorite), {
+                    favoriteMovieList.some((favMovie)=>favMovie.id === movie.id) ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _removeFavorite.RemoveFavorite), {
                         movieId: movie.id,
                         movie: movie,
                         updateUser: updateUser,
                         user: user,
                         title: title,
-                        token: token
+                        token: token,
+                        setUserProfile: setUserProfile
                     }, void 0, false, {
                         fileName: "src/components/movie-card/movie-card.jsx",
-                        lineNumber: 31,
+                        lineNumber: 38,
                         columnNumber: 11
                     }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _addFavorite.AddFavorite), {
                         movieId: movie.id,
@@ -34429,22 +34438,23 @@ const MovieCard = ({ movie, user, FavoriteMovieList, updateUser, token, title })
                         updateUser: updateUser,
                         user: user,
                         title: title,
-                        token: token
+                        token: token,
+                        setUserProfile: setUserProfile
                     }, void 0, false, {
                         fileName: "src/components/movie-card/movie-card.jsx",
-                        lineNumber: 40,
+                        lineNumber: 48,
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/movie-card/movie-card.jsx",
-                lineNumber: 20,
+                lineNumber: 27,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/movie-card/movie-card.jsx",
-        lineNumber: 18,
+        lineNumber: 25,
         columnNumber: 5
     }, undefined);
 };
@@ -46805,167 +46815,55 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactBootstrap = require("react-bootstrap");
 var _s = $RefreshSig$();
-const AddFavorite = ({ movie, token, movieId, user: propUser })=>{
+const AddFavorite = ({ token, movieId })=>{
     _s();
     const storedUser = JSON.parse(localStorage.getItem("user"));
     // const storedToken = localStorage.getItem("token");
-    const [user, setUser] = (0, _react.useState)(propUser || storedUser || null); //added logic for persisting a Login Session
-    console.log(movie);
-    //alternative
-    // useEffect(() => {
-    //   console.log("Inside useEffect: user =", propUser); // Log the user state
-    //   if (propUser && token) {
-    //     fetch(
-    //       `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`,
-    //       {
-    //         method: "GET",
-    //         headers: {
-    //           Authorization: `Bearer ${token}`,
-    //           "Content-Type": "application/json",
-    //         },
-    //       }
-    //     )
-    //       .then((response) => {
-    //         if (response.ok) {
-    //           response.json();
-    //         } else {
-    //           alert("Failed to fetch user data.");
-    //         }
-    //       })
-    //       .then((userData) => {
-    //         setUser(userData);
-    //       })
-    //       .catch((error) => {
-    //         console.error("Error fetching user data", error);
-    //         alert("Failed to fetch user data");
-    //       });
-    //   }
-    // }, [token, propUser]);
-    // const updatedUserFavorite = () => {
-    //   const data = {
-    //     Username: Username,
-    //     Password: Password,
-    //     Email: Email,
-    //     Birthday: Birthday,
-    //     FavouriteMovies: FavouriteMovies,
-    //   };
-    //   const { Username, Password, Email, Birthday, FavouriteMovies } = user;
-    //   if (user) {
-    //     const updatedFavouriteMovies = [...user.FavouriteMovies, movieId];
-    //     setUser({ ...user, FavouriteMovies: updatedFavouriteMovies });
-    //     alert("Movie added to favorites");
-    //     fetch(
-    //       `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`,
-    //       {
-    //         method: "PUT",
-    //         headers: {
-    //           "Content-Type": "application/json",
-    //           Authorization: `Bearer ${token}`,
-    //         },
-    //         body: JSON.stringify({
-    //           ...user,
-    //           FavouriteMovies: updatedFavouriteMovies,
-    //         }),
-    //       }
-    //     )
-    //       .then((response) => {
-    //         if (response.ok) {
-    //           return response.json();
-    //         } else {
-    //           return response.text().then((errorMessage) => {
-    //             throw new Error(`Failed to update user data: ${errorMessage}`);
-    //           });
-    //         }
-    //       })
-    //       .then((userData) => {
-    //         setUser(userData);
-    //         console.log("Updated user data:", userData);
-    //       })
-    //       .catch((error) => {
-    //         console.error("Error updating user data", error);
-    //         alert("Failed to update user data.");
-    //       });
-    //   }
-    // };
-    // const addFavoriteHandler = () => {
-    //   if (user) {
-    //     const updatedFavouriteMovies = [...user.FavouriteMovies, movieId];
-    //     setUser({ ...user, FavouriteMovies: updatedFavouriteMovies });
-    //     alert("Movie added to favorites");
-    //     fetch(
-    //       `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${movieId}`,
-    //       {
-    //         method: "POST",
-    //         headers: {
-    //           Authorization: `Bearer ${token}`,
-    //           "Content-Type": "application/json",
-    //         },
-    //       }
-    //     )
-    //       .then((response) => {
-    //         if (response.ok) {
-    //           return response.json();
-    //         } else {
-    //           return response.text().then((errorMessage) => {
-    //             throw new Error(
-    //               `Failed to add movie to favorites: ${errorMessage}`
-    //             );
-    //           });
-    //         }
-    //       })
-    //       .then((data) => {
-    //         if (data) {
-    //           setUser(data);
-    //           console.log("Updated User Data:", data);
-    //         }
-    //         console.log("API response:", data);
-    //         alert("Movie added to favorites");
-    //       })
-    //       .catch((error) => {
-    //         console.error("Error adding movie to favorites.", error);
-    //       });
-    //   }
-    // };
+    const [user, setUserProfile] = (0, _react.useState)(storedUser || null); //added logic for persisting a Login Session
     const bothHandlers = ()=>{
-        updateUserFavorite();
         addFavoriteHandler();
+    // updateUserFavorite();
     };
-    const updateUserFavorite = ()=>{
-        const { Username, Password, Email, Birthday, FavouriteMovies } = user;
-        console.log("updateUser function called in add-favorite.jsx");
-        // ... rest of the function
-        const data = {
-            Username: Username,
-            Password: Password,
-            Email: Email,
-            Birthday: Birthday,
-            FavouriteMovies: FavouriteMovies
-        };
-        fetch(`https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`
-            }
-        }).then((response)=>{
-            if (response.ok) alert("Your profile was updated.");
-            else alert("Form submission failed.");
-        }).catch((error)=>{
-            console.error("Error submitting form", error);
-            alert("Form submission failed.");
-        });
-    };
+    // const updateUserFavorite = () => {
+    //   const { favouriteMovies } = user;
+    //   const data = {
+    //     favouriteMovies: movieId,
+    //   };
+    //   console.log("updateUser function called in add-favorite.jsx");
+    //   // ... rest of the function
+    //   fetch(
+    //     `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${movieId}`,
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //         Authorization: `Bearer ${token}`,
+    //       },
+    //       body: JSON.stringify(data),
+    //     }
+    //   )
+    //     .then((response) => {
+    //       if (response.ok) {
+    //         alert("Your profile was updated.");
+    //       } else {
+    //         alert("Form submission failed.");
+    //       }
+    //     })
+    //     .catch((error) => {
+    //       console.error("Error submitting form", error);
+    //       alert("Form submission failed.");
+    //     });
+    // };
     const addFavoriteHandler = ()=>{
         const updatedFavouriteMovies = [
             ...user.FavouriteMovies,
             movieId
         ]; // If the movie was added successfully, update the local state
         // and user's FavouriteMovies array
-        setUser({
+        setUserProfile({
             ...user,
             FavouriteMovies: updatedFavouriteMovies
         });
-        alert("Movie added to favorites");
         console.log("Movie ID passed to AddFavorite:", movieId);
         fetch(`https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
             method: "POST",
@@ -46981,7 +46879,7 @@ const AddFavorite = ({ movie, token, movieId, user: propUser })=>{
         }).then((data)=>{
             if (data) {
                 // Update the user state with the received data
-                setUser(data); // Assuming the data contains the updated user profile
+                setUserProfile(data); // Assuming the data contains the updated user profile
                 console.log("Updated User Data:", user);
             }
             console.log("API Response:", data); // Log the response data
@@ -46992,17 +46890,18 @@ const AddFavorite = ({ movie, token, movieId, user: propUser })=>{
             console.error("Error adding movie to favorites", error);
         });
     };
+    console.log(user);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
         size: "sm",
         onClick: bothHandlers,
         children: "Add"
     }, void 0, false, {
         fileName: "src/components/view-favorites/add-favorite.jsx",
-        lineNumber: 223,
+        lineNumber: 94,
         columnNumber: 5
     }, undefined);
 };
-_s(AddFavorite, "F9ZNNChxbwkmk7BbotiaEbUefuA=");
+_s(AddFavorite, "yXh9CtyrC04MTKN8x6xZctqz9OQ=");
 _c = AddFavorite;
 var _c;
 $RefreshReg$(_c, "AddFavorite");
@@ -47162,15 +47061,18 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "RemoveFavorite", ()=>RemoveFavorite);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
 var _reactBootstrap = require("react-bootstrap");
-const RemoveFavorite = ({ updateUser, user, title, token })=>{
-    const bothHandlers = ()=>{
-        updateUser();
-        deleteFavoriteHandler();
-    };
+const RemoveFavorite = ({ user, title, token, movieId, setUserProfile })=>{
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const storedToken = localStorage.getItem("token");
+    // const bothHandlers = () => {
+    //   // updateUser();
+    //   deleteFavoriteHandler();
+    // };
     const deleteFavoriteHandler = ()=>{
         // Make a delete request to the API
-        const url = `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${title}`;
+        const url = `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${movieId}`;
         fetch(url, {
             method: "DELETE",
             headers: {
@@ -47178,19 +47080,27 @@ const RemoveFavorite = ({ updateUser, user, title, token })=>{
                 "Content-Type": "application/json"
             }
         }).then((response)=>{
-            if (response.ok) alert("Movie removed from favorites");
-            else throw new Error("Failed to remove favorite movie");
+            if (response.ok) {
+                // Update the user state locally to reflect the removal of the favorite movie
+                const updatedFavouriteMovies = user.FavouriteMovies.filter((movieId)=>movieId !== title);
+                const updatedUser = {
+                    ...user,
+                    FavouriteMovies: updatedFavouriteMovies
+                };
+                setUserProfile(updatedUser); // You'll need to declare and use setUser to update the user state
+                alert("Movie removed from favorites");
+            } else throw new Error("Failed to remove favorite movie");
         }).catch((error)=>{
             console.error("Error removing favorite movie", error);
         });
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
         size: "sm",
-        onClick: bothHandlers,
+        onClick: deleteFavoriteHandler,
         children: "Remove"
     }, void 0, false, {
         fileName: "src/components/view-favorites/remove-favorite.jsx",
-        lineNumber: 35,
+        lineNumber: 54,
         columnNumber: 5
     }, undefined);
 };
@@ -47203,7 +47113,7 @@ $RefreshReg$(_c, "RemoveFavorite");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9QoVd"}],"d6HH4":[function() {},{}],"ggaUx":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"k5UsK","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9QoVd","react":"21dqq"}],"d6HH4":[function() {},{}],"ggaUx":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$e9f6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -47220,7 +47130,7 @@ var _movieViewScss = require("./movie-view.scss");
 var _addFavorite = require("../view-favorites/add-favorite");
 var _removeFavorite = require("../view-favorites/remove-favorite");
 var _s = $RefreshSig$();
-const MovieView = ({ movies, FavoriteMovieList, user, token })=>{
+const MovieView = ({ movies, favoriteMovieList, user, token })=>{
     _s();
     const { movieTitle } = (0, _reactRouter.useParams)();
     const movie = movies.find((m)=>m.title === movieTitle);
@@ -47366,7 +47276,7 @@ const MovieView = ({ movies, FavoriteMovieList, user, token })=>{
                 lineNumber: 39,
                 columnNumber: 7
             }, undefined),
-            FavoriteMovieList.includes(movie.id) ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _removeFavorite.RemoveFavorite), {
+            favoriteMovieList.includes(movie.id) ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _removeFavorite.RemoveFavorite), {
                 movieId: movie.id,
                 movie: movie,
                 user: user,
@@ -47818,10 +47728,10 @@ var _updateUser = require("./update-user");
 var _deleteProfile = require("./delete-profile");
 var _viewFavorites = require("../view-favorites/view-favorites");
 var _s = $RefreshSig$();
-const ProfileView = ({ token, movies, handleSubmit, onLoggedOut, user, title, updateUser, favoriteMovieList })=>{
+const ProfileView = ({ token, movies, handleSubmit, onLoggedOut, user, title, updateUser, movie })=>{
     _s();
     const [userProfile, setUserProfile] = (0, _react.useState)({});
-    // const [favoriteMovieList, setFavoriteMovieList] = useState([]);
+    const [favoriteMovieList, setFavoriteMovieList] = (0, _react.useState)([]);
     (0, _react.useEffect)(()=>{
         if (!user || !token) return;
         fetch(`https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`, {
@@ -47840,18 +47750,25 @@ const ProfileView = ({ token, movies, handleSubmit, onLoggedOut, user, title, up
                 birthday: user.Birthday,
                 favouriteMovies: user.FavouriteMovies
             });
+            console.log(user);
+            const updatedFavoriteMovieList = movies.filter((movie)=>user.FavouriteMovies.includes(movie.id));
+            setFavoriteMovieList(updatedFavoriteMovieList);
         }).catch((error)=>{
             console.error("Error fetching user data", error);
         });
-        console.log(userProfile);
+    // if (user && user.favouriteMovies) {
+    //   const favoriteMovieList = movies.filter((movie) =>
+    //     user.favouriteMovies.includes(movie.id)
+    //   );
+    //   console.log(favoriteMovieList);
+    // } else {
+    //   console.log("userProfile or userProfile.favouriteMovies is undefined");
+    // }
     }, [
         token,
         user
     ]);
-    if (userProfile && userProfile.FavouriteMovies) {
-        const favoriteMovieList = movies.filter((movie)=>userProfile.FavouriteMovies.includes(movie.id));
-        console.log(favoriteMovieList);
-    } else console.log("userProfile or userProfile.FavouriteMovies is undefined");
+    console.log(user);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
             children: [
@@ -47866,22 +47783,22 @@ const ProfileView = ({ token, movies, handleSubmit, onLoggedOut, user, title, up
                                 user: user
                             }, void 0, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 69,
+                                lineNumber: 77,
                                 columnNumber: 15
                             }, undefined)
                         }, void 0, false, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 68,
+                            lineNumber: 76,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 67,
+                        lineNumber: 75,
                         columnNumber: 11
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 66,
+                    lineNumber: 74,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -47899,22 +47816,22 @@ const ProfileView = ({ token, movies, handleSubmit, onLoggedOut, user, title, up
                                 updateUser: updateUser
                             }, void 0, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 76,
+                                lineNumber: 84,
                                 columnNumber: 15
                             }, undefined)
                         }, void 0, false, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 75,
+                            lineNumber: 83,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 74,
+                        lineNumber: 82,
                         columnNumber: 11
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 73,
+                    lineNumber: 81,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -47929,22 +47846,22 @@ const ProfileView = ({ token, movies, handleSubmit, onLoggedOut, user, title, up
                                 token: token
                             }, void 0, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 89,
+                                lineNumber: 97,
                                 columnNumber: 15
                             }, undefined)
                         }, void 0, false, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 88,
+                            lineNumber: 96,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 87,
+                        lineNumber: 95,
                         columnNumber: 11
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 86,
+                    lineNumber: 94,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -47957,30 +47874,31 @@ const ProfileView = ({ token, movies, handleSubmit, onLoggedOut, user, title, up
                         movies: movies,
                         user: user,
                         title: title,
-                        userProfile: userProfile
+                        movie: movie,
+                        setUser: setUserProfile
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 98,
+                        lineNumber: 106,
                         columnNumber: 11
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 97,
+                    lineNumber: 105,
                     columnNumber: 9
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 65,
+            lineNumber: 73,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/profile-view/profile-view.jsx",
-        lineNumber: 64,
+        lineNumber: 72,
         columnNumber: 5
     }, undefined);
 };
-_s(ProfileView, "LGK9W9H1WU1XbqlP0ED54pTD3iw=");
+_s(ProfileView, "diJE9mggIjJeuPocEn0dRAdXsiI=");
 _c = ProfileView;
 var _c;
 $RefreshReg$(_c, "ProfileView");
@@ -48342,9 +48260,14 @@ var _reactRouterDom = require("react-router-dom");
 var _reactBootstrap = require("react-bootstrap");
 var _profileViewScss = require("../profile-view/profile-view.scss");
 var _movieCard = require("../movie-card/movie-card");
-const ViewFavorites = ({ user, movies, updateUserFavorite, userProfile })=>{
-    const FavoriteMovieList = movies.filter((movie)=>userProfile.FavouriteMovies && userProfile.FavouriteMovies.includes(movie.id));
-    console.log(userProfile);
+const ViewFavorites = ({ user, updateUserFavorite, setUserProfile, favoriteMovieList, movie, token })=>{
+    // const favoriteMovieList = movies.filter(
+    //   (movie) =>
+    //     userProfile.FavouriteMovies &&
+    //     userProfile.FavouriteMovies.includes(movie.id)
+    // );
+    console.log("favoriteMovieList:", favoriteMovieList);
+    console.log("movie:", movie);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
             children: [
@@ -48355,21 +48278,21 @@ const ViewFavorites = ({ user, movies, updateUserFavorite, userProfile })=>{
                             children: "Favorite Movies"
                         }, void 0, false, {
                             fileName: "src/components/view-favorites/view-favorites.jsx",
-                            lineNumber: 26,
+                            lineNumber: 29,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/view-favorites/view-favorites.jsx",
-                        lineNumber: 25,
+                        lineNumber: 28,
                         columnNumber: 11
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/view-favorites/view-favorites.jsx",
-                    lineNumber: 24,
+                    lineNumber: 27,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
-                    children: FavoriteMovieList.map(({ image, title, id })=>{
+                    children: favoriteMovieList.map((movie, id)=>{
                         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                             xs: 12,
                             md: 6,
@@ -48377,34 +48300,36 @@ const ViewFavorites = ({ user, movies, updateUserFavorite, userProfile })=>{
                             className: "fav-movie",
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                                 user: user,
-                                userProfile: userProfile,
-                                FavoriteMovieList: movies,
-                                updateUserFavorite: updateUserFavorite
+                                setUserProfile: setUserProfile,
+                                favoriteMovieList: favoriteMovieList,
+                                updateUserFavorite: updateUserFavorite,
+                                movie: movie,
+                                token: token
                             }, void 0, false, {
                                 fileName: "src/components/view-favorites/view-favorites.jsx",
-                                lineNumber: 33,
+                                lineNumber: 36,
                                 columnNumber: 17
                             }, undefined)
                         }, id, false, {
                             fileName: "src/components/view-favorites/view-favorites.jsx",
-                            lineNumber: 32,
+                            lineNumber: 35,
                             columnNumber: 15
                         }, undefined);
                     })
                 }, void 0, false, {
                     fileName: "src/components/view-favorites/view-favorites.jsx",
-                    lineNumber: 29,
+                    lineNumber: 32,
                     columnNumber: 9
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/view-favorites/view-favorites.jsx",
-            lineNumber: 23,
+            lineNumber: 26,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/view-favorites/view-favorites.jsx",
-        lineNumber: 22,
+        lineNumber: 25,
         columnNumber: 5
     }, undefined);
 };

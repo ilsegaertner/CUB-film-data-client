@@ -4,7 +4,7 @@ import "./movie-view.scss";
 import { AddFavorite } from "../view-favorites/add-favorite";
 import { RemoveFavorite } from "../view-favorites/remove-favorite";
 
-export const MovieView = ({ movies, FavoriteMovieList, user, token }) => {
+export const MovieView = ({ movies, favoriteMovieList, user, token }) => {
   const { movieTitle } = useParams();
 
   const movie = movies.find((m) => m.title === movieTitle);
@@ -40,7 +40,7 @@ export const MovieView = ({ movies, FavoriteMovieList, user, token }) => {
         <button className="back-button">Back</button>
       </Link>
 
-      {FavoriteMovieList.includes(movie.id) ? (
+      {favoriteMovieList.includes(movie.id) ? (
         <RemoveFavorite
           movieId={movie.id}
           movie={movie}
