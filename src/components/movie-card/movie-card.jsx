@@ -16,12 +16,6 @@ export const MovieCard = ({
   setUserProfile,
   setFavoriteMovieList,
 }) => {
-  console.log(movie);
-  console.log("Movie Image:", movie.image);
-
-  console.log("Movie ID:", movie.id);
-  console.log("Favorite Movie List:", favoriteMovieList);
-
   return (
     <Card className="h-100">
       <Card.Img variant="top" src={movie.image} key={movie.id} />
@@ -43,6 +37,7 @@ export const MovieCard = ({
             user={user}
             title={title}
             token={token}
+            setUserProfile={setUserProfile}
             favoriteMovieList={favoriteMovieList}
             setFavoriteMovieList={setFavoriteMovieList}
           />

@@ -72,8 +72,6 @@ export const ProfileView = ({
     // }
   }, [token, user, movies]);
 
-  // console.log(user);
-
   return (
     <Container>
       <Row>
@@ -93,6 +91,7 @@ export const ProfileView = ({
                 token={token}
                 userProfile={userProfile}
                 updateUser={updateUser}
+                setUserProfile={setUserProfile}
               />
             </Card.Body>
           </Card>

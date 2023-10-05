@@ -71,8 +71,6 @@ export const MainView = ({ movie, setUserProfile }) => {
       });
   }, [token]);
 
-  console.log(movie);
-
   return (
     <BrowserRouter>
       <NavigationBar user={user} onLoggedOut={onLoggedOut} />

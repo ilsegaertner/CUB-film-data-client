@@ -44,7 +44,7 @@ export const AddFavorite = ({ token, movieId }) => {
         if (data) {
           // Update the user state with the received data
           setUserProfile(data); // Assuming the data contains the updated user profile
-          console.log("Updated User Data:", user);
+          console.log("Updated User Data:", data);
         }
         console.log("API Response:", data); // Log the response data
         // If needed, update the local state or user's FavouriteMovies array

@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 
-export const UpdateUser = ({ user, token }) => {
+export const UpdateUser = ({ user, token, setUserProfile }) => {
   const [username, setUsername] = useState(user.Username);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState(user.Email);
   const [birthday, setBirthday] = useState(user.Birthday);
   const [favouriteMovies, setFavouriteMovies] = useState(user.FavouriteMovies);
+
+  useEffect(() => {
+    // Update the component's state when the user prop changes
+    setUsername(user.Username);
+    setEmail(user.Email);
+    setBirthday(user.Birthday);
+    setFavouriteMovies(user.FavouriteMovies);
+  }, [user]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -37,12 +45,15 @@ export const UpdateUser = ({ user, token }) => {
     )
       .then((response) => {
         if (response.ok) {
+          setUserProfile(data);
           alert("Your profile was updated.");
           window.location = "/";
         } else {
           alert("Form submission failed.");
+          throw new Error("Form submission failed.");
         }
       })
+
       .catch((error) => {
         console.error("Error submitting form", error);
         alert("Form submission failed.");
