@@ -14,6 +14,7 @@ export const MovieCard = ({
   token,
   title,
   setUserProfile,
+  setFavoriteMovieList,
 }) => {
   console.log(movie);
   console.log("Movie Image:", movie.image);
@@ -42,7 +43,8 @@ export const MovieCard = ({
             user={user}
             title={title}
             token={token}
-            setUserProfile={setUserProfile}
+            favoriteMovieList={favoriteMovieList}
+            setFavoriteMovieList={setFavoriteMovieList}
           />
         ) : (
           <AddFavorite

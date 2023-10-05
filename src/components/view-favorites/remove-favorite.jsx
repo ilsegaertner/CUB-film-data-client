@@ -7,7 +7,8 @@ export const RemoveFavorite = ({
   title,
   token,
   movieId,
-  setUserProfile,
+  favoriteMovieList,
+  setFavoriteMovieList,
 }) => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
@@ -18,6 +19,12 @@ export const RemoveFavorite = ({
   // };
 
   const deleteFavoriteHandler = () => {
+    const updatedFavoriteMovies = favoriteMovieList.filter(
+      (favMovie) => favMovie.id !== movieId
+    );
+
+    setFavoriteMovieList(updatedFavoriteMovies);
+
     // Make a delete request to the API
     const url = `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${movieId}`;
 
@@ -38,7 +45,7 @@ export const RemoveFavorite = ({
             ...user,
             FavouriteMovies: updatedFavouriteMovies,
           };
-          setUserProfile(updatedUser); // You'll need to declare and use setUser to update the user state
+          console.log("Movie removed from favorites");
 
           alert("Movie removed from favorites");
         } else {

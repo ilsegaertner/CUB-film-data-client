@@ -17,6 +17,7 @@ export const ProfileView = ({
   updateUser,
   movie,
 }) => {
+  const [userData, setUserData] = useState({});
   const [userProfile, setUserProfile] = useState({});
   const [favoriteMovieList, setFavoriteMovieList] = useState([]);
 
@@ -35,20 +36,25 @@ export const ProfileView = ({
         }
         return response.json();
       })
-      .then((user) => {
-        console.log("API Response:", user);
+      .then((data) => {
+        // console.log("API Response:", data);
+
+        setUserData(data);
+
         setUserProfile({
-          id: user._id,
-          username: user.Username,
-          email: user.Email,
-          birthday: user.Birthday,
-          favouriteMovies: user.FavouriteMovies,
+          id: data._id,
+          username: data.Username,
+          email: data.Email,
+          birthday: data.Birthday,
+          favouriteMovies: data.FavouriteMovies,
         });
 
-        console.log(user);
+        // console.log("Updated userProfile:", userProfile);
+
+        // console.log(user);
 
         const updatedFavoriteMovieList = movies.filter((movie) =>
-          user.FavouriteMovies.includes(movie.id)
+          data.FavouriteMovies.includes(movie.id)
         );
         setFavoriteMovieList(updatedFavoriteMovieList);
       })
@@ -64,9 +70,9 @@ export const ProfileView = ({
     // } else {
     //   console.log("userProfile or userProfile.favouriteMovies is undefined");
     // }
-  }, [token, user]);
+  }, [token, user, movies]);
 
-  console.log(user);
+  // console.log(user);
 
   return (
     <Container>
@@ -110,7 +116,8 @@ export const ProfileView = ({
             user={user}
             title={title}
             movie={movie}
-            setUser={setUserProfile}
+            setUserProfile={setUserProfile}
+            setFavoriteMovieList={setFavoriteMovieList}
           />
         </Col>
       </Row>

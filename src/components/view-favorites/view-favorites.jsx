@@ -11,6 +11,7 @@ export const ViewFavorites = ({
   favoriteMovieList,
   movie,
   token,
+  setFavoriteMovieList,
 }) => {
   // const favoriteMovieList = movies.filter(
   //   (movie) =>
@@ -40,6 +41,7 @@ export const ViewFavorites = ({
                   updateUserFavorite={updateUserFavorite}
                   movie={movie}
                   token={token}
+                  setFavoriteMovieList={setFavoriteMovieList}
                 />
                 {/* <Figure>
                   <Link to={`/movies/${title}`}>

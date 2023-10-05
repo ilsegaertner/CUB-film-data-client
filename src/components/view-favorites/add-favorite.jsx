@@ -10,41 +10,7 @@ export const AddFavorite = ({ token, movieId }) => {
 
   const bothHandlers = () => {
     addFavoriteHandler();
-    // updateUserFavorite();
   };
-
-  // const updateUserFavorite = () => {
-  //   const { favouriteMovies } = user;
-  //   const data = {
-  //     favouriteMovies: movieId,
-  //   };
-
-  //   console.log("updateUser function called in add-favorite.jsx");
-  //   // ... rest of the function
-
-  //   fetch(
-  //     `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${movieId}`,
-  //     {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //       body: JSON.stringify(data),
-  //     }
-  //   )
-  //     .then((response) => {
-  //       if (response.ok) {
-  //         alert("Your profile was updated.");
-  //       } else {
-  //         alert("Form submission failed.");
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error submitting form", error);
-  //       alert("Form submission failed.");
-  //     });
-  // };
 
   const addFavoriteHandler = () => {
     const updatedFavouriteMovies = [...user.FavouriteMovies, movieId]; // If the movie was added successfully, update the local state
