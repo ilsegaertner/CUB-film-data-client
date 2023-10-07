@@ -72,27 +72,6 @@ export const MovieView = ({
           setFavoriteMovieList={setFavoriteMovieList}
         />
       )}
-
-      {/* 
-      {favoriteMovieList.includes(movie.id) ? (
-        <RemoveFavorite
-          movieId={movie.id}
-          movie={movie}
-          user={user}
-          token={token}
-        />
-      ) : (
-        <AddFavorite
-          movieId={movie.id}
-          movie={movie}
-          user={user}
-          token={token}
-        />
-      )} */}
-
-      {/* <Link to={`/`}>
-        <button className="fav-button">{`❤️`}</button>
-      </Link> */}
     </div>
   );
 };

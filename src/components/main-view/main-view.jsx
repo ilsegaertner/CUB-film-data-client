@@ -113,6 +113,7 @@ export const MainView = ({ movie }) => {
               </>
             }
           />
+
           {/* Profile  */}
           <Route
             path="/profile"
@@ -125,7 +126,6 @@ export const MainView = ({ movie }) => {
                     token={storedToken}
                     updateUser={updateUser}
                     setUserProfile={setUserProfile}
-                    // movie={movie}
                     favoriteMovieList={favoriteMovieList}
                     setFavoriteMovieList={setFavoriteMovieList}
                     onLoggedOut={() => {
@@ -138,6 +138,7 @@ export const MainView = ({ movie }) => {
               )
             }
           />
+
           <Route
             path="/movies/:movieTitle"
             element={
@@ -163,6 +164,7 @@ export const MainView = ({ movie }) => {
               </>
             }
           />
+
           <Route
             path="/"
             element={

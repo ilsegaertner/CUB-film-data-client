@@ -1,5 +1,3 @@
-//remove Favorite
-import { useState } from "react";
 import { Button } from "react-bootstrap";
 
 export const RemoveFavorite = ({
@@ -14,11 +12,6 @@ export const RemoveFavorite = ({
 }) => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
-
-  // const bothHandlers = () => {
-  //   // updateUser();
-  //   deleteFavoriteHandler();
-  // };
 
   const deleteFavoriteHandler = () => {
     const updatedFavoriteMovies = favoriteMovieList.filter(
@@ -47,7 +40,7 @@ export const RemoveFavorite = ({
             ...user,
             FavouriteMovies: updatedFavouriteMovies,
           };
-          setUserProfile(updatedUser); // You'll need to declare and use setUser to update the user state
+          setUserProfile(updatedUser);
 
           alert(`${movie.title} from ${movie.director} removed from favorites`);
         } else {

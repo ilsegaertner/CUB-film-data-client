@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Col, Row, Figure, Button, Card } from "react-bootstrap";
+import React from "react";
+import { Col, Row, Card } from "react-bootstrap";
 import "../profile-view/profile-view.scss";
 import { MovieCard } from "../movie-card/movie-card";
 
@@ -8,20 +7,10 @@ export const ViewFavorites = ({
   user,
   updateUserFavorite,
   favoriteMovieList,
-  movie,
   token,
   setFavoriteMovieList,
   setUserProfile,
 }) => {
-  // const favoriteMovieList = movies.filter(
-  //   (movie) =>
-  //     userProfile.FavouriteMovies &&
-  //     userProfile.FavouriteMovies.includes(movie.id)
-  // );
-
-  console.log("favoriteMovieList:", favoriteMovieList);
-  console.log("movie:", movie);
-
   return (
     <Card>
       <Card.Body>
@@ -43,21 +32,6 @@ export const ViewFavorites = ({
                   token={token}
                   setFavoriteMovieList={setFavoriteMovieList}
                 />
-                {/* <Figure>
-                  <Link to={`/movies/${title}`}>
-                    <Figure.Image src={image} alt={title} />
-                    <Figure.Caption>{title}</Figure.Caption>
-                  </Link>
-                </Figure> */}
-                {/* <Button variant="secondary" onClick={() => addHandler(title)}>
-                  Add
-                </Button>
-                <Button
-                  variant="secondary"
-                  onClick={() => removeHandler(title)}
-                >
-                  Remove
-                </Button> */}
               </Col>
             );
           })}

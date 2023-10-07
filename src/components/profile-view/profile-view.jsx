@@ -22,7 +22,6 @@ export const ProfileView = ({
   userProfile,
 }) => {
   const [userData, setUserData] = useState({});
-  // const [userProfile, setUserProfile] = useState({});
 
   console.log(movie);
 
@@ -42,8 +41,6 @@ export const ProfileView = ({
         return response.json();
       })
       .then((data) => {
-        // console.log("API Response:", data);
-
         setUserData(data);
 
         setUserProfile({
@@ -54,10 +51,6 @@ export const ProfileView = ({
           favouriteMovies: data.FavouriteMovies,
         });
 
-        // console.log("Updated userProfile:", userProfile);
-
-        // console.log(user);
-
         const updatedFavoriteMovieList = movies.filter((movie) =>
           data.FavouriteMovies.includes(movie.id)
         );
@@ -66,15 +59,6 @@ export const ProfileView = ({
       .catch((error) => {
         console.error("Error fetching user data", error);
       });
-
-    // if (user && user.favouriteMovies) {
-    //   const favoriteMovieList = movies.filter((movie) =>
-    //     user.favouriteMovies.includes(movie.id)
-    //   );
-    //   console.log(favoriteMovieList);
-    // } else {
-    //   console.log("userProfile or userProfile.favouriteMovies is undefined");
-    // }
   }, [token, user, movies]);
 
   return (

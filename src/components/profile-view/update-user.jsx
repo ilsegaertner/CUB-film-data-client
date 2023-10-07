@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
 export const UpdateUser = ({ user, token, setUserProfile }) => {
@@ -7,14 +7,6 @@ export const UpdateUser = ({ user, token, setUserProfile }) => {
   const [email, setEmail] = useState(user.Email);
   const [birthday, setBirthday] = useState(user.Birthday);
   const [favouriteMovies, setFavouriteMovies] = useState(user.FavouriteMovies);
-
-  // useEffect(() => {
-  //   // Update the component's state when the user prop changes
-  //   setUsername(user.Username);
-  //   setEmail(user.Email);
-  //   setBirthday(user.Birthday);
-  //   setFavouriteMovies(user.FavouriteMovies);
-  // }, [user]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -46,7 +38,6 @@ export const UpdateUser = ({ user, token, setUserProfile }) => {
       .then((response) => {
         console.log(data);
         if (response.ok) {
-          // setUserProfile(data);
           alert("Your profile was updated.");
           window.location = "/";
         } else {
