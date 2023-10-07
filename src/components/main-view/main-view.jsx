@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+// import Row from "react-bootstrap/Row";
+// import Col from "react-bootstrap/Col";
+import { Row, Col, Form } from "react-bootstrap";
 
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view"; // .jsx format ending not needed here
@@ -21,6 +22,16 @@ export const MainView = ({ movie }) => {
     user ? user.FavouriteMovies : []
   );
   const [userProfile, setUserProfile] = useState(storedUser || null);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearchInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+  const filteredMovies = movies.filter(
+    (movie) =>
+      movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      movie.director.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   console.log(favoriteMovieList);
 
@@ -82,6 +93,14 @@ export const MainView = ({ movie }) => {
   return (
     <BrowserRouter>
       <NavigationBar user={user} onLoggedOut={onLoggedOut} />
+      <Form.Control
+        type="text"
+        placeholder="Search movies..."
+        class="bg-body-tertiary navbar navbar-expand-lg navbar-light"
+        value={searchQuery}
+        onChange={handleSearchInputChange}
+      />
+
       <Row className="justify-content-md-center">
         <Routes>
           <Route
@@ -175,7 +194,7 @@ export const MainView = ({ movie }) => {
                   <Col>The list is empty!</Col>
                 ) : (
                   <>
-                    {movies.map((movie) => (
+                    {filteredMovies.map((movie) => (
                       <Col
                         className="mb-5"
                         key={movie.id}
