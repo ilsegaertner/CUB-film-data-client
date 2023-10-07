@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 import React from "react";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -16,12 +17,26 @@ export const MovieCard = ({
   setUserProfile,
   setFavoriteMovieList,
 }) => {
+  const [showGenreDescription, setShowGenreDescription] = useState(false);
+  const [showDirectorBio, setShowDirectorBio] = useState(false);
   return (
     <Card className="h-100">
       <Card.Img variant="top" src={movie.image} key={movie.id} />
       <Card.Body>
         <Card.Title>{movie.title}</Card.Title>
-        <Card.Text>{movie.director}</Card.Text>
+        <Link
+          onClick={() => setShowDirectorBio(!showDirectorBio)}
+          style={{ textDecoration: "none" }}
+        >
+          {movie.director}
+        </Link>
+
+        {showDirectorBio && (
+          <div>
+            <span>{movie.bio}</span>
+          </div>
+        )}
+
         <Link to={`/movies/${movie.title}`}>
           {/* // the key property you use to populate the id contains non-alphanumeric characters that dont work well when used as URL params. encodeURIComponent is used to replace these non-alphanumeric characters with URL-friendly characters  */}
           <Button variant="link" style={{ textDecoration: "none" }}>

@@ -1,4 +1,5 @@
 import { useParams } from "react-router";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./movie-view.scss";
 import { AddFavorite } from "../view-favorites/add-favorite";
@@ -15,8 +16,10 @@ export const MovieView = ({
   title,
 }) => {
   const { movieTitle } = useParams();
-
   const movie = movies.find((m) => m.title === movieTitle);
+
+  const [showGenreDescription, setShowGenreDescription] = useState(false);
+  const [showDirectorBio, setShowDirectorBio] = useState(false);
 
   return (
     <div>
@@ -24,25 +27,58 @@ export const MovieView = ({
         <img src={movie.image} alt={movie.title} />
       </div>
       <div>
-        <span>Title:</span>
-        <span>{movie.title}</span>
+        <span className="parameters">Title</span>
+        <span> {movie.title}</span>
       </div>
       <div>
-        <span>Description:</span>
-        <span>{movie.description}</span>
+        <span className="parameters">Description</span>
+        <span> {movie.description}</span>
       </div>
       <div>
-        <span>Director:</span>
-        <span>{movie.director}</span>
+        <span
+          className="parametersClick"
+          onClick={() => setShowDirectorBio(!showDirectorBio)}
+          style={{ textDecoration: "none", cursor: "pointer" }}
+        >
+          Director
+        </span>{" "}
+        {showDirectorBio && <span>{movie.bio}</span>}
+        {/* <span>{movie.director}</span> */}
       </div>
       <div>
-        <span>Year: </span>
+        <span className="parameters">Year </span>
         <span>{movie.year}</span>
       </div>
       <div>
-        <span>Actors: </span>
-        <span>{movie.actors}</span>
+        <span className="parameters">Actors </span>
+        {movie.actors.map((actor, index) => (
+          <span key={index}>
+            <Link
+              to={`/movies/actor/${actor}`}
+              style={{
+                textDecoration: "none",
+                cursor: "pointer",
+                fontStyle: "italic",
+              }} // Add cursor style
+            >
+              {actor}
+            </Link>
+            {index < movie.actors.length - 1 && ", "}
+          </span>
+        ))}
+        {/* <span>{movie.actors}</span> */}
       </div>
+      <div className="genre-description">
+        <span
+          className="parametersClick"
+          onClick={() => setShowGenreDescription(!showGenreDescription)}
+          style={{ textDecoration: "none", cursor: "pointer" }} // Add cursor style
+        >
+          Genre
+        </span>{" "}
+        {showGenreDescription && <span>{movie.genreDescription}</span>}
+      </div>
+
       <Link to={`/`}>
         <button className="back-button">Back</button>
       </Link>

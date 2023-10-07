@@ -24,6 +24,9 @@ export const MainView = ({ movie }) => {
   const [userProfile, setUserProfile] = useState(storedUser || null);
   const [searchQuery, setSearchQuery] = useState("");
 
+  const [showGenreDescription, setShowGenreDescription] = useState(false);
+  const [showDirectorBio, setShowDirectorBio] = useState(false);
+
   const handleSearchInputChange = (event) => {
     setSearchQuery(event.target.value);
   };
@@ -83,10 +86,6 @@ export const MainView = ({ movie }) => {
           };
         });
         setMovies(moviesFromApi);
-
-        console.log(movie);
-        console.log(moviesFromApi);
-        console.log("API Response:", data);
       });
   }, [token, setFavoriteMovieList]);
 

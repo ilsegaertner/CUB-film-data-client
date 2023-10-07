@@ -8,6 +8,14 @@
   padding: 4px 12px;
 }
 
+.parameters {
+  color: red;
+}
+
+.parametersClick {
+  color: #00f;
+}
+
 .fav-movie {
   margin-bottom: 15px;
 }
