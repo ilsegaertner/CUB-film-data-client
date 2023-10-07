@@ -16,10 +16,13 @@ export const ProfileView = ({
   title,
   updateUser,
   movie,
+  favoriteMovieList,
+  setFavoriteMovieList,
 }) => {
   const [userData, setUserData] = useState({});
   const [userProfile, setUserProfile] = useState({});
-  const [favoriteMovieList, setFavoriteMovieList] = useState([]);
+
+  console.log(movie);
 
   useEffect(() => {
     if (!user || !token) return;

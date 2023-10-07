@@ -17,6 +17,11 @@ export const MainView = ({ movie, setUserProfile }) => {
   const [user, setUser] = useState(storedUser ? storedUser : null); //added logic for persisting a Login Session
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
+  const [favoriteMovieList, setFavoriteMovieList] = useState(
+    user ? user.FavouriteMovies : []
+  );
+
+  console.log(favoriteMovieList);
 
   const onLoggedOut = () => {
     setUser(null);
@@ -66,10 +71,12 @@ export const MainView = ({ movie, setUserProfile }) => {
           };
         });
         setMovies(moviesFromApi);
+
+        console.log(movie);
         console.log(moviesFromApi);
         console.log("API Response:", data);
       });
-  }, [token]);
+  }, [token, setFavoriteMovieList]);
 
   return (
     <BrowserRouter>
@@ -116,7 +123,9 @@ export const MainView = ({ movie, setUserProfile }) => {
                     movies={movies}
                     token={storedToken}
                     updateUser={updateUser}
-                    movie={movie}
+                    // movie={movie}
+                    favoriteMovieList={favoriteMovieList}
+                    setFavoriteMovieList={setFavoriteMovieList}
                     onLoggedOut={() => {
                       setUser(null), setToken(null), localStorage.clear();
                     }}
@@ -140,9 +149,13 @@ export const MainView = ({ movie, setUserProfile }) => {
                     <MovieView
                       movies={movies}
                       user={user}
-                      favoriteMovieList={movies}
+                      // favoriteMovieList={movies}
+                      favoriteMovieList={favoriteMovieList}
                       updateUser={updateUser}
                       token={token}
+                      setFavoriteMovieList={setFavoriteMovieList}
+                      setUserProfile={setUserProfile}
+                      movie={movie}
                     />
                   </Col>
                 )}
@@ -170,10 +183,11 @@ export const MainView = ({ movie, setUserProfile }) => {
                         <MovieCard
                           movie={movie}
                           user={user}
-                          favoriteMovieList={movies}
+                          favoriteMovieList={favoriteMovieList}
                           updateUser={updateUser}
                           token={token}
                           setUserProfile={setUserProfile}
+                          setFavoriteMovieList={setFavoriteMovieList}
                         />
                       </Col>
                     ))}

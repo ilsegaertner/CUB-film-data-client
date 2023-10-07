@@ -3,7 +3,12 @@
 import { useState } from "react";
 import { Button } from "react-bootstrap";
 
-export const AddFavorite = ({ token, movieId }) => {
+export const AddFavorite = ({
+  token,
+  movieId,
+  movie,
+  setFavoriteMovieList,
+}) => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   // const storedToken = localStorage.getItem("token");
   const [user, setUserProfile] = useState(storedUser || null); //added logic for persisting a Login Session
@@ -17,7 +22,9 @@ export const AddFavorite = ({ token, movieId }) => {
     // and user's FavouriteMovies array
     setUserProfile({ ...user, FavouriteMovies: updatedFavouriteMovies });
 
-    console.log("Movie ID passed to AddFavorite:", movieId);
+    // console.log("Movie ID passed to AddFavorite:", movieId);
+
+    setFavoriteMovieList(updatedFavouriteMovies);
 
     fetch(
       `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${movieId}`,
@@ -35,7 +42,7 @@ export const AddFavorite = ({ token, movieId }) => {
         } else {
           return response.text().then((errorMessage) => {
             throw new Error(
-              `Failed to add movie to favorites: ${errorMessage}`
+              `Failed to add ${movie.title} to favorites: ${errorMessage}`
             );
           });
         }
@@ -44,18 +51,19 @@ export const AddFavorite = ({ token, movieId }) => {
         if (data) {
           // Update the user state with the received data
           setUserProfile(data); // Assuming the data contains the updated user profile
-          console.log("Updated User Data:", data);
+          setFavoriteMovieList(updatedFavouriteMovies);
+          // console.log("Updated User Data:", data);
         }
-        console.log("API Response:", data); // Log the response data
+        // console.log("API Response:", data); // Log the response data
         // If needed, update the local state or user's FavouriteMovies array
         // ...
-        alert("Movie added to favorites");
+        alert(`${movie.title} from ${movie.director} added to favorites`);
       })
       .catch((error) => {
-        console.error("Error adding movie to favorites", error);
+        console.error(`Error adding ${movie.title} to favorites`, error);
       });
   };
-  console.log(user);
+  // console.log(user);
   return (
     <Button size="sm" onClick={bothHandlers}>
       Add

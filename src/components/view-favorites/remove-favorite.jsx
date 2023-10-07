@@ -7,6 +7,7 @@ export const RemoveFavorite = ({
   title,
   token,
   movieId,
+  movie,
   setUserProfile,
   favoriteMovieList,
   setFavoriteMovieList,
@@ -46,16 +47,15 @@ export const RemoveFavorite = ({
             ...user,
             FavouriteMovies: updatedFavouriteMovies,
           };
-          // setUserProfile(updatedUser); // You'll need to declare and use setUser to update the user state
-          console.log("Movie removed from favorites");
+          setUserProfile(updatedUser); // You'll need to declare and use setUser to update the user state
 
-          alert("Movie removed from favorites");
+          alert(`${movie.title} from ${movie.director} removed from favorites`);
         } else {
-          throw new Error("Failed to remove favorite movie");
+          throw new Error(`Failed to remove ${movie.title}`);
         }
       })
       .catch((error) => {
-        console.error("Error removing favorite movie", error);
+        console.error(`Failed to remove ${movie.title}`, error);
       });
   };
 

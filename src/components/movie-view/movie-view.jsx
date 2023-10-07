@@ -4,12 +4,19 @@ import "./movie-view.scss";
 import { AddFavorite } from "../view-favorites/add-favorite";
 import { RemoveFavorite } from "../view-favorites/remove-favorite";
 
-export const MovieView = ({ movies, favoriteMovieList, user, token }) => {
+export const MovieView = ({
+  movies,
+  favoriteMovieList,
+  user,
+  token,
+  setFavoriteMovieList,
+  updateUser,
+  setUserProfile,
+  title,
+}) => {
   const { movieTitle } = useParams();
 
   const movie = movies.find((m) => m.title === movieTitle);
-
-  console.log(user);
 
   return (
     <div>
@@ -40,6 +47,33 @@ export const MovieView = ({ movies, favoriteMovieList, user, token }) => {
         <button className="back-button">Back</button>
       </Link>
 
+      {favoriteMovieList.some((favMovie) => favMovie.id === movie.id) ? (
+        <RemoveFavorite
+          movieId={movie.id}
+          movie={movie}
+          updateUser={updateUser}
+          user={user}
+          title={title}
+          token={token}
+          setUserProfile={setUserProfile}
+          favoriteMovieList={favoriteMovieList}
+          setFavoriteMovieList={setFavoriteMovieList}
+        />
+      ) : (
+        <AddFavorite
+          movieId={movie.id}
+          movie={movie}
+          updateUser={updateUser}
+          user={user}
+          title={title}
+          token={token}
+          setUserProfile={setUserProfile}
+          favoriteMovieList={favoriteMovieList}
+          setFavoriteMovieList={setFavoriteMovieList}
+        />
+      )}
+
+      {/* 
       {favoriteMovieList.includes(movie.id) ? (
         <RemoveFavorite
           movieId={movie.id}
@@ -54,7 +88,7 @@ export const MovieView = ({ movies, favoriteMovieList, user, token }) => {
           user={user}
           token={token}
         />
-      )}
+      )} */}
 
       {/* <Link to={`/`}>
         <button className="fav-button">{`❤️`}</button>

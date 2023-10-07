@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { AddFavorite } from "../view-favorites/add-favorite";
 import { RemoveFavorite } from "../view-favorites/remove-favorite";
 import "./movie-card.scss";
+import { useState } from "react";
 
 export const MovieCard = ({
   movie,
@@ -16,6 +17,30 @@ export const MovieCard = ({
   setUserProfile,
   setFavoriteMovieList,
 }) => {
+  // const [isFavorite, setIsFavorite] = useState(
+  //   favoriteMovieList.includes(movie.id)
+  // );
+
+  // const toggleFavorite = () => {
+  //   if (isFavorite) {
+  //     // Remove movie from favorites
+  //     // Update the UI and state accordingly
+  //     setIsFavorite(false);
+  //     setFavoriteMovieList((prevList) =>
+  //       prevList.filter((movieId) => movieId !== movie.id)
+  //     );
+  //     setUserProfile;
+  //     // You can also update the user's data on the server here if needed
+  //   } else {
+  //     // Add movie to favorites
+  //     // Update the UI and state accordingly
+  //     setIsFavorite(true);
+  //     setFavoriteMovieList((prevList) => [...prevList, movie.id]);
+  //     // You can also update the user's data on the server here if needed
+  //     setUserProfile;
+  //   }
+  // };
+
   return (
     <Card className="h-100">
       <Card.Img variant="top" src={movie.image} key={movie.id} />
@@ -28,6 +53,34 @@ export const MovieCard = ({
             Open
           </Button>
         </Link>
+        {/* 
+        <Button size="sm" onClick={toggleFavorite}>
+          {isFavorite ? (
+            <RemoveFavorite
+              movieId={movie.id}
+              movie={movie}
+              updateUser={updateUser}
+              user={user}
+              title={title}
+              token={token}
+              setUserProfile={setUserProfile}
+              favoriteMovieList={favoriteMovieList}
+              setFavoriteMovieList={setFavoriteMovieList}
+            />
+          ) : (
+            <AddFavorite
+              movieId={movie.id}
+              movie={movie}
+              updateUser={updateUser}
+              user={user}
+              title={title}
+              token={token}
+              setUserProfile={setUserProfile}
+              favoriteMovieList={favoriteMovieList}
+              setFavoriteMovieList={setFavoriteMovieList}
+            />
+          )}
+        </Button> */}
 
         {favoriteMovieList.some((favMovie) => favMovie.id === movie.id) ? (
           <RemoveFavorite
@@ -50,6 +103,8 @@ export const MovieCard = ({
             title={title}
             token={token}
             setUserProfile={setUserProfile}
+            favoriteMovieList={favoriteMovieList}
+            setFavoriteMovieList={setFavoriteMovieList}
           />
         )}
 
