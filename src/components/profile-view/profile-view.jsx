@@ -18,9 +18,11 @@ export const ProfileView = ({
   movie,
   favoriteMovieList,
   setFavoriteMovieList,
+  setUserProfile,
+  userProfile,
 }) => {
   const [userData, setUserData] = useState({});
-  const [userProfile, setUserProfile] = useState({});
+  // const [userProfile, setUserProfile] = useState({});
 
   console.log(movie);
 

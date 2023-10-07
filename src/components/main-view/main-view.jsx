@@ -10,7 +10,7 @@ import { SignupView } from "../signup-view/signup-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 
-export const MainView = ({ movie, setUserProfile }) => {
+export const MainView = ({ movie }) => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
 
@@ -20,6 +20,7 @@ export const MainView = ({ movie, setUserProfile }) => {
   const [favoriteMovieList, setFavoriteMovieList] = useState(
     user ? user.FavouriteMovies : []
   );
+  const [userProfile, setUserProfile] = useState(storedUser || null);
 
   console.log(favoriteMovieList);
 
@@ -123,6 +124,7 @@ export const MainView = ({ movie, setUserProfile }) => {
                     movies={movies}
                     token={storedToken}
                     updateUser={updateUser}
+                    setUserProfile={setUserProfile}
                     // movie={movie}
                     favoriteMovieList={favoriteMovieList}
                     setFavoriteMovieList={setFavoriteMovieList}

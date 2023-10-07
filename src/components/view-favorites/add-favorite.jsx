@@ -8,10 +8,12 @@ export const AddFavorite = ({
   movieId,
   movie,
   setFavoriteMovieList,
+  setUserProfile,
+  user,
 }) => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   // const storedToken = localStorage.getItem("token");
-  const [user, setUserProfile] = useState(storedUser || null); //added logic for persisting a Login Session
+  // const [user, setUserProfile] = useState(storedUser || null); //added logic for persisting a Login Session
 
   const bothHandlers = () => {
     addFavoriteHandler();

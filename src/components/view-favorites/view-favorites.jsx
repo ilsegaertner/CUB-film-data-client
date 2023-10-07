@@ -7,11 +7,11 @@ import { MovieCard } from "../movie-card/movie-card";
 export const ViewFavorites = ({
   user,
   updateUserFavorite,
-  setUserProfile,
   favoriteMovieList,
   movie,
   token,
   setFavoriteMovieList,
+  setUserProfile,
 }) => {
   // const favoriteMovieList = movies.filter(
   //   (movie) =>
