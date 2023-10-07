@@ -151,7 +151,6 @@ export const MainView = ({ movie }) => {
                     <MovieView
                       movies={movies}
                       user={user}
-                      // favoriteMovieList={movies}
                       favoriteMovieList={favoriteMovieList}
                       updateUser={updateUser}
                       token={token}

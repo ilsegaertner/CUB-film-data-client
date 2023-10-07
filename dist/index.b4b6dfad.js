@@ -27333,7 +27333,6 @@ const MainView = ({ movie })=>{
                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
                                         movies: movies,
                                         user: user,
-                                        // favoriteMovieList={movies}
                                         favoriteMovieList: favoriteMovieList,
                                         updateUser: updateUser,
                                         token: token,
@@ -27376,7 +27375,7 @@ const MainView = ({ movie })=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 167,
+                            lineNumber: 166,
                             columnNumber: 11
                         }, undefined)
                     ]
