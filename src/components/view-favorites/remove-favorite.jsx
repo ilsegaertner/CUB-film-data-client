@@ -1,4 +1,5 @@
 import { Button } from "react-bootstrap";
+import "./favorites.scss";
 
 export const RemoveFavorite = ({
   user,
@@ -53,8 +54,8 @@ export const RemoveFavorite = ({
   };
 
   return (
-    <Button size="sm" onClick={deleteFavoriteHandler}>
+    <button size="sm" onClick={deleteFavoriteHandler} className="removeButton">
       Remove
-    </Button>
+    </button>
   );
 };

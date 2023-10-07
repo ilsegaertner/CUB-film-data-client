@@ -1,4 +1,5 @@
 import { Button } from "react-bootstrap";
+import "./favorites.scss";
 
 export const AddFavorite = ({
   token,
@@ -53,7 +54,7 @@ export const AddFavorite = ({
       });
   };
   return (
-    <Button size="sm" onClick={bothHandlers}>
+    <Button size="sm" onClick={bothHandlers} className="addButton">
       Add
     </Button>
   );

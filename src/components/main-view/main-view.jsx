@@ -92,13 +92,6 @@ export const MainView = ({ movie }) => {
   return (
     <BrowserRouter>
       <NavigationBar user={user} onLoggedOut={onLoggedOut} />
-      <Form.Control
-        type="text"
-        placeholder="Search movies..."
-        class="bg-body-tertiary navbar navbar-expand-lg navbar-light"
-        value={searchQuery}
-        onChange={handleSearchInputChange}
-      />
 
       <Row className="justify-content-md-center">
         <Routes>
@@ -187,6 +180,13 @@ export const MainView = ({ movie }) => {
             path="/"
             element={
               <>
+                <Form.Control
+                  type="text"
+                  placeholder="Search movies..."
+                  class="bg-body-tertiary navbar navbar-expand-lg navbar-light"
+                  value={searchQuery}
+                  onChange={handleSearchInputChange}
+                />
                 {!user ? (
                   <Navigate to="/login" replace />
                 ) : movies.length === 0 ? (
