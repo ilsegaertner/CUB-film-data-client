@@ -13279,4 +13279,11 @@ textarea.form-control-lg {
   padding: 4px 12px;
 }
 
+.btn {
+  --bs-btn-padding-y: .1rem;
+  --bs-btn-padding-x: .5rem;
+  --bs-btn-font-size: .775rem;
+  --bs-btn-border-radius: var(--bs-border-radius-sm);
+}
+
 /*# sourceMappingURL=index.e3f97e84.css.map */

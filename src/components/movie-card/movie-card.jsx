@@ -20,55 +20,67 @@ export const MovieCard = ({
   const [showGenreDescription, setShowGenreDescription] = useState(false);
   const [showDirectorBio, setShowDirectorBio] = useState(false);
   return (
-    <Card className="h-100">
-      <Card.Img variant="top" src={movie.image} key={movie.id} />
+    <Card className="h-100 w-100">
+      <Link to={`/movies/${movie.title}`} style={{ textDecoration: "none" }}>
+        <Card.Img
+          className="h-100 w-100"
+          variant="top"
+          src={movie.image}
+          key={movie.id}
+        />
+      </Link>
       <Card.Body>
-        <Card.Title>{movie.title}</Card.Title>
-        <Link
-          onClick={() => setShowDirectorBio(!showDirectorBio)}
-          style={{ textDecoration: "none" }}
-        >
-          {movie.director}
-        </Link>
-
-        {showDirectorBio && (
-          <div>
-            <span>{movie.bio}</span>
-          </div>
-        )}
-
-        <Link to={`/movies/${movie.title}`}>
-          {/* // the key property you use to populate the id contains non-alphanumeric characters that dont work well when used as URL params. encodeURIComponent is used to replace these non-alphanumeric characters with URL-friendly characters  */}
-          <Button variant="link" style={{ textDecoration: "none" }}>
-            Open
-          </Button>
-        </Link>
-
-        {favoriteMovieList.some((favMovie) => favMovie.id === movie.id) ? (
-          <RemoveFavorite
-            movieId={movie.id}
-            movie={movie}
-            updateUser={updateUser}
-            user={user}
-            title={title}
-            token={token}
-            setUserProfile={setUserProfile}
-            favoriteMovieList={favoriteMovieList}
-            setFavoriteMovieList={setFavoriteMovieList}
-          />
-        ) : (
-          <AddFavorite
-            movieId={movie.id}
-            movie={movie}
-            updateUser={updateUser}
-            user={user}
-            title={title}
-            token={token}
-            setUserProfile={setUserProfile}
-            favoriteMovieList={favoriteMovieList}
-            setFavoriteMovieList={setFavoriteMovieList}
-          />
-        )}
+        <>
+          <Link
+            to={`/movies/${movie.title}`}
+            style={{ textDecoration: "none" }}
+          >
+            <Card.Title>
+              {movie.title} ({movie.year})
+            </Card.Title>{" "}
+          </Link>
+          <Link
+            onClick={() => setShowDirectorBio(!showDirectorBio)}
+            style={{ textDecoration: "none" }}
+          >
+            {movie.director}
+          </Link>
+          {showDirectorBio && (
+            <div>
+              <span>{movie.bio} </span>{" "}
+            </div>
+          )}
+          {/* <Link to={`/movies/${movie.title}`}>
+            <Button variant="link" style={{ textDecoration: "none" }}>
+              Open
+            </Button>
+          </Link> */}{" "}
+          {favoriteMovieList.some((favMovie) => favMovie.id === movie.id) ? (
+            <RemoveFavorite
+              movieId={movie.id}
+              movie={movie}
+              updateUser={updateUser}
+              user={user}
+              title={title}
+              token={token}
+              setUserProfile={setUserProfile}
+              favoriteMovieList={favoriteMovieList}
+              setFavoriteMovieList={setFavoriteMovieList}
+            />
+          ) : (
+            <AddFavorite
+              movieId={movie.id}
+              movie={movie}
+              updateUser={updateUser}
+              user={user}
+              title={title}
+              token={token}
+              setUserProfile={setUserProfile}
+              favoriteMovieList={favoriteMovieList}
+              setFavoriteMovieList={setFavoriteMovieList}
+            />
+          )}
+        </>
       </Card.Body>
     </Card>
   );

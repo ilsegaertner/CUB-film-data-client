@@ -28,7 +28,10 @@ export const MovieView = ({
       </div>
       <div>
         <span className="parameters">Title</span>
-        <span> {movie.title}</span>
+        <span>
+          {" "}
+          {movie.title} ({movie.year})
+        </span>
       </div>
       <div>
         <span className="parameters">Description</span>
