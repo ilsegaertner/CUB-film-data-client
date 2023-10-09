@@ -186,7 +186,7 @@ export const MainView = ({ movie }) => {
                 <Form.Control
                   type="text"
                   placeholder="Search movies..."
-                  class="bg-body-tertiary navbar navbar-expand-lg navbar-light"
+                  class="bg-body-tertiary navbar navbar-expand-lg navbar-light searchMovies"
                   value={searchQuery}
                   onChange={handleSearchInputChange}
                 />

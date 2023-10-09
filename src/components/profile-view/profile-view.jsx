@@ -62,9 +62,9 @@ export const ProfileView = ({
   }, [token, user, movies]);
 
   return (
-    <Container>
-      <Row>
-        <Col xs={12} sm={9} lg={5}>
+    <Container className="profileContainer">
+      <Row className="justify-content-md-center">
+        <Col xs={12} sm={9} lg={3}>
           <Card>
             <Card.Body className="profilecard1">
               <UserInfo user={user} />
@@ -85,17 +85,16 @@ export const ProfileView = ({
             </Card.Body>
           </Card>
         </Col>
-        <Col xs={1} sm={3} lg={2}>
-          <Card>
-            <Card.Body>
-              <DeleteProfile
-                user={user}
-                onLoggedOut={onLoggedOut}
-                token={token}
-              />
-            </Card.Body>
-          </Card>
+        <Col xs={1} sm={2} lg={1}>
+          <DeleteProfile user={user} onLoggedOut={onLoggedOut} token={token} />
         </Col>
+      </Row>
+      <Row>
+        {/* <Col xs={1} sm={3} lg={2}>
+          <Card>
+            <Card.Body></Card.Body>
+          </Card>
+        </Col> */}
         <Col xs={12} sm={12} lg={12}>
           <ViewFavorites
             favoriteMovieList={favoriteMovieList}

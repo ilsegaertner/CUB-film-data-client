@@ -24,12 +24,12 @@ export const MovieView = ({
 
   return (
     <>
-      <Container>
+      <Container className="movieView">
         <Row>
-          <Col>
+          <Col xs={6}>
             <img src={movie.image} alt={movie.title} />
           </Col>
-          <Col xs={6}>
+          <Col xs={4}>
             <span className="parameters">Title</span>
             <span>
               {" "}

@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
+import "./profile-view.scss";
 
 export const DeleteProfile = ({ user, onLoggedOut, token }) => {
   const deleteProfileHandler = () => {
@@ -25,7 +26,9 @@ export const DeleteProfile = ({ user, onLoggedOut, token }) => {
   return (
     <>
       <Card>
-        <Button onClick={deleteProfileHandler}>Delete Profile</Button>
+        <Button onClick={deleteProfileHandler} className="deleteButton">
+          Delete Profile
+        </Button>
       </Card>
     </>
   );

@@ -100,14 +100,16 @@ export const UpdateUser = ({ user, token, setUserProfile }) => {
           required
         />
       </Form.Group>
-      <Button
-        variant="primary"
-        type="submit"
-        value="submit"
-        onClick={handleSubmit}
-      >
-        Update
-      </Button>
+      <Form.Group>
+        <Button
+          variant="primary"
+          type="submit"
+          value="submit"
+          onClick={handleSubmit}
+        >
+          Update
+        </Button>
+      </Form.Group>
     </Form>
   );
 };
