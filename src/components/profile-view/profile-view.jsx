@@ -63,7 +63,7 @@ export const ProfileView = ({
 
   return (
     <Container className="profileContainer">
-      <Row className="justify-content-md-center">
+      <Row className="justify-content-lg-between">
         <Col xs={12} sm={9} lg={3}>
           <Card>
             <Card.Body className="profilecard1">

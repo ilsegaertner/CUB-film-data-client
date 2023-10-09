@@ -30,7 +30,7 @@ export const MovieCard = ({
       <Figure>
         <Link to={`/movies/${movie.title}`} style={{ textDecoration: "none" }}>
           <Figure.Image
-            className=""
+            className="figure-img img-fluid rounded"
             variant="top"
             src={movie.image}
             key={movie.id}

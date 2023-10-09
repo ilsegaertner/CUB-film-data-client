@@ -82,31 +82,35 @@ export const MovieView = ({
               ))}
               {/* <span>{movie.actors}</span> */}
             </div>
-            {favoriteMovieList.some((favMovie) => favMovie.id === movie.id) ? (
-              <RemoveFavorite
-                movieId={movie.id}
-                movie={movie}
-                updateUser={updateUser}
-                user={user}
-                title={title}
-                token={token}
-                setUserProfile={setUserProfile}
-                favoriteMovieList={favoriteMovieList}
-                setFavoriteMovieList={setFavoriteMovieList}
-              />
-            ) : (
-              <AddFavorite
-                movieId={movie.id}
-                movie={movie}
-                updateUser={updateUser}
-                user={user}
-                title={title}
-                token={token}
-                setUserProfile={setUserProfile}
-                favoriteMovieList={favoriteMovieList}
-                setFavoriteMovieList={setFavoriteMovieList}
-              />
-            )}
+            <div className="addButton">
+              {favoriteMovieList.some(
+                (favMovie) => favMovie.id === movie.id
+              ) ? (
+                <RemoveFavorite
+                  movieId={movie.id}
+                  movie={movie}
+                  updateUser={updateUser}
+                  user={user}
+                  title={title}
+                  token={token}
+                  setUserProfile={setUserProfile}
+                  favoriteMovieList={favoriteMovieList}
+                  setFavoriteMovieList={setFavoriteMovieList}
+                />
+              ) : (
+                <AddFavorite
+                  movieId={movie.id}
+                  movie={movie}
+                  updateUser={updateUser}
+                  user={user}
+                  title={title}
+                  token={token}
+                  setUserProfile={setUserProfile}
+                  favoriteMovieList={favoriteMovieList}
+                  setFavoriteMovieList={setFavoriteMovieList}
+                />
+              )}
+            </div>
           </Col>
           <Col>
             <Link to={`/`}>

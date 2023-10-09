@@ -183,13 +183,22 @@ export const MainView = ({ movie }) => {
             path="/"
             element={
               <>
-                <Form.Control
-                  type="text"
-                  placeholder="Search movies..."
-                  class="bg-body-tertiary navbar navbar-expand-lg navbar-light searchMovies"
-                  value={searchQuery}
-                  onChange={handleSearchInputChange}
-                />
+                <Form>
+                  <Form.Label htmlFor="Searchbar">
+                    Browse our{" "}
+                    <span style={{ color: "#0000ff  " }}>
+                      CUB Film Database
+                    </span>{" "}
+                    for arthouse classics and search for your favorite Movies
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Search movies..."
+                    class="bg-body-tertiary navbar navbar-expand-lg navbar-light searchMovies form-control-lg"
+                    value={searchQuery}
+                    onChange={handleSearchInputChange}
+                  />
+                </Form>
                 {!user ? (
                   <Navigate to="/login" replace />
                 ) : movies.length === 0 ? (
