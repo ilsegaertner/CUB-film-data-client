@@ -48,7 +48,9 @@ export const UpdateUser = ({ user, token, setUserProfile }) => {
 
       .catch((error) => {
         console.error("Error submitting form", error);
-        alert("Form submission failed.");
+        alert(
+          "Failed to update your profile. Please double-check your information, ensure you are logged in, and try again. If the problem persists, please contact support."
+        );
       });
   };
   console.log(user);

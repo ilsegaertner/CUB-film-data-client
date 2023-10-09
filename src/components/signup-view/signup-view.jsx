@@ -30,7 +30,9 @@ export const SignupView = () => {
         alert("Signup successful");
         window.location = "/login";
       } else {
-        alert("Signup failed");
+        alert(
+          "Signup failed. Please check your information or try again later."
+        );
       }
     });
   };

@@ -57,7 +57,10 @@ export const MainView = ({ movie }) => {
         setUser(user);
       })
       .catch((error) => {
-        alert("Something went wrong " + error);
+        alert(
+          "Failed to update user information. Please try again later or check your network connection. " +
+            error
+        );
       });
   };
 
