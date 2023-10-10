@@ -64,14 +64,14 @@ export const ProfileView = ({
   return (
     <Container className="profileContainer">
       <Row className="justify-content-lg-between">
-        <Col xs={12} sm={9} lg={3}>
+        <Col xs={12} sm={12} lg={3}>
           <Card>
             <Card.Body className="profilecard1">
               <UserInfo user={user} />
             </Card.Body>
           </Card>
         </Col>
-        <Col xs={12} sm={6} lg={5}>
+        <Col xs={12} sm={12} lg={5}>
           <Card>
             <Card.Body className="profilecard2">
               <UpdateUser
@@ -85,7 +85,7 @@ export const ProfileView = ({
             </Card.Body>
           </Card>
         </Col>
-        <Col xs={1} sm={2} lg={1}>
+        <Col xs={1} sm={12} lg={1}>
           <DeleteProfile user={user} onLoggedOut={onLoggedOut} token={token} />
         </Col>
       </Row>

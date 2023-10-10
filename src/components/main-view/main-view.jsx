@@ -30,6 +30,11 @@ export const MainView = ({ movie }) => {
   const handleSearchInputChange = (event) => {
     setSearchQuery(event.target.value);
   };
+
+  const handleClearSearch = () => {
+    setSearchQuery("");
+  };
+
   const filteredMovies = movies.filter(
     (movie) =>
       movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -203,6 +208,14 @@ export const MainView = ({ movie }) => {
                     value={searchQuery}
                     onChange={handleSearchInputChange}
                   />
+                  {searchQuery && (
+                    <button
+                      className="clear-button"
+                      onClick={() => handleClearSearch()}
+                    >
+                      X
+                    </button>
+                  )}
                 </Form>
                 {!user ? (
                   <Navigate to="/login" replace />
@@ -214,7 +227,7 @@ export const MainView = ({ movie }) => {
                       <Col
                         className="mb-5"
                         key={movie.id}
-                        md={7}
+                        md={11}
                         sm={12}
                         lg={3}
                       >

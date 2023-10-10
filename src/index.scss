@@ -116,3 +116,30 @@ img,
   box-shadow: 0 0 0 0.25rem #ff1469;
   margin-top: 20px;
 }
+
+.clear-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 59px;
+  // color: #007bff;
+  color: #00000024;
+}
+
+@media (width <= 990px) {
+  .fav-movie figure img {
+    height: 100%;
+  }
+}
+
+@media (min-width: 990px) and (max-width: 1200px) {
+  .fav-movie figure img {
+    height: 290px;
+  }
+}
+
+@media (min-width: 1200) and (max-width: 1400px) {
+  .fav-movie figure img {
+    height: 375px;
+  }
+}

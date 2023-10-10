@@ -27204,6 +27204,9 @@ const MainView = ({ movie })=>{
     const handleSearchInputChange = (event)=>{
         setSearchQuery(event.target.value);
     };
+    const handleClearSearch = ()=>{
+        setSearchQuery("");
+    };
     const filteredMovies = movies.filter((movie)=>movie.title.toLowerCase().includes(searchQuery.toLowerCase()) || movie.director.toLowerCase().includes(searchQuery.toLowerCase()));
     console.log(favoriteMovieList);
     const onLoggedOut = ()=>{
@@ -27259,7 +27262,7 @@ const MainView = ({ movie })=>{
                 onLoggedOut: onLoggedOut
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 97,
+                lineNumber: 102,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -27278,7 +27281,7 @@ const MainView = ({ movie })=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 101,
+                            lineNumber: 106,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27295,7 +27298,7 @@ const MainView = ({ movie })=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 116,
+                            lineNumber: 121,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27319,7 +27322,7 @@ const MainView = ({ movie })=>{
                             }, void 0, false, void 0, void 0)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 132,
+                            lineNumber: 137,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27346,7 +27349,7 @@ const MainView = ({ movie })=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 156,
+                            lineNumber: 161,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27386,6 +27389,11 @@ const MainView = ({ movie })=>{
                                                 class: "bg-body-tertiary navbar navbar-expand-lg navbar-light searchMovies form-control-lg mr-sm-2",
                                                 value: searchQuery,
                                                 onChange: handleSearchInputChange
+                                            }, void 0, false, void 0, void 0),
+                                            searchQuery && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                                className: "clear-button",
+                                                onClick: ()=>handleClearSearch(),
+                                                children: "X"
                                             }, void 0, false, void 0, void 0)
                                         ]
                                     }, void 0, true, void 0, void 0),
@@ -27397,7 +27405,7 @@ const MainView = ({ movie })=>{
                                     }, void 0, false, void 0, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                         children: filteredMovies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                                                 className: "mb-5",
-                                                md: 7,
+                                                md: 11,
                                                 sm: 12,
                                                 lg: 3,
                                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
@@ -27415,24 +27423,24 @@ const MainView = ({ movie })=>{
                             }, void 0, true)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 182,
+                            lineNumber: 187,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 100,
+                    lineNumber: 105,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 99,
+                lineNumber: 104,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 96,
+        lineNumber: 101,
         columnNumber: 5
     }, undefined);
 };
@@ -48376,7 +48384,7 @@ const ProfileView = ({ token, movies, handleSubmit, onLoggedOut, user, title, up
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                         xs: 12,
-                        sm: 9,
+                        sm: 12,
                         lg: 3,
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
@@ -48405,7 +48413,7 @@ const ProfileView = ({ token, movies, handleSubmit, onLoggedOut, user, title, up
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                         xs: 12,
-                        sm: 6,
+                        sm: 12,
                         lg: 5,
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
@@ -48439,7 +48447,7 @@ const ProfileView = ({ token, movies, handleSubmit, onLoggedOut, user, title, up
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                         xs: 1,
-                        sm: 2,
+                        sm: 12,
                         lg: 1,
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _deleteProfile.DeleteProfile), {
                             user: user,
@@ -49090,7 +49098,7 @@ $RefreshReg$(_c, "NavigationBar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-bootstrap/Container":"hEdsw","react-bootstrap/Nav":"cXyL2","react-bootstrap/Navbar":"1mHjo","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./logo.svg":"efbKM","./logo3.svg":"lgzRM","./logo4.svg":"bnXWv"}],"efbKM":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-bootstrap/Container":"hEdsw","react-bootstrap/Nav":"cXyL2","react-bootstrap/Navbar":"1mHjo","react-router-dom":"9xmpe","./logo.svg":"efbKM","./logo3.svg":"lgzRM","./logo4.svg":"bnXWv","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"efbKM":[function(require,module,exports) {
 module.exports = require("eb2bae05087c0ff7").getBundleURL("byUka") + "logo.1becbb9e.svg" + "?" + Date.now();
 
 },{"eb2bae05087c0ff7":"lgJ39"}],"lgJ39":[function(require,module,exports) {

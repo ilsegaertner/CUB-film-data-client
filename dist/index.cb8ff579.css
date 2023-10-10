@@ -13380,4 +13380,30 @@ textarea.form-control-lg {
   box-shadow: 0 0 0 .25rem #ff1469;
 }
 
+.clear-button {
+  cursor: pointer;
+  color: #00000024;
+  background: none;
+  border: none;
+  font-size: 59px;
+}
+
+@media (width <= 990px) {
+  .fav-movie figure img {
+    height: 100%;
+  }
+}
+
+@media (width >= 990px) and (width <= 1200px) {
+  .fav-movie figure img {
+    height: 290px;
+  }
+}
+
+@media (width >= 1200px) and (width <= 1400px) {
+  .fav-movie figure img {
+    height: 375px;
+  }
+}
+
 /*# sourceMappingURL=index.cb8ff579.css.map */
