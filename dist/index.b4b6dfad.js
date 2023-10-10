@@ -27354,19 +27354,24 @@ const MainView = ({ movie })=>{
                             element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
+                                        className: "CubWrap",
                                         children: [
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Text, {
-                                                htmlFor: "Searchbar",
-                                                style: {
-                                                    color: "#0000ff"
-                                                },
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                className: "VerticalContainer",
+                                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                    className: "CUB",
+                                                    children: "CUB Film Data"
+                                                }, void 0, false, void 0, void 0)
+                                            }, void 0, false, void 0, void 0),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                className: "CubDescription",
                                                 children: [
                                                     "Browse",
                                                     " ",
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                                         style: {
                                                             fontFamily: "monospace",
-                                                            color: "#575757"
+                                                            color: "#43523e"
                                                         },
                                                         children: "- CUB FILM DATA -"
                                                     }, void 0, false, void 0, void 0),

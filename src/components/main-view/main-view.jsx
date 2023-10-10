@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 // import Row from "react-bootstrap/Row";
 // import Col from "react-bootstrap/Col";
-import { Row, Col, Form } from "react-bootstrap";
+import { Row, Col, Form, NavbarBrand } from "react-bootstrap";
 
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view"; // .jsx format ending not needed here
@@ -183,15 +183,18 @@ export const MainView = ({ movie }) => {
             path="/"
             element={
               <>
-                <Form>
-                  <Form.Text htmlFor="Searchbar" style={{ color: "#0000ff" }}>
+                <Form className="CubWrap">
+                  <div className="VerticalContainer">
+                    <span className="CUB">CUB Film Data</span>
+                  </div>
+                  <span className="CubDescription">
                     Browse{" "}
-                    <span style={{ fontFamily: "monospace", color: "#575757" }}>
+                    <span style={{ fontFamily: "monospace", color: "#43523e" }}>
                       - CUB FILM DATA -
                     </span>{" "}
                     for arthouse classics and look for facts about your favorite
                     movies
-                  </Form.Text>
+                  </span>
                   <Form.Control
                     size="lg"
                     type="text"
