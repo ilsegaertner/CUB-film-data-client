@@ -184,9 +184,9 @@ export const MainView = ({ movie }) => {
             element={
               <>
                 <Form>
-                  <Form.Text htmlFor="Searchbar">
+                  <Form.Text htmlFor="Searchbar" style={{ color: "#0000ff" }}>
                     Browse{" "}
-                    <span style={{ fontFamily: "monospace" }}>
+                    <span style={{ fontFamily: "monospace", color: "#575757" }}>
                       - CUB FILM DATA -
                     </span>{" "}
                     for arthouse classics and look for facts about your favorite

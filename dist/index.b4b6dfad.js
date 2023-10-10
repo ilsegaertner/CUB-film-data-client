@@ -27357,12 +27357,16 @@ const MainView = ({ movie })=>{
                                         children: [
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Text, {
                                                 htmlFor: "Searchbar",
+                                                style: {
+                                                    color: "#0000ff"
+                                                },
                                                 children: [
                                                     "Browse",
                                                     " ",
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                                         style: {
-                                                            fontFamily: "monospace"
+                                                            fontFamily: "monospace",
+                                                            color: "#575757"
                                                         },
                                                         children: "- CUB FILM DATA -"
                                                     }, void 0, false, void 0, void 0),
