@@ -27355,25 +27355,26 @@ const MainView = ({ movie })=>{
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
                                         children: [
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Text, {
                                                 htmlFor: "Searchbar",
                                                 children: [
-                                                    "Browse our",
+                                                    "Browse",
                                                     " ",
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                                         style: {
-                                                            color: "#0000ff  "
+                                                            fontFamily: "monospace"
                                                         },
-                                                        children: "CUB Film Database"
+                                                        children: "- CUB FILM DATA -"
                                                     }, void 0, false, void 0, void 0),
                                                     " ",
-                                                    "for arthouse classics and search for your favorite Movies"
+                                                    "for arthouse classics and look for facts about your favorite movies"
                                                 ]
                                             }, void 0, true, void 0, void 0),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                                                size: "lg",
                                                 type: "text",
                                                 placeholder: "Search movies...",
-                                                class: "bg-body-tertiary navbar navbar-expand-lg navbar-light searchMovies form-control-lg",
+                                                class: "bg-body-tertiary navbar navbar-expand-lg navbar-light searchMovies form-control-lg mr-sm-2",
                                                 value: searchQuery,
                                                 onChange: handleSearchInputChange
                                             }, void 0, false, void 0, void 0)
@@ -48953,6 +48954,12 @@ var _navDefault = parcelHelpers.interopDefault(_nav);
 var _navbar = require("react-bootstrap/Navbar");
 var _navbarDefault = parcelHelpers.interopDefault(_navbar);
 var _reactRouterDom = require("react-router-dom");
+var _logoSvg = require("./logo.svg");
+var _logoSvgDefault = parcelHelpers.interopDefault(_logoSvg);
+var _logo3Svg = require("./logo3.svg");
+var _logo3SvgDefault = parcelHelpers.interopDefault(_logo3Svg);
+var _logo4Svg = require("./logo4.svg");
+var _logo4SvgDefault = parcelHelpers.interopDefault(_logo4Svg);
 const NavigationBar = ({ user, onLoggedOut })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default), {
         expand: "lg",
@@ -48962,17 +48969,27 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default).Brand, {
                     as: (0, _reactRouterDom.Link),
                     to: "/",
-                    children: "CUB Film Data"
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                        src: (0, _logo4SvgDefault.default),
+                        width: "40",
+                        height: "40",
+                        className: "d-inline-block align-right",
+                        alt: "React Bootstrap logo"
+                    }, void 0, false, {
+                        fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                        lineNumber: 14,
+                        columnNumber: 11
+                    }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                    lineNumber: 10,
+                    lineNumber: 13,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default).Toggle, {
                     "aria-controls": "basic-navbar-nav"
                 }, void 0, false, {
                     fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                    lineNumber: 13,
+                    lineNumber: 23,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default).Collapse, {
@@ -48988,7 +49005,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                         children: "Login"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                        lineNumber: 18,
+                                        lineNumber: 28,
                                         columnNumber: 17
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
@@ -48997,7 +49014,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                         children: "Signup"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                        lineNumber: 21,
+                                        lineNumber: 31,
                                         columnNumber: 17
                                     }, undefined)
                                 ]
@@ -49010,7 +49027,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                         children: "Home"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                        lineNumber: 28,
+                                        lineNumber: 38,
                                         columnNumber: 17
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
@@ -49019,7 +49036,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                         children: "Profile"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                        lineNumber: 31,
+                                        lineNumber: 41,
                                         columnNumber: 17
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
@@ -49027,7 +49044,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                         children: "Logout"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                        lineNumber: 34,
+                                        lineNumber: 44,
                                         columnNumber: 17
                                     }, undefined)
                                 ]
@@ -49035,23 +49052,23 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                        lineNumber: 15,
+                        lineNumber: 25,
                         columnNumber: 11
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                    lineNumber: 14,
+                    lineNumber: 24,
                     columnNumber: 9
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 9,
+            lineNumber: 12,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/navigation-bar/navigation-bar.jsx",
-        lineNumber: 8,
+        lineNumber: 11,
         columnNumber: 5
     }, undefined);
 };
@@ -49064,6 +49081,50 @@ $RefreshReg$(_c, "NavigationBar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-bootstrap/Container":"hEdsw","react-bootstrap/Nav":"cXyL2","react-bootstrap/Navbar":"1mHjo","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"lJZlQ":[function() {},{}]},["4s3Ar","1xC6H","d8Dch"], "d8Dch", "parcelRequire9a4a")
+},{"react/jsx-dev-runtime":"iTorj","react-bootstrap/Container":"hEdsw","react-bootstrap/Nav":"cXyL2","react-bootstrap/Navbar":"1mHjo","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./logo.svg":"efbKM","./logo3.svg":"lgzRM","./logo4.svg":"bnXWv"}],"efbKM":[function(require,module,exports) {
+module.exports = require("eb2bae05087c0ff7").getBundleURL("byUka") + "logo.1becbb9e.svg" + "?" + Date.now();
+
+},{"eb2bae05087c0ff7":"lgJ39"}],"lgJ39":[function(require,module,exports) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return "/";
+}
+function getBaseURL(url) {
+    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
+}
+// TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error("Origin not found");
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"lgzRM":[function(require,module,exports) {
+module.exports = require("2346dcdf448dbf7e").getBundleURL("byUka") + "logo3.7994a16e.svg" + "?" + Date.now();
+
+},{"2346dcdf448dbf7e":"lgJ39"}],"bnXWv":[function(require,module,exports) {
+module.exports = require("4dba692a835fd90b").getBundleURL("byUka") + "logo4.d0a2e9be.svg" + "?" + Date.now();
+
+},{"4dba692a835fd90b":"lgJ39"}],"lJZlQ":[function() {},{}]},["4s3Ar","1xC6H","d8Dch"], "d8Dch", "parcelRequire9a4a")
 
 //# sourceMappingURL=index.b4b6dfad.js.map

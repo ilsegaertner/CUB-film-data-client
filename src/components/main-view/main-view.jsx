@@ -184,17 +184,19 @@ export const MainView = ({ movie }) => {
             element={
               <>
                 <Form>
-                  <Form.Label htmlFor="Searchbar">
-                    Browse our{" "}
-                    <span style={{ color: "#0000ff  " }}>
-                      CUB Film Database
+                  <Form.Text htmlFor="Searchbar">
+                    Browse{" "}
+                    <span style={{ fontFamily: "monospace" }}>
+                      - CUB FILM DATA -
                     </span>{" "}
-                    for arthouse classics and search for your favorite Movies
-                  </Form.Label>
+                    for arthouse classics and look for facts about your favorite
+                    movies
+                  </Form.Text>
                   <Form.Control
+                    size="lg"
                     type="text"
                     placeholder="Search movies..."
-                    class="bg-body-tertiary navbar navbar-expand-lg navbar-light searchMovies form-control-lg"
+                    class="bg-body-tertiary navbar navbar-expand-lg navbar-light searchMovies form-control-lg mr-sm-2"
                     value={searchQuery}
                     onChange={handleSearchInputChange}
                   />
