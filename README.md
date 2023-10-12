@@ -2,6 +2,8 @@
 
 ## An arthouse movies database
 
+![image](https://raw.githubusercontent.com/ilsegaertner/parallelogram/main/img/_C__Users_Joachim_Desktop_CF_exercises_Fullstack%2520Immersion_exercises_parallelogram_index.html_.png)
+
 ### A complete web application (client-side and server-side) built using full-stack JavaScript technologies
 
 ### The project demonstrates mastery of full-stack JavaScript development, including APIs, web server frameworks, databases, business logic, authentication and data security

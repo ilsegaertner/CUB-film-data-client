@@ -27414,7 +27414,8 @@ const MainView = ({ movie })=>{
                                                     favoriteMovieList: favoriteMovieList,
                                                     updateUser: updateUser,
                                                     token: token,
-                                                    setUserProfile: setUserProfile
+                                                    setUserProfile: setUserProfile,
+                                                    setFavoriteMovieList: setFavoriteMovieList
                                                 }, void 0, false, void 0, void 0)
                                             }, movie.id, false, void 0, void 0))
                                     }, void 0, false)
