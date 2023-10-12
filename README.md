@@ -29,6 +29,9 @@ The objectiv was to build a client-side REACT app for the previously developed [
 The development of the clientside was achieved through the usage of the REACT framework.
 During the process the routes for the individual endpoints were determined, and the codelogic was created in different components, a main view, a navigation-bar, a movie view, a login- and signup view, a movie card, a profile view, and a favorites view:
 
+<img width="1423" alt="Bildschirmfoto 2023-10-12 um 15 20 21" src="https://github.com/ilsegaertner/CUB-film-data-client/assets/129660427/16345206-5441-46e2-8816-b081f9759657">
+
+
 ### Features
 
 #### Main view
@@ -59,6 +62,10 @@ During the process the routes for the individual endpoints were determined, and 
 - Displays favorite movies
 - Allows users to remove a movie from their list of favorites
 - Allows existing users to deregister
+
+<img width="612" alt="Bildschirmfoto 2023-10-12 um 15 20 50" src="https://github.com/ilsegaertner/CUB-film-data-client/assets/129660427/ceed3376-9526-4538-a7b8-617257341bd6"><img width="612" alt="Bildschirmfoto 2023-10-12 um 15 21 05" src="https://github.com/ilsegaertner/CUB-film-data-client/assets/129660427/2a3e8616-76fb-47a5-8028-cdc38eb58172">
+
+
 
 ### Challenges
 
