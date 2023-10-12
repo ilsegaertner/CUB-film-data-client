@@ -75,8 +75,8 @@ As a conclusion it was not an easy, but very enriching task being aware of all t
 ### Technologies used
 
 - JavaScript
-- Node.js
-- Mongoose
-- Express
-- React
+- REACT
 - MongoDB
+- Express
+- HTML
+- CSS
