@@ -238,7 +238,6 @@ export const MainView = ({ movie }) => {
                           updateUser={updateUser}
                           token={token}
                           setUserProfile={setUserProfile}
-                          setFavoriteMovieList={setFavoriteMovieList}
                         />
                       </Col>
                     ))}

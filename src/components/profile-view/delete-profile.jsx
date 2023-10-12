@@ -1,8 +1,13 @@
 import React from "react";
-import { Button, Card } from "react-bootstrap";
+import { useState } from "react";
+import { Button, Card, Modal } from "react-bootstrap";
 import "./profile-view.scss";
 
 export const DeleteProfile = ({ user, onLoggedOut, token }) => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const deleteProfileHandler = () => {
     fetch(
       `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`,
@@ -26,10 +31,36 @@ export const DeleteProfile = ({ user, onLoggedOut, token }) => {
   return (
     <>
       <Card>
-        <Button onClick={deleteProfileHandler} className="deleteButton">
+        <Button variant="primary" onClick={handleShow} className="deleteButton">
           Delete Profile
         </Button>
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Delete account</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Are you sure you want to delete your profile?</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              No, bring me back
+            </Button>
+            <Button variant="primary" onClick={deleteProfileHandler}>
+              Delete Profile{" "}
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </Card>
     </>
   );
 };
+
+//   return (
+//     <>
+//       <Button variant="primary" onClick={handleShow}>
+//         Launch demo modal
+//       </Button>
+
+//     </>
+//   );
+// }
+
+// export default Example;

@@ -27414,8 +27414,7 @@ const MainView = ({ movie })=>{
                                                     favoriteMovieList: favoriteMovieList,
                                                     updateUser: updateUser,
                                                     token: token,
-                                                    setUserProfile: setUserProfile,
-                                                    setFavoriteMovieList: setFavoriteMovieList
+                                                    setUserProfile: setUserProfile
                                                 }, void 0, false, void 0, void 0)
                                             }, movie.id, false, void 0, void 0))
                                     }, void 0, false)
@@ -48816,7 +48815,12 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactBootstrap = require("react-bootstrap");
 var _profileViewScss = require("./profile-view.scss");
+var _s = $RefreshSig$();
 const DeleteProfile = ({ user, onLoggedOut, token })=>{
+    _s();
+    const [show, setShow] = (0, _react.useState)(false);
+    const handleClose = ()=>setShow(false);
+    const handleShow = ()=>setShow(true);
     const deleteProfileHandler = ()=>{
         fetch(`https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`, {
             method: "DELETE",
@@ -48836,22 +48840,94 @@ const DeleteProfile = ({ user, onLoggedOut, token })=>{
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
-            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                onClick: deleteProfileHandler,
-                className: "deleteButton",
-                children: "Delete Profile"
-            }, void 0, false, {
-                fileName: "src/components/profile-view/delete-profile.jsx",
-                lineNumber: 29,
-                columnNumber: 9
-            }, undefined)
-        }, void 0, false, {
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                    variant: "primary",
+                    onClick: handleShow,
+                    className: "deleteButton",
+                    children: "Delete Profile"
+                }, void 0, false, {
+                    fileName: "src/components/profile-view/delete-profile.jsx",
+                    lineNumber: 34,
+                    columnNumber: 9
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Modal), {
+                    show: show,
+                    onHide: handleClose,
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Modal).Header, {
+                            closeButton: true,
+                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Modal).Title, {
+                                children: "Delete account"
+                            }, void 0, false, {
+                                fileName: "src/components/profile-view/delete-profile.jsx",
+                                lineNumber: 39,
+                                columnNumber: 13
+                            }, undefined)
+                        }, void 0, false, {
+                            fileName: "src/components/profile-view/delete-profile.jsx",
+                            lineNumber: 38,
+                            columnNumber: 11
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Modal).Body, {
+                            children: "Are you sure you want to delete your profile?"
+                        }, void 0, false, {
+                            fileName: "src/components/profile-view/delete-profile.jsx",
+                            lineNumber: 41,
+                            columnNumber: 11
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Modal).Footer, {
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                                    variant: "secondary",
+                                    onClick: handleClose,
+                                    children: "No, bring me back"
+                                }, void 0, false, {
+                                    fileName: "src/components/profile-view/delete-profile.jsx",
+                                    lineNumber: 43,
+                                    columnNumber: 13
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                                    variant: "primary",
+                                    onClick: deleteProfileHandler,
+                                    children: [
+                                        "Delete Profile",
+                                        " "
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/profile-view/delete-profile.jsx",
+                                    lineNumber: 46,
+                                    columnNumber: 13
+                                }, undefined)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/profile-view/delete-profile.jsx",
+                            lineNumber: 42,
+                            columnNumber: 11
+                        }, undefined)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/profile-view/delete-profile.jsx",
+                    lineNumber: 37,
+                    columnNumber: 9
+                }, undefined)
+            ]
+        }, void 0, true, {
             fileName: "src/components/profile-view/delete-profile.jsx",
-            lineNumber: 28,
+            lineNumber: 33,
             columnNumber: 7
         }, undefined)
     }, void 0, false);
-};
+}; //   return (
+ //     <>
+ //       <Button variant="primary" onClick={handleShow}>
+ //         Launch demo modal
+ //       </Button>
+ //     </>
+ //   );
+ // }
+ // export default Example;
+_s(DeleteProfile, "NKb1ZOdhT+qUsWLXSgjSS2bk2C4=");
 _c = DeleteProfile;
 var _c;
 $RefreshReg$(_c, "DeleteProfile");
