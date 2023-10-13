@@ -1,4 +1,7 @@
 import { Button } from "react-bootstrap";
+import React from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./favorites.scss";
 
 export const AddFavorite = ({
@@ -9,6 +12,15 @@ export const AddFavorite = ({
   setUserProfile,
   user,
 }) => {
+  const showToast = () => {
+    toast.info(
+      <div>
+        <span style={{ fontWeight: "bold" }}>{movie.title}</span> from{" "}
+        <span style={{ fontWeight: "bold" }}>{movie.director}</span> added to
+        your favorite list
+      </div>
+    );
+  };
   const storedUser = JSON.parse(localStorage.getItem("user"));
 
   const bothHandlers = () => {
@@ -46,16 +58,32 @@ export const AddFavorite = ({
         if (data) {
           setUserProfile(data);
           setFavoriteMovieList(updatedFavouriteMovies);
+          showToast();
         }
-        alert(`${movie.title} from ${movie.director} added to favorites`);
+        // alert(`${movie.title} from ${movie.director} added to favorites`);
       })
       .catch((error) => {
         console.error(`Error adding ${movie.title} to favorites`, error);
       });
   };
   return (
-    <Button size="sm" onClick={bothHandlers} className="addButton">
-      Add
-    </Button>
+    <>
+      <Button size="sm" onClick={bothHandlers} className="addButton">
+        Add
+      </Button>
+      <ToastContainer
+        position="top-center full width"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        draggable
+        theme="dark"
+        // toastId="005"
+        limit={1}
+        preventDuplicates={true}
+      />
+    </>
   );
 };

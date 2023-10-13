@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const UpdateUser = ({ user, token, setUserProfile }) => {
   const [username, setUsername] = useState(user.Username);
@@ -7,6 +9,16 @@ export const UpdateUser = ({ user, token, setUserProfile }) => {
   const [email, setEmail] = useState(user.Email);
   const [birthday, setBirthday] = useState(user.Birthday);
   const [favouriteMovies, setFavouriteMovies] = useState(user.FavouriteMovies);
+
+  const showToastSuccess = () => {
+    toast.info("Your profile was updated.");
+  };
+
+  const showToastFail = () => {
+    toast.info(
+      "Failed to update your profile. Please double-check your information, ensure you are logged in, and try again. If the problem persists, please contact support."
+    );
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -38,19 +50,22 @@ export const UpdateUser = ({ user, token, setUserProfile }) => {
       .then((response) => {
         console.log(data);
         if (response.ok) {
-          alert("Your profile was updated.");
-          window.location = "/";
+          showToastSuccess();
+          // alert("Your profile was updated.");
+          // window.location = "/";
         } else {
-          alert("Form submission failed.");
+          // alert("Form submission failed.");
+          showToastFail();
           throw new Error("Form submission failed.");
         }
       })
 
       .catch((error) => {
         console.error("Error submitting form", error);
-        alert(
-          "Failed to update your profile. Please double-check your information, ensure you are logged in, and try again. If the problem persists, please contact support."
-        );
+        showToastFail();
+        // alert(
+        //   "Failed to update your profile. Please double-check your information, ensure you are logged in, and try again. If the problem persists, please contact support."
+        // );
       });
   };
   console.log(user);
@@ -109,6 +124,18 @@ export const UpdateUser = ({ user, token, setUserProfile }) => {
         >
           Update
         </Button>
+        <ToastContainer
+          position="top-center full width"
+          autoClose={4000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          draggable
+          theme="dark"
+          // limit={1}
+          toastId="003"
+        />
       </Form.Group>
     </Form>
   );

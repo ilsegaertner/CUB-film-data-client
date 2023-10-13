@@ -1,4 +1,8 @@
 import { Button } from "react-bootstrap";
+import React from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import "./favorites.scss";
 
 export const RemoveFavorite = ({
@@ -13,6 +17,16 @@ export const RemoveFavorite = ({
 }) => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
+
+  const showToast = () => {
+    toast.info(
+      <div>
+        <span style={{ fontWeight: "bold" }}>{movie.title}</span> from{" "}
+        <span style={{ fontWeight: "bold" }}>{movie.director}</span> removed
+        from your favorite list
+      </div>
+    );
+  };
 
   const deleteFavoriteHandler = () => {
     const updatedFavoriteMovies = favoriteMovieList.filter(
@@ -42,8 +56,9 @@ export const RemoveFavorite = ({
             FavouriteMovies: updatedFavouriteMovies,
           };
           setUserProfile(updatedUser);
+          showToast();
 
-          alert(`${movie.title} from ${movie.director} removed from favorites`);
+          // alert(`${movie.title} from ${movie.director} removed from favorites`);
         } else {
           throw new Error(`Failed to remove ${movie.title}`);
         }
@@ -54,8 +69,26 @@ export const RemoveFavorite = ({
   };
 
   return (
-    <button size="sm" onClick={deleteFavoriteHandler} className="removeButton">
-      Remove
-    </button>
+    <>
+      <button
+        size="sm"
+        onClick={deleteFavoriteHandler}
+        className="removeButton"
+      >
+        Remove
+      </button>
+      <ToastContainer
+        position="top-center full width"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        draggable
+        theme="dark"
+        // toastId="005"
+        limit={1}
+      />
+    </>
   );
 };
