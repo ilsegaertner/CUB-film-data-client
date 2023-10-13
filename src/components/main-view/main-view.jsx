@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 // import Row from "react-bootstrap/Row";
 // import Col from "react-bootstrap/Col";
-import { Row, Col, Form, NavbarBrand } from "react-bootstrap";
+import { Row, Col, Form, NavbarBrand, ToastContainer } from "react-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view"; // .jsx format ending not needed here
@@ -248,6 +250,19 @@ export const MainView = ({ movie }) => {
             }
           />
         </Routes>
+        <ToastContainer
+          position="top-center full width"
+          autoClose={1800}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          draggable
+          theme="dark"
+          // toastId="005"
+          limit={1}
+          preventDuplicates={true}
+        />
       </Row>
     </BrowserRouter>
   );

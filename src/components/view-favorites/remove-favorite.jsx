@@ -77,7 +77,7 @@ export const RemoveFavorite = ({
       >
         Remove
       </button>
-      <ToastContainer
+      {/* <ToastContainer
         position="top-center full width"
         autoClose={2000}
         hideProgressBar={false}
@@ -88,7 +88,7 @@ export const RemoveFavorite = ({
         theme="dark"
         // toastId="005"
         limit={1}
-      />
+      /> */}
     </>
   );
 };
