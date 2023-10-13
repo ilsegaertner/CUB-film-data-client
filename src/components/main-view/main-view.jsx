@@ -20,6 +20,7 @@ export const MainView = ({ movie }) => {
   const [user, setUser] = useState(storedUser ? storedUser : null); //added logic for persisting a Login Session
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
+  const [moviesToRender, setMoviesToRender] = useState([]);
   const [favoriteMovieList, setFavoriteMovieList] = useState(
     user ? user.FavouriteMovies : []
   );
@@ -31,13 +32,21 @@ export const MainView = ({ movie }) => {
 
   const handleSearchInputChange = (event) => {
     setSearchQuery(event.target.value);
+
+    const filteredMovies = movies.filter(
+        (movie) =>
+            movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            movie.director.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setMoviesToRender(filteredMovies);
   };
 
   const handleClearSearch = () => {
     setSearchQuery("");
+    setMoviesToRender(movies);
   };
 
-  const filteredMovies = movies.filter(
+  const filteredMovies = moviesToRender.filter(
     (movie) =>
       movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       movie.director.toLowerCase().includes(searchQuery.toLowerCase())
@@ -96,6 +105,7 @@ export const MainView = ({ movie }) => {
           };
         });
         setMovies(moviesFromApi);
+        setMoviesToRender(moviesFromApi);
       });
   }, [token, setFavoriteMovieList]);
 
@@ -221,11 +231,11 @@ export const MainView = ({ movie }) => {
                 </Form>
                 {!user ? (
                   <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
+                ) : moviesToRender.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
                   <>
-                    {filteredMovies.map((movie) => (
+                    {moviesToRender.map((movie) => (
                       <Col
                         className="mb-5"
                         key={movie.id}
@@ -234,6 +244,7 @@ export const MainView = ({ movie }) => {
                         lg={3}
                       >
                         <MovieCard
+                            key={movie.id}
                           movie={movie}
                           user={user}
                           favoriteMovieList={favoriteMovieList}
@@ -242,6 +253,7 @@ export const MainView = ({ movie }) => {
                           setUserProfile={setUserProfile}
                           setFavoriteMovieList={setFavoriteMovieList}
                         />
+
                       </Col>
                     ))}
                   </>
