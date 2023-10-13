@@ -251,7 +251,7 @@ export const MainView = ({ movie }) => {
           />
         </Routes>
         <ToastContainer
-          position="top-center full width"
+          position="top-center"
           autoClose={1800}
           hideProgressBar={false}
           newestOnTop={false}
