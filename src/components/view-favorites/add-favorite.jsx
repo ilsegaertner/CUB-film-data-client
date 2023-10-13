@@ -71,7 +71,7 @@ export const AddFavorite = ({
       <Button size="sm" onClick={bothHandlers} className="addButton">
         Add
       </Button>
-      <ToastContainer
+      {/* <ToastContainer
         position="top-center full width"
         autoClose={2000}
         hideProgressBar={false}
@@ -83,7 +83,7 @@ export const AddFavorite = ({
         // toastId="005"
         limit={1}
         preventDuplicates={true}
-      />
+      /> */}
     </>
   );
 };

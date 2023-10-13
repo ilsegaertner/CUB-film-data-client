@@ -124,18 +124,6 @@ export const UpdateUser = ({ user, token, setUserProfile }) => {
         >
           Update
         </Button>
-        <ToastContainer
-          position="top-center full width"
-          autoClose={4000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          draggable
-          theme="dark"
-          // limit={1}
-          toastId="003"
-        />
       </Form.Group>
     </Form>
   );

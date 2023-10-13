@@ -51,17 +51,7 @@ export const MovieCard = ({
               style={{ textDecoration: "none" }}
             >
               {movie.director}
-            </span>
-            {/* {showDirectorBio && (
-              <div>
-                <span>{movie.bio} </span>{" "}
-              </div>
-            )} */}
-            {/* <Link to={`/movies/${movie.title}`}>
-            <Button variant="link" style={{ textDecoration: "none" }}>
-              Open
-            </Button>
-          </Link> */}{" "}
+            </span>{" "}
             {favoriteMovieList.some((favMovie) => favMovie.id === movie.id) ? (
               <RemoveFavorite
                 movieId={movie.id}
