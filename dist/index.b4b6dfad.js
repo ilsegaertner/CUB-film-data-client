@@ -27436,7 +27436,7 @@ const MainView = ({ movie })=>{
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactToastify.ToastContainer), {
-                        position: "top-center full width",
+                        position: "top-center",
                         autoClose: 1800,
                         hideProgressBar: false,
                         newestOnTop: false,
