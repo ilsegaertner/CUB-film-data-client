@@ -34,9 +34,9 @@ export const MainView = ({ movie }) => {
     setSearchQuery(event.target.value);
 
     const filteredMovies = movies.filter(
-        (movie) =>
-            movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            movie.director.toLowerCase().includes(searchQuery.toLowerCase())
+      (movie) =>
+        movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        movie.director.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setMoviesToRender(filteredMovies);
   };
@@ -244,7 +244,7 @@ export const MainView = ({ movie }) => {
                         lg={3}
                       >
                         <MovieCard
-                            key={movie.id}
+                          key={movie.id}
                           movie={movie}
                           user={user}
                           favoriteMovieList={favoriteMovieList}
@@ -253,7 +253,6 @@ export const MainView = ({ movie }) => {
                           setUserProfile={setUserProfile}
                           setFavoriteMovieList={setFavoriteMovieList}
                         />
-
                       </Col>
                     ))}
                   </>
