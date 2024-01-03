@@ -6,6 +6,10 @@ import { Row, Col, Form, NavbarBrand, ToastContainer } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+// to access the Redux store's state and dispatch actions within functional components ...
+import { useSelector, useDispatch } from "react-redux";
+import { setMovies } from "../../redux/reducers/movies";
+
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view"; // .jsx format ending not needed here
 import { LoginView } from "../login-view/login-view";
@@ -14,12 +18,19 @@ import { ProfileView } from "../profile-view/profile-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 
 export const MainView = ({ movie }) => {
+  const movies = useSelector((state) => state.movies);
+  // const [movies, setMovies] = useState([]);
+
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
 
+  const dispatch = useDispatch();
+
   const [user, setUser] = useState(storedUser ? storedUser : null); //added logic for persisting a Login Session
-  const [token, setToken] = useState(storedToken ? storedToken : null);
-  const [movies, setMovies] = useState([]);
+  const [token, setToken] = useState(storedToken ? storedToken : null); //added logic for persisting a Login Session
+  // fetching and displaying ALL movies
+
+  // displaying filtered movies from search query
   const [moviesToRender, setMoviesToRender] = useState([]);
   const [favoriteMovieList, setFavoriteMovieList] = useState(
     user ? user.FavouriteMovies : []
@@ -104,8 +115,7 @@ export const MainView = ({ movie }) => {
             actors: movie.Actors,
           };
         });
-        setMovies(moviesFromApi);
-        setMoviesToRender(moviesFromApi);
+        dispatch(setMovies(moviesFromApi));
       });
   }, [token, setFavoriteMovieList]);
 
@@ -180,7 +190,7 @@ export const MainView = ({ movie }) => {
                 ) : (
                   <Col md={8}>
                     <MovieView
-                      movies={movies}
+                      // movies={movies}
                       user={user}
                       favoriteMovieList={favoriteMovieList}
                       updateUser={updateUser}
