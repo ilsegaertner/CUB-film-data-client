@@ -116,6 +116,8 @@ export const MainView = ({ movie }) => {
           };
         });
         dispatch(setMovies(moviesFromApi));
+        // setMovies(moviesFromApi);
+        // setMoviesToRender(moviesFromApi);
       });
   }, [token, setFavoriteMovieList]);
 
