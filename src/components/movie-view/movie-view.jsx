@@ -8,7 +8,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
 export const MovieView = ({
-  // movies,
+  movies,
   favoriteMovieList,
   user,
   token,
@@ -19,7 +19,6 @@ export const MovieView = ({
 }) => {
   const { movieTitle } = useParams();
   const movie = movies.find((m) => m.title === movieTitle);
-  const movies = useSelector((state) => state.movies);
 
   const [showGenreDescription, setShowGenreDescription] = useState(false);
   const [showDirectorBio, setShowDirectorBio] = useState(false);
