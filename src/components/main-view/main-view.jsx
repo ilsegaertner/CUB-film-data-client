@@ -30,6 +30,7 @@ export const MainView = ({ movie }) => {
   const [showGenreDescription, setShowGenreDescription] = useState(false);
   const [showDirectorBio, setShowDirectorBio] = useState(false);
 
+  // handle Movie Search
   const handleSearchInputChange = (event) => {
     setSearchQuery(event.target.value);
 
@@ -40,26 +41,25 @@ export const MainView = ({ movie }) => {
     );
     setMoviesToRender(filteredMovies);
   };
-
   const handleClearSearch = () => {
     setSearchQuery("");
     setMoviesToRender(movies);
   };
-
   const filteredMovies = moviesToRender.filter(
     (movie) =>
       movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       movie.director.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
   console.log(favoriteMovieList);
 
+  // handle logOut
   const onLoggedOut = () => {
     setUser(null);
     setToken(null);
     localStorage.clear();
   };
 
+  //update User
   const updateUser = () => {
     fetch(
       `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`,
@@ -112,7 +112,6 @@ export const MainView = ({ movie }) => {
   return (
     <BrowserRouter>
       <NavigationBar user={user} onLoggedOut={onLoggedOut} />
-
       <Row className="justify-content-md-center">
         <Routes>
           <Route
