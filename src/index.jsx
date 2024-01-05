@@ -1,6 +1,5 @@
 import { createRoot } from "react-dom/client";
-import { Provider } from "react-redux";
-import { store } from "./redux/store";
+
 import { MainView } from "./components/main-view/main-view";
 import Container from "react-bootstrap/Container";
 
@@ -10,11 +9,9 @@ import "./index.scss";
 // Main component (will eventually use all the others)
 const App = () => {
   return (
-    <Provider store={store}>
-      <Container>
-        <MainView />
-      </Container>
-    </Provider>
+    <Container>
+      <MainView />
+    </Container>
   );
 };
 
