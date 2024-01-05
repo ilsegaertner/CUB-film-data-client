@@ -1,25 +1,38 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import React from "react";
-import { Card, Figure, Row, Col } from "react-bootstrap";
+import { Card, Figure, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { AddFavorite } from "../view-favorites/add-favorite";
-import { RemoveFavorite } from "../view-favorites/remove-favorite";
+import { addFavouriteHandler } from "../favouriteHandler";
+import { removeFavouriteHandler } from "../favouriteHandler";
+
 import "./movie-card.scss";
-// import "./profile-view/profile-view.scss";
 
 export const MovieCard = ({
   movie,
   user,
-  favoriteMovieList,
+  movieId,
   updateUser,
   token,
-  title,
   setUserProfile,
-  setFavoriteMovieList,
 }) => {
+  console.log(movieId);
+
   const [showGenreDescription, setShowGenreDescription] = useState(false);
   const [showDirectorBio, setShowDirectorBio] = useState(false);
+
+  const [isMovieInFavourites, setIsMovieInFavourites] = useState(
+    user.FavouriteMovies.includes(movieId)
+  );
+
+  const toggleFavourite = () => {
+    if (isMovieInFavourites) {
+      removeFavouriteHandler(movieId, user, token, updateUser);
+    } else {
+      addFavouriteHandler(movieId, user, token, updateUser);
+    }
+    setIsMovieInFavourites(!isMovieInFavourites); // Toggle the local state
+  };
 
   const toggleDirectorBio = () => {
     setShowDirectorBio(!showDirectorBio);
@@ -52,31 +65,11 @@ export const MovieCard = ({
             >
               {movie.director}
             </span>{" "}
-            {favoriteMovieList.some((favMovie) => favMovie.id === movie.id) ? (
-              <RemoveFavorite
-                movieId={movie.id}
-                movie={movie}
-                updateUser={updateUser}
-                user={user}
-                title={title}
-                token={token}
-                setUserProfile={setUserProfile}
-                favoriteMovieList={favoriteMovieList}
-                setFavoriteMovieList={setFavoriteMovieList}
-              />
-            ) : (
-              <AddFavorite
-                movieId={movie.id}
-                movie={movie}
-                updateUser={updateUser}
-                user={user}
-                title={title}
-                token={token}
-                setUserProfile={setUserProfile}
-                favoriteMovieList={favoriteMovieList}
-                setFavoriteMovieList={setFavoriteMovieList}
-              />
-            )}
+            <Button className="addButton" onClick={toggleFavourite}>
+              {isMovieInFavourites
+                ? "Remove from Favourites"
+                : "Add to Favourites"}
+            </Button>
           </>
         </Card.Body>
       </Figure>
