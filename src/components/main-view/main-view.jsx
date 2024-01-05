@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-// import Row from "react-bootstrap/Row";
-// import Col from "react-bootstrap/Col";
 import { Row, Col, Form, NavbarBrand, ToastContainer } from "react-bootstrap";
+
+//import toast
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+// import components
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view"; // .jsx format ending not needed here
 import { LoginView } from "../login-view/login-view";
@@ -13,72 +14,21 @@ import { SignupView } from "../signup-view/signup-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 
-export const MainView = ({ movie }) => {
+export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
 
-  const [user, setUser] = useState(storedUser ? storedUser : null); //added logic for persisting a Login Session
-  const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
+  const [movieId, setMovieId] = useState(null);
+
+  const [user, setUser] = useState(storedUser ? storedUser : null); //added logic for persisting a Login Session
+  const [token, setToken] = useState(storedToken ? storedToken : null); //added logic for persisting a Login Session
+
+  const [userProfile, setUserProfile] = useState({});
+
+  // displaying filtered movies from search query
   const [moviesToRender, setMoviesToRender] = useState([]);
-  const [favoriteMovieList, setFavoriteMovieList] = useState(
-    user ? user.FavouriteMovies : []
-  );
-  const [userProfile, setUserProfile] = useState(storedUser || null);
   const [searchQuery, setSearchQuery] = useState("");
-
-  const [showGenreDescription, setShowGenreDescription] = useState(false);
-  const [showDirectorBio, setShowDirectorBio] = useState(false);
-
-  const handleSearchInputChange = (event) => {
-    setSearchQuery(event.target.value);
-
-    const filteredMovies = movies.filter(
-      (movie) =>
-        movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        movie.director.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setMoviesToRender(filteredMovies);
-  };
-
-  const handleClearSearch = () => {
-    setSearchQuery("");
-    setMoviesToRender(movies);
-  };
-
-  const filteredMovies = moviesToRender.filter(
-    (movie) =>
-      movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      movie.director.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
-  console.log(favoriteMovieList);
-
-  const onLoggedOut = () => {
-    setUser(null);
-    setToken(null);
-    localStorage.clear();
-  };
-
-  const updateUser = () => {
-    fetch(
-      `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`,
-      {
-        method: "GET",
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    )
-      .then((response) => response.json())
-      .then((user) => {
-        setUser(user);
-      })
-      .catch((error) => {
-        alert(
-          "Failed to update user information. Please try again later or check your network connection. " +
-            error
-        );
-      });
-  };
 
   //fetch Movies
   useEffect(() => {
@@ -105,14 +55,63 @@ export const MainView = ({ movie }) => {
           };
         });
         setMovies(moviesFromApi);
+        setMovieId(moviesFromApi[0]?.id); // Set the movieId from the fetched movies
         setMoviesToRender(moviesFromApi);
       });
-  }, [token, setFavoriteMovieList]);
+  }, [token]);
+
+  // handle Movie Search
+  const handleSearchInputChange = (event) => {
+    setSearchQuery(event.target.value);
+
+    const filteredMovies = movies.filter(
+      (movie) =>
+        movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        movie.director.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setMoviesToRender(filteredMovies);
+  };
+  const handleClearSearch = () => {
+    setSearchQuery("");
+    setMoviesToRender(movies);
+  };
+  const filteredMovies = moviesToRender.filter(
+    (movie) =>
+      movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      movie.director.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  // handle logOut
+  const onLoggedOut = () => {
+    setUser(null);
+    setToken(null);
+    localStorage.clear();
+  };
+
+  //update User
+  const updateUser = () => {
+    fetch(
+      `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`,
+      {
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    )
+      .then((response) => response.json())
+      .then((user) => {
+        setUser(user);
+      })
+      .catch((error) => {
+        alert(
+          "Failed to update user information. Please try again later or check your network connection. " +
+            error
+        );
+      });
+  };
 
   return (
     <BrowserRouter>
       <NavigationBar user={user} onLoggedOut={onLoggedOut} />
-
       <Row className="justify-content-md-center">
         <Routes>
           <Route
@@ -138,7 +137,11 @@ export const MainView = ({ movie }) => {
                   <Navigate to="/" />
                 ) : (
                   <Col md={5}>
-                    <LoginView onLoggedIn={(user) => setUser(user)} />
+                    <LoginView
+                      onLoggedIn={(user, token) => {
+                        setUser(user), setToken(token);
+                      }}
+                    />
                   </Col>
                 )}
               </>
@@ -157,8 +160,6 @@ export const MainView = ({ movie }) => {
                     token={storedToken}
                     updateUser={updateUser}
                     setUserProfile={setUserProfile}
-                    favoriteMovieList={favoriteMovieList}
-                    setFavoriteMovieList={setFavoriteMovieList}
                     onLoggedOut={() => {
                       setUser(null), setToken(null), localStorage.clear();
                     }}
@@ -181,14 +182,11 @@ export const MainView = ({ movie }) => {
                 ) : (
                   <Col md={8}>
                     <MovieView
-                      movies={movies}
                       user={user}
-                      favoriteMovieList={favoriteMovieList}
+                      setUser={setUser}
                       updateUser={updateUser}
+                      movies={movies}
                       token={token}
-                      setFavoriteMovieList={setFavoriteMovieList}
-                      setUserProfile={setUserProfile}
-                      movie={movie}
                     />
                   </Col>
                 )}
@@ -246,12 +244,10 @@ export const MainView = ({ movie }) => {
                         <MovieCard
                           key={movie.id}
                           movie={movie}
+                          movieId={movie.id}
                           user={user}
-                          favoriteMovieList={favoriteMovieList}
                           updateUser={updateUser}
                           token={token}
-                          setUserProfile={setUserProfile}
-                          setFavoriteMovieList={setFavoriteMovieList}
                         />
                       </Col>
                     ))}
