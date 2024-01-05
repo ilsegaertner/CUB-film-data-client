@@ -14,6 +14,7 @@ export const ProfileView = ({
   userProfile,
   setUserProfile,
   onLoggedOut,
+
   user,
   title,
   updateUser,
@@ -103,6 +104,7 @@ export const ProfileView = ({
                         updateUser={updateUser}
                         movie={movie}
                         token={token}
+                        movieId={movie.id}
                       />
                     </Col>
                   );

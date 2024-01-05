@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./movie-view.scss";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import { addFavouriteHandler } from "../favouriteHandler";
+import { removeFavouriteHandler } from "../favouriteHandler";
 
 export const MovieView = ({
   movies,
@@ -27,101 +29,103 @@ export const MovieView = ({
 
   console.log(user);
 
-  const addFavouriteHandler = () => {
-    // const updatedFavouriteMovies = [...user.FavouriteMovies, movieId];
+  console.log(movieId);
 
-    // // Update the user profile locally to provide immediate feedback to the user
-    // setUserProfile((prevUser) => ({
-    //   ...prevUser,
-    //   FavouriteMovies: updatedFavouriteMovies,
-    // }));
+  // const addFavouriteHandler = () => {
+  //   // const updatedFavouriteMovies = [...user.FavouriteMovies, movieId];
 
-    if (!movieId) {
-      console.error("Movie ID not found");
-      return;
-    }
+  //   // // Update the user profile locally to provide immediate feedback to the user
+  //   // setUserProfile((prevUser) => ({
+  //   //   ...prevUser,
+  //   //   FavouriteMovies: updatedFavouriteMovies,
+  //   // }));
 
-    fetch(
-      `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${movieId}`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      }
-    )
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          return response.text().then((errorMessage) => {
-            throw new Error(
-              `Failed to add ${movie.title} to favorites: ${errorMessage}`
-            );
-          });
-        }
-      })
-      .then((data) => {
-        if (data) {
-          updateUser();
-          // setUserProfile();
-          // Update the user profile state with the fetched user data including updated favourites
-          // setUserProfile(data);
-          console.log(user);
+  //   if (!movieId) {
+  //     console.error("Movie ID not found");
+  //     return;
+  //   }
 
-          // Show a success message or provide feedback to the user
-          alert(`${movie.title} from ${movie.director} added to favorites`);
-        }
-      })
-      .catch((error) => {
-        console.error(`Error adding ${movie.title} to favorites`, error);
+  //   fetch(
+  //     `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${movieId}`,
+  //     {
+  //       method: "POST",
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //         "Content-Type": "application/json",
+  //       },
+  //     }
+  //   )
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         return response.json();
+  //       } else {
+  //         return response.text().then((errorMessage) => {
+  //           throw new Error(
+  //             `Failed to add ${movie.title} to favorites: ${errorMessage}`
+  //           );
+  //         });
+  //       }
+  //     })
+  //     .then((data) => {
+  //       if (data) {
+  //         updateUser();
+  //         // setUserProfile();
+  //         // Update the user profile state with the fetched user data including updated favourites
+  //         // setUserProfile(data);
+  //         console.log(user);
 
-        // Handle errors gracefully by showing user-friendly messages
-        // or implementing a notification system to inform the user
-      });
-  };
+  //         // Show a success message or provide feedback to the user
+  //         alert(`${movie.title} from ${movie.director} added to favorites`);
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error(`Error adding ${movie.title} to favorites`, error);
 
-  const removeFavouriteHandler = () => {
-    if (!movieId) {
-      console.error("Movie ID not found");
-      return;
-    }
+  //       // Handle errors gracefully by showing user-friendly messages
+  //       // or implementing a notification system to inform the user
+  //     });
+  // };
 
-    // Make a delete request to the API
-    const url = `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${movieId}`;
+  // const removeFavouriteHandler = () => {
+  //   if (!movieId) {
+  //     console.error("Movie ID not found");
+  //     return;
+  //   }
 
-    fetch(url, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          // Filter out the movie from the user's favourite list
-          const updatedFavouriteMovies = user.FavouriteMovies.filter(
-            (favMovieId) => favMovieId !== title
-          );
-          // Update the user state locally to reflect the removal of the favorite movie
-          const updatedUser = {
-            ...user,
-            FavouriteMovies: updatedFavouriteMovies,
-          };
-          updateUser(updatedUser);
-          // setUserProfile(updateUser);
+  //   // Make a delete request to the API
+  //   const url = `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${movieId}`;
 
-          // User Feedback
-          alert(`${movie.title} from ${movie.director} removed from favorites`);
-        } else {
-          throw new Error(`Failed to remove ${movie.title}`);
-        }
-      })
-      .catch((error) => {
-        console.error(`Failed to remove ${movie.title}`, error);
-      });
-  };
+  //   fetch(url, {
+  //     method: "DELETE",
+  //     headers: {
+  //       Authorization: `Bearer ${token}`,
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         // Filter out the movie from the user's favourite list
+  //         const updatedFavouriteMovies = user.FavouriteMovies.filter(
+  //           (favMovieId) => favMovieId !== title
+  //         );
+  //         // Update the user state locally to reflect the removal of the favorite movie
+  //         const updatedUser = {
+  //           ...user,
+  //           FavouriteMovies: updatedFavouriteMovies,
+  //         };
+  //         updateUser(updatedUser);
+  //         // setUserProfile(updateUser);
+
+  //         // User Feedback
+  //         alert(`${movie.title} from ${movie.director} removed from favorites`);
+  //       } else {
+  //         throw new Error(`Failed to remove ${movie.title}`);
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error(`Failed to remove ${movie.title}`, error);
+  //     });
+  // };
 
   console.log(user);
 
@@ -192,9 +196,9 @@ export const MovieView = ({
                 const isMovieInFavourites =
                   user.FavouriteMovies.includes(movieId);
                 if (isMovieInFavourites) {
-                  removeFavouriteHandler();
+                  removeFavouriteHandler(movieId, user, token, updateUser);
                 } else {
-                  addFavouriteHandler();
+                  addFavouriteHandler(movieId, user, token, updateUser);
                 }
               }}
             >

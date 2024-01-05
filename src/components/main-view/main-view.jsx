@@ -184,7 +184,6 @@ export const MainView = () => {
                     <MovieView
                       user={user}
                       setUser={setUser}
-                      // setUserProfile={setUserProfile}
                       updateUser={updateUser}
                       movies={movies}
                       token={token}
@@ -245,6 +244,7 @@ export const MainView = () => {
                         <MovieCard
                           key={movie.id}
                           movie={movie}
+                          movieId={movie.id}
                           user={user}
                           updateUser={updateUser}
                           token={token}
