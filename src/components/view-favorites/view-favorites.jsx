@@ -6,9 +6,7 @@ import { MovieCard } from "../movie-card/movie-card";
 export const ViewFavorites = ({
   user,
   updateUserFavorite,
-  favoriteMovieList,
   token,
-  setFavoriteMovieList,
   setUserProfile,
 }) => {
   return (
@@ -20,13 +18,13 @@ export const ViewFavorites = ({
           </Col>
         </Row>
         <Row>
-          {favoriteMovieList.map((movie, id) => {
+          {/* {favoriteMovieList.map((movie, id) => {
             return (
               <Col xs={12} md={6} lg={3} key={id} className="fav-movie">
                 <MovieCard
                   user={user}
                   setUserProfile={setUserProfile}
-                  favoriteMovieList={favoriteMovieList}
+                
                   updateUserFavorite={updateUserFavorite}
                   movie={movie}
                   token={token}
@@ -34,7 +32,7 @@ export const ViewFavorites = ({
                 />
               </Col>
             );
-          })}
+          })} */}
         </Row>
       </Card.Body>
     </Card>

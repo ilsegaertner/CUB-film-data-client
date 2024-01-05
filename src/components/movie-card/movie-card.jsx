@@ -11,12 +11,11 @@ import "./movie-card.scss";
 export const MovieCard = ({
   movie,
   user,
-  favoriteMovieList,
+
   updateUser,
   token,
   title,
   setUserProfile,
-  setFavoriteMovieList,
 }) => {
   const [showGenreDescription, setShowGenreDescription] = useState(false);
   const [showDirectorBio, setShowDirectorBio] = useState(false);
@@ -52,7 +51,7 @@ export const MovieCard = ({
             >
               {movie.director}
             </span>{" "}
-            {favoriteMovieList.some((favMovie) => favMovie.id === movie.id) ? (
+            {/* {favoriteMovieList.some((favMovie) => favMovie.id === movie.id) ? (
               <RemoveFavorite
                 movieId={movie.id}
                 movie={movie}
@@ -76,7 +75,7 @@ export const MovieCard = ({
                 favoriteMovieList={favoriteMovieList}
                 setFavoriteMovieList={setFavoriteMovieList}
               />
-            )}
+            )} */}
           </>
         </Card.Body>
       </Figure>
