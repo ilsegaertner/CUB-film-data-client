@@ -17,8 +17,10 @@ $color: steelblue;
 }
 
 #root {
-  height: 50vh;
-  background-color: #8f908a37; /* First color block */
+  // height: 50vh;
+  // background-color: #8f908a37; /* First color block */
+
+  // background-color: #888690;
 }
 
 // #root {
@@ -88,6 +90,13 @@ img,
   display: inline;
   position: absolute;
   color: #ff1469;
+}
+
+.container {
+  padding-left: 40px;
+  padding-right: 40px;
+  // background-color: grey;
+  // border: 2px solid #80881b;
 }
 
 .VerticalContainer {

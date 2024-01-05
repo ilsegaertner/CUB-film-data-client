@@ -27244,6 +27244,10 @@ const MainView = ()=>{
         setMoviesToRender(movies);
     };
     const filteredMovies = moviesToRender.filter((movie)=>movie.title.toLowerCase().includes(searchQuery.toLowerCase()) || movie.director.toLowerCase().includes(searchQuery.toLowerCase()));
+    //style of searchbar
+    const searchbarStyle = {
+        boxShadow: "0px 1px 4px #dbdbdb"
+    };
     // handle logOut
     const onLoggedOut = ()=>{
         setUser(null);
@@ -27270,7 +27274,7 @@ const MainView = ()=>{
                 onLoggedOut: onLoggedOut
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 114,
+                lineNumber: 119,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -27290,7 +27294,7 @@ const MainView = ()=>{
                                 }, void 0, false)
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 117,
+                                lineNumber: 122,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27309,7 +27313,7 @@ const MainView = ()=>{
                                 }, void 0, false)
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 132,
+                                lineNumber: 137,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27331,7 +27335,7 @@ const MainView = ()=>{
                                 }, void 0, false, void 0, void 0)
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 152,
+                                lineNumber: 157,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27355,7 +27359,7 @@ const MainView = ()=>{
                                 }, void 0, false)
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 174,
+                                lineNumber: 179,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27391,6 +27395,7 @@ const MainView = ()=>{
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
                                                     size: "lg",
                                                     type: "text",
+                                                    style: searchbarStyle,
                                                     placeholder: "Search movies...",
                                                     class: "bg-body-tertiary navbar navbar-expand-lg navbar-light searchMovies form-control-lg mr-sm-2",
                                                     value: searchQuery,
@@ -27427,13 +27432,13 @@ const MainView = ()=>{
                                 }, void 0, true)
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 197,
+                                lineNumber: 202,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 116,
+                        lineNumber: 121,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactToastify.ToastContainer), {
@@ -27450,19 +27455,19 @@ const MainView = ()=>{
                         preventDuplicates: true
                     }, void 0, false, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 260,
+                        lineNumber: 266,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 115,
+                lineNumber: 120,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 113,
+        lineNumber: 118,
         columnNumber: 5
     }, undefined);
 };
@@ -49664,9 +49669,13 @@ var _logo3SvgDefault = parcelHelpers.interopDefault(_logo3Svg);
 var _logo4Svg = require("./logo4.svg");
 var _logo4SvgDefault = parcelHelpers.interopDefault(_logo4Svg);
 const NavigationBar = ({ user, onLoggedOut })=>{
+    const navbarStyle = {
+        boxShadow: "0px 4px 12px #b7b7b7"
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default), {
         expand: "lg",
         className: "bg-body-tertiary",
+        style: navbarStyle,
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default).Brand, {
@@ -49680,19 +49689,19 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                         alt: "React Bootstrap logo"
                     }, void 0, false, {
                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                        lineNumber: 14,
+                        lineNumber: 18,
                         columnNumber: 11
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                    lineNumber: 13,
+                    lineNumber: 17,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default).Toggle, {
                     "aria-controls": "basic-navbar-nav"
                 }, void 0, false, {
                     fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                    lineNumber: 23,
+                    lineNumber: 27,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default).Collapse, {
@@ -49708,7 +49717,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                         children: "Login"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                        lineNumber: 28,
+                                        lineNumber: 32,
                                         columnNumber: 17
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
@@ -49717,7 +49726,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                         children: "Signup"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                        lineNumber: 31,
+                                        lineNumber: 35,
                                         columnNumber: 17
                                     }, undefined)
                                 ]
@@ -49730,7 +49739,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                         children: "Home"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                        lineNumber: 38,
+                                        lineNumber: 42,
                                         columnNumber: 17
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
@@ -49739,7 +49748,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                         children: "Profile"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                        lineNumber: 41,
+                                        lineNumber: 45,
                                         columnNumber: 17
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
@@ -49747,7 +49756,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                         children: "Logout"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                        lineNumber: 44,
+                                        lineNumber: 48,
                                         columnNumber: 17
                                     }, undefined)
                                 ]
@@ -49755,23 +49764,23 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                        lineNumber: 25,
+                        lineNumber: 29,
                         columnNumber: 11
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                    lineNumber: 24,
+                    lineNumber: 28,
                     columnNumber: 9
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 12,
+            lineNumber: 16,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/navigation-bar/navigation-bar.jsx",
-        lineNumber: 11,
+        lineNumber: 15,
         columnNumber: 5
     }, undefined);
 };

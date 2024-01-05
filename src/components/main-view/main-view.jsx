@@ -81,6 +81,11 @@ export const MainView = () => {
       movie.director.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  //style of searchbar
+  const searchbarStyle = {
+    boxShadow: "0px 1px 4px #dbdbdb",
+  };
+
   // handle logOut
   const onLoggedOut = () => {
     setUser(null);
@@ -213,6 +218,7 @@ export const MainView = () => {
                   <Form.Control
                     size="lg"
                     type="text"
+                    style={searchbarStyle}
                     placeholder="Search movies..."
                     class="bg-body-tertiary navbar navbar-expand-lg navbar-light searchMovies form-control-lg mr-sm-2"
                     value={searchQuery}
