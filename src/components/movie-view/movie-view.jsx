@@ -2,8 +2,6 @@ import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./movie-view.scss";
-import { AddFavorite } from "../view-favorites/add-favorite";
-import { RemoveFavorite } from "../view-favorites/remove-favorite";
 import { Container, Row, Col, Button } from "react-bootstrap";
 
 export const MovieView = ({
@@ -28,55 +26,6 @@ export const MovieView = ({
   }, []);
 
   console.log(user);
-
-  // // Changes the property of a movie based on if they are in the Favorites List or not
-  // useEffect(() => {
-  //   if (user.FavouriteMovies && user.FavouriteMovies.includes(movieTitle)) {
-  //     setIsFavourite(true);
-  //   } else {
-  //     setIsFavourite(false);
-  //   }
-  // }, [user]);
-
-  // // Ensure that user and user's favorite movies are not undefined
-  // useEffect(() => {
-  //   if (user && user.FavouriteMovies) {
-  //     setIsFavourite(user.FavouriteMovies.includes(movieTitle));
-  //   }
-  // }, [user, movieTitle]);
-
-  //Function for adding a movie to their favorites
-
-  // const addToFavourites = async () => {
-  //   await fetch(
-  //     `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/favourites/${movieTitle}`,
-  //     {
-  //       method: "PUT",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     }
-  //   )
-  //     .then((response) => {
-  //       if (response.ok) {
-  //         return response.json();
-  //       } else {
-  //         console.log("Error adding movie to favourites");
-  //       }
-  //     })
-  //     .then((user) => {
-  //       if (user) {
-  //         localStorage.setItem("user", JSON.stringify(user));
-  //         setUser(user);
-  //         setIsFavourite(true);
-  //         console.log(user);
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       alert(error);
-  //     });
-  // };
 
   const addFavouriteHandler = () => {
     // const updatedFavouriteMovies = [...user.FavouriteMovies, movieId];
@@ -174,11 +123,6 @@ export const MovieView = ({
       });
   };
 
-  // // Button triggering the addFavoriteHandler function
-  // <Button size="sm" onClick={addFavoriteHandler} className="addButton">
-  //   Add
-  // </Button>;
-
   console.log(user);
 
   return (
@@ -258,45 +202,6 @@ export const MovieView = ({
                 ? "Remove from Favourites"
                 : "Add to Favourites"}
             </Button>
-
-            {/* <Button
-              className="addButton"
-              onClick={() => {
-                removeFavouriteHandler();
-              }}
-            >
-              Remove from Favourites
-            </Button> */}
-
-            {/* <div className="addButton">
-              {favoriteMovieList.some(
-                (favMovie) => favMovie.id === movie.id
-              ) ? (
-                <RemoveFavorite
-                  movieId={movie.id}
-                  movie={movie}
-                  updateUser={updateUser}
-                  user={user}
-                  title={title}
-                  token={token}
-                  setUserProfile={setUserProfile}
-                  favoriteMovieList={favoriteMovieList}
-                  setFavoriteMovieList={setFavoriteMovieList}
-                />
-              ) : (
-                <AddFavorite
-                  movieId={movie.id}
-                  movie={movie}
-                  updateUser={updateUser}
-                  user={user}
-                  title={title}
-                  token={token}
-                  setUserProfile={setUserProfile}
-                  favoriteMovieList={favoriteMovieList}
-                  setFavoriteMovieList={setFavoriteMovieList}
-                />
-              )}
-            </div> */}
           </Col>
           <Col>
             <Link to={`/`}>

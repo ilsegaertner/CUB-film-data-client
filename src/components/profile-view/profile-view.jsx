@@ -6,7 +6,6 @@ import { UserInfo } from "./user-info";
 import { MovieCard } from "../movie-card/movie-card";
 import { UpdateUser } from "./update-user";
 import { DeleteProfile } from "./delete-profile";
-import { ViewFavorites } from "../view-favorites/view-favorites";
 
 export const ProfileView = ({
   token,
@@ -44,7 +43,6 @@ export const ProfileView = ({
           birthday: data.Birthday,
           favouriteMovies: data.FavouriteMovies || [],
         });
-        // setUserProfile(updateUser);
       })
       .catch((error) => {
         console.error("Error fetching user data", error);
@@ -57,11 +55,6 @@ export const ProfileView = ({
     : [];
   console.log(user);
   console.log(movies);
-  console.log(favouriteMovieList);
-  //   const updatedFavoriteMovieList = movies.filter((movie) =>
-  //   data.FavouriteMovies.includes(movie.id)
-  // );
-  // setFavoriteMovieList(updatedFavoriteMovieList);
 
   return (
     <Container className="profileContainer">
@@ -92,23 +85,7 @@ export const ProfileView = ({
         </Col>
       </Row>
       <Row>
-        {/* <Col xs={1} sm={3} lg={2}>
-          <Card>
-            <Card.Body></Card.Body>
-          </Card>
-        </Col> */}
         <Col xs={12} sm={12} lg={12}>
-          {/* <ViewFavorites
-            favoriteMovieList={favoriteMovieList}
-            token={token}
-            movies={movies}
-            user={user}
-            title={title}
-            movie={movie}
-            setUserProfile={setUserProfile}
-            setFavoriteMovieList={setFavoriteMovieList}
-          /> */}
-
           <Card>
             <Card.Body>
               <Row>
@@ -124,10 +101,8 @@ export const ProfileView = ({
                         user={user}
                         setUserProfile={setUserProfile}
                         updateUser={updateUser}
-                        // updateUserFavorite={updateUserFavorite}
                         movie={movie}
                         token={token}
-                        // setFavoriteMovieList={setFavoriteMovieList}
                       />
                     </Col>
                   );
