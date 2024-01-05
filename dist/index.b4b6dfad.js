@@ -47550,116 +47550,7 @@ $RefreshReg$(_c, "MovieCard");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","prop-types":"7wKI2","react":"21dqq","react-bootstrap":"3AD9A","react-router-dom":"9xmpe","../view-favorites/add-favorite":"kDMV0","../view-favorites/remove-favorite":"jtdAY","./movie-card.scss":"d6HH4","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"kDMV0":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$942b = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$942b.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "AddFavorite", ()=>AddFavorite);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _reactBootstrap = require("react-bootstrap");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _reactToastify = require("react-toastify");
-var _reactToastifyCss = require("react-toastify/dist/ReactToastify.css");
-var _favoritesScss = require("./favorites.scss");
-const AddFavorite = ({ token, movieId, movie, setFavoriteMovieList, setUserProfile, user })=>{
-    const showToast = ()=>{
-        (0, _reactToastify.toast).info(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                    style: {
-                        fontWeight: "bold"
-                    },
-                    children: movie.title
-                }, void 0, false, {
-                    fileName: "src/components/view-favorites/add-favorite.jsx",
-                    lineNumber: 18,
-                    columnNumber: 9
-                }, undefined),
-                " from",
-                " ",
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                    style: {
-                        fontWeight: "bold"
-                    },
-                    children: movie.director
-                }, void 0, false, {
-                    fileName: "src/components/view-favorites/add-favorite.jsx",
-                    lineNumber: 19,
-                    columnNumber: 9
-                }, undefined),
-                " added to your favorite list"
-            ]
-        }, void 0, true, {
-            fileName: "src/components/view-favorites/add-favorite.jsx",
-            lineNumber: 17,
-            columnNumber: 7
-        }, undefined));
-    };
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    const bothHandlers = ()=>{
-        addFavoriteHandler();
-    };
-    const addFavoriteHandler = ()=>{
-        const updatedFavouriteMovies = [
-            ...user.FavouriteMovies,
-            movieId
-        ];
-        setUserProfile({
-            ...user,
-            FavouriteMovies: updatedFavouriteMovies
-        });
-        setFavoriteMovieList(updatedFavouriteMovies);
-        fetch(`https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
-            method: "POST",
-            headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json"
-            }
-        }).then((response)=>{
-            if (response.ok) return response.json();
-            else return response.text().then((errorMessage)=>{
-                throw new Error(`Failed to add ${movie.title} to favorites: ${errorMessage}`);
-            });
-        }).then((data)=>{
-            if (data) {
-                setUserProfile(data);
-                setFavoriteMovieList(updatedFavouriteMovies);
-                showToast();
-            }
-        // alert(`${movie.title} from ${movie.director} added to favorites`);
-        }).catch((error)=>{
-            console.error(`Error adding ${movie.title} to favorites`, error);
-        });
-    };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-            size: "sm",
-            onClick: bothHandlers,
-            className: "addButton",
-            children: "Add"
-        }, void 0, false, {
-            fileName: "src/components/view-favorites/add-favorite.jsx",
-            lineNumber: 71,
-            columnNumber: 7
-        }, undefined)
-    }, void 0, false);
-};
-_c = AddFavorite;
-var _c;
-$RefreshReg$(_c, "AddFavorite");
-
-  $parcel$ReactRefreshHelpers$942b.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react-bootstrap":"3AD9A","react":"21dqq","react-toastify":"kSvyQ","react-toastify/dist/ReactToastify.css":"gJP2Y","./favorites.scss":"8IrDD","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gJP2Y":[function() {},{}],"8IrDD":[function() {},{}],"km3Ru":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","prop-types":"7wKI2","react":"21dqq","react-bootstrap":"3AD9A","react-router-dom":"9xmpe","./movie-card.scss":"d6HH4","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../view-favorites/add-favorite":"kDMV0","../view-favorites/remove-favorite":"jtdAY"}],"d6HH4":[function() {},{}],"km3Ru":[function(require,module,exports) {
 "use strict";
 var Refresh = require("7422ead32dcc1e6b");
 function debounce(func, delay) {
@@ -48261,7 +48152,116 @@ module.exports = require("9e039173d01172ab");
     exports.setSignature = setSignature;
 })();
 
-},{}],"jtdAY":[function(require,module,exports) {
+},{}],"kDMV0":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$942b = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$942b.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "AddFavorite", ()=>AddFavorite);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _reactBootstrap = require("react-bootstrap");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactToastify = require("react-toastify");
+var _reactToastifyCss = require("react-toastify/dist/ReactToastify.css");
+var _favoritesScss = require("./favorites.scss");
+const AddFavorite = ({ token, movieId, movie, setFavoriteMovieList, setUserProfile, user })=>{
+    const showToast = ()=>{
+        (0, _reactToastify.toast).info(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                    style: {
+                        fontWeight: "bold"
+                    },
+                    children: movie.title
+                }, void 0, false, {
+                    fileName: "src/components/view-favorites/add-favorite.jsx",
+                    lineNumber: 18,
+                    columnNumber: 9
+                }, undefined),
+                " from",
+                " ",
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                    style: {
+                        fontWeight: "bold"
+                    },
+                    children: movie.director
+                }, void 0, false, {
+                    fileName: "src/components/view-favorites/add-favorite.jsx",
+                    lineNumber: 19,
+                    columnNumber: 9
+                }, undefined),
+                " added to your favorite list"
+            ]
+        }, void 0, true, {
+            fileName: "src/components/view-favorites/add-favorite.jsx",
+            lineNumber: 17,
+            columnNumber: 7
+        }, undefined));
+    };
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const bothHandlers = ()=>{
+        addFavoriteHandler();
+    };
+    const addFavoriteHandler = ()=>{
+        const updatedFavouriteMovies = [
+            ...user.FavouriteMovies,
+            movieId
+        ];
+        setUserProfile({
+            ...user,
+            FavouriteMovies: updatedFavouriteMovies
+        });
+        setFavoriteMovieList(updatedFavouriteMovies);
+        fetch(`https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json"
+            }
+        }).then((response)=>{
+            if (response.ok) return response.json();
+            else return response.text().then((errorMessage)=>{
+                throw new Error(`Failed to add ${movie.title} to favorites: ${errorMessage}`);
+            });
+        }).then((data)=>{
+            if (data) {
+                setUserProfile(data);
+                setFavoriteMovieList(updatedFavouriteMovies);
+                showToast();
+            }
+        // alert(`${movie.title} from ${movie.director} added to favorites`);
+        }).catch((error)=>{
+            console.error(`Error adding ${movie.title} to favorites`, error);
+        });
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+            size: "sm",
+            onClick: bothHandlers,
+            className: "addButton",
+            children: "Add"
+        }, void 0, false, {
+            fileName: "src/components/view-favorites/add-favorite.jsx",
+            lineNumber: 71,
+            columnNumber: 7
+        }, undefined)
+    }, void 0, false);
+};
+_c = AddFavorite;
+var _c;
+$RefreshReg$(_c, "AddFavorite");
+
+  $parcel$ReactRefreshHelpers$942b.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react-bootstrap":"3AD9A","react":"21dqq","react-toastify":"kSvyQ","react-toastify/dist/ReactToastify.css":"gJP2Y","./favorites.scss":"8IrDD","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gJP2Y":[function() {},{}],"8IrDD":[function() {},{}],"jtdAY":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$0021 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -48363,7 +48363,7 @@ $RefreshReg$(_c, "RemoveFavorite");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-bootstrap":"3AD9A","react":"21dqq","react-toastify":"kSvyQ","react-toastify/dist/ReactToastify.css":"gJP2Y","./favorites.scss":"8IrDD","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gJP2Y":[function() {},{}],"8IrDD":[function() {},{}],"d6HH4":[function() {},{}],"ggaUx":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-bootstrap":"3AD9A","react":"21dqq","react-toastify":"kSvyQ","react-toastify/dist/ReactToastify.css":"gJP2Y","./favorites.scss":"8IrDD","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gJP2Y":[function() {},{}],"8IrDD":[function() {},{}],"ggaUx":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$e9f6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -48671,7 +48671,7 @@ $RefreshReg$(_c, "MovieView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-router":"dbWyW","react":"21dqq","react-router-dom":"9xmpe","./movie-view.scss":"jnlR5","../view-favorites/add-favorite":"kDMV0","../view-favorites/remove-favorite":"jtdAY","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"jnlR5":[function() {},{}],"9YtA0":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-router":"dbWyW","react":"21dqq","react-router-dom":"9xmpe","./movie-view.scss":"jnlR5","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../view-favorites/add-favorite":"kDMV0","../view-favorites/remove-favorite":"jtdAY"}],"jnlR5":[function() {},{}],"9YtA0":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$9fee = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -49254,7 +49254,7 @@ $RefreshReg$(_c, "ProfileView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","./profile-view.scss":"eyKYH","./user-info":"66eot","./update-user":"2SBwg","./delete-profile":"eSmSC","../view-favorites/view-favorites":"jvj17","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"eyKYH":[function() {},{}],"66eot":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","./profile-view.scss":"eyKYH","./user-info":"66eot","./update-user":"2SBwg","./delete-profile":"eSmSC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../view-favorites/view-favorites":"jvj17"}],"eyKYH":[function() {},{}],"66eot":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$1330 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
