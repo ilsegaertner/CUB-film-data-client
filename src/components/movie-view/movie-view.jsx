@@ -2,8 +2,8 @@ import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./movie-view.scss";
-import { AddFavorite } from "../view-favorites/add-favorite";
-import { RemoveFavorite } from "../view-favorites/remove-favorite";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Container, Row, Col, Button } from "react-bootstrap";
 
 export const MovieView = ({
@@ -20,6 +20,27 @@ export const MovieView = ({
 
   const [showGenreDescription, setShowGenreDescription] = useState(false);
   const [showDirectorBio, setShowDirectorBio] = useState(false);
+
+  // handle AddFavouriteToast
+  const showAddToast = () => {
+    toast.info(
+      <div>
+        <span style={{ fontWeight: "bold" }}>{movie.title}</span> from{" "}
+        <span style={{ fontWeight: "bold" }}>{movie.director}</span> added to
+        your favorite list
+      </div>
+    );
+  };
+  // handle RemoveFavouriteToast
+  const showRemoveToast = () => {
+    toast.info(
+      <div>
+        <span style={{ fontWeight: "bold" }}>{movie.title}</span> from{" "}
+        <span style={{ fontWeight: "bold" }}>{movie.director}</span> removed
+        from your favorite list
+      </div>
+    );
+  };
 
   // makes sure that we have our user stored and is parsed
   useEffect(() => {
@@ -59,11 +80,9 @@ export const MovieView = ({
       .then((data) => {
         if (data) {
           updateUser();
-
-          console.log(user);
-
           // Show a success message or provide feedback to the user
-          alert(`${movie.title} from ${movie.director} added to favorites`);
+          showAddToast();
+          // alert(`${movie.title} from ${movie.director} added to favorites`);
         }
       })
       .catch((error) => {
@@ -99,10 +118,9 @@ export const MovieView = ({
             FavouriteMovies: updatedFavouriteMovies,
           };
           updateUser(updatedUser);
-          // setUserProfile(updateUser);
-
           // User Feedback
-          alert(`${movie.title} from ${movie.director} removed from favorites`);
+          showRemoveToast();
+          // alert(`${movie.title} from ${movie.director} removed from favorites`);
         } else {
           throw new Error(`Failed to remove ${movie.title}`);
         }

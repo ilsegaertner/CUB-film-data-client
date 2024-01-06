@@ -26,6 +26,11 @@ $color: steelblue;
 
   padding-left: 60px;
   padding-right: 60px;
+  --toastify-toast-width: 320px;
+}
+
+.Toastify__toast {
+  width: 423px;
 }
 
 // #root {

@@ -250,7 +250,6 @@ export const MainView = () => {
                 ) : moviesToRender.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
-                  // <Container fluid="md">
                   <>
                     {" "}
                     <div className="all-movies">
@@ -274,22 +273,23 @@ export const MainView = () => {
                       ))}
                     </div>
                   </>
-                  // </Container>
                 )}
               </>
             }
           />
         </Routes>
+
         <ToastContainer
-          position="top-center"
+          position="top-left"
           autoClose={1800}
           hideProgressBar={false}
           newestOnTop={false}
+          toastContainerStyle={{ width: "200px" }}
           closeOnClick
           rtl={false}
           draggable
           theme="dark"
-          // toastId="005"
+          toastId="005"
           limit={1}
           preventDuplicates={true}
         />
