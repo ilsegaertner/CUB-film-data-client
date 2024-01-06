@@ -66,14 +66,14 @@ export const ProfileView = ({
   return (
     <Container className="profileContainer">
       <Row className="justify-content-lg-between">
-        <Col xs={12} sm={12} lg={3}>
+        <Col xs={12} sm={12} lg={5} className="mt-3">
           <Card>
             <Card.Body className="profilecard1">
               <UserInfo user={user} />
             </Card.Body>
           </Card>
         </Col>
-        <Col xs={12} sm={12} lg={5}>
+        <Col xs={12} sm={12} lg={5} className="mt-3">
           <Card>
             <Card.Body className="profilecard2">
               <UpdateUser
@@ -87,28 +87,12 @@ export const ProfileView = ({
             </Card.Body>
           </Card>
         </Col>
-        <Col xs={1} sm={12} lg={1}>
+        <Col xs={1} sm={12} lg={2} className="mt-3">
           <DeleteProfile user={user} onLoggedOut={onLoggedOut} token={token} />
         </Col>
       </Row>
       <Row>
-        {/* <Col xs={1} sm={3} lg={2}>
-          <Card>
-            <Card.Body></Card.Body>
-          </Card>
-        </Col> */}
-        <Col xs={12} sm={12} lg={12}>
-          {/* <ViewFavorites
-            favoriteMovieList={favoriteMovieList}
-            token={token}
-            movies={movies}
-            user={user}
-            title={title}
-            movie={movie}
-            setUserProfile={setUserProfile}
-            setFavoriteMovieList={setFavoriteMovieList}
-          /> */}
-
+        <Col xs={12} sm={12} lg={12} className="mt-5">
           <Card>
             <Card.Body>
               <Row>

@@ -29,64 +29,7 @@ export const MovieView = ({
 
   console.log(user);
 
-  // // Changes the property of a movie based on if they are in the Favorites List or not
-  // useEffect(() => {
-  //   if (user.FavouriteMovies && user.FavouriteMovies.includes(movieTitle)) {
-  //     setIsFavourite(true);
-  //   } else {
-  //     setIsFavourite(false);
-  //   }
-  // }, [user]);
-
-  // // Ensure that user and user's favorite movies are not undefined
-  // useEffect(() => {
-  //   if (user && user.FavouriteMovies) {
-  //     setIsFavourite(user.FavouriteMovies.includes(movieTitle));
-  //   }
-  // }, [user, movieTitle]);
-
-  //Function for adding a movie to their favorites
-
-  // const addToFavourites = async () => {
-  //   await fetch(
-  //     `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/favourites/${movieTitle}`,
-  //     {
-  //       method: "PUT",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     }
-  //   )
-  //     .then((response) => {
-  //       if (response.ok) {
-  //         return response.json();
-  //       } else {
-  //         console.log("Error adding movie to favourites");
-  //       }
-  //     })
-  //     .then((user) => {
-  //       if (user) {
-  //         localStorage.setItem("user", JSON.stringify(user));
-  //         setUser(user);
-  //         setIsFavourite(true);
-  //         console.log(user);
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       alert(error);
-  //     });
-  // };
-
   const addFavouriteHandler = () => {
-    // const updatedFavouriteMovies = [...user.FavouriteMovies, movieId];
-
-    // // Update the user profile locally to provide immediate feedback to the user
-    // setUserProfile((prevUser) => ({
-    //   ...prevUser,
-    //   FavouriteMovies: updatedFavouriteMovies,
-    // }));
-
     if (!movieId) {
       console.error("Movie ID not found");
       return;
@@ -116,9 +59,7 @@ export const MovieView = ({
       .then((data) => {
         if (data) {
           updateUser();
-          // setUserProfile();
-          // Update the user profile state with the fetched user data including updated favourites
-          // setUserProfile(data);
+
           console.log(user);
 
           // Show a success message or provide feedback to the user
@@ -127,9 +68,6 @@ export const MovieView = ({
       })
       .catch((error) => {
         console.error(`Error adding ${movie.title} to favorites`, error);
-
-        // Handle errors gracefully by showing user-friendly messages
-        // or implementing a notification system to inform the user
       });
   };
 
@@ -174,26 +112,24 @@ export const MovieView = ({
       });
   };
 
-  // // Button triggering the addFavoriteHandler function
-  // <Button size="sm" onClick={addFavoriteHandler} className="addButton">
-  //   Add
-  // </Button>;
-
   console.log(user);
 
   return (
     <>
       <Container className="movieView">
         <Row>
-          <Col xs={6}>
+          <Col xs={12} lg={5} md={12}>
+            <Link to={`/`}>
+              <Button className="back-button mb-2">Back</Button>
+            </Link>{" "}
             <img src={movie.image} alt={movie.title} />
           </Col>
-          <Col xs={4}>
-            <span className="parameters">Title</span>
-            <span>
-              {" "}
+          <Col xs={12} lg={7} md={12} className="mt-3">
+            <h2>
               {movie.title} ({movie.year})
-            </span>
+            </h2>
+            <span className="parameters">Title</span>
+            <span> {movie.title}</span>
             <div>
               <span className="parameters">Description</span>
               <span> {movie.description}</span>
@@ -208,7 +144,13 @@ export const MovieView = ({
               </span>{" "}
               {showDirectorBio && <span>{movie.bio}</span>}
             </div>
-            <div className="genre-description">
+            <div
+              className="genre-description"
+              style={{
+                textDecoration: "none",
+                cursor: "pointer",
+              }}
+            >
               <span
                 className="parametersClick"
                 onClick={() => setShowGenreDescription(!showGenreDescription)}
@@ -239,9 +181,14 @@ export const MovieView = ({
                   {index < movie.actors.length - 1 && ", "}
                 </span>
               ))}
-              {/* <span>{movie.actors}</span> */}
             </div>
-
+          </Col>
+        </Row>
+        <Row>
+          <Col className="mt-2">
+            {/* <Link to={`/`}>
+              <Button className="back-button">Back</Button>
+            </Link>{" "} */}
             <Button
               className="addButton"
               onClick={() => {
@@ -258,50 +205,6 @@ export const MovieView = ({
                 ? "Remove from Favourites"
                 : "Add to Favourites"}
             </Button>
-
-            {/* <Button
-              className="addButton"
-              onClick={() => {
-                removeFavouriteHandler();
-              }}
-            >
-              Remove from Favourites
-            </Button> */}
-
-            {/* <div className="addButton">
-              {favoriteMovieList.some(
-                (favMovie) => favMovie.id === movie.id
-              ) ? (
-                <RemoveFavorite
-                  movieId={movie.id}
-                  movie={movie}
-                  updateUser={updateUser}
-                  user={user}
-                  title={title}
-                  token={token}
-                  setUserProfile={setUserProfile}
-                  favoriteMovieList={favoriteMovieList}
-                  setFavoriteMovieList={setFavoriteMovieList}
-                />
-              ) : (
-                <AddFavorite
-                  movieId={movie.id}
-                  movie={movie}
-                  updateUser={updateUser}
-                  user={user}
-                  title={title}
-                  token={token}
-                  setUserProfile={setUserProfile}
-                  favoriteMovieList={favoriteMovieList}
-                  setFavoriteMovieList={setFavoriteMovieList}
-                />
-              )}
-            </div> */}
-          </Col>
-          <Col>
-            <Link to={`/`}>
-              <Button className="back-button">Back</Button>
-            </Link>{" "}
           </Col>
         </Row>
       </Container>

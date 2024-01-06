@@ -31,10 +31,13 @@ export const MovieCard = ({
           <Figure.Image
             className="figure-img img-fluid rounded"
             variant="top"
+            width={280}
+            height={280}
             src={movie.image}
             key={movie.id}
           />
         </Link>
+
         <Card.Body>
           <>
             <Link
@@ -45,37 +48,7 @@ export const MovieCard = ({
                 {movie.title} ({movie.year})
               </Card.Title>{" "}
             </Link>
-            <span
-              // onClick={() => setShowDirectorBio(!showDirectorBio)}
-              style={{ textDecoration: "none" }}
-            >
-              {movie.director}
-            </span>{" "}
-            {/* {favoriteMovieList.some((favMovie) => favMovie.id === movie.id) ? (
-              <RemoveFavorite
-                movieId={movie.id}
-                movie={movie}
-                updateUser={updateUser}
-                user={user}
-                title={title}
-                token={token}
-                setUserProfile={setUserProfile}
-                favoriteMovieList={favoriteMovieList}
-                setFavoriteMovieList={setFavoriteMovieList}
-              />
-            ) : (
-              <AddFavorite
-                movieId={movie.id}
-                movie={movie}
-                updateUser={updateUser}
-                user={user}
-                title={title}
-                token={token}
-                setUserProfile={setUserProfile}
-                favoriteMovieList={favoriteMovieList}
-                setFavoriteMovieList={setFavoriteMovieList}
-              />
-            )} */}
+            <span style={{ textDecoration: "none" }}>{movie.director}</span>{" "}
           </>
         </Card.Body>
       </Figure>

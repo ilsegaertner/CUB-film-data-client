@@ -7,7 +7,8 @@ export const UserInfo = ({ user }) => {
   return (
     <Card>
       <Card.Body>
-        <h4>Your Info</h4>
+        <h4 style={{ textDecoration: "underline" }}>My info</h4>
+        <br></br>
         <p>Name: {Username}</p>
         <p>E-mail: {Email}</p>
       </Card.Body>

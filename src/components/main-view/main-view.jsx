@@ -1,6 +1,13 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { Row, Col, Form, NavbarBrand, ToastContainer } from "react-bootstrap";
+import {
+  Row,
+  Col,
+  Form,
+  NavbarBrand,
+  ToastContainer,
+  Container,
+} from "react-bootstrap";
 
 //import toast
 import { ToastContainer, toast } from "react-toastify";
@@ -109,6 +116,16 @@ export const MainView = () => {
       });
   };
 
+  // some styles
+  //style of searchbar
+  const searchbarStyle = {
+    boxShadow: "0px 1px 4px #dbdbdb",
+  };
+  //style of mainContainer padding
+  const paddingLeftRightContainer = {
+    paddingLeft: "60px",
+    paddingRight: "60px",
+  };
   return (
     <BrowserRouter>
       <NavigationBar user={user} onLoggedOut={onLoggedOut} />
@@ -180,7 +197,7 @@ export const MainView = () => {
                 ) : movies.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
-                  <Col md={8}>
+                  <Col md={12} sm={12} lg={10}>
                     <MovieView
                       user={user}
                       setUser={setUser}
@@ -202,20 +219,20 @@ export const MainView = () => {
                 <Form className="CubWrap">
                   <div className="VerticalContainer">
                     <span className="CUB">CUB Film Data</span>
+                    <span className="CUB2">CUB Film Data</span>
                   </div>
                   <span className="CubDescription">
                     Browse{" "}
-                    <span style={{ fontFamily: "monospace", color: "#43523e" }}>
-                      - CUB FILM DATA -
-                    </span>{" "}
-                    for arthouse classics and look for facts about your favorite
-                    movies
+                    <span style={{ color: "#ff1469" }}>CUB FILM database</span>{" "}
+                    for captivating arthouse classics and look for interesting
+                    facts about your favorite movies.
                   </span>
                   <Form.Control
                     size="lg"
                     type="text"
+                    style={searchbarStyle}
                     placeholder="Search movies..."
-                    class="bg-body-tertiary navbar navbar-expand-lg navbar-light searchMovies form-control-lg mr-sm-2"
+                    className="px-2 bg-body-tertiary navbar navbar-expand-lg navbar-light searchMovies form-control-lg mr-sm-2"
                     value={searchQuery}
                     onChange={handleSearchInputChange}
                   />
@@ -233,25 +250,31 @@ export const MainView = () => {
                 ) : moviesToRender.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
+                  // <Container fluid="md">
                   <>
-                    {moviesToRender.map((movie) => (
-                      <Col
-                        className="mb-5"
-                        key={movie.id}
-                        md={11}
-                        sm={12}
-                        lg={3}
-                      >
-                        <MovieCard
+                    {" "}
+                    <div className="all-movies">
+                      {moviesToRender.map((movie) => (
+                        <Col
+                          className="mb-5"
                           key={movie.id}
-                          movie={movie}
-                          user={user}
-                          updateUser={updateUser}
-                          token={token}
-                        />
-                      </Col>
-                    ))}
+                          md={3}
+                          // sm={6}
+                          lg={3}
+                          xs={12}
+                        >
+                          <MovieCard
+                            key={movie.id}
+                            movie={movie}
+                            user={user}
+                            updateUser={updateUser}
+                            token={token}
+                          />
+                        </Col>
+                      ))}
+                    </div>
                   </>
+                  // </Container>
                 )}
               </>
             }

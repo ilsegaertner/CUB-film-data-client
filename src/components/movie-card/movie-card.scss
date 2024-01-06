@@ -9,7 +9,7 @@
     width: 100%;
     img {
       display: block;
-      height: 437px;
+      height: 420px;
       margin: auto;
     }
     figcaption {
@@ -24,4 +24,51 @@
 
 .card {
   margin-bottom: 15px;
+}
+
+figure .card-body {
+  padding-top: 20px;
+}
+
+figure .h5 {
+  font-size: 1.1rem;
+}
+
+@media (width <= 991px) {
+  figure .h5 {
+    font-size: 0.7rem;
+  }
+  figure .card-body:nth-child(2) {
+    font-size: 0.7rem;
+  }
+}
+
+@media (min-width: 1255px) and (max-width: 1400px) {
+  figure .h5 {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 989px) and (max-width: 1255px) {
+  figure .h5 {
+    font-size: 0.9rem;
+  }
+  figure .card-body:nth-child(2) {
+    font-size: 0.7rem;
+  }
+}
+
+@media (width > 1255px) {
+  figure .card-body:nth-child(2) {
+    font-size: 1rem;
+  }
+}
+
+@media (width <= 576px) {
+  figure .h5 {
+    font-size: 1.1rem;
+  }
+  figure .card-body:nth-child(2) {
+    font-size: 1.1rem;
+  }
 }
