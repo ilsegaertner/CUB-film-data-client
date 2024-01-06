@@ -6,6 +6,7 @@ import { UserInfo } from "./user-info";
 import { MovieCard } from "../movie-card/movie-card";
 import { UpdateUser } from "./update-user";
 import { DeleteProfile } from "./delete-profile";
+import { ViewFavorites } from "../view-favorites/view-favorites";
 
 export const ProfileView = ({
   token,
@@ -14,7 +15,6 @@ export const ProfileView = ({
   userProfile,
   setUserProfile,
   onLoggedOut,
-
   user,
   title,
   updateUser,
@@ -44,6 +44,7 @@ export const ProfileView = ({
           birthday: data.Birthday,
           favouriteMovies: data.FavouriteMovies || [],
         });
+        // setUserProfile(updateUser);
       })
       .catch((error) => {
         console.error("Error fetching user data", error);
@@ -56,18 +57,23 @@ export const ProfileView = ({
     : [];
   console.log(user);
   console.log(movies);
+  console.log(favouriteMovieList);
+  //   const updatedFavoriteMovieList = movies.filter((movie) =>
+  //   data.FavouriteMovies.includes(movie.id)
+  // );
+  // setFavoriteMovieList(updatedFavoriteMovieList);
 
   return (
     <Container className="profileContainer">
       <Row className="justify-content-lg-between">
-        <Col xs={12} sm={12} lg={3}>
+        <Col xs={12} sm={12} lg={5} className="mt-3">
           <Card>
             <Card.Body className="profilecard1">
               <UserInfo user={user} />
             </Card.Body>
           </Card>
         </Col>
-        <Col xs={12} sm={12} lg={5}>
+        <Col xs={12} sm={12} lg={5} className="mt-3">
           <Card>
             <Card.Body className="profilecard2">
               <UpdateUser
@@ -81,12 +87,12 @@ export const ProfileView = ({
             </Card.Body>
           </Card>
         </Col>
-        <Col xs={1} sm={12} lg={1}>
+        <Col xs={1} sm={12} lg={2} className="mt-3">
           <DeleteProfile user={user} onLoggedOut={onLoggedOut} token={token} />
         </Col>
       </Row>
       <Row>
-        <Col xs={12} sm={12} lg={12}>
+        <Col xs={12} sm={12} lg={12} className="mt-5">
           <Card>
             <Card.Body>
               <Row>
@@ -102,9 +108,10 @@ export const ProfileView = ({
                         user={user}
                         setUserProfile={setUserProfile}
                         updateUser={updateUser}
+                        // updateUserFavorite={updateUserFavorite}
                         movie={movie}
                         token={token}
-                        movieId={movie.id}
+                        // setFavoriteMovieList={setFavoriteMovieList}
                       />
                     </Col>
                   );

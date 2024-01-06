@@ -2,9 +2,9 @@ import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./movie-view.scss";
+import { AddFavorite } from "../view-favorites/add-favorite";
+import { RemoveFavorite } from "../view-favorites/remove-favorite";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import { addFavouriteHandler } from "../favouriteHandler";
-import { removeFavouriteHandler } from "../favouriteHandler";
 
 export const MovieView = ({
   movies,
@@ -29,103 +29,88 @@ export const MovieView = ({
 
   console.log(user);
 
-  console.log(movieId);
+  const addFavouriteHandler = () => {
+    if (!movieId) {
+      console.error("Movie ID not found");
+      return;
+    }
 
-  // const addFavouriteHandler = () => {
-  //   // const updatedFavouriteMovies = [...user.FavouriteMovies, movieId];
+    fetch(
+      `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${movieId}`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          return response.text().then((errorMessage) => {
+            throw new Error(
+              `Failed to add ${movie.title} to favorites: ${errorMessage}`
+            );
+          });
+        }
+      })
+      .then((data) => {
+        if (data) {
+          updateUser();
 
-  //   // // Update the user profile locally to provide immediate feedback to the user
-  //   // setUserProfile((prevUser) => ({
-  //   //   ...prevUser,
-  //   //   FavouriteMovies: updatedFavouriteMovies,
-  //   // }));
+          console.log(user);
 
-  //   if (!movieId) {
-  //     console.error("Movie ID not found");
-  //     return;
-  //   }
+          // Show a success message or provide feedback to the user
+          alert(`${movie.title} from ${movie.director} added to favorites`);
+        }
+      })
+      .catch((error) => {
+        console.error(`Error adding ${movie.title} to favorites`, error);
+      });
+  };
 
-  //   fetch(
-  //     `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${movieId}`,
-  //     {
-  //       method: "POST",
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //         "Content-Type": "application/json",
-  //       },
-  //     }
-  //   )
-  //     .then((response) => {
-  //       if (response.ok) {
-  //         return response.json();
-  //       } else {
-  //         return response.text().then((errorMessage) => {
-  //           throw new Error(
-  //             `Failed to add ${movie.title} to favorites: ${errorMessage}`
-  //           );
-  //         });
-  //       }
-  //     })
-  //     .then((data) => {
-  //       if (data) {
-  //         updateUser();
-  //         // setUserProfile();
-  //         // Update the user profile state with the fetched user data including updated favourites
-  //         // setUserProfile(data);
-  //         console.log(user);
+  const removeFavouriteHandler = () => {
+    if (!movieId) {
+      console.error("Movie ID not found");
+      return;
+    }
 
-  //         // Show a success message or provide feedback to the user
-  //         alert(`${movie.title} from ${movie.director} added to favorites`);
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error(`Error adding ${movie.title} to favorites`, error);
+    // Make a delete request to the API
+    const url = `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${movieId}`;
 
-  //       // Handle errors gracefully by showing user-friendly messages
-  //       // or implementing a notification system to inform the user
-  //     });
-  // };
+    fetch(url, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          // Filter out the movie from the user's favourite list
+          const updatedFavouriteMovies = user.FavouriteMovies.filter(
+            (favMovieId) => favMovieId !== title
+          );
+          // Update the user state locally to reflect the removal of the favorite movie
+          const updatedUser = {
+            ...user,
+            FavouriteMovies: updatedFavouriteMovies,
+          };
+          updateUser(updatedUser);
+          // setUserProfile(updateUser);
 
-  // const removeFavouriteHandler = () => {
-  //   if (!movieId) {
-  //     console.error("Movie ID not found");
-  //     return;
-  //   }
-
-  //   // Make a delete request to the API
-  //   const url = `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}/movies/${movieId}`;
-
-  //   fetch(url, {
-  //     method: "DELETE",
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //     .then((response) => {
-  //       if (response.ok) {
-  //         // Filter out the movie from the user's favourite list
-  //         const updatedFavouriteMovies = user.FavouriteMovies.filter(
-  //           (favMovieId) => favMovieId !== title
-  //         );
-  //         // Update the user state locally to reflect the removal of the favorite movie
-  //         const updatedUser = {
-  //           ...user,
-  //           FavouriteMovies: updatedFavouriteMovies,
-  //         };
-  //         updateUser(updatedUser);
-  //         // setUserProfile(updateUser);
-
-  //         // User Feedback
-  //         alert(`${movie.title} from ${movie.director} removed from favorites`);
-  //       } else {
-  //         throw new Error(`Failed to remove ${movie.title}`);
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error(`Failed to remove ${movie.title}`, error);
-  //     });
-  // };
+          // User Feedback
+          alert(`${movie.title} from ${movie.director} removed from favorites`);
+        } else {
+          throw new Error(`Failed to remove ${movie.title}`);
+        }
+      })
+      .catch((error) => {
+        console.error(`Failed to remove ${movie.title}`, error);
+      });
+  };
 
   console.log(user);
 
@@ -133,15 +118,18 @@ export const MovieView = ({
     <>
       <Container className="movieView">
         <Row>
-          <Col xs={6}>
+          <Col xs={12} lg={5} md={12}>
+            <Link to={`/`}>
+              <Button className="back-button mb-2">Back</Button>
+            </Link>{" "}
             <img src={movie.image} alt={movie.title} />
           </Col>
-          <Col xs={4}>
-            <span className="parameters">Title</span>
-            <span>
-              {" "}
+          <Col xs={12} lg={7} md={12} className="mt-3">
+            <h2>
               {movie.title} ({movie.year})
-            </span>
+            </h2>
+            <span className="parameters">Title</span>
+            <span> {movie.title}</span>
             <div>
               <span className="parameters">Description</span>
               <span> {movie.description}</span>
@@ -156,7 +144,13 @@ export const MovieView = ({
               </span>{" "}
               {showDirectorBio && <span>{movie.bio}</span>}
             </div>
-            <div className="genre-description">
+            <div
+              className="genre-description"
+              style={{
+                textDecoration: "none",
+                cursor: "pointer",
+              }}
+            >
               <span
                 className="parametersClick"
                 onClick={() => setShowGenreDescription(!showGenreDescription)}
@@ -187,18 +181,23 @@ export const MovieView = ({
                   {index < movie.actors.length - 1 && ", "}
                 </span>
               ))}
-              {/* <span>{movie.actors}</span> */}
             </div>
-
+          </Col>
+        </Row>
+        <Row>
+          <Col className="mt-2">
+            {/* <Link to={`/`}>
+              <Button className="back-button">Back</Button>
+            </Link>{" "} */}
             <Button
               className="addButton"
               onClick={() => {
                 const isMovieInFavourites =
                   user.FavouriteMovies.includes(movieId);
                 if (isMovieInFavourites) {
-                  removeFavouriteHandler(movieId, user, token, updateUser);
+                  removeFavouriteHandler();
                 } else {
-                  addFavouriteHandler(movieId, user, token, updateUser);
+                  addFavouriteHandler();
                 }
               }}
             >
@@ -206,11 +205,6 @@ export const MovieView = ({
                 ? "Remove from Favourites"
                 : "Add to Favourites"}
             </Button>
-          </Col>
-          <Col>
-            <Link to={`/`}>
-              <Button className="back-button">Back</Button>
-            </Link>{" "}
           </Col>
         </Row>
       </Container>

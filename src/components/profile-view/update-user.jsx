@@ -73,10 +73,11 @@ export const UpdateUser = ({ user, token }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group>
-        <h4>Update your Profile:</h4>
+        <h4 style={{ textDecoration: "underline" }}>Update Profile:</h4>
+        <br></br>
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formUsername">
-        <Form.Label>Username:</Form.Label>
+      <Form.Group className="mb-2" controlId="formUsername">
+        <Form.Label className="mt-3 mb-0">Username:</Form.Label>
         <Form.Control
           type="text"
           value={username}
@@ -86,8 +87,8 @@ export const UpdateUser = ({ user, token }) => {
           required
         />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formPassword">
-        <Form.Label>Password:</Form.Label>
+      <Form.Group className="mb-2" controlId="formPassword">
+        <Form.Label className="mt-3 mb-0">Password:</Form.Label>
         <Form.Control
           type="password"
           value={password}
@@ -97,8 +98,8 @@ export const UpdateUser = ({ user, token }) => {
           required
         />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formEmail">
-        <Form.Label>Email:</Form.Label>
+      <Form.Group className="mb-2" controlId="formEmail">
+        <Form.Label className="mt-3 mb-0">Email:</Form.Label>
         <Form.Control
           type="email"
           value={email}
@@ -106,8 +107,8 @@ export const UpdateUser = ({ user, token }) => {
           placeholder="Enter your email address"
         />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBirthday">
-        <Form.Label>Birthday:</Form.Label>
+      <Form.Group className="mb-2" controlId="formBirthday">
+        <Form.Label className="mt-3 mb-0">Birthday:</Form.Label>
         <Form.Control
           type="date"
           value={birthday}

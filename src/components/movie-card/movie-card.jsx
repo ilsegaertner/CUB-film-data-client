@@ -1,38 +1,24 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import React from "react";
-import { Card, Figure, Row, Col, Button } from "react-bootstrap";
+import { Card, Figure, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { addFavouriteHandler } from "../favouriteHandler";
-import { removeFavouriteHandler } from "../favouriteHandler";
-
+import { AddFavorite } from "../view-favorites/add-favorite";
+import { RemoveFavorite } from "../view-favorites/remove-favorite";
 import "./movie-card.scss";
+// import "./profile-view/profile-view.scss";
 
 export const MovieCard = ({
   movie,
   user,
-  movieId,
+
   updateUser,
   token,
+  title,
   setUserProfile,
 }) => {
-  console.log(movieId);
-
   const [showGenreDescription, setShowGenreDescription] = useState(false);
   const [showDirectorBio, setShowDirectorBio] = useState(false);
-
-  const [isMovieInFavourites, setIsMovieInFavourites] = useState(
-    user.FavouriteMovies.includes(movieId)
-  );
-
-  const toggleFavourite = () => {
-    if (isMovieInFavourites) {
-      removeFavouriteHandler(movieId, user, token, updateUser);
-    } else {
-      addFavouriteHandler(movieId, user, token, updateUser);
-    }
-    setIsMovieInFavourites(!isMovieInFavourites); // Toggle the local state
-  };
 
   const toggleDirectorBio = () => {
     setShowDirectorBio(!showDirectorBio);
@@ -45,10 +31,13 @@ export const MovieCard = ({
           <Figure.Image
             className="figure-img img-fluid rounded"
             variant="top"
+            width={280}
+            height={280}
             src={movie.image}
             key={movie.id}
           />
         </Link>
+
         <Card.Body>
           <>
             <Link
@@ -59,17 +48,7 @@ export const MovieCard = ({
                 {movie.title} ({movie.year})
               </Card.Title>{" "}
             </Link>
-            <span
-              // onClick={() => setShowDirectorBio(!showDirectorBio)}
-              style={{ textDecoration: "none" }}
-            >
-              {movie.director}
-            </span>{" "}
-            <Button className="addButton" onClick={toggleFavourite}>
-              {isMovieInFavourites
-                ? "Remove from Favourites"
-                : "Add to Favourites"}
-            </Button>
+            <span style={{ textDecoration: "none" }}>{movie.director}</span>{" "}
           </>
         </Card.Body>
       </Figure>

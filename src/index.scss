@@ -16,9 +16,16 @@ $color: steelblue;
   border-bottom-left-radius: 0.5rem;
 }
 
+.searchMovies {
+  position: relative;
+}
+
 #root {
-  height: 50vh;
-  background-color: #8f908a37; /* First color block */
+  // height: 50vh;
+  // background-color: #8f908a37; /* First color block */
+
+  padding-left: 60px;
+  padding-right: 60px;
 }
 
 // #root {
@@ -35,12 +42,13 @@ $color: steelblue;
 // }
 
 .card-body {
-  background-color: #bbb3b051;
+  // background-color: #bbb3b051;
   // border-radius: 8;
   padding-top: 29;
   padding-right: 25;
   width: "100%";
   display: grid;
+  background-color: #f9f9ff;
   // height: 200px; /* Adjust the height as needed */
   // overflow: hidden;
   // box-shadow: -3px -9px 10px #17171733;
@@ -49,6 +57,11 @@ $color: steelblue;
 .card-img-top {
   width: 100%;
   // height: 100%;
+}
+
+.card {
+  --bs-card-spacer-x: 0.9rem;
+  --bs-card-title-spacer-y: 0.4rem;
 }
 
 img,
@@ -66,6 +79,12 @@ img,
   padding: 4px 12px;
 }
 
+.container {
+  // padding-left: 40px;
+  // padding-right: 40px;
+  font-size: 1.5rem;
+}
+
 .btn {
   padding-y: 0.1rem;
   padding-x: 0.5rem;
@@ -80,10 +99,35 @@ img,
 }
 
 .CUB {
+  // writing-mode: vertical-rl;
+  // text-orientation: mixed;
+  // margin-bottom: -374px;
+  // margin-left: -40px;
+  // font-size: 59px;
+  // display: inline;
+  // position: absolute;
+  // color: #ff1469;
+
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  // color: #ff146947;
+  mix-blend-mode: difference;
+  margin-bottom: -266px;
+  // margin-left: -111px;
+  font-size: 361px;
+  text-shadow: 249px 242px 199px blue;
+  border: -3px solid blue;
+  display: inline;
+  margin-top: 249px;
+  filter: blur(31px);
+  position: absolute;
+}
+
+.CUB2 {
   writing-mode: vertical-rl;
   text-orientation: mixed;
   margin-bottom: -374px;
-  margin-left: -40px;
+  margin-left: -48px;
   font-size: 59px;
   display: inline;
   position: absolute;
@@ -96,7 +140,11 @@ img,
 }
 
 .CubWrap {
-  margin: 65px;
+  // margin: 65px;
+  display: grid;
+  grid-gap: 30px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .CubDescription {
@@ -121,25 +169,80 @@ img,
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 59px;
+  // font-size: 59px;
   // color: #007bff;
-  color: #00000024;
+  // color: #00000024;
+  display: inline-flex;
+  margin-top: -95px;
+  margin-left: -13px;
+  z-index: 12;
+  font-weight: 100;
+  color: blue;
 }
 
-@media (width <= 990px) {
+.all-movies {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 60px;
+}
+
+figure {
+  box-shadow: 0px 0px 4px #ffff69;
+}
+
+@media (width <= 992px) {
+  .fav-movie figure img {
+    // height: 100%;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .fav-movie figure img {
+    height: 290px;
+  }
+  .container {
+    max-width: 1036px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1400px) {
+  .fav-movie figure img {
+    height: 355px;
+  }
+  .container {
+    max-width: 1182px;
+  }
+}
+
+@media (min-width: 1400px) and (max-width: 1900px) {
+  .fav-movie figure img {
+    height: 425px;
+  }
+  .container {
+    max-width: 1400px;
+  }
+}
+
+@media (width > 1900px) {
+  .fav-movie figure img {
+    height: 406px;
+  }
+}
+
+@media (width < 991px) {
+  .fav-movie figure img {
+    height: 200px;
+  }
+}
+
+@media (width <= 767px) {
   .fav-movie figure img {
     height: 100%;
   }
 }
 
-@media (min-width: 990px) and (max-width: 1200px) {
+@media (min-width: 576px) and (max-width: 768px) {
   .fav-movie figure img {
-    height: 290px;
-  }
-}
-
-@media (min-width: 1200) and (max-width: 1400px) {
-  .fav-movie figure img {
-    height: 375px;
+    height: 100%;
   }
 }
