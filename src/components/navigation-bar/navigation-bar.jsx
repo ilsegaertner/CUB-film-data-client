@@ -8,7 +8,7 @@ import logo4 from "./logo4.svg";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
   const navbarStyle = {
-    boxShadow: "0px 4px 12px #b7b7b7",
+    boxShadow: "0px 4px 12px #b7b7b759",
   };
 
   return (
