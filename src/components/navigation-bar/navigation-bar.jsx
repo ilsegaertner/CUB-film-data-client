@@ -7,8 +7,12 @@ import logo3 from "./logo3.svg";
 import logo4 from "./logo4.svg";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
+  const navbarStyle = {
+    boxShadow: "0px 4px 12px #b7b7b759",
+  };
+
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" className="bg-body-tertiary" style={navbarStyle}>
       <Container>
         <Navbar.Brand as={Link} to="/">
           <img
