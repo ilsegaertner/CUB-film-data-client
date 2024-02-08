@@ -1,12 +1,8 @@
-# Name: CUB Film data (client-side)
-
-## An arthouse movies database
+# CUB Film data (Client-side): An Arthouse Movies Database
 
 <img width="1434" alt="Bildschirmfoto 2023-10-12 um 15 12 35" src="https://github.com/ilsegaertner/CUB-film-data-client/assets/129660427/8ab8da62-1cdf-4a9a-90bf-a4b3e82618c3">
 
-### A complete web application (client-side and server-side) built using full-stack JavaScript technologies
-
-### The project demonstrates mastery of full-stack JavaScript development, including APIs, web server frameworks, databases, business logic, authentication and data security
+CUB Film Data is a comprehensive web application, encompassing both client-side and server-side components, crafted using full-stack JavaScript technologies. This project serves as a testament to mastering full-stack JavaScript development within the MERN stack, showcasing proficiency in APIs, web server frameworks, databases, business logic, authentication, and data security.
 
 ### Overview
 
@@ -16,11 +12,11 @@ The web app allows users to load information about specific arthouse movies, dir
 
 The API is published on [GitHub](https://github.com/ilsegaertner/CUB_Film_data).
 
-To visit App, click [here](https://cub-film-data.netlify.app/).
+Access the hosted application[here](https://cub-film-data.netlify.app/).
 
 ### Objective
 
-The objectiv was to build a client-side REACT app for the previously developed [server-side API, the databases and the business logic](https://github.com/ilsegaertner/CUB_Film_data).
+The objectiv was to build a client-side REACT application for the previously developed [server-side API, the databases and the business logic](https://github.com/ilsegaertner/CUB_Film_data).
 
 ### Approach
 
@@ -35,20 +31,19 @@ During the process the routes for the individual endpoints were determined, and 
 
 #### Main view
 
-- Returns ALL movies to the user (each movie item with an image, title, and description)
-- Filtering the list of movies with a “search” feature
-- Ability to select a movie for more details
-- Ability to log out
-- Ability to navigate to Profile view
+- Displays all movies with pertinent details such as image, title, and description
+- Facilitates easy filtering of movies through a search feature
+- Enables users to view detailed information about each movie
+- Provides options for logging out and navigating to the Profile view
 
 #### Single Movie view
 
 - Returns data (description, genre, director, image) about a single movie to the user
-- Allows users to add a movie to their list of favorites
+- Allows users to add movies to their list of favorites
 
 #### Login view
 
-- Allows users to log in with a username and password
+- Enables users to securely log in using their username and password
 
 #### Signup view
 
@@ -66,11 +61,11 @@ During the process the routes for the individual endpoints were determined, and 
 
 ### Challenges
 
-The implementation of the client-side for the app took me way longer than any other previous project, and especially longer than the backend programming of the app.
+The client-side implementation presented unique challenges and required a significant time investment compared to previous projects, particularly the backend programming of the API.
 
 As being new to Javascript and React relying on robust underrstanding of Javascript, I learned both (again) in the course of this project, going back and forth of old and new concepts. I was challenged with grasping the concepts of hooks, state and props.
 
-As a conclusion it was not an easy, but very enriching task being aware of all the advantages that come in knowing how to creat REACT projects from scratch.
+The process of learning REACT was enriching being aware of all the advantages that come with manouvering inside of REACT.
 
 ### Technologies used
 
