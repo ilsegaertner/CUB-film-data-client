@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { Row, Col, Form, NavbarBrand, ToastContainer } from "react-bootstrap";
+// import { Row, Col, Form, NavbarBrand, ToastContainer } from "react-bootstrap";
+import { Form, ToastContainer } from "react-bootstrap";
 
 //import toast
 import { ToastContainer, toast } from "react-toastify";
@@ -13,6 +14,7 @@ import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
+import { Form } from "react-bootstrap";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -116,167 +118,165 @@ export const MainView = () => {
 
   return (
     <BrowserRouter>
-      <NavigationBar user={user} onLoggedOut={onLoggedOut} />
-      <Row className="justify-content-md-center">
-        <Routes>
-          <Route
-            path="/signup"
-            element={
-              <>
-                {user ? (
-                  <Navigate to="/" />
-                ) : (
-                  <Col md={5}>
-                    <SignupView />
-                  </Col>
-                )}
-              </>
-            }
-          />
+      <div>
+        <NavigationBar user={user} onLoggedOut={onLoggedOut} />
+        <div className="">
+          <Routes>
+            <Route
+              path="/signup"
+              element={
+                <>
+                  {user ? (
+                    <Navigate to="/" />
+                  ) : (
+                    <div>
+                      <SignupView />
+                    </div>
+                  )}
+                </>
+              }
+            />
 
-          <Route
-            path="/login"
-            element={
-              <>
-                {user ? (
-                  <Navigate to="/" />
-                ) : (
-                  <Col md={5}>
-                    <LoginView
-                      onLoggedIn={(user, token) => {
-                        setUser(user), setToken(token);
+            <Route
+              path="/login"
+              element={
+                <>
+                  {user ? (
+                    <Navigate to="/" />
+                  ) : (
+                    <div>
+                      <LoginView
+                        onLoggedIn={(user, token) => {
+                          setUser(user), setToken(token);
+                        }}
+                      />
+                    </div>
+                  )}
+                </>
+              }
+            />
+
+            {/* Profile  */}
+            <Route
+              path="/profile"
+              element={
+                user ? (
+                  <>
+                    <ProfileView
+                      user={user}
+                      movies={movies}
+                      token={storedToken}
+                      updateUser={updateUser}
+                      setUserProfile={setUserProfile}
+                      onLoggedOut={() => {
+                        setUser(null), setToken(null), localStorage.clear();
                       }}
                     />
-                  </Col>
-                )}
-              </>
-            }
-          />
-
-          {/* Profile  */}
-          <Route
-            path="/profile"
-            element={
-              user ? (
-                <>
-                  <ProfileView
-                    user={user}
-                    movies={movies}
-                    token={storedToken}
-                    updateUser={updateUser}
-                    setUserProfile={setUserProfile}
-                    onLoggedOut={() => {
-                      setUser(null), setToken(null), localStorage.clear();
-                    }}
-                  />
-                </>
-              ) : (
-                <Navigate to="/login" replace />
-              )
-            }
-          />
-
-          <Route
-            path="/movies/:movieTitle"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
-                  <Col>The list is empty!</Col>
-                ) : (
-                  <Col md={8}>
-                    <MovieView
-                      user={user}
-                      setUser={setUser}
-                      updateUser={updateUser}
-                      movies={movies}
-                      token={token}
-                    />
-                  </Col>
-                )}
-              </>
-            }
-          />
-
-          <Route
-            path="/"
-            element={
-              <>
-                <Form className="CubWrap">
-                  <div className="VerticalContainer">
-                    <span className="CUB">CUB Film Data</span>
-                  </div>
-                  <span className="CubDescription">
-                    Browse{" "}
-                    <span style={{ fontFamily: "monospace", color: "#43523e" }}>
-                      - CUB FILM DATA -
-                    </span>{" "}
-                    for arthouse classics and look for facts about your favorite
-                    movies
-                  </span>
-                  <Form.Control
-                    size="lg"
-                    type="text"
-                    style={searchbarStyle}
-                    placeholder="Search movies..."
-                    class="bg-body-tertiary navbar navbar-expand-lg navbar-light searchMovies form-control-lg mr-sm-2"
-                    value={searchQuery}
-                    onChange={handleSearchInputChange}
-                  />
-                  {searchQuery && (
-                    <button
-                      className="clear-button"
-                      onClick={() => handleClearSearch()}
-                    >
-                      X
-                    </button>
-                  )}
-                </Form>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : moviesToRender.length === 0 ? (
-                  <Col>The list is empty!</Col>
-                ) : (
-                  <>
-                    {moviesToRender.map((movie) => (
-                      <Col
-                        className="mb-5"
-                        key={movie.id}
-                        md={11}
-                        sm={12}
-                        lg={3}
-                      >
-                        <MovieCard
-                          key={movie.id}
-                          movie={movie}
-                          movieId={movie.id}
-                          user={user}
-                          updateUser={updateUser}
-                          token={token}
-                        />
-                      </Col>
-                    ))}
                   </>
-                )}
-              </>
-            }
+                ) : (
+                  <Navigate to="/login" replace />
+                )
+              }
+            />
+
+            <Route
+              path="/movies/:movieTitle"
+              element={
+                <>
+                  {!user ? (
+                    <Navigate to="/login" replace />
+                  ) : movies.length === 0 ? (
+                    <div>The list is empty!</div>
+                  ) : (
+                    <div>
+                      <MovieView
+                        user={user}
+                        setUser={setUser}
+                        updateUser={updateUser}
+                        movies={movies}
+                        token={token}
+                      />
+                    </div>
+                  )}
+                </>
+              }
+            />
+
+            <Route
+              path="/"
+              element={
+                <>
+                  <Form className="CubWrap">
+                    <div className="VerticalContainer">
+                      <span className="CUB">CUB Film Data</span>
+                    </div>
+                    <span className="CubDescription">
+                      Browse{" "}
+                      <span
+                        style={{ fontFamily: "monospace", color: "#43523e" }}
+                      >
+                        - CUB FILM DATA -
+                      </span>{" "}
+                      for arthouse classics and look for facts about your
+                      favorite movies
+                    </span>
+                    <Form.Control
+                      size="lg"
+                      type="text"
+                      style={searchbarStyle}
+                      placeholder="Search movies..."
+                      class="bg-body-tertiary navbar navbar-expand-lg navbar-light searchMovies form-control-lg mr-sm-2"
+                      value={searchQuery}
+                      onChange={handleSearchInputChange}
+                    />
+                    {searchQuery && (
+                      <button
+                        className="clear-button"
+                        onClick={() => handleClearSearch()}
+                      >
+                        X
+                      </button>
+                    )}
+                  </Form>
+                  {!user ? (
+                    <Navigate to="/login" replace />
+                  ) : moviesToRender.length === 0 ? (
+                    <div>The list is empty!</div>
+                  ) : (
+                    <>
+                      <div className="moviecard-wrap">
+                        {moviesToRender.map((movie) => (
+                          <MovieCard
+                            key={movie.id}
+                            movie={movie}
+                            movieId={movie.id}
+                            user={user}
+                            updateUser={updateUser}
+                            token={token}
+                          />
+                        ))}
+                      </div>
+                    </>
+                  )}
+                </>
+              }
+            />
+          </Routes>
+          <ToastContainer
+            position="top-center"
+            autoClose={1800}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            draggable
+            theme="dark"
+            // toastId="005"
+            limit={1}
+            preventDuplicates={true}
           />
-        </Routes>
-        <ToastContainer
-          position="top-center"
-          autoClose={1800}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          draggable
-          theme="dark"
-          // toastId="005"
-          limit={1}
-          preventDuplicates={true}
-        />
-      </Row>
+        </div>
+      </div>{" "}
     </BrowserRouter>
   );
 };

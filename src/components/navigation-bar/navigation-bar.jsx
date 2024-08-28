@@ -2,8 +2,6 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
-import logo from "./logo.svg";
-import logo3 from "./logo3.svg";
 import logo4 from "./logo4.svg";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {

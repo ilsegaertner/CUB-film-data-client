@@ -3,7 +3,6 @@ export const addFavouriteHandler = (
   user,
   token,
   updateUser,
-  title
 ) => {
   if (!movieId) {
     console.error("Movie ID not found");
@@ -32,9 +31,7 @@ export const addFavouriteHandler = (
     .then((data) => {
       if (data) {
         updateUser();
-        // setUserProfile();
-        // Update the user profile state with the fetched user data including updated favourites
-        // setUserProfile(data);
+ 
         console.log(user);
 
         // Show a success message or provide feedback to the user
@@ -83,7 +80,6 @@ export const removeFavouriteHandler = (
           FavouriteMovies: updatedFavouriteMovies,
         };
         updateUser(updatedUser);
-        // setUserProfile(updateUser);
 
         // User Feedback
         alert("Movie removed from favorites");

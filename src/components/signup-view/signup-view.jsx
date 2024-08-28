@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Card, CardGroup, Col, Row, Container } from "react-bootstrap";
 
 export const SignupView = () => {
   const [username, setUsername] = useState("");
@@ -38,70 +37,59 @@ export const SignupView = () => {
   };
 
   return (
-    <Container>
-      <Row>
-        <Col>
-          <CardGroup>
-            <Card>
-              <Card.Body>
-                <Card.Title>Please register</Card.Title>
-                <>
-                  <Form onSubmit={handleSubmit}>
-                    <Form.Group className="mb-3" controlId="formEmail">
-                      <Form.Label>Email:</Form.Label>
-                      <Form.Control
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Enter your email address"
-                        required
-                      />
-                      <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                      </Form.Text>
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formUsername">
-                      <Form.Label>Username:</Form.Label>
-                      <Form.Control
-                        type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        minLength="5"
-                        placeholder="Enter a username"
-                        required
-                      />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formPassword">
-                      <Form.Label>Password:</Form.Label>
-                      <Form.Control
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        minLength="8"
-                        placeholder="Your Password must be 8 or more characters"
-                        required
-                      />
-                    </Form.Group>
+    <>
+      <div>
+        <div>
+          <div>Please register</div>
 
-                    <Form.Group className="mb-3" controlId="formBirthday">
-                      <Form.Label>Birthday:</Form.Label>
-                      <Form.Control
-                        type="date"
-                        value={birthday}
-                        onChange={(e) => setBirthday(e.target.value)}
-                        required
-                      />
-                    </Form.Group>
-                    <Button variant="primary" type="submit" value="submit">
-                      Submit
-                    </Button>
-                  </Form>
-                </>
-              </Card.Body>
-            </Card>
-          </CardGroup>
-        </Col>
-      </Row>
-    </Container>
+          <form onSubmit={handleSubmit}>
+            <label>Email:</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email address"
+              required
+            />
+
+            <div controlId="formUsername">
+              <label>Username:</label>
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                minLength="5"
+                placeholder="Enter a username"
+                required
+              />
+            </div>
+            <div className="mb-3" controlId="formPassword">
+              <label>Password:</label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                minLength="8"
+                placeholder="Your Password must be 8 or more characters"
+                required
+              />
+            </div>
+
+            <div controlId="formBirthday">
+              <label>Birthday:</label>
+              <input
+                type="date"
+                value={birthday}
+                onChange={(e) => setBirthday(e.target.value)}
+                required
+              />
+            </div>
+            <button type="submit" value="submit">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </>
   );
 };

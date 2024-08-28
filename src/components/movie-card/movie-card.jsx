@@ -1,25 +1,14 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import React from "react";
-import { Card, Figure, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { addFavouriteHandler } from "../favouriteHandler";
 import { removeFavouriteHandler } from "../favouriteHandler";
 
 import "./movie-card.scss";
 
-export const MovieCard = ({
-  movie,
-  user,
-  movieId,
-  updateUser,
-  token,
-  setUserProfile,
-}) => {
+export const MovieCard = ({ movie, user, movieId, updateUser, token }) => {
   console.log(movieId);
-
-  const [showGenreDescription, setShowGenreDescription] = useState(false);
-  const [showDirectorBio, setShowDirectorBio] = useState(false);
 
   const [isMovieInFavourites, setIsMovieInFavourites] = useState(
     user.FavouriteMovies.includes(movieId)
@@ -34,46 +23,29 @@ export const MovieCard = ({
     setIsMovieInFavourites(!isMovieInFavourites); // Toggle the local state
   };
 
-  const toggleDirectorBio = () => {
-    setShowDirectorBio(!showDirectorBio);
-  };
-
   return (
-    <Card className="fav-movie">
-      <Figure>
-        <Link to={`/movies/${movie.title}`} style={{ textDecoration: "none" }}>
-          <Figure.Image
-            className="figure-img img-fluid rounded"
-            variant="top"
-            src={movie.image}
-            key={movie.id}
-          />
+    <>
+      <div className="movie-card">
+        {/* <div className="movie-image-wrapper"> */}
+        <Link to={`/movies/${movie.title}`}>
+          <img src={movie.image} key={movie.id} className="movie-image" />
         </Link>
-        <Card.Body>
-          <>
-            <Link
-              to={`/movies/${movie.title}`}
-              style={{ textDecoration: "none" }}
-            >
-              <Card.Title>
-                {movie.title} ({movie.year})
-              </Card.Title>{" "}
-            </Link>
-            <span
-              // onClick={() => setShowDirectorBio(!showDirectorBio)}
-              style={{ textDecoration: "none" }}
-            >
-              {movie.director}
-            </span>{" "}
-            <Button className="addButton" onClick={toggleFavourite}>
-              {isMovieInFavourites
-                ? "Remove from Favourites"
-                : "Add to Favourites"}
-            </Button>
-          </>
-        </Card.Body>
-      </Figure>
-    </Card>
+        {/* </div> */}
+        <Link to={`/movies/${movie.title}`}>
+          <div className="movie-title">
+            {movie.title} ({movie.year})
+          </div>
+        </Link>
+        <div className="movie-content">
+          <span>{movie.director}</span>{" "}
+          <button className="addButton" onClick={toggleFavourite}>
+            {isMovieInFavourites
+              ? "Remove from Favourites"
+              : "Add to Favourites"}
+          </button>
+        </div>
+      </div>
+    </>
   );
 };
 
