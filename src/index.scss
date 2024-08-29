@@ -2,11 +2,28 @@
   --padding: 10px;
   --gap: 10px;
   --border-radius: 4px;
-  --color-main: #4b3b0d;
+  --color-main: #191919;
+  --color-accent: #1dd875;
+
+  --h1: 36.49px;
+  --h2: 32.44px;
+  --h3: 28.83px;
+  --h4: 25.36px;
+  --h5: 22.78px;
+  --h6: 20.25px;
+  --p: 18px;
+  --small: 16px;
+  --tiny: 14.22px;
+}
+
+* {
+  color: var(--color-main);
+  font-size: var(--p);
 }
 
 h1 {
   margin: 0;
+  font-size: var(--h1);
 }
 
 .moviecard-wrap {
@@ -38,11 +55,20 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: var(--gap);
+  // border: 10px solid var(--color-main);
+  // box-shadow: 17px -4px 8px 6px var(--color-main);
 }
 
 .CubWrap input {
   padding: var(--padding);
   border-radius: var(--border-radius);
+  border: 0.1px solid;
+}
+
+input:focus {
+  outline: none !important;
+  border: 1px solid var(--color-accent);
+  box-shadow: 0 0 10px #719ece;
 }
 
 .profileContainer {
@@ -91,6 +117,20 @@ p {
   z-index: 1000;
   padding: var(--padding);
   background-color: white;
+}
+
+.fav-movies-div * {
+  list-style-type: none;
+}
+
+.fav-movies-div {
+  // list-style-type: none;
+  position: fixed;
+  top: 50%;
+  margin: 0;
+  left: 0;
+  background-color: white;
+  padding: 20px;
 }
 
 @media (max-width: 600px) {

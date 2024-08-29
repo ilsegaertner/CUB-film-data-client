@@ -14,11 +14,8 @@ export const ProfileView = ({
   userProfile,
   setUserProfile,
   onLoggedOut,
-
   user,
-  title,
   updateUser,
-  movie,
 }) => {
   // fetch userProfile and update it with setUserProfile
   useEffect(() => {
@@ -54,8 +51,6 @@ export const ProfileView = ({
   let favouriteMovieList = user.FavouriteMovies
     ? movies.filter((movie) => user.FavouriteMovies.includes(movie.id))
     : [];
-  console.log(user);
-  console.log(movies);
 
   return (
     <Container className="profileContainer">

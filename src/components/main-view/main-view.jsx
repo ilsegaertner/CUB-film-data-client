@@ -15,6 +15,7 @@ import { SignupView } from "../signup-view/signup-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { Form } from "react-bootstrap";
+import FavMovies from "../profile-view/favorite-movies";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -121,7 +122,9 @@ export const MainView = () => {
       <div className="wrapper">
         <div className="nav">
           <NavigationBar user={user} onLoggedOut={onLoggedOut} />
+          <FavMovies user={user} movies={movies} />
         </div>
+
         <div className="">
           <Routes>
             <Route
@@ -213,8 +216,8 @@ export const MainView = () => {
                       <h1 className="CUB">CUB Film Data</h1>
                     </div>
                     <span className="CubDescription">
-                      Browse our database for arthouse classics and make
-                      collections of your favorite movies
+                      Browse our database for arthouse classics and save your
+                      favorite movies
                     </span>
                     <Form.Control
                       size="lg"

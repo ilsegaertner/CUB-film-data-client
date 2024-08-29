@@ -8,8 +8,6 @@ import { removeFavouriteHandler } from "../favouriteHandler";
 import "./movie-card.scss";
 
 export const MovieCard = ({ movie, user, movieId, updateUser, token }) => {
-  console.log(movieId);
-
   const [isMovieInFavourites, setIsMovieInFavourites] = useState(
     user.FavouriteMovies.includes(movieId)
   );
@@ -26,24 +24,23 @@ export const MovieCard = ({ movie, user, movieId, updateUser, token }) => {
   return (
     <>
       <div className="movie-card">
-        {/* <div className="movie-image-wrapper"> */}
-        <Link to={`/movies/${movie.title}`}>
-          <img src={movie.image} key={movie.id} className="movie-image" />
-        </Link>
-        {/* </div> */}
-        <Link to={`/movies/${movie.title}`}>
-          <div className="movie-title">
-            {movie.title} ({movie.year})
-          </div>
-          <span>{movie.director}</span>{" "}
-        </Link>
-        <div className="movie-content">
-          <button className="addButton" onClick={toggleFavourite}>
-            {isMovieInFavourites
-              ? "Remove from Favourites"
-              : "Add to Favourites"}
-          </button>
+        <div className="movie-image-wrapper">
+          <Link to={`/movies/${movie.title}`}>
+            <img src={movie.image} key={movie.id} className="movie-image" />
+          </Link>
         </div>
+
+        <div className="movie-content">
+          <Link to={`/movies/${movie.title}`}>
+            <div className="movie-title">
+              {movie.title} ({movie.year})
+            </div>
+          </Link>
+          <span>{movie.director}</span>{" "}
+        </div>
+        <button className="addButton" onClick={toggleFavourite}>
+          {isMovieInFavourites ? "Remove from Favourites" : "Add to Favourites"}
+        </button>
       </div>
     </>
   );
