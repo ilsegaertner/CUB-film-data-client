@@ -49,20 +49,13 @@ h1 {
   padding: var(--padding);
 }
 
-.nav-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  align-items: center;
-  // justify-content: space-between;
-  justify-items: center;
-}
-
 .nav-wrapper img {
   border-radius: 50%;
 }
 
 #navbar-links {
   display: flex;
+  float: right;
   gap: var(--gap);
 }
 

@@ -213,14 +213,8 @@ export const MainView = () => {
                       <h1 className="CUB">CUB Film Data</h1>
                     </div>
                     <span className="CubDescription">
-                      Browse{" "}
-                      <span
-                        style={{ fontFamily: "monospace", color: "#43523e" }}
-                      >
-                        - CUB FILM DATA -
-                      </span>{" "}
-                      for arthouse classics and look for facts about your
-                      favorite movies
+                      Browse our database for arthouse classics and make
+                      collections of your favorite movies
                     </span>
                     <Form.Control
                       size="lg"

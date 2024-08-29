@@ -27377,20 +27377,8 @@ const MainView = ()=>{
                                                         }, void 0, false, void 0, void 0),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                                             className: "CubDescription",
-                                                            children: [
-                                                                "Browse",
-                                                                " ",
-                                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                                    style: {
-                                                                        fontFamily: "monospace",
-                                                                        color: "#43523e"
-                                                                    },
-                                                                    children: "- CUB FILM DATA -"
-                                                                }, void 0, false, void 0, void 0),
-                                                                " ",
-                                                                "for arthouse classics and look for facts about your favorite movies"
-                                                            ]
-                                                        }, void 0, true, void 0, void 0),
+                                                            children: "Browse our database for arthouse classics and make collections of your favorite movies"
+                                                        }, void 0, false, void 0, void 0),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
                                                             size: "lg",
                                                             type: "text",
@@ -27451,7 +27439,7 @@ const MainView = ()=>{
                                 preventDuplicates: true
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 267,
+                                lineNumber: 261,
                                 columnNumber: 11
                             }, undefined)
                         ]
