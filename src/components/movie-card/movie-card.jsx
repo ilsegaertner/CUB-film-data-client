@@ -35,9 +35,9 @@ export const MovieCard = ({ movie, user, movieId, updateUser, token }) => {
           <div className="movie-title">
             {movie.title} ({movie.year})
           </div>
+          <span>{movie.director}</span>{" "}
         </Link>
         <div className="movie-content">
-          <span>{movie.director}</span>{" "}
           <button className="addButton" onClick={toggleFavourite}>
             {isMovieInFavourites
               ? "Remove from Favourites"

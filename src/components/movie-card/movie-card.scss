@@ -6,12 +6,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 15px;
+  padding: var(--padding);
+  gap: var(--gap);
   background-color: #fff; /* Background color of the card */
   border-radius: 8px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   transition: transform 0.3s, box-shadow 0.3s;
   overflow: hidden; /* Ensure content doesn't overflow */
+  align-items: baseline;
 }
 
 .movie-image {
@@ -30,5 +32,4 @@
 
 .movie-content {
   text-align: center;
-  margin-top: 10px;
 }

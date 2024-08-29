@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export const UpdateUser = ({ user, token }) => {
@@ -71,13 +70,12 @@ export const UpdateUser = ({ user, token }) => {
   console.log(user);
 
   return (
-    <Form onSubmit={handleSubmit} className="updateUser-wrapper">
-      <Form.Group>
-        <h4>Update your Profile:</h4>
-      </Form.Group>
-      <Form.Group className="mb-3 " controlId="formUsername">
-        <Form.Label>Username:</Form.Label>
-        <Form.Control
+    <form onSubmit={handleSubmit} className="updateUser-wrapper">
+      <h4>Update your Profile:</h4>
+
+      <div controlId="formUsername">
+        <label>Username:</label>
+        <input
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
@@ -85,10 +83,10 @@ export const UpdateUser = ({ user, token }) => {
           placeholder="Enter a username"
           required
         />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formPassword">
-        <Form.Label>Password:</Form.Label>
-        <Form.Control
+      </div>
+      <div controlId="formPassword">
+        <label>Password:</label>
+        <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -96,35 +94,35 @@ export const UpdateUser = ({ user, token }) => {
           placeholder="Your Password must be 8 or more characters"
           required
         />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formEmail">
-        <Form.Label>Email:</Form.Label>
-        <Form.Control
+      </div>
+      <div controlId="formEmail">
+        <label>Email:</label>
+        <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email address"
         />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBirthday">
-        <Form.Label>Birthday:</Form.Label>
-        <Form.Control
+      </div>
+      <div controlId="formBirthday">
+        <label>Birthday:</label>
+        <input
           type="date"
           value={birthday}
           onChange={(e) => setBirthday(e.target.value)}
           required
         />
-      </Form.Group>
-      <Form.Group>
-        <Button
+      </div>
+      <div>
+        <button
           variant="primary"
           type="submit"
           value="submit"
           onClick={handleSubmit}
         >
           Update
-        </Button>
-      </Form.Group>
-    </Form>
+        </button>
+      </div>
+    </form>
   );
 };

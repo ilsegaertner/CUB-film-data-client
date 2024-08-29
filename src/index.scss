@@ -2,6 +2,11 @@
   --padding: 10px;
   --gap: 10px;
   --border-radius: 4px;
+  --color-main: #4b3b0d;
+}
+
+h1 {
+  margin: 0;
 }
 
 .moviecard-wrap {
@@ -42,6 +47,27 @@
 
 .profileContainer {
   padding: var(--padding);
+}
+
+.nav-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  // justify-content: space-between;
+  justify-items: center;
+}
+
+.nav-wrapper img {
+  border-radius: 50%;
+}
+
+#navbar-links {
+  display: flex;
+  gap: var(--gap);
+}
+
+#navbar-links * {
+  color: var(--color-main);
 }
 
 .updateUser-wrapper * {
@@ -89,6 +115,6 @@ p {
   }
 
   .CubWrap {
-    top: 80px;
+    top: 58px;
   }
 }

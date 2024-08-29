@@ -210,7 +210,7 @@ export const MainView = () => {
                 <>
                   <Form className="CubWrap">
                     <div className="VerticalContainer">
-                      <span className="CUB">CUB Film Data</span>
+                      <h1 className="CUB">CUB Film Data</h1>
                     </div>
                     <span className="CubDescription">
                       Browse{" "}
