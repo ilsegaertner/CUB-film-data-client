@@ -71,11 +71,11 @@ export const UpdateUser = ({ user, token }) => {
   console.log(user);
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className="updateUser-wrapper">
       <Form.Group>
         <h4>Update your Profile:</h4>
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formUsername">
+      <Form.Group className="mb-3 " controlId="formUsername">
         <Form.Label>Username:</Form.Label>
         <Form.Control
           type="text"

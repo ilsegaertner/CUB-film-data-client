@@ -118,8 +118,10 @@ export const MainView = () => {
 
   return (
     <BrowserRouter>
-      <div>
-        <NavigationBar user={user} onLoggedOut={onLoggedOut} />
+      <div className="wrapper">
+        <div className="nav">
+          <NavigationBar user={user} onLoggedOut={onLoggedOut} />
+        </div>
         <div className="">
           <Routes>
             <Route

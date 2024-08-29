@@ -1,15 +1,94 @@
+:root {
+  --padding: 10px;
+  --gap: 10px;
+  --border-radius: 4px;
+}
+
 .moviecard-wrap {
   display: grid;
-  gap: 20px; /* Space between the cards */
+  gap: var(--gap);
   grid-template-columns: repeat(
     auto-fill,
     minmax(200px, 1fr)
   ); /* Responsive columns */
-  padding: 20px; /* Padding around the grid */
+  padding: var(--padding);
+  grid-area: card;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas:
+    "menu card card"
+    "menu card card";
+  position: relative;
+  align-items: start;
+}
+
+.CubWrap {
+  position: sticky;
+  top: 0;
+  background: white;
+  padding: var(--padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.CubWrap input {
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+}
+
+.profileContainer {
+  padding: var(--padding);
+}
+
+.updateUser-wrapper * {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.clear-button {
+  position: absolute;
+  border-radius: 50%;
+  top: 15vh;
+}
+
+.updateUser-wrapper {
+  padding: var(--padding);
+}
+
+h4,
+p {
+  margin: 0;
+}
+
+.nav {
+  grid-area: menu;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: var(--padding);
+  background-color: white;
 }
 
 @media (max-width: 600px) {
   .moviecard-wrap {
     grid-template-columns: 1fr;
+  }
+
+  .wrapper {
+    grid-template-columns: 1fr;
+    grid-template-areas: none;
+  }
+
+  .nav {
+    grid-area: auto;
+  }
+
+  .CubWrap {
+    top: 80px;
   }
 }
