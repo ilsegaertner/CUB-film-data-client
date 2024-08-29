@@ -122,7 +122,7 @@ export const MainView = () => {
       <div className="wrapper">
         <div className="nav">
           <NavigationBar user={user} onLoggedOut={onLoggedOut} />
-          <FavMovies user={user} movies={movies} />
+          {/* <FavMovies user={user} movies={movies} /> */}
         </div>
 
         <div className="">
@@ -188,6 +188,15 @@ export const MainView = () => {
               path="/movies/:movieTitle"
               element={
                 <>
+                  <form className="CubWrap">
+                    <div className="VerticalContainer">
+                      <h1 className="CUB">CUB Film Data</h1>
+                    </div>
+                    <span className="CubDescription">
+                      Browse our database for arthouse classics and save your
+                      favorite movies
+                    </span>
+                  </form>
                   {!user ? (
                     <Navigate to="/login" replace />
                   ) : movies.length === 0 ? (

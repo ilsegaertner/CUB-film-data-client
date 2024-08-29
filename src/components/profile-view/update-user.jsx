@@ -71,7 +71,7 @@ export const UpdateUser = ({ user, token }) => {
 
   return (
     <form onSubmit={handleSubmit} className="updateUser-wrapper">
-      <h4>Update your Profile:</h4>
+      <h4>Update your Profile</h4>
 
       <div controlId="formUsername">
         <label>Username:</label>

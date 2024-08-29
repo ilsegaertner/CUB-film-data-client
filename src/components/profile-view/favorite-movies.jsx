@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 
 const FavMovies = ({ user, movies }) => {
-  let favouriteMovieList = user.FavouriteMovies
+  let favouriteMovieList = user?.FavouriteMovies
     ? movies.filter((movie) => user.FavouriteMovies.includes(movie.id))
     : [];
 
@@ -16,7 +16,9 @@ const FavMovies = ({ user, movies }) => {
         <p>Likes</p>
         <ul>
           {favouriteMovieList.map((movie) => (
-            <li key={movie.id}>{movie.title}</li>
+            <li key={movie.id}>
+              <img src={movie.image} width={40} />
+            </li>
           ))}
         </ul>
       </div>

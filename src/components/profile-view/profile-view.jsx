@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Container, Col, Row, Card } from "react-bootstrap";
 import "./profile-view.scss";
 
 import { UserInfo } from "./user-info";
@@ -53,62 +52,38 @@ export const ProfileView = ({
     : [];
 
   return (
-    <Container className="profileContainer">
-      <Row className="justify-content-lg-between">
-        <Col xs={12} sm={12} lg={3}>
-          <Card>
-            <Card.Body className="profilecard1">
-              <UserInfo user={user} />
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col xs={12} sm={12} lg={5}>
-          <Card>
-            <Card.Body className="profilecard2">
-              <UpdateUser
+    <div className="profileContainer">
+      <div className="profile-info-grid">
+        <UserInfo user={user} />
+
+        <UpdateUser
+          user={user}
+          token={token}
+          handleSubmit={handleSubmit}
+          updateUser={updateUser}
+          userProfile={userProfile}
+          setUserProfile={setUserProfile}
+        />
+
+        <DeleteProfile user={user} onLoggedOut={onLoggedOut} token={token} />
+      </div>
+      <div className="fav-movies-section">
+        <h2>Favorite Movies</h2>
+        {favouriteMovieList.map((movie, id) => {
+          return (
+            <div className="fav-movie">
+              <MovieCard
                 user={user}
-                token={token}
-                handleSubmit={handleSubmit}
-                updateUser={updateUser}
-                userProfile={userProfile}
                 setUserProfile={setUserProfile}
+                updateUser={updateUser}
+                movie={movie}
+                token={token}
+                movieId={movie.id}
               />
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col xs={1} sm={12} lg={1}>
-          <DeleteProfile user={user} onLoggedOut={onLoggedOut} token={token} />
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={12} sm={12} lg={12}>
-          <Card>
-            <Card.Body>
-              <Row>
-                <Col xs={12}>
-                  <h2>Favorite Movies</h2>
-                </Col>
-              </Row>
-              <Row>
-                {favouriteMovieList.map((movie, id) => {
-                  return (
-                    <Col xs={12} md={6} lg={3} key={id} className="fav-movie">
-                      <MovieCard
-                        user={user}
-                        setUserProfile={setUserProfile}
-                        updateUser={updateUser}
-                        movie={movie}
-                        token={token}
-                        movieId={movie.id}
-                      />
-                    </Col>
-                  );
-                })}
-              </Row>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 };

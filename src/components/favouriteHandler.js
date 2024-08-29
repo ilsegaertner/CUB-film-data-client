@@ -40,9 +40,6 @@ export const addFavouriteHandler = (
     })
     .catch((error) => {
       console.error("Error adding movie to favorites", error);
-
-      // Handle errors gracefully by showing user-friendly messages
-      // or implementing a notification system to inform the user
     });
 };
 

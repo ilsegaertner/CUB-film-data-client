@@ -30,7 +30,7 @@ export const DeleteProfile = ({ user, onLoggedOut, token }) => {
 
   return (
     <>
-      <Card>
+      <div className="delete-action">
         <Button variant="primary" onClick={handleShow} className="deleteButton">
           Delete Profile
         </Button>
@@ -48,7 +48,7 @@ export const DeleteProfile = ({ user, onLoggedOut, token }) => {
             </Button>
           </Modal.Footer>
         </Modal>
-      </Card>
+      </div>
     </>
   );
 };
