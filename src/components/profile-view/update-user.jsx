@@ -122,6 +122,7 @@ export const UpdateUser = ({ user, token }) => {
         >
           Update
         </button>
+        
       </div>
     </form>
   );

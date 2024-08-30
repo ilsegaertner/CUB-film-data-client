@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-// import { Row, Col, Form, NavbarBrand, ToastContainer } from "react-bootstrap";
 import { Form, ToastContainer } from "react-bootstrap";
 
 //import toast
@@ -14,7 +13,6 @@ import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
-import { Form } from "react-bootstrap";
 import FavMovies from "../profile-view/favorite-movies";
 
 export const MainView = () => {
@@ -78,11 +76,11 @@ export const MainView = () => {
     setSearchQuery("");
     setMoviesToRender(movies);
   };
-  const filteredMovies = moviesToRender.filter(
-    (movie) =>
-      movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      movie.director.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // const filteredMovies = moviesToRender.filter(
+  //   (movie) =>
+  //     movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  //     movie.director.toLowerCase().includes(searchQuery.toLowerCase())
+  // );
 
   //style of searchbar
   const searchbarStyle = {
@@ -122,7 +120,7 @@ export const MainView = () => {
       <div className="wrapper">
         <div className="nav">
           <NavigationBar user={user} onLoggedOut={onLoggedOut} />
-          {/* <FavMovies user={user} movies={movies} /> */}
+          <FavMovies user={user} movies={movies} />
         </div>
 
         <div className="">
@@ -188,15 +186,6 @@ export const MainView = () => {
               path="/movies/:movieTitle"
               element={
                 <>
-                  <form className="CubWrap">
-                    <div className="VerticalContainer">
-                      <h1 className="CUB">CUB Film Data</h1>
-                    </div>
-                    <span className="CubDescription">
-                      Browse our database for arthouse classics and save your
-                      favorite movies
-                    </span>
-                  </form>
                   {!user ? (
                     <Navigate to="/login" replace />
                   ) : movies.length === 0 ? (
@@ -233,7 +222,7 @@ export const MainView = () => {
                       type="text"
                       style={searchbarStyle}
                       placeholder="Search movies..."
-                      class="bg-body-tertiary navbar navbar-expand-lg navbar-light searchMovies form-control-lg mr-sm-2"
+                      className="bg-body-tertiary navbar navbar-expand-lg navbar-light searchMovies form-control-lg mr-sm-2"
                       value={searchQuery}
                       onChange={handleSearchInputChange}
                     />

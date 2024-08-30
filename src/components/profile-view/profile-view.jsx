@@ -53,7 +53,7 @@ export const ProfileView = ({
 
   return (
     <div className="profileContainer">
-      <div className="profile-info-grid">
+      <section className="profile-info-grid">
         <UserInfo user={user} />
 
         <UpdateUser
@@ -64,26 +64,27 @@ export const ProfileView = ({
           userProfile={userProfile}
           setUserProfile={setUserProfile}
         />
-
         <DeleteProfile user={user} onLoggedOut={onLoggedOut} token={token} />
-      </div>
-      <div className="fav-movies-section">
+      </section>
+      <section className="fav-movies-section">
         <h2>Favorite Movies</h2>
-        {favouriteMovieList.map((movie, id) => {
-          return (
-            <div className="fav-movie">
-              <MovieCard
-                user={user}
-                setUserProfile={setUserProfile}
-                updateUser={updateUser}
-                movie={movie}
-                token={token}
-                movieId={movie.id}
-              />
-            </div>
-          );
-        })}
-      </div>
+        <div className="fav-movie-wrapper">
+          {favouriteMovieList.map((movie, id) => {
+            return (
+              <div className="fav-movie">
+                <MovieCard
+                  user={user}
+                  setUserProfile={setUserProfile}
+                  updateUser={updateUser}
+                  movie={movie}
+                  token={token}
+                  movieId={movie.id}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </section>
     </div>
   );
 };

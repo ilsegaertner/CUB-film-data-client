@@ -3,7 +3,8 @@
   --gap: 10px;
   --border-radius: 4px;
   --color-main: #191919;
-  --color-accent: #1dd875;
+  --color-accent: #2d4ec3;
+  --color2: #eee;
 
   --h1: 36.49px;
   --h2: 32.44px;
@@ -31,6 +32,7 @@ button {
   margin: 0;
   border: 0.1px solid var(--color-main);
   border-radius: 4px;
+  font-size: var(--small);
 }
 
 .moviecard-wrap {
@@ -88,10 +90,19 @@ input:focus {
   margin: 0;
 }
 
+.fav-movie-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
 .nav-wrapper {
   background-color: var(--color-main);
   padding: var(--padding);
   border-radius: var(--border-radius);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--gap);
 }
 
 .nav-wrapper img {
@@ -155,10 +166,11 @@ p {
   margin: 0;
   left: 0;
   bottom: 0;
-  background-color: rgb(255, 73, 170);
+  background-color: var(--color2);
   padding: var(--padding);
   border-radius: var(--border-radius);
   height: 85%;
+  width: 200px;
 }
 
 .fav-movies-div p {
@@ -190,6 +202,10 @@ p {
   padding: var(--padding);
 }
 
+.likes-aside-wrapper {
+  padding: var(--padding) 0;
+}
+
 @media (max-width: 600px) {
   .moviecard-wrap {
     grid-template-columns: 1fr;
@@ -200,11 +216,21 @@ p {
     grid-template-areas: none;
   }
 
+  .profile-info-grid {
+    grid-template-columns: 1fr;
+    display: block;
+  }
+
+  .fav-movie-wrapper {
+    grid-template-columns: 1fr;
+  }
+
   .nav {
     grid-area: auto;
+    position: relative;
   }
 
   .CubWrap {
-    top: 72px;
+    // top: 72px;
   }
 }

@@ -21,53 +21,13 @@ export const MovieView = ({ movies, setUser, user, token, updateUser }) => {
 
   return (
     <>
-      <div className="movieView">
-        <div>
-          <div>
-            <img src={movie.image} alt={movie.title} />
-          </div>
-          <div>
-            <span className="parameters">Title</span>
-            <span>
-              {" "}
-              {movie.title} ({movie.year})
-            </span>
-            <div>
-              <span className="parameters">Description</span>
-              <span> {movie.description}</span>
-            </div>
-            <div>
-              <span
-                className="parametersClick"
-                onClick={() => setShowDirectorBio(!showDirectorBio)}
-              >
-                Director
-              </span>
-              {showDirectorBio && <span>{movie.bio}</span>}
-            </div>
-            <div className="genre-description">
-              <span
-                className="parametersClick"
-                onClick={() => setShowGenreDescription(!showGenreDescription)}
-              >
-                Genre
-              </span>
-              {showGenreDescription && <span>{movie.genreDescription}</span>}
-            </div>
-            <div>
-              <span className="parameters">Year </span>
-              <span>{movie.year}</span>
-            </div>
-            <div>
-              <span className="parameters">Actors </span>
-              {movie.actors.map((actor, index) => (
-                <span key={index}>
-                  <Link to={`/movies/actor/${actor}`}>{actor}</Link>
-                  {index < movie.actors.length - 1 && ", "}
-                </span>
-              ))}
-            </div>
-
+      <form className="CubWrap">
+        <div className="VerticalContainer">
+          <h1 className="CUB">
+            {movie.title} ({movie.year})
+          </h1>
+          <div className="movie-view-button-wrapper">
+            {" "}
             <button
               className="addButton"
               onClick={() => {
@@ -84,11 +44,61 @@ export const MovieView = ({ movies, setUser, user, token, updateUser }) => {
                 ? "Remove from Favourites"
                 : "Add to Favourites"}
             </button>
+            <div>
+              <Link to={`/`}>
+                <button className="back-button">Back</button>
+              </Link>{" "}
+            </div>
           </div>
+        </div>
+        <span className="CubDescription">{movie.director}</span>
+      </form>
+      <div className="movieView">
+        <div className="movie-view-wrapper">
           <div>
-            <Link to={`/`}>
-              <button className="back-button">Back</button>
-            </Link>{" "}
+            <img src={movie.image} alt={movie.title} />
+          </div>
+          <div className="movie-view-text">
+            <span className="parameters">Title</span>
+            <span>
+              {" "}
+              {movie.title} ({movie.year})
+            </span>
+            <div>
+              <span className="parameters">Description</span>
+              <span> {movie.description}</span>
+            </div>
+            <div>
+              <span
+                className="parametersClick"
+                onClick={() => setShowDirectorBio(!showDirectorBio)}
+              >
+                Director{" "}
+              </span>
+              {showDirectorBio && <span>{movie.bio}</span>}
+            </div>
+            <div className="genre-description">
+              <span
+                className="parametersClick"
+                onClick={() => setShowGenreDescription(!showGenreDescription)}
+              >
+                Genre{" "}
+              </span>
+              {showGenreDescription && <span>{movie.genreDescription}</span>}
+            </div>
+            <div>
+              <span className="parameters">Year </span>
+              <span>{movie.year}</span>
+            </div>
+            <div>
+              <span className="parameters">Actors </span>
+              {movie.actors.map((actor, index) => (
+                <span key={index}>
+                  <Link to={`/movies/actor/${actor}`}>{actor}</Link>
+                  {index < movie.actors.length - 1 && ", "}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
