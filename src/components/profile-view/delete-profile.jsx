@@ -64,6 +64,7 @@ export const DeleteProfile = ({ user, onLoggedOut, token }) => {
             </div>
           </>
         )}
+        <hr />
       </div>
     </>
   );

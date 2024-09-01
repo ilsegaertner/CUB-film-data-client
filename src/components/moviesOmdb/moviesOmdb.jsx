@@ -63,7 +63,13 @@ export const MoviesFromOMDB = () => {
         <form onSubmit={handleSubmit} className="OMDBWrap">
           <div className="VerticalContainer">
             {" "}
-            <h1> OMBD Film Data </h1>
+            <h1>
+              {" "}
+              <span className="heading-color-element red">O</span>
+              <span className="heading-color-element yellow">M</span>
+              <span className="heading-color-element orange">D</span>
+              <span className="heading-color-element white">B</span> Film Data{" "}
+            </h1>
           </div>
           <span className="CubDescription">
             {" "}

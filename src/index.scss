@@ -16,6 +16,12 @@
   --line-height-small: 1.2;
   --letter-spacing-normal: 0.3px;
   --letter-spacing-small: -0.5px;
+  --blue: #3498db;
+  --green: #07bc0c;
+  --red: #ea4d4d;
+  --yellow: #e9f244;
+  --orange: #efc715;
+  --shadow-glow: 0px 0px 1px var(--color-main);
 
   --h1: 36.49px;
   --h2: 32.44px;
@@ -81,6 +87,38 @@ button:hover {
   color: var(--color-colorful);
 
   transition: opacity 0.1s, box-shadow 0.1s;
+}
+
+hr {
+  border: 0.1px solid var(--color-main);
+}
+
+.heading-color-element {
+  font-size: var(--h1);
+}
+
+.blue {
+  color: var(--blue);
+}
+
+.white {
+  color: var(--color-main);
+}
+
+.green {
+  color: var(--green);
+}
+
+.red {
+  color: var(--red);
+}
+
+.yellow {
+  color: var(--yellow);
+}
+
+.orange {
+  color: var(--orange);
 }
 
 .login-form {
@@ -293,6 +331,10 @@ p {
 .social-media {
   display: flex;
   flex-direction: column;
+}
+
+.social-media img {
+  mix-blend-mode: difference;
 }
 
 .footer-wrapper {

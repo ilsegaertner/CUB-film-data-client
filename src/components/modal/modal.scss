@@ -32,6 +32,7 @@
   margin: 0;
   margin-bottom: var(--padding);
   letter-spacing: var(--letter-spacing-small);
+  color: var(--color-main);
 }
 
 .modal-actions {
@@ -50,4 +51,5 @@
 
 .modal-button:hover {
   background-color: var(--color-colorful);
+  color: var(--color-main);
 }

@@ -263,7 +263,14 @@ export const MainView = () => {
 
                   <form className="CubWrap">
                     <div className="VerticalContainer">
-                      <h1 className="CUB">CUB Film Data</h1>
+                      <h1 className="CUB">
+                        <span className="heading-color-element blue">C</span>
+                        <span className="heading-color-element white">U</span>
+                        <span className="heading-color-element green">
+                          B
+                        </span>{" "}
+                        Film Data
+                      </h1>
                     </div>
                     <span className="CubDescription">
                       Browse our inhouse database for arthouse classics and save
@@ -330,13 +337,22 @@ export const MainView = () => {
         <div className="footer-wrapper">
           <div className="social-media">
             <a href="">
-              <img src="." />
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/twitter/twitter-original.svg"
+                width={20}
+              />
             </a>
             <a href="">
-              <img src="../../assets/683981_github_square_connection_network_share_icon.svg" />
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
+                width={20}
+              />
             </a>
             <a href="">
-              <img src="../../assets/683981_github_square_connection_network_share_icon.svg" />
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/facebook/facebook-original.svg"
+                width={20}
+              />
             </a>
           </div>
         </div>

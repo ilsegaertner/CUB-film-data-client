@@ -8,6 +8,7 @@ export const UserInfo = ({ user }) => {
       <h4>Your Info</h4>
       <p>Name: {Username}</p>
       <p>E-mail: {Email}</p>
+      <hr />
     </div>
   );
 };
