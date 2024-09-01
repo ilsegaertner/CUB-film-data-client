@@ -4,15 +4,17 @@ import logo4 from "./logo4.svg";
 export const NavigationBar = ({ user, onLoggedOut }) => {
   return (
     <div className="nav-wrapper">
-      <img
-        as={Link}
-        to="/"
-        src={logo4}
-        width="40"
-        height="40"
-        className="d-inline-block align-right"
-        alt="React Bootstrap logo"
-      />
+      <Link to="/">
+        <img
+          as={Link}
+          to="/"
+          src={logo4}
+          width="40"
+          height="40"
+          className="spin-image"
+          alt="React Bootstrap logo"
+        />
+      </Link>
 
       <div id="navbar-links">
         {!user && (

@@ -1,0 +1,53 @@
+/* modal.scss */
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--bg-color);
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 8px;
+}
+
+.modal-content {
+  margin-bottom: 20px;
+}
+
+.modal-content h3 {
+  margin: 0;
+  margin-bottom: var(--padding);
+  letter-spacing: var(--letter-spacing-small);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-button {
+  color: var(--bg-color);
+  cursor: pointer;
+  background-color: var(--color-main);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 3px;
+}
+
+.modal-button:hover {
+  background-color: var(--color-colorful);
+}

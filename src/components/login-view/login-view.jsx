@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
 
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
@@ -45,13 +43,13 @@ export const LoginView = ({ onLoggedIn }) => {
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group>
-          <Form.Label>Login:</Form.Label>
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formUsername">
-          <Form.Label>Username:</Form.Label>
-          <Form.Control
+      <form onSubmit={handleSubmit} className="login-form">
+        <div>
+          <label>Login:</label>
+        </div>
+        <div className="mb-3" controlId="formUsername">
+          <label>Username:</label>
+          <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -59,10 +57,10 @@ export const LoginView = ({ onLoggedIn }) => {
             placeholder="Enter your username"
             required
           />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formPassword">
-          <Form.Label>Password:</Form.Label>
-          <Form.Control
+        </div>
+        <div className="mb-3" controlId="formPassword">
+          <label>Password:</label>
+          <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -70,11 +68,11 @@ export const LoginView = ({ onLoggedIn }) => {
             placeholder="Password"
             required
           />
-        </Form.Group>
-        <Button variant="primary" type="submit">
+        </div>
+        <button variant="primary" type="submit">
           Submit
-        </Button>
-      </Form>
+        </button>
+      </form>
     </>
   );
 };

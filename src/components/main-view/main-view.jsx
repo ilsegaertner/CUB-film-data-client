@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { Form, ToastContainer } from "react-bootstrap";
+import { Link, useLocation } from "react-router-dom";
+// import { Form, ToastContainer } from "react-bootstrap";
 
 //import toast
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import { MoviesFromOMDB } from "../moviesOmdb/moviesOmdb";
 
 // import components
 import { MovieCard } from "../movie-card/movie-card";
@@ -13,7 +16,13 @@ import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
+
 import FavMovies from "../profile-view/favorite-movies";
+
+import Spinner from "../ui/spinner";
+
+// import "../ui/spinner.css";
+// import Spinner from "react-bootstrap/Spinner";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -30,6 +39,10 @@ export const MainView = () => {
   // displaying filtered movies from search query
   const [moviesToRender, setMoviesToRender] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const location = useLocation();
 
   //fetch Movies
   useEffect(() => {
@@ -76,16 +89,6 @@ export const MainView = () => {
     setSearchQuery("");
     setMoviesToRender(movies);
   };
-  // const filteredMovies = moviesToRender.filter(
-  //   (movie) =>
-  //     movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-  //     movie.director.toLowerCase().includes(searchQuery.toLowerCase())
-  // );
-
-  //style of searchbar
-  const searchbarStyle = {
-    boxShadow: "0px 1px 4px #dbdbdb",
-  };
 
   // handle logOut
   const onLoggedOut = () => {
@@ -115,16 +118,47 @@ export const MainView = () => {
       });
   };
 
+  const toggleDarkMode = () => {
+    setIsDarkMode((prevMode) => !prevMode);
+    if (!isDarkMode) {
+      document.documentElement.style.setProperty("--color-main", "#f4f4f4");
+      document.documentElement.style.setProperty("--bg-color", "#191919");
+    } else {
+      document.documentElement.style.setProperty("--color-main", "#191919");
+      document.documentElement.style.setProperty("--bg-color", "#f4f4f4");
+    }
+  };
+
   return (
-    <BrowserRouter>
+    <>
+      {/* // <BrowserRouter> */}
       <div className="wrapper">
-        <div className="nav">
-          <NavigationBar user={user} onLoggedOut={onLoggedOut} />
-          <FavMovies user={user} movies={movies} />
+        <div className="left-side">
+          <div className="nav">
+            <NavigationBar user={user} onLoggedOut={onLoggedOut} />
+            <FavMovies user={user} movies={movies} />
+
+            {location.pathname === "/" ? (
+              <button onClick={toggleDarkMode}>
+                <Link to="/apimovies">OMBD Database</Link>
+              </button>
+            ) : (
+              <button onClick={toggleDarkMode}>
+                <Link to="/"> CUB Film Arthouse Database</Link>
+              </button>
+            )}
+          </div>
         </div>
 
-        <div className="">
+        <div className="right-side">
           <Routes>
+            <Route
+              path="/apimovies"
+              element={
+                user ? <MoviesFromOMDB /> : <Navigate to="/login" replace />
+              }
+            />
+
             <Route
               path="/signup"
               element={
@@ -189,8 +223,9 @@ export const MainView = () => {
                   {!user ? (
                     <Navigate to="/login" replace />
                   ) : movies.length === 0 ? (
-                    <div>The list is empty!</div>
+                    <Spinner />
                   ) : (
+                    // <div className="error">The list is empty!</div>
                     <div>
                       <MovieView
                         user={user}
@@ -209,20 +244,36 @@ export const MainView = () => {
               path="/"
               element={
                 <>
-                  <Form className="CubWrap">
+                  {/* <div className="left-side">
+                    <div className="nav">
+                      <NavigationBar user={user} onLoggedOut={onLoggedOut} />
+                      <FavMovies user={user} movies={movies} />
+
+                      {location.pathname === "/" ? (
+                        <button onClick={toggleDarkMode}>
+                          <Link to="/apimovies">OMBD Database</Link>
+                        </button>
+                      ) : (
+                        <button onClick={toggleDarkMode}>
+                          <Link to="/"> CUB Film Arthouse Database</Link>
+                        </button>
+                      )}
+                    </div>
+                  </div> */}
+
+                  <form className="CubWrap">
                     <div className="VerticalContainer">
                       <h1 className="CUB">CUB Film Data</h1>
                     </div>
                     <span className="CubDescription">
-                      Browse our database for arthouse classics and save your
-                      favorite movies
+                      Browse our inhouse database for arthouse classics and save
+                      your favorite movies
                     </span>
-                    <Form.Control
+                    <input
                       size="lg"
                       type="text"
-                      style={searchbarStyle}
                       placeholder="Search movies..."
-                      className="bg-body-tertiary navbar navbar-expand-lg navbar-light searchMovies form-control-lg mr-sm-2"
+                      className="search-movies"
                       value={searchQuery}
                       onChange={handleSearchInputChange}
                     />
@@ -234,12 +285,13 @@ export const MainView = () => {
                         X
                       </button>
                     )}
-                  </Form>
+                  </form>
                   {!user ? (
                     <Navigate to="/login" replace />
                   ) : moviesToRender.length === 0 ? (
-                    <div>The list is empty!</div>
+                    <Spinner />
                   ) : (
+                    // <div className="error">The list is empty!</div>
                     <>
                       <div className="moviecard-wrap">
                         {moviesToRender.map((movie) => (
@@ -274,6 +326,10 @@ export const MainView = () => {
           />
         </div>
       </div>{" "}
-    </BrowserRouter>
+      <section className="footer">
+        <div className="footer-wrapper"></div>
+      </section>
+      {/* </BrowserRouter> */}
+    </>
   );
 };

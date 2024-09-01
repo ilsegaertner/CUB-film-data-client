@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
 
 export const SignupView = () => {
   const [username, setUsername] = useState("");
@@ -38,11 +36,11 @@ export const SignupView = () => {
 
   return (
     <>
-      <div>
+      <div className="signup-wrapper">
         <div>
-          <div>Please register</div>
+          <div className="login-form">Please register</div>
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="login-form">
             <label>Email:</label>
             <input
               type="email"

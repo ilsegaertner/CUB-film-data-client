@@ -6,6 +6,14 @@
   color: var(--color-accent);
 }
 
+.parametersClick:hover {
+  color: var(--color-colorful);
+}
+
+.actors {
+  color: var(--color-accent);
+}
+
 .movieView {
   padding: var(--padding);
 }
@@ -13,16 +21,32 @@
 .movieView img {
   width: 100%;
   border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-movie-image);
+}
+
+.parameters-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: var(--gap);
 }
 
 .movie-view-wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 2fr 0.5fr;
   gap: calc(var(--gap) * 4);
 }
 
 .movie-view-text * {
   padding-top: var(--padding);
+  color: var(--color-main);
+}
+
+.movie-view-text span:first-of-type {
+  font-weight: 600;
+}
+
+.movie-view-text {
+  color: var(--color-main);
 }
 
 .movie-view-button-wrapper {

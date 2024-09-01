@@ -1,5 +1,4 @@
 import React from "react";
-import { Card } from "react-bootstrap";
 
 export const UserInfo = ({ user }) => {
   const { Username, Email } = user;

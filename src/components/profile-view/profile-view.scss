@@ -1,0 +1,63 @@
+.profileContainer {
+  padding-right: var(--padding);
+}
+
+.user-info {
+  padding: var(--padding);
+  position: sticky;
+  top: 0;
+}
+
+.user-info h4 {
+  font-size: var(--h4);
+  padding-bottom: 10px;
+  letter-spacing: var(--letter-spacing-small);
+}
+
+.delete-action {
+  grid-column: 2/2;
+  padding: var(--padding);
+}
+
+.updateUser-wrapper * {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  border-radius: var(--border-radius);
+}
+
+.updateUser-wrapper input {
+  border: var(--border);
+}
+
+.updateUser-wrapper label {
+  font-weight: 100;
+}
+
+.updateUser-wrapper h4 {
+  font-size: var(--h4);
+  padding-bottom: 10px;
+  letter-spacing: var(--letter-spacing-small);
+}
+
+.profile-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--gap);
+}
+
+.profile-info-grid p {
+  font-weight: 100;
+}
+
+.fav-movies-section h2 {
+  font-size: var(--h4);
+  padding: var(--padding);
+  margin: 0;
+  color: var(--color-main);
+  letter-spacing: var(--letter-spacing-small);
+}
+
+.delete-action {
+  position: relative;
+}

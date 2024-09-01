@@ -1,12 +1,14 @@
 import React from "react";
 import { useState } from "react";
-import { Button, Card, Modal } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+// import { Button, Card, Modal } from "react-bootstrap";
 import "./profile-view.scss";
 
 export const DeleteProfile = ({ user, onLoggedOut, token }) => {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
+
+  // const handleClose = () => setShowModal(false);
 
   const deleteProfileHandler = () => {
     fetch(
@@ -16,38 +18,52 @@ export const DeleteProfile = ({ user, onLoggedOut, token }) => {
       .then((response) => {
         if (response.ok) {
           alert("Profile deleted");
-          window.location = "signup";
+          // window.location = "signup";
           onLoggedOut();
+          navigate("/signup");
         } else {
           alert("Something went wrong");
         }
       })
       .catch((error) => {
         console.error("Error deleting profile:", error);
-        alert("Something went wrong" + error);
+        alert("Something went wrong" + error.message);
       });
   };
 
   return (
     <>
       <div className="delete-action">
-        <Button variant="primary" onClick={handleShow} className="deleteButton">
+        {/* <button variant="primary" onClick={handleShow} className="deleteButton">
           Delete Profile
-        </Button>
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Delete account</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>Are you sure you want to delete your profile?</Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              No, bring me back
-            </Button>
-            <Button variant="primary" onClick={deleteProfileHandler}>
-              Delete Profile{" "}
-            </Button>
-          </Modal.Footer>
-        </Modal>
+        </button> */}
+
+        <button onClick={() => setShowModal(true)} className="deleteButton">
+          Delete Profile
+        </button>
+
+        {showModal && (
+          <>
+            <div
+              className="modal-backdrop"
+              onClick={() => setShowModal(false)}
+            ></div>
+            <div className="modal">
+              <div className="modal-content">
+                <p>Are you sure you want to delete your profile?</p>
+
+                <div className="modal-actions">
+                  <button onClick={() => setShowModal(false)}>
+                    No, bring me back
+                  </button>
+                  <button onClick={deleteProfileHandler}>
+                    Delete Profile{" "}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </>
   );

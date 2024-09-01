@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./movie-view.scss";
 import { addFavouriteHandler } from "../favouriteHandler";
 import { removeFavouriteHandler } from "../favouriteHandler";
+import Modal from "../modal/modal";
 
 export const MovieView = ({ movies, setUser, user, token, updateUser }) => {
   const { movieTitle } = useParams(); // useParams allows us to use the URL (which is how our backend is setup for movieView)
@@ -59,42 +60,41 @@ export const MovieView = ({ movies, setUser, user, token, updateUser }) => {
             <img src={movie.image} alt={movie.title} />
           </div>
           <div className="movie-view-text">
-            <span className="parameters">Title</span>
-            <span>
-              {" "}
-              {movie.title} ({movie.year})
-            </span>
+            {/* <span className="parameters">Title</span> */}
+            <span> "{movie.title}" </span>({movie.year})
             <div>
-              <span className="parameters">Description</span>
-              <span> {movie.description}</span>
+              {/* <span className="parameters">Description</span> */}
+              {movie.description}
             </div>
-            <div>
+            <div className="parameters-wrapper">
               <span
                 className="parametersClick"
-                onClick={() => setShowDirectorBio(!showDirectorBio)}
+                onClick={() => setShowDirectorBio(true)}
               >
                 Director{" "}
               </span>
-              {showDirectorBio && <span>{movie.bio}</span>}
+              {/* {showDirectorBio && <span>{movie.bio}</span>} */}
             </div>
-            <div className="genre-description">
+            <div className="genre-description parameters-wrapper">
               <span
                 className="parametersClick"
-                onClick={() => setShowGenreDescription(!showGenreDescription)}
+                onClick={() => setShowGenreDescription(true)}
               >
                 Genre{" "}
               </span>
-              {showGenreDescription && <span>{movie.genreDescription}</span>}
+              {/* {showGenreDescription && <span>{movie.genreDescription}</span>} */}
             </div>
-            <div>
+            {/* <div>
               <span className="parameters">Year </span>
               <span>{movie.year}</span>
-            </div>
+            </div> */}
             <div>
               <span className="parameters">Actors </span>
               {movie.actors.map((actor, index) => (
                 <span key={index}>
-                  <Link to={`/movies/actor/${actor}`}>{actor}</Link>
+                  <Link to={`/movies/actor/${actor}`} className="actors">
+                    {actor}
+                  </Link>
                   {index < movie.actors.length - 1 && ", "}
                 </span>
               ))}
@@ -102,6 +102,22 @@ export const MovieView = ({ movies, setUser, user, token, updateUser }) => {
           </div>
         </div>
       </div>
+
+      {/* Modals for Director Bio and Genre Description */}
+      <Modal show={showDirectorBio} onClose={() => setShowDirectorBio(false)}>
+        {" "}
+        <h3>Director Bio</h3>
+        <p>{movie.bio}</p>
+      </Modal>
+
+      <Modal
+        show={showGenreDescription}
+        onClose={() => setShowGenreDescription(false)}
+      >
+        {" "}
+        <h3>Genre Description</h3>
+        <p>{movie.genreDescription}</p>
+      </Modal>
     </>
   );
 };

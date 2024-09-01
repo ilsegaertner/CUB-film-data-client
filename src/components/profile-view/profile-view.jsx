@@ -67,7 +67,7 @@ export const ProfileView = ({
         <DeleteProfile user={user} onLoggedOut={onLoggedOut} token={token} />
       </section>
       <section className="fav-movies-section">
-        <h2>Favorite Movies</h2>
+        <h2>Likes</h2>
         <div className="fav-movie-wrapper">
           {favouriteMovieList.map((movie, id) => {
             return (
