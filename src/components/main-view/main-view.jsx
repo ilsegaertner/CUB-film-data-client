@@ -327,7 +327,19 @@ export const MainView = () => {
         </div>
       </div>{" "}
       <section className="footer">
-        <div className="footer-wrapper"></div>
+        <div className="footer-wrapper">
+          <div className="social-media">
+            <a href="">
+              <img src="." />
+            </a>
+            <a href="">
+              <img src="../../assets/683981_github_square_connection_network_share_icon.svg" />
+            </a>
+            <a href="">
+              <img src="../../assets/683981_github_square_connection_network_share_icon.svg" />
+            </a>
+          </div>
+        </div>
       </section>
       {/* </BrowserRouter> */}
     </>

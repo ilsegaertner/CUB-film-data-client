@@ -285,9 +285,18 @@ p {
 }
 
 .footer {
-  background-color: #ff0404;
-  height: 20vh;
+  background-color: var(--color-main);
+  height: max-content;
   bottom: 0;
+}
+
+.social-media {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-wrapper {
+  padding: var(--padding);
 }
 
 @media (max-width: 600px) {
