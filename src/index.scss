@@ -75,7 +75,8 @@ h1 {
 }
 
 button {
-  padding: 3px;
+  // padding: 3px;
+  padding: var(--padding);
   margin: 0;
   border: var(--border);
   border-radius: var(--border-radius);
@@ -175,6 +176,7 @@ hr {
   display: flex;
   // margin-bottom: 5vh;
   flex-direction: column;
+  border-radius: var(--border-radius);
   // gap: var(--gap);
   // border: 10px solid var(--caolor-main);
   // box-shadow: 17px -4px 8px 6px var(--color-main);
@@ -194,6 +196,11 @@ hr {
   letter-spacing: var(--letter-spacing-normal);
   color: var(--color-main);
   font-weight: 100;
+}
+
+input {
+  padding: var(--padding);
+  border-radius: var(--border-radius);
 }
 
 input:focus,

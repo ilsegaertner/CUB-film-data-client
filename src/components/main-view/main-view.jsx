@@ -16,10 +16,12 @@ import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
+import ChooseDatabases from "../choose-databases/choose-databases";
 
 import FavMovies from "../profile-view/favorite-movies";
 
 import Spinner from "../ui/spinner";
+import logo4 from "./../navigation-bar/logo4.svg";
 
 // import "../ui/spinner.css";
 // import Spinner from "react-bootstrap/Spinner";
@@ -278,11 +280,18 @@ export const MainView = () => {
             />
 
             <Route
+              path="/databases"
+              element={
+                user ? <ChooseDatabases /> : <Navigate to="/login" replace />
+              }
+            />
+
+            <Route
               path="/signup"
               element={
                 <>
                   {user ? (
-                    <Navigate to="/" />
+                    <Navigate to="/databases" />
                   ) : (
                     <div>
                       <SignupView />
@@ -297,7 +306,7 @@ export const MainView = () => {
               element={
                 <>
                   {user ? (
-                    <Navigate to="/" />
+                    <Navigate to="/databases" />
                   ) : (
                     <div>
                       <LoginView
@@ -382,6 +391,16 @@ export const MainView = () => {
                   <form className="CubWrap">
                     <div className="VerticalContainer">
                       <h1 className="CUB">
+                        <img
+                          as={Link}
+                          to="/"
+                          src={logo4}
+                          style={{ marginRight: 10, width: 30, height: 30 }}
+                          width="40"
+                          height="40"
+                          className="spin-image"
+                          alt="React Bootstrap logo"
+                        />
                         <span className="heading-color-element blue">C</span>
                         <span className="heading-color-element white">U</span>
                         <span className="heading-color-element green">

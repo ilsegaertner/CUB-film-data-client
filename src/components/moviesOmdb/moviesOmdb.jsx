@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import "../moviesOmdb/moviesOmdb.scss";
 
+import { API_KEY } from "../../config";
+
 import Spinner from "../ui/spinner";
 
 export const MoviesFromOMDB = () => {
@@ -21,7 +23,7 @@ export const MoviesFromOMDB = () => {
 
     try {
       const response = await fetch(
-        `https://www.omdbapi.com/?apikey=59e62a8f&t=${query}`
+        `https://www.omdbapi.com/?apikey=${API_KEY}&t=${query}`
       );
       const data = await response.json();
       setMovieData(data);
