@@ -11,12 +11,16 @@
   gap: var(--gap);
   background-color: var(--color-main);
   border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow-card);
+  box-shadow: var(--box-shadow-transparent);
   transition: transform 0.3s, box-shadow 0.3s;
   overflow: hidden; /* Ensure content doesn't overflow */
   align-items: baseline;
   align-content: space-between;
   justify-items: flex-start;
+}
+
+.movie-card:hover {
+  box-shadow: var(--element-focus);
 }
 
 .movie-image {
