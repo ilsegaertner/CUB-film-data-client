@@ -5,13 +5,16 @@ import { BrowserRouter } from "react-router-dom";
 
 // Import statement to indicate that you need to bundle `./index.scss`
 import "./index.scss";
+import { StrictMode } from "react";
 
 // Main component (will eventually use all the others)
 const App = () => {
   return (
-    <BrowserRouter>
-      <MainView />
-    </BrowserRouter>
+    <StrictMode>
+      <BrowserRouter>
+        <MainView />
+      </BrowserRouter>
+    </StrictMode>
   );
 };
 
