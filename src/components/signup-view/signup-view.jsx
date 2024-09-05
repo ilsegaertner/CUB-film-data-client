@@ -39,9 +39,10 @@ export const SignupView = () => {
     <>
       <div className="signup-wrapper">
         <div>
-          <div className="login-form">Please register</div>
-
           <form onSubmit={handleSubmit} className="login-form">
+            <h2>
+              <label>Please register</label>
+            </h2>
             <label>Email:</label>
             <input
               type="email"
@@ -51,7 +52,7 @@ export const SignupView = () => {
               required
             />
 
-            <div controlId="formUsername" className="formUsername">
+            <div className="formUsername">
               <label>Username:</label>
               <input
                 type="text"
@@ -62,7 +63,7 @@ export const SignupView = () => {
                 required
               />
             </div>
-            <div controlId="formPassword" className="formUsername">
+            <div className="formUsername">
               <label>Password:</label>
               <input
                 type="password"
@@ -74,7 +75,7 @@ export const SignupView = () => {
               />
             </div>
 
-            <div controlId="formBirthday" className="formBirthday">
+            <div className="formBirthday">
               <label>Birthday:</label>
               <input
                 type="date"

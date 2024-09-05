@@ -71,7 +71,7 @@ export const ProfileView = ({
         <div className="fav-movie-wrapper">
           {favouriteMovieList.map((movie, id) => {
             return (
-              <div className="fav-movie">
+              <div className="fav-movie" key={id}>
                 <MovieCard
                   user={user}
                   setUserProfile={setUserProfile}

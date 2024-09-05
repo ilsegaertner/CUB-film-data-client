@@ -2,13 +2,26 @@
   padding: var(--padding);
   gap: var(--gap);
   color: var(--color-main);
+
   display: grid;
-  align-items: center;
-  max-width: 400px;
-  margin: auto;
-  // transform: translateY(100%);
-  // place-content: center;
+  height: 100dvh;
+  align-content: center;
+
+  justify-content: center;
 }
+
+.login-form button {
+  margin-top: 20px;
+}
+
+.login-form h2 {
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+// .login-form label {
+//   margin-bottom: 5px;
+// }
 
 .formUsername,
 .formPassword {

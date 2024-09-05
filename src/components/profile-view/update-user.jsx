@@ -73,7 +73,7 @@ export const UpdateUser = ({ user, token }) => {
     <form onSubmit={handleSubmit} className="updateUser-wrapper">
       <h4>Update your Profile</h4>
 
-      <div controlId="formUsername">
+      <div>
         <label>Username:</label>
         <input
           type="text"
@@ -84,7 +84,7 @@ export const UpdateUser = ({ user, token }) => {
           required
         />
       </div>
-      <div controlId="formPassword">
+      <div>
         <label>Password:</label>
         <input
           type="password"
@@ -95,7 +95,7 @@ export const UpdateUser = ({ user, token }) => {
           required
         />
       </div>
-      <div controlId="formEmail">
+      <div>
         <label>Email:</label>
         <input
           type="email"
@@ -104,7 +104,7 @@ export const UpdateUser = ({ user, token }) => {
           placeholder="Enter your email address"
         />
       </div>
-      <div controlId="formBirthday">
+      <div>
         <label>Birthday:</label>
         <input
           type="date"
