@@ -10,32 +10,30 @@ export const LoginView = ({ onLoggedIn }) => {
     event.preventDefault();
 
     const data = {
-      access: username,
-      secret: password,
+      Username: username,
+      Password: password,
     };
 
-    fetch(
-      `https://cub-film-data-dc72bcc7ff05.herokuapp.com/login?Username=${username}&Password=${password}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: JSON.stringify(data),
-      }
-    )
+    fetch("https://cub-film-data-dc72bcc7ff05.herokuapp.com/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Login response: " + data);
+        console.log("Login response: ", data);
         if (data.user) {
           localStorage.setItem("user", JSON.stringify(data.user)); //Persisting a Login Session via local storage
           localStorage.setItem("token", data.token);
           onLoggedIn(data.user, data.token);
         } else {
-          alert("No such user");
+          alert("Invalid username or password.");
         }
       })
       .catch((e) => {
+        console.error("Login failed:", e);
         alert(
           "Login failed. Please check your username and password or try again later."
         );
@@ -70,9 +68,7 @@ export const LoginView = ({ onLoggedIn }) => {
             required
           />
         </div>
-        <button variant="primary" type="submit">
-          Submit
-        </button>
+        <button type="submit">Submit</button>
       </form>
     </>
   );
