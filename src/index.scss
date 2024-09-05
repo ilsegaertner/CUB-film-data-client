@@ -4,8 +4,10 @@
   --gap: 10px;
   --border-radius: 4px;
   --font-family: "Helvetica";
-  --color-main: #191919;
+  // --color-main: #191919;
+  --color-main: #3b387d;
   --color-main-transparent: #19191982;
+  --color-main-opaque: #5d5d7a;
   --color-colorful: #ff0404;
   --color2: #eee;
   --bg-color: #f4f4f4;
@@ -135,10 +137,6 @@ hr {
   color: var(--orange);
 }
 
-.login-form {
-  color: var(--color-main);
-}
-
 .error {
   padding: var(--padding);
   color: red;
@@ -146,7 +144,7 @@ hr {
 
 .moviecard-wrap {
   display: grid;
-  gap: var(--gap);
+  gap: 30px;
   grid-template-columns: repeat(
     auto-fill,
     minmax(200px, 1fr)
@@ -154,14 +152,15 @@ hr {
   padding: var(--padding);
   grid-area: card;
   margin-top: 10vh;
+  margin-bottom: 25vh;
 }
 
 .wrapper {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-areas:
-    "menu card card"
-    "menu card card";
+  // display: grid;
+  // grid-template-columns: 1fr 2fr;
+  // grid-template-areas:
+  //   "menu card card"
+  //   "menu card card";
   position: relative;
   align-items: start;
   min-height: 100vh;
@@ -192,15 +191,21 @@ hr {
   font-weight: 200;
 }
 
+.CubWrap h1 {
+  margin-bottom: 10px;
+}
+
 .CubDescription {
   letter-spacing: var(--letter-spacing-normal);
   color: var(--color-main);
   font-weight: 100;
+  margin-bottom: 20px;
 }
 
 input {
   padding: var(--padding);
   border-radius: var(--border-radius);
+  // color: var(--color-main);
 }
 
 input:focus,
@@ -214,12 +219,6 @@ input:hover {
 
 .search-movies {
   box-shadow: var(--box-shadow);
-}
-
-.fav-movie-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: var(--gap);
 }
 
 .nav-wrapper {
@@ -364,6 +363,10 @@ p {
   padding: var(--padding) 0;
 }
 
+.logout-question-paragraph {
+  margin-bottom: 20px;
+}
+
 .footer {
   // background-color: var(--color-main);
   width: 100%;
@@ -392,6 +395,7 @@ p {
 
   .wrapper {
     display: block;
+    margin-bottom: 20vh;
   }
 
   .profile-info-grid {

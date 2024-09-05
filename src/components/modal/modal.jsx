@@ -13,8 +13,8 @@ const Modal = ({ show, onClose, children }) => {
       <div className="modal">
         <div className="modal-content">{children}</div>
         <div className="modal-actions">
-          <button onClick={onClose} className="modal-button">
-            Close
+          <button onClick={onClose} className="modal-button modal-button-back">
+            x
           </button>
         </div>
       </div>

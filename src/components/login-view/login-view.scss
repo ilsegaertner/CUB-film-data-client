@@ -1,0 +1,21 @@
+.login-form {
+  padding: var(--padding);
+  gap: var(--gap);
+  color: var(--color-main);
+  display: grid;
+  align-items: center;
+  max-width: 400px;
+  margin: auto;
+  // transform: translateY(100%);
+  // place-content: center;
+}
+
+.formUsername,
+.formPassword {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  border: none;
+}

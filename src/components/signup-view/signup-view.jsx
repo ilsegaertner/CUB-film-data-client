@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./signup-view.scss";
 
 export const SignupView = () => {
   const [username, setUsername] = useState("");
@@ -50,7 +51,7 @@ export const SignupView = () => {
               required
             />
 
-            <div controlId="formUsername">
+            <div controlId="formUsername" className="formUsername">
               <label>Username:</label>
               <input
                 type="text"
@@ -61,7 +62,7 @@ export const SignupView = () => {
                 required
               />
             </div>
-            <div className="mb-3" controlId="formPassword">
+            <div controlId="formPassword" className="formUsername">
               <label>Password:</label>
               <input
                 type="password"
@@ -73,7 +74,7 @@ export const SignupView = () => {
               />
             </div>
 
-            <div controlId="formBirthday">
+            <div controlId="formBirthday" className="formBirthday">
               <label>Birthday:</label>
               <input
                 type="date"

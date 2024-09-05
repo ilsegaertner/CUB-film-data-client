@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./login-view.scss";
 
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
@@ -47,7 +48,7 @@ export const LoginView = ({ onLoggedIn }) => {
         <div>
           <label>Login:</label>
         </div>
-        <div className="mb-3" controlId="formUsername">
+        <div controlId="formUsername" className="formUsername">
           <label>Username:</label>
           <input
             type="text"
@@ -58,7 +59,7 @@ export const LoginView = ({ onLoggedIn }) => {
             required
           />
         </div>
-        <div className="mb-3" controlId="formPassword">
+        <div controlId="formPassword" className="formPassword">
           <label>Password:</label>
           <input
             type="password"

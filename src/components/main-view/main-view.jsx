@@ -16,15 +16,13 @@ import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
-import ChooseDatabases from "../choose-databases/choose-databases";
+import Modal from "../modal/modal";
 
 import FavMovies from "../profile-view/favorite-movies";
 
 import Spinner from "../ui/spinner";
 import logo4 from "./../navigation-bar/logo4.svg";
-
-// import "../ui/spinner.css";
-// import Spinner from "react-bootstrap/Spinner";
+import Dropdown from "../ui/dropdown/dropdown";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -41,8 +39,6 @@ export const MainView = () => {
   // displaying filtered movies from search query
   const [moviesToRender, setMoviesToRender] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-
-  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const location = useLocation();
 
@@ -120,33 +116,6 @@ export const MainView = () => {
       });
   };
 
-  const toggleDarkMode = () => {
-    setIsDarkMode((prevMode) => !prevMode);
-    if (!isDarkMode) {
-      document.documentElement.style.setProperty("--color-main", "#f4f4f4");
-      document.documentElement.style.setProperty(
-        "--color-main-transparent",
-        "#f4f4f480"
-      );
-      document.documentElement.style.setProperty("--bg-color", "#191919");
-      document.documentElement.style.setProperty(
-        "--bg-color-transparent",
-        "#19191982"
-      );
-    } else {
-      document.documentElement.style.setProperty("--color-main", "#191919");
-      document.documentElement.style.setProperty(
-        "--color-main-transparent",
-        "#19191982"
-      );
-      document.documentElement.style.setProperty("--bg-color", "#f4f4f4");
-      document.documentElement.style.setProperty(
-        "--bg-color-transparent",
-        "#f4f4f480"
-      );
-    }
-  };
-
   return (
     <>
       {/* // <BrowserRouter> */}
@@ -155,9 +124,9 @@ export const MainView = () => {
         <div className="left-side">
           <div className="nav">
             <NavigationBar user={user} onLoggedOut={onLoggedOut} />
-            <FavMovies user={user} movies={movies} />
+            {/* <FavMovies user={user} movies={movies} /> */}
 
-            {location.pathname === "/" ? (
+            {/* {location.pathname === "/" ? (
               <button onClick={toggleDarkMode}>
                 <Link to="/apimovies">OMBD Database</Link>
               </button>
@@ -165,7 +134,7 @@ export const MainView = () => {
               <button onClick={toggleDarkMode}>
                 <Link to="/"> CUB Film Arthouse Database</Link>
               </button>
-            )}
+            )} */}
           </div>
           {/* <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -281,9 +250,7 @@ export const MainView = () => {
 
             <Route
               path="/databases"
-              element={
-                user ? <ChooseDatabases /> : <Navigate to="/login" replace />
-              }
+              element={user ? <Dropdown /> : <Navigate to="/login" replace />}
             />
 
             <Route
@@ -430,6 +397,7 @@ export const MainView = () => {
                       </button>
                     )}
                   </form>
+                  {/* <Dropdown /> */}
                   {!user ? (
                     <Navigate to="/login" replace />
                   ) : moviesToRender.length === 0 ? (

@@ -61,8 +61,11 @@
 }
 
 .VerticalContainer {
-  display: grid;
-  grid-template-columns: 4fr 1fr;
+  // display: grid;
+  // grid-template-columns: 4fr 1fr;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
 }
 
 .genre-description:hover,
@@ -73,6 +76,12 @@
 @media (max-width: 600px) {
   .movie-view-wrapper {
     grid-template-columns: 1fr;
+  }
+
+  .movie-view-button-wrapper {
+    align-items: flex-end;
+
+    flex-direction: column;
   }
 }
 

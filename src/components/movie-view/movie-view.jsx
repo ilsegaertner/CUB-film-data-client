@@ -31,7 +31,8 @@ export const MovieView = ({ movies, setUser, user, token, updateUser }) => {
             {" "}
             <button
               className="addButton"
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 const isMovieInFavourites =
                   user.FavouriteMovies.includes(movieId);
                 if (isMovieInFavourites) {
@@ -104,20 +105,28 @@ export const MovieView = ({ movies, setUser, user, token, updateUser }) => {
       </div>
 
       {/* Modals for Director Bio and Genre Description */}
-      <Modal show={showDirectorBio} onClose={() => setShowDirectorBio(false)}>
-        {" "}
-        <h3>Director Bio</h3>
-        <p>{movie.bio}</p>
-      </Modal>
 
-      <Modal
-        show={showGenreDescription}
-        onClose={() => setShowGenreDescription(false)}
-      >
-        {" "}
-        <h3>Genre Description</h3>
-        <p>{movie.genreDescription}</p>
-      </Modal>
+      {movie && (
+        <>
+          <Modal
+            show={showDirectorBio}
+            onClose={() => setShowDirectorBio(false)}
+          >
+            {" "}
+            <h3>Director Bio</h3>
+            <p>{movie.bio}</p>
+          </Modal>
+
+          <Modal
+            show={showGenreDescription}
+            onClose={() => setShowGenreDescription(false)}
+          >
+            {" "}
+            <h3>Genre Description</h3>
+            <p>{movie.genreDescription}</p>
+          </Modal>
+        </>
+      )}
     </>
   );
 };

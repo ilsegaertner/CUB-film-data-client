@@ -4,6 +4,7 @@ import "../moviesOmdb/moviesOmdb.scss";
 
 import { API_KEY } from "../../config";
 
+import Dropdown from "../ui/dropdown/dropdown";
 import Spinner from "../ui/spinner";
 
 export const MoviesFromOMDB = () => {
@@ -64,19 +65,21 @@ export const MoviesFromOMDB = () => {
       <div className="api-wrapper">
         <form onSubmit={handleSubmit} className="OMDBWrap">
           <div className="VerticalContainer">
-            {" "}
-            <h1>
+            <div className="omdb-heading">
               {" "}
-              <span className="heading-color-element red">O</span>
-              <span className="heading-color-element yellow">M</span>
-              <span className="heading-color-element orange">D</span>
-              <span className="heading-color-element white">B</span> Film Data{" "}
-            </h1>
+              <h1>
+                {" "}
+                <span className="heading-color-element red">O</span>
+                <span className="heading-color-element yellow">M</span>
+                <span className="heading-color-element orange">D</span>
+                <span className="heading-color-element white">B</span> Film Data{" "}
+              </h1>
+            </div>
+            <span className="CubDescription">
+              {" "}
+              Browse the OMBD database courtesy of www.omdbapi.com/
+            </span>
           </div>
-          <span className="CubDescription">
-            {" "}
-            Browse the OMBD database courtesy of www.omdbapi.com/
-          </span>
           {/* <label>Search</label> */}
           <div className="enter-search">
             <input

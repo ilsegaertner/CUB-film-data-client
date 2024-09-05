@@ -23,6 +23,10 @@
   box-shadow: var(--element-focus);
 }
 
+// .movie-card:nth-of-type(2n) {
+//   background-color: var(--color-main-opaque);
+// }
+
 .movie-image {
   width: 100%;
   // height: 200px; /* Fixed height for consistency */
@@ -31,7 +35,8 @@
 }
 
 .movie-title {
-  font-size: var(--h6);
+  // font-size: var(--h6);
+  font-size: var(--small);
   font-weight: bold;
   text-decoration: none; /* Remove underline */
   color: var(--bg-color);
@@ -46,6 +51,7 @@
 
 .movie-content {
   // max-height: 40px;
+  min-height: 64px;
 }
 
 .addButton {
