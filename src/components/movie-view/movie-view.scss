@@ -48,6 +48,7 @@
 
 .movie-view-text span:first-of-type {
   font-weight: 600;
+  font-size: var(--h6);
 }
 
 .movie-view-text {
@@ -58,6 +59,11 @@
   display: flex;
   gap: var(--gap);
   align-items: flex-start;
+}
+
+.movie-view-button-wrapper .addButton {
+  position: relative;
+  width: 42px;
 }
 
 .VerticalContainer {

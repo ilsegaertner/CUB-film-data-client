@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router";
 import { Link } from "react-router-dom";
+import Modal from "../../modal/modal";
 import "./dropdown.scss";
 
 const Dropdown = () => {

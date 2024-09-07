@@ -6,6 +6,9 @@ import { addFavouriteHandler } from "../favouriteHandler";
 import { removeFavouriteHandler } from "../favouriteHandler";
 import Modal from "../modal/modal";
 
+import heartFilled from "../../assets/heart-filled.png";
+import heart from "../../assets/heart.png";
+
 export const MovieView = ({ movies, setUser, user, token, updateUser }) => {
   const { movieTitle } = useParams(); // useParams allows us to use the URL (which is how our backend is setup for movieView)
   const movie = movies.find((m) => m.title === movieTitle);
@@ -42,9 +45,11 @@ export const MovieView = ({ movies, setUser, user, token, updateUser }) => {
                 }
               }}
             >
-              {user.FavouriteMovies.includes(movieId)
-                ? "Remove from Favourites"
-                : "Add to Favourites"}
+              {user.FavouriteMovies.includes(movieId) ? (
+                <img src={heartFilled} width={15} />
+              ) : (
+                <img src={heart} width={15} />
+              )}
             </button>
             <div>
               <Link to={`/`}>

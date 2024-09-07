@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import { addFavouriteHandler } from "../favouriteHandler";
 import { removeFavouriteHandler } from "../favouriteHandler";
 
+import heart from "../../assets/heart.png";
+import heartFilled from "../../assets/heart-filled.png";
+
 import "./movie-card.scss";
 
 export const MovieCard = ({ movie, user, movieId, updateUser, token }) => {
@@ -39,7 +42,12 @@ export const MovieCard = ({ movie, user, movieId, updateUser, token }) => {
           <span>{movie.director}</span>{" "}
         </div>
         <button className="addButton" onClick={toggleFavourite}>
-          {isMovieInFavourites ? "Remove from Favourites" : "Add to Favourites"}
+          {/* {isMovieInFavourites ? "Remove from Favourites" : "Add to Favourites"} */}
+          {isMovieInFavourites ? (
+            <img src={heartFilled} width={20} />
+          ) : (
+            <img src={heart} width={20} />
+          )}
         </button>
       </div>
     </>

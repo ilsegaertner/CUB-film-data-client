@@ -17,6 +17,7 @@
   align-items: baseline;
   align-content: space-between;
   justify-items: flex-start;
+  position: relative;
 }
 
 .movie-card:hover {
@@ -44,14 +45,13 @@
 
 .movie-content span {
   font-size: var(--small);
-  color: var(--bg-color);
+  color: var(--bg-color-gray);
   font-weight: 200;
   letter-spacing: var(--letter-spacing-normal);
 }
 
 .movie-content {
-  // max-height: 40px;
-  min-height: 64px;
+  min-height: 70px;
 }
 
 .addButton {
@@ -60,4 +60,7 @@
   font-weight: 100;
   color: var(--color-main);
   background-color: var(--bg-color);
+  position: absolute;
+  top: 0;
+  left: 0;
 }
