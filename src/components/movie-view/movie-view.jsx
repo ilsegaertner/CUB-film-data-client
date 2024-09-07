@@ -66,12 +66,8 @@ export const MovieView = ({ movies, setUser, user, token, updateUser }) => {
             <img src={movie.image} alt={movie.title} />
           </div>
           <div className="movie-view-text">
-            {/* <span className="parameters">Title</span> */}
             <span> "{movie.title}" </span>({movie.year})
-            <div>
-              {/* <span className="parameters">Description</span> */}
-              {movie.description}
-            </div>
+            <div>{movie.description}</div>
             <div className="parameters-wrapper">
               <span
                 className="parametersClick"
@@ -79,7 +75,6 @@ export const MovieView = ({ movies, setUser, user, token, updateUser }) => {
               >
                 Director{" "}
               </span>
-              {/* {showDirectorBio && <span>{movie.bio}</span>} */}
             </div>
             <div className="genre-description parameters-wrapper">
               <span
@@ -88,17 +83,12 @@ export const MovieView = ({ movies, setUser, user, token, updateUser }) => {
               >
                 Genre{" "}
               </span>
-              {/* {showGenreDescription && <span>{movie.genreDescription}</span>} */}
             </div>
-            {/* <div>
-              <span className="parameters">Year </span>
-              <span>{movie.year}</span>
-            </div> */}
             <div>
               <span className="parameters">Actors </span>
               {movie.actors.map((actor, index) => (
                 <span key={index}>
-                  <Link to={`/movies/actor/${actor}`} className="actors">
+                  <Link to={`/movies/${movie.title}`} className="actors">
                     {actor}
                   </Link>
                   {index < movie.actors.length - 1 && ", "}

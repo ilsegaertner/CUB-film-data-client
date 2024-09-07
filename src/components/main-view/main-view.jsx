@@ -20,6 +20,8 @@ import Modal from "../modal/modal";
 
 import FavMovies from "../profile-view/favorite-movies";
 
+import { AnimatePresence, motion } from "framer-motion";
+
 import Spinner from "../ui/spinner";
 import logo4 from "./../navigation-bar/logo4.svg";
 import Dropdown from "../ui/dropdown/dropdown";
@@ -118,25 +120,16 @@ export const MainView = () => {
 
   return (
     <>
-      {/* // <BrowserRouter> */}
-      <div className="bg-poster"></div>
-      <div className="wrapper">
-        <div className="left-side">
-          <div className="nav">
-            <NavigationBar user={user} onLoggedOut={onLoggedOut} />
-            {/* <FavMovies user={user} movies={movies} /> */}
-
-            {/* {location.pathname === "/" ? (
-              <button onClick={toggleDarkMode}>
-                <Link to="/apimovies">OMBD Database</Link>
-              </button>
-            ) : (
-              <button onClick={toggleDarkMode}>
-                <Link to="/"> CUB Film Arthouse Database</Link>
-              </button>
-            )} */}
-          </div>
-          {/* <svg
+      <AnimatePresence>
+        {/* // <BrowserRouter> */}
+        <div className="bg-poster"></div>
+        <div className="wrapper">
+          <div className="left-side">
+            <div className="nav">
+              <NavigationBar user={user} onLoggedOut={onLoggedOut} />
+              {/* <FavMovies user={user} movies={movies} /> */}
+            </div>
+            {/* <svg
             xmlns="http://www.w3.org/2000/svg"
             className="svg"
             width="60%"
@@ -237,232 +230,270 @@ export const MainView = () => {
               fill="#2f2e41"
             />
           </svg> */}
-        </div>
+          </div>
 
-        <div className="right-side">
-          <Routes>
-            <Route
-              path="/apimovies"
-              element={
-                user ? <MoviesFromOMDB /> : <Navigate to="/login" replace />
-              }
-            />
-
-            <Route
-              path="/databases"
-              element={user ? <Dropdown /> : <Navigate to="/login" replace />}
-            />
-
-            <Route
-              path="/signup"
-              element={
-                <>
-                  {user ? (
-                    <Navigate to="/databases" />
+          <div className="right-side">
+            <Routes>
+              <Route
+                path="/apimovies"
+                element={
+                  user ? (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <MoviesFromOMDB />{" "}
+                    </motion.div>
                   ) : (
-                    <div>
-                      <SignupView />
-                    </div>
-                  )}
-                </>
-              }
-            />
-
-            <Route
-              path="/login"
-              element={
-                <>
-                  {user ? (
-                    <Navigate to="/databases" />
-                  ) : (
-                    <div>
-                      <LoginView
-                        onLoggedIn={(user, token) => {
-                          setUser(user), setToken(token);
-                        }}
-                      />
-                    </div>
-                  )}
-                </>
-              }
-            />
-
-            {/* Profile  */}
-            <Route
-              path="/profile"
-              element={
-                user ? (
-                  <>
-                    <ProfileView
-                      user={user}
-                      movies={movies}
-                      token={storedToken}
-                      updateUser={updateUser}
-                      setUserProfile={setUserProfile}
-                      onLoggedOut={() => {
-                        setUser(null), setToken(null), localStorage.clear();
-                      }}
-                    />
-                  </>
-                ) : (
-                  <Navigate to="/login" replace />
-                )
-              }
-            />
-
-            <Route
-              path="/movies/:movieTitle"
-              element={
-                <>
-                  {!user ? (
                     <Navigate to="/login" replace />
-                  ) : movies.length === 0 ? (
-                    <Spinner />
+                  )
+                }
+              />
+
+              <Route
+                path="/databases"
+                element={
+                  user ? (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Dropdown />
+                    </motion.div>
                   ) : (
-                    // <div className="error">The list is empty!</div>
-                    <div>
-                      <MovieView
-                        user={user}
-                        setUser={setUser}
-                        updateUser={updateUser}
-                        movies={movies}
-                        token={token}
+                    <Navigate to="/login" replace />
+                  )
+                }
+              />
+
+              <Route
+                path="/signup"
+                element={
+                  <>
+                    {user ? (
+                      <Navigate to="/databases" />
+                    ) : (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <SignupView />
+                      </motion.div>
+                    )}
+                  </>
+                }
+              />
+
+              <Route
+                path="/login"
+                element={
+                  <>
+                    {user ? (
+                      <Navigate to="/databases" />
+                    ) : (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <LoginView
+                          onLoggedIn={(user, token) => {
+                            setUser(user), setToken(token);
+                          }}
+                        />
+                      </motion.div>
+                    )}
+                  </>
+                }
+              />
+
+              {/* Profile  */}
+              <Route
+                path="/profile"
+                element={
+                  user ? (
+                    <>
+                      {" "}
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <ProfileView
+                          user={user}
+                          movies={movies}
+                          token={storedToken}
+                          updateUser={updateUser}
+                          setUserProfile={setUserProfile}
+                          onLoggedOut={() => {
+                            setUser(null), setToken(null), localStorage.clear();
+                          }}
+                        />
+                      </motion.div>
+                    </>
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )
+                }
+              />
+
+              <Route
+                path="/movies/:movieTitle"
+                element={
+                  <>
+                    {!user ? (
+                      <Navigate to="/login" replace />
+                    ) : movies.length === 0 ? (
+                      <Spinner />
+                    ) : (
+                      // <div className="error">The list is empty!</div>
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <MovieView
+                          user={user}
+                          setUser={setUser}
+                          updateUser={updateUser}
+                          movies={movies}
+                          token={token}
+                        />
+                      </motion.div>
+                    )}
+                  </>
+                }
+              />
+
+              <Route
+                path="/"
+                element={
+                  <>
+                    <form className="CubWrap">
+                      <div className="VerticalContainer">
+                        <h1 className="CUB">
+                          <img
+                            as={Link}
+                            to="/"
+                            src={logo4}
+                            style={{ marginRight: 10, width: 30, height: 30 }}
+                            width="40"
+                            height="40"
+                            className="spin-image"
+                            alt="React Bootstrap logo"
+                          />
+                          <span className="heading-color-element blue">C</span>
+                          <span className="heading-color-element white">U</span>
+                          <span className="heading-color-element green">
+                            B
+                          </span>{" "}
+                          Film Data
+                        </h1>
+                      </div>
+                      <span className="CubDescription">
+                        Browse our inhouse database for arthouse classics and
+                        save your favorite movies
+                      </span>
+                      <input
+                        size="lg"
+                        type="text"
+                        placeholder="Search movies..."
+                        className="search-movies"
+                        value={searchQuery}
+                        onChange={handleSearchInputChange}
                       />
-                    </div>
-                  )}
-                </>
-              }
-            />
-
-            <Route
-              path="/"
-              element={
-                <>
-                  {/* <div className="left-side">
-                    <div className="nav">
-                      <NavigationBar user={user} onLoggedOut={onLoggedOut} />
-                      <FavMovies user={user} movies={movies} />
-
-                      {location.pathname === "/" ? (
-                        <button onClick={toggleDarkMode}>
-                          <Link to="/apimovies">OMBD Database</Link>
-                        </button>
-                      ) : (
-                        <button onClick={toggleDarkMode}>
-                          <Link to="/"> CUB Film Arthouse Database</Link>
+                      {searchQuery && (
+                        <button
+                          className="clear-button"
+                          onClick={() => handleClearSearch()}
+                        >
+                          X
                         </button>
                       )}
-                    </div>
-                  </div> */}
-
-                  <form className="CubWrap">
-                    <div className="VerticalContainer">
-                      <h1 className="CUB">
-                        <img
-                          as={Link}
-                          to="/"
-                          src={logo4}
-                          style={{ marginRight: 10, width: 30, height: 30 }}
-                          width="40"
-                          height="40"
-                          className="spin-image"
-                          alt="React Bootstrap logo"
-                        />
-                        <span className="heading-color-element blue">C</span>
-                        <span className="heading-color-element white">U</span>
-                        <span className="heading-color-element green">
-                          B
-                        </span>{" "}
-                        Film Data
-                      </h1>
-                    </div>
-                    <span className="CubDescription">
-                      Browse our inhouse database for arthouse classics and save
-                      your favorite movies
-                    </span>
-                    <input
-                      size="lg"
-                      type="text"
-                      placeholder="Search movies..."
-                      className="search-movies"
-                      value={searchQuery}
-                      onChange={handleSearchInputChange}
-                    />
-                    {searchQuery && (
-                      <button
-                        className="clear-button"
-                        onClick={() => handleClearSearch()}
-                      >
-                        X
-                      </button>
+                    </form>
+                    {/* <Dropdown /> */}
+                    {!user ? (
+                      <Navigate to="/login" replace />
+                    ) : moviesToRender.length === 0 ? (
+                      <Spinner />
+                    ) : (
+                      // <div className="error">The list is empty!</div>
+                      <>
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <div className="moviecard-wrap">
+                            {moviesToRender.map((movie) => (
+                              <MovieCard
+                                key={movie.id}
+                                movie={movie}
+                                movieId={movie.id}
+                                user={user}
+                                updateUser={updateUser}
+                                token={token}
+                              />
+                            ))}
+                          </div>
+                        </motion.div>
+                      </>
                     )}
-                  </form>
-                  {/* <Dropdown /> */}
-                  {!user ? (
-                    <Navigate to="/login" replace />
-                  ) : moviesToRender.length === 0 ? (
-                    <Spinner />
-                  ) : (
-                    // <div className="error">The list is empty!</div>
-                    <>
-                      <div className="moviecard-wrap">
-                        {moviesToRender.map((movie) => (
-                          <MovieCard
-                            key={movie.id}
-                            movie={movie}
-                            movieId={movie.id}
-                            user={user}
-                            updateUser={updateUser}
-                            token={token}
-                          />
-                        ))}
-                      </div>
-                    </>
-                  )}
-                </>
-              }
+                  </>
+                }
+              />
+            </Routes>
+            <ToastContainer
+              position="top-center"
+              autoClose={1800}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              draggable
+              theme="dark"
+              // toastId="005"
+              limit={1}
+              preventDuplicates={true}
             />
-          </Routes>
-          <ToastContainer
-            position="top-center"
-            autoClose={1800}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            draggable
-            theme="dark"
-            // toastId="005"
-            limit={1}
-            preventDuplicates={true}
-          />
-        </div>
-      </div>{" "}
-      <section className="footer">
-        <div className="footer-wrapper">
-          <div className="social-media">
-            <a href="">
-              <img
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/twitter/twitter-original.svg"
-                width={20}
-              />
-            </a>
-            <a href="">
-              <img
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
-                width={20}
-              />
-            </a>
-            <a href="">
-              <img
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/facebook/facebook-original.svg"
-                width={20}
-              />
-            </a>
           </div>
-        </div>
-      </section>
-      {/* </BrowserRouter> */}
+        </div>{" "}
+        <section className="footer">
+          <div className="footer-wrapper">
+            <div className="social-media">
+              <a href="">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/twitter/twitter-original.svg"
+                  width={20}
+                />
+              </a>
+              <a href="">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
+                  width={20}
+                />
+              </a>
+              <a href="">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/facebook/facebook-original.svg"
+                  width={20}
+                />
+              </a>
+            </div>
+          </div>
+        </section>
+        {/* </BrowserRouter> */}
+      </AnimatePresence>
     </>
   );
 };

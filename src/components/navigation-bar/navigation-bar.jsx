@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo4 from "./logo4.svg";
 import Modal from "../modal/modal";
-import React, { useState } from "react";
+import React, { useState, useTransition } from "react";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [isPending, startTransition] = useTransition();
+  const navigate = useNavigate();
 
   const handleLogoutClick = () => {
     setShowLogoutModal(true);
@@ -18,47 +20,50 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
     setShowLogoutModal(false);
   };
 
+  const handleNavigation = (path) => {
+    startTransition(() => {
+      navigate(path);
+    });
+  };
+
   return (
     <div className="nav-wrapper">
       <Link to="/">
         <img
-          as={Link}
+          // as={Link}
+          onClick={() => handleNavigation("/")}
           to="/"
           src={logo4}
+          alt="Cub Film-Data logo"
           width="40"
           height="40"
           className="spin-image"
-          alt="React Bootstrap logo"
         />
       </Link>
 
       <div id="navbar-links">
         {!user && (
           <>
-            <Link as={Link} to="/login">
-              Login
-            </Link>
-            <Link as={Link} to="/signup">
-              Signup
-            </Link>
+            <button onClick={() => handleNavigation("/login")}>Login</button>
+            <button onClick={() => handleNavigation("/signup")}>Signup</button>
           </>
         )}
         {user && (
           <>
-            <Link as={Link} to="/">
-              Home
-            </Link>
-            <Link as={Link} to="/profile">
+            <button onClick={() => handleNavigation("/")}>Home</button>
+            <button onClick={() => handleNavigation("/profile")}>
               Profile
-            </Link>
-            <Link as={Link} to="/databases">
+            </button>
+            <button onClick={() => handleNavigation("/databases")}>
               Libraries
-            </Link>
+            </button>
             <Link onClick={handleLogoutClick}>Logout</Link>
             <Modal show={showLogoutModal} onClose={handleCancelLogout}>
               <div>
                 <h2>Confirm Logout</h2>
-                <p className="logout-question-paragraph">Are you sure you want to log out?</p>
+                <p className="logout-question-paragraph">
+                  Are you sure you want to log out?
+                </p>
                 <div className="modal-actions">
                   <button
                     onClick={handleConfirmLogout}
