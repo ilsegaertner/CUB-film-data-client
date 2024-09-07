@@ -28,18 +28,16 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
 
   return (
     <div className="nav-wrapper">
-      <Link to="/">
-        <img
-          // as={Link}
-          onClick={() => handleNavigation("/")}
-          to="/"
-          src={logo4}
-          alt="Cub Film-Data logo"
-          width="40"
-          height="40"
-          className="spin-image"
-        />
-      </Link>
+      <img
+        // as={Link}
+        onClick={() => handleNavigation("/")}
+        to="/"
+        src={logo4}
+        alt="Cub Film-Data logo"
+        width="40"
+        height="40"
+        className="spin-image"
+      />
 
       <div id="navbar-links">
         {!user && (
@@ -50,14 +48,30 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
         )}
         {user && (
           <>
-            <button onClick={() => handleNavigation("/")}>Home</button>
-            <button onClick={() => handleNavigation("/profile")}>
+            <button
+              className="navigation-link-button"
+              onClick={() => handleNavigation("/")}
+            >
+              Home
+            </button>
+            <button
+              className="navigation-link-button"
+              onClick={() => handleNavigation("/profile")}
+            >
               Profile
             </button>
-            <button onClick={() => handleNavigation("/databases")}>
+            <button
+              className="navigation-link-button"
+              onClick={() => handleNavigation("/databases")}
+            >
               Libraries
             </button>
-            <Link onClick={handleLogoutClick}>Logout</Link>
+            <button
+              className="navigation-link-button"
+              onClick={handleLogoutClick}
+            >
+              Logout
+            </button>
             <Modal show={showLogoutModal} onClose={handleCancelLogout}>
               <div>
                 <h2>Confirm Logout</h2>

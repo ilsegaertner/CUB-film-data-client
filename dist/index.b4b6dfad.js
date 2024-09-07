@@ -49397,22 +49397,15 @@ const NavigationBar = ({ user, onLoggedOut })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "nav-wrapper",
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                // as={Link}
+                onClick: ()=>handleNavigation("/"),
                 to: "/",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    // as={Link}
-                    onClick: ()=>handleNavigation("/"),
-                    to: "/",
-                    src: (0, _logo4SvgDefault.default),
-                    alt: "Cub Film-Data logo",
-                    width: "40",
-                    height: "40",
-                    className: "spin-image"
-                }, void 0, false, {
-                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                    lineNumber: 32,
-                    columnNumber: 9
-                }, undefined)
+                src: (0, _logo4SvgDefault.default),
+                alt: "Cub Film-Data logo",
+                width: "40",
+                height: "40",
+                className: "spin-image"
             }, void 0, false, {
                 fileName: "src/components/navigation-bar/navigation-bar.jsx",
                 lineNumber: 31,
@@ -49428,7 +49421,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                 children: "Login"
                             }, void 0, false, {
                                 fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                lineNumber: 47,
+                                lineNumber: 45,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -49436,7 +49429,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                 children: "Signup"
                             }, void 0, false, {
                                 fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                lineNumber: 48,
+                                lineNumber: 46,
                                 columnNumber: 13
                             }, undefined)
                         ]
@@ -49444,35 +49437,39 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                     user && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                className: "navigation-link-button",
                                 onClick: ()=>handleNavigation("/"),
                                 children: "Home"
                             }, void 0, false, {
                                 fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                lineNumber: 53,
+                                lineNumber: 51,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                className: "navigation-link-button",
                                 onClick: ()=>handleNavigation("/profile"),
                                 children: "Profile"
-                            }, void 0, false, {
-                                fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                lineNumber: 54,
-                                columnNumber: 13
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                onClick: ()=>handleNavigation("/databases"),
-                                children: "Libraries"
                             }, void 0, false, {
                                 fileName: "src/components/navigation-bar/navigation-bar.jsx",
                                 lineNumber: 57,
                                 columnNumber: 13
                             }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                className: "navigation-link-button",
+                                onClick: ()=>handleNavigation("/databases"),
+                                children: "Libraries"
+                            }, void 0, false, {
+                                fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                lineNumber: 63,
+                                columnNumber: 13
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                className: "navigation-link-button",
                                 onClick: handleLogoutClick,
                                 children: "Logout"
                             }, void 0, false, {
                                 fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                lineNumber: 60,
+                                lineNumber: 69,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _modalDefault.default), {
@@ -49484,7 +49481,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                             children: "Confirm Logout"
                                         }, void 0, false, {
                                             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                            lineNumber: 63,
+                                            lineNumber: 77,
                                             columnNumber: 17
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -49492,7 +49489,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                             children: "Are you sure you want to log out?"
                                         }, void 0, false, {
                                             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                            lineNumber: 64,
+                                            lineNumber: 78,
                                             columnNumber: 17
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -49504,7 +49501,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                                     children: "Yes, Logout"
                                                 }, void 0, false, {
                                                     fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                                    lineNumber: 68,
+                                                    lineNumber: 82,
                                                     columnNumber: 19
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -49513,24 +49510,24 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                                     children: "Cancel"
                                                 }, void 0, false, {
                                                     fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                                    lineNumber: 74,
+                                                    lineNumber: 88,
                                                     columnNumber: 19
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                            lineNumber: 67,
+                                            lineNumber: 81,
                                             columnNumber: 17
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                    lineNumber: 62,
+                                    lineNumber: 76,
                                     columnNumber: 15
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                lineNumber: 61,
+                                lineNumber: 75,
                                 columnNumber: 13
                             }, undefined)
                         ]
@@ -49538,7 +49535,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                 ]
             }, void 0, true, {
                 fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                lineNumber: 44,
+                lineNumber: 42,
                 columnNumber: 7
             }, undefined)
         ]
@@ -49927,29 +49924,49 @@ var _reactRouterDom = require("react-router-dom");
 var _modal = require("../../modal/modal");
 var _modalDefault = parcelHelpers.interopDefault(_modal);
 var _dropdownScss = require("./dropdown.scss");
+var _framerMotion = require("framer-motion");
 var _s = $RefreshSig$();
 const Dropdown = ()=>{
     _s();
     const [isOpen, setIsOpen] = (0, _react.useState)(false);
+    const [isPending, startTransition] = (0, _react.useTransition)();
     const navigate = (0, _reactRouter.useNavigate)();
+    const handleNavigation = (path)=>{
+        startTransition(()=>{
+            navigate(path);
+            setIsOpen(false);
+        });
+    };
     // Toggle dropdown visibility
     const toggleDropdown = ()=>{
         setIsOpen(!isOpen);
     };
-    const ombdDirect = ()=>{
-        document.documentElement.style.setProperty("--color-main", "#f4f4f4");
-        document.documentElement.style.setProperty("--color-main-transparent", "#f4f4f480");
-        document.documentElement.style.setProperty("--bg-color", "#191919");
-        document.documentElement.style.setProperty("--bg-color-transparent", "#19191982");
-        navigate("/apimovies");
-    };
-    const cubDirect = ()=>{
-        document.documentElement.style.setProperty("--color-main", "#191919");
-        document.documentElement.style.setProperty("--color-main-transparent", "#19191982");
-        document.documentElement.style.setProperty("--bg-color", "#f4f4f4");
-        document.documentElement.style.setProperty("--bg-color-transparent", "#f4f4f480");
-        navigate("/");
-    };
+    // const ombdDirect = () => {
+    //   document.documentElement.style.setProperty("--color-main", "#f4f4f4");
+    //   document.documentElement.style.setProperty(
+    //     "--color-main-transparent",
+    //     "#f4f4f480"
+    //   );
+    //   document.documentElement.style.setProperty("--bg-color", "#191919");
+    //   document.documentElement.style.setProperty(
+    //     "--bg-color-transparent",
+    //     "#19191982"
+    //   );
+    //   navigate("/apimovies");
+    // };
+    // const cubDirect = () => {
+    //   document.documentElement.style.setProperty("--color-main", "#191919");
+    //   document.documentElement.style.setProperty(
+    //     "--color-main-transparent",
+    //     "#19191982"
+    //   );
+    //   document.documentElement.style.setProperty("--bg-color", "#f4f4f4");
+    //   document.documentElement.style.setProperty(
+    //     "--bg-color-transparent",
+    //     "#f4f4f480"
+    //   );
+    //   navigate("/");
+    // };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "dropdown",
         children: [
@@ -49959,45 +49976,70 @@ const Dropdown = ()=>{
                 children: "Choose a Film library"
             }, void 0, false, {
                 fileName: "src/components/ui/dropdown/dropdown.jsx",
-                lineNumber: 49,
+                lineNumber: 57,
                 columnNumber: 7
             }, undefined),
-            isOpen && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "dropdown-menu",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        onClick: cubDirect,
-                        className: "dropdown-item",
-                        children: "CUB"
-                    }, void 0, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _framerMotion.AnimatePresence), {
+                children: isOpen && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _framerMotion.motion).div, {
+                    initial: {
+                        opacity: 0
+                    },
+                    animate: {
+                        opacity: 1
+                    },
+                    exit: {
+                        opacity: 0
+                    },
+                    transition: {
+                        duration: 0.2
+                    },
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "dropdown-menu",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                onClick: ()=>handleNavigation("/"),
+                                className: "dropdown-item",
+                                children: "CUB"
+                            }, void 0, false, {
+                                fileName: "src/components/ui/dropdown/dropdown.jsx",
+                                lineNumber: 72,
+                                columnNumber: 15
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                onClick: ()=>handleNavigation("/apimovies"),
+                                className: "dropdown-item",
+                                children: "OMBD"
+                            }, void 0, false, {
+                                fileName: "src/components/ui/dropdown/dropdown.jsx",
+                                lineNumber: 78,
+                                columnNumber: 15
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
                         fileName: "src/components/ui/dropdown/dropdown.jsx",
-                        lineNumber: 57,
-                        columnNumber: 11
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        onClick: ombdDirect,
-                        className: "dropdown-item",
-                        children: "OMBD"
-                    }, void 0, false, {
-                        fileName: "src/components/ui/dropdown/dropdown.jsx",
-                        lineNumber: 60,
-                        columnNumber: 11
+                        lineNumber: 70,
+                        columnNumber: 13
                     }, undefined)
-                ]
-            }, void 0, true, {
+                }, void 0, false, {
+                    fileName: "src/components/ui/dropdown/dropdown.jsx",
+                    lineNumber: 64,
+                    columnNumber: 11
+                }, undefined)
+            }, void 0, false, {
                 fileName: "src/components/ui/dropdown/dropdown.jsx",
-                lineNumber: 55,
-                columnNumber: 9
+                lineNumber: 62,
+                columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/ui/dropdown/dropdown.jsx",
-        lineNumber: 47,
+        lineNumber: 55,
         columnNumber: 5
     }, undefined);
 };
-_s(Dropdown, "4nYqkg6r9GswevkfG8EhSEEcqSs=", false, function() {
+_s(Dropdown, "zxadZF2BXI1NGACqfTE0trwY2eg=", false, function() {
     return [
+        (0, _react.useTransition),
         (0, _reactRouter.useNavigate)
     ];
 });
@@ -50011,7 +50053,7 @@ $RefreshReg$(_c, "Dropdown");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router":"dbWyW","react-router-dom":"9xmpe","./dropdown.scss":"7sScL","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../modal/modal":"7GJde"}],"7sScL":[function() {},{}],"2TUv3":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router":"dbWyW","react-router-dom":"9xmpe","./dropdown.scss":"7sScL","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../modal/modal":"7GJde","framer-motion":"5bZBB"}],"7sScL":[function() {},{}],"2TUv3":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$6da3 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
