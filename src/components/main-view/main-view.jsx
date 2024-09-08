@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Link, useLocation } from "react-router-dom";
-// import { Form, ToastContainer } from "react-bootstrap";
 
 //import toast
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { MoviesFromOMDB } from "../moviesOmdb/moviesOmdb";
+import Footer from "../footer/footer";
 
 // import components
 import { MovieCard } from "../movie-card/movie-card";
@@ -468,30 +468,7 @@ export const MainView = () => {
             />
           </div>
         </div>{" "}
-        <section className="footer">
-          <div className="footer-wrapper">
-            <div className="social-media">
-              <a href="">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/twitter/twitter-original.svg"
-                  width={20}
-                />
-              </a>
-              <a href="">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
-                  width={20}
-                />
-              </a>
-              <a href="">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/facebook/facebook-original.svg"
-                  width={20}
-                />
-              </a>
-            </div>
-          </div>
-        </section>
+        <Footer />
         {/* </BrowserRouter> */}
       </AnimatePresence>
     </>
