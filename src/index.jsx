@@ -6,14 +6,17 @@ import { BrowserRouter } from "react-router-dom";
 // Import statement to indicate that you need to bundle `./index.scss`
 import "./index.scss";
 import { StrictMode } from "react";
+import { UserProvider } from "./userContext";
 
 // Main component (will eventually use all the others)
 const App = () => {
   return (
     <StrictMode>
-      <BrowserRouter>
-        <MainView />
-      </BrowserRouter>
+      <UserProvider>
+        <BrowserRouter>
+          <MainView />
+        </BrowserRouter>
+      </UserProvider>
     </StrictMode>
   );
 };
