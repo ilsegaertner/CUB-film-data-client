@@ -6,7 +6,10 @@
   display: grid;
   height: 100dvh;
   align-content: center;
-
+  grid-template-columns: 1fr;
+  max-width: 42vw;
+  min-width: 387px;
+  margin: 0 auto;
   justify-content: center;
 }
 
