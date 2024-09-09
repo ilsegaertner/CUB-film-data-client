@@ -10,17 +10,27 @@ export const UpdateUser = ({ user, token }) => {
   const [favouriteMovies, setFavouriteMovies] = useState(user.FavouriteMovies);
 
   const showToastSuccess = () => {
-    toast.info("Your profile was updated.");
+    toast.success("Your profile was updated.");
   };
 
   const showToastFail = () => {
-    toast.info(
-      "Failed to update your profile. Please double-check your information, ensure you are logged in, and try again. If the problem persists, please contact support."
+    toast.error(
+      "Failed to update your profile. Please double-check and fill out all your new details and information, ensure you are logged in, and try again. If the problem persists, please contact support."
     );
+  };
+
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    if (!validateEmail(email)) {
+      showToastFail("Invalid email address.");
+      return;
+    }
 
     const data = {
       Username: username,
@@ -50,10 +60,7 @@ export const UpdateUser = ({ user, token }) => {
         console.log(data);
         if (response.ok) {
           showToastSuccess();
-          // alert("Your profile was updated.");
-          // window.location = "/";
         } else {
-          // alert("Form submission failed.");
           showToastFail();
           throw new Error("Form submission failed.");
         }
@@ -62,9 +69,6 @@ export const UpdateUser = ({ user, token }) => {
       .catch((error) => {
         console.error("Error submitting form", error);
         showToastFail();
-        // alert(
-        //   "Failed to update your profile. Please double-check your information, ensure you are logged in, and try again. If the problem persists, please contact support."
-        // );
       });
   };
   console.log(user);
@@ -114,12 +118,7 @@ export const UpdateUser = ({ user, token }) => {
         />
       </div>
       <div>
-        <button
-          variant="primary"
-          type="submit"
-          value="submit"
-          onClick={handleSubmit}
-        >
+        <button variant="primary" type="submit" value="submit">
           Update
         </button>
       </div>
