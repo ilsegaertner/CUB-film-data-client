@@ -47,6 +47,8 @@
 .profile-info-grid {
   display: grid;
   grid-template-columns: 1fr 2fr;
+  height: 673px;
+  grid-template-rows: 1fr 1fr;
   gap: var(--gap);
 }
 
@@ -62,6 +64,13 @@
   margin-bottom: 25vh;
 }
 
+.modal-content h6 {
+  margin: 0;
+  font-weight: 100;
+  margin-bottom: 20px;
+  font-size: var(--tiny);
+}
+
 .fav-movies-section h2 {
   font-size: var(--h4);
   padding: var(--padding);
@@ -69,11 +78,6 @@
   color: var(--color-main);
   letter-spacing: var(--letter-spacing-small);
   text-shadow: var(--shadow-glow);
-}
-
-.delete-action {
-  position: relative;
-  // z-index: -1;
 }
 
 @media (max-width: 600px) {
