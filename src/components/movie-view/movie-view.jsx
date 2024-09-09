@@ -20,7 +20,9 @@ export const MovieView = ({ movies, setUser, user, token, updateUser }) => {
   // makes sure that we have our user stored and is parsed
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
-    setUser(storedUser);
+    if (storedUser) {
+      setUser(storedUser);
+    }
   }, []);
 
   return (
