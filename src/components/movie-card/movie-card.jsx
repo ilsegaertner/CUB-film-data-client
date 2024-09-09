@@ -4,24 +4,27 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { addFavouriteHandler } from "../favouriteHandler";
 import { removeFavouriteHandler } from "../favouriteHandler";
+import { useUserContext } from "../../userContext";
 
 import heart from "../../assets/heart.png";
 import heartFilled from "../../assets/heart-filled.png";
 
 import "./movie-card.scss";
 
-export const MovieCard = ({ movie, user, movieId, updateUser, token }) => {
-  const [isMovieInFavourites, setIsMovieInFavourites] = useState(
-    user.FavouriteMovies.includes(movieId)
-  );
+export const MovieCard = ({ movie, movieId, updateUser, token }) => {
+  const { user, favouriteMovies, setFavouriteMovies } = useUserContext();
+  const isMovieInFavourites = favouriteMovies.includes(movieId);
 
-  const toggleFavourite = () => {
+  const toggleFavourite = async () => {
     if (isMovieInFavourites) {
-      removeFavouriteHandler(movieId, user, token, updateUser);
+      const updatedUser = await removeFavouriteHandler(movieId, user, token);
+      setFavouriteMovies(updatedUser.FavouriteMovies);
+      updateUser(updatedUser);
     } else {
-      addFavouriteHandler(movieId, user, token, updateUser);
+      const updatedUser = await addFavouriteHandler(movieId, user, token);
+      setFavouriteMovies(updatedUser.FavouriteMovies);
+      updateUser(updatedUser);
     }
-    setIsMovieInFavourites(!isMovieInFavourites); // Toggle the local state
   };
 
   return (
