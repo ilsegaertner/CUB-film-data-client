@@ -1,11 +1,12 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import "./modal.scss";
 import { AnimatePresence, motion } from "framer-motion";
 
 const Modal = ({ show, onClose, children }) => {
   if (!show) return null;
 
-  return (
+  return ReactDOM.createPortal(
     <>
       {/* Modal backdrop */}
       <div className="modal-backdrop" onClick={onClose}></div>
@@ -25,7 +26,8 @@ const Modal = ({ show, onClose, children }) => {
           </button>
         </div>
       </motion.div>
-    </>
+    </>,
+    document.body
   );
 };
 
