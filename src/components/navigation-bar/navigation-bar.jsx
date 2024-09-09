@@ -42,8 +42,18 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
       <div id="navbar-links">
         {!user && (
           <>
-            <button onClick={() => handleNavigation("/login")}>Login</button>
-            <button onClick={() => handleNavigation("/signup")}>Signup</button>
+            <button
+              className="navigation-link-button"
+              onClick={() => handleNavigation("/login")}
+            >
+              Login
+            </button>
+            <button
+              className="navigation-link-button"
+              onClick={() => handleNavigation("/signup")}
+            >
+              Signup
+            </button>
           </>
         )}
         {user && (
@@ -80,13 +90,16 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
                 </p>
                 <div className="modal-actions">
                   <button
+                    onClick={handleCancelLogout}
+                    className="modal-button-cancel"
+                  >
+                    Cancel
+                  </button>
+                  <button
                     onClick={handleConfirmLogout}
-                    className="modal-button"
+                    className="modal-button-confirm"
                   >
                     Yes, Logout
-                  </button>
-                  <button onClick={handleCancelLogout} className="modal-button">
-                    Cancel
                   </button>
                 </div>
               </div>
