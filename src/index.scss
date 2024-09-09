@@ -133,6 +133,29 @@ hr {
   color: var(--blue);
 }
 
+.modal-button-confirm {
+  color: var(--bg-color);
+  cursor: pointer;
+  background-color: var(--color-main);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: var(--padding);
+}
+
+.modal-button-confirm:hover {
+  background-color: var(--color-colorful);
+  color: var(--bg-color);
+}
+
+.modal-button-destructive {
+  background-color: var(--color-colorful);
+  color: white;
+}
+
+.modal-button-destructive:hover {
+  color: var(--color-main);
+}
+
 .white {
   // color: var(--color-main);
   // color: #ffdfdf;
@@ -170,7 +193,7 @@ hr {
   padding: var(--padding);
   grid-area: card;
   margin-top: 10vh;
-  margin-bottom: 25vh;
+  margin-bottom: 45vh;
 }
 
 .wrapper {
@@ -189,7 +212,7 @@ hr {
 
 .CubWrap {
   position: sticky;
-  top: 0;
+  top: -1px;
   background: var(--bg-color);
   padding: var(--padding);
   display: flex;
@@ -222,7 +245,6 @@ hr {
   color: var(--color-main);
   font-weight: 100;
   margin-bottom: 20px;
-  font-style: italic;
 }
 
 input {
@@ -262,7 +284,7 @@ input:hover {
   z-index: -1;
   // background-color: #1b1c1608;
   background-color: #8484840a;
-  // filter: blur(28px);
+  filter: blur(50px);
   width: 126vw;
   height: 100vh;
   /* display: flex; */
@@ -342,6 +364,7 @@ p {
 .right-side {
   // background-color: rgb(234, 234, 234);
   min-height: 100vh;
+  margin-bottom: 25vh;
 }
 
 .nav {
@@ -389,8 +412,6 @@ p {
 .logout-question-paragraph {
   margin-bottom: 20px;
 }
-
-
 
 @media (max-width: 600px) {
   .moviecard-wrap {
