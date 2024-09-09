@@ -1,9 +1,4 @@
-export const addFavouriteHandler = (
-  movieId,
-  user,
-  token,
-  updateUser,
-) => {
+export const addFavouriteHandler = (movieId, user, token, updateUser) => {
   if (!movieId) {
     console.error("Movie ID not found");
     return;
@@ -31,11 +26,11 @@ export const addFavouriteHandler = (
     .then((data) => {
       if (data) {
         updateUser();
- 
+
         console.log(user);
 
         // Show a success message or provide feedback to the user
-        alert("Movie added to favorites");
+        // alert("Movie added to favorites");
       }
     })
     .catch((error) => {
@@ -79,7 +74,7 @@ export const removeFavouriteHandler = (
         updateUser(updatedUser);
 
         // User Feedback
-        alert("Movie removed from favorites");
+        // alert("Movie removed from favorites");
       } else {
         throw new Error("Failed to remove movie from favourites");
       }
