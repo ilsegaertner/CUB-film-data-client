@@ -2,8 +2,10 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import React from "react";
 import { Link } from "react-router-dom";
-import { addFavouriteHandler } from "../favouriteHandler";
-import { removeFavouriteHandler } from "../favouriteHandler";
+import {
+  addFavouriteHandler,
+  removeFavouriteHandler,
+} from "../favouriteHandler";
 import { useUserContext } from "../../userContext";
 
 import heart from "../../assets/heart.png";
@@ -11,19 +13,15 @@ import heartFilled from "../../assets/heart-filled.png";
 
 import "./movie-card.scss";
 
-export const MovieCard = ({ movie, movieId, updateUser, token }) => {
-  const { user, favouriteMovies, setFavouriteMovies } = useUserContext();
-  const isMovieInFavourites = favouriteMovies.includes(movieId);
+export const MovieCard = ({ movie, token }) => {
+  const { user, setUser } = useUserContext();
+  const isMovieInFavourites = user.FavouriteMovies.includes(movie.id);
 
   const toggleFavourite = async () => {
     if (isMovieInFavourites) {
-      const updatedUser = await removeFavouriteHandler(movieId, user, token);
-      setFavouriteMovies(updatedUser.FavouriteMovies);
-      updateUser(updatedUser);
+      await removeFavouriteHandler(movie.id, user, setUser, token);
     } else {
-      const updatedUser = await addFavouriteHandler(movieId, user, token);
-      setFavouriteMovies(updatedUser.FavouriteMovies);
-      updateUser(updatedUser);
+      await addFavouriteHandler(movie.id, user, setUser, token);
     }
   };
 
