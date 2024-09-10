@@ -2,19 +2,23 @@ import { Link, useNavigate } from "react-router-dom";
 import logo4 from "./logo4.svg";
 import Modal from "../modal/modal";
 import React, { useState, useTransition } from "react";
+import { useUserContext } from "../../userContext";
 
-export const NavigationBar = ({ user, onLoggedOut }) => {
+export const NavigationBar = () => {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [isPending, startTransition] = useTransition();
   const navigate = useNavigate();
+
+  const { user, logout } = useUserContext();
 
   const handleLogoutClick = () => {
     setShowLogoutModal(true);
   };
 
   const handleConfirmLogout = () => {
-    onLoggedOut();
+    logout();
     setShowLogoutModal(false);
+    navigate("/login");
   };
   const handleCancelLogout = () => {
     setShowLogoutModal(false);
