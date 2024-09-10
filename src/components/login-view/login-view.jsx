@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import "./login-view.scss";
+import { useUserContext } from "../../userContext";
+import { useNavigate } from "react-router";
 
-export const LoginView = ({ onLoggedIn }) => {
+export const LoginView = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const { setUser, setToken } = useUserContext();
+
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     // this prevents the default behaviour of the form which is to reload the entire page
@@ -25,9 +31,9 @@ export const LoginView = ({ onLoggedIn }) => {
       .then((data) => {
         console.log("Login response: ", data);
         if (data.user) {
-          localStorage.setItem("user", JSON.stringify(data.user)); //Persisting a Login Session via local storage
-          localStorage.setItem("token", data.token);
-          onLoggedIn(data.user, data.token);
+          setUser(data.user);
+          setToken(data.token);
+          navigate("/");
         } else {
           alert("Invalid username or password.");
         }
