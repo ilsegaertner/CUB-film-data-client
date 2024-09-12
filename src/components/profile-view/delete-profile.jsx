@@ -7,9 +7,13 @@ import "./profile-view.scss";
 import Modal from "../modal/modal";
 import { AnimatePresence } from "framer-motion";
 
-export const DeleteProfile = ({ user, onLoggedOut, token }) => {
+import { useUserContext } from "../../userContext";
+
+export const DeleteProfile = () => {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
+
+  const { user, token, logout } = useUserContext();
 
   // const handleClose = () => setShowModal(false);
 
@@ -22,7 +26,7 @@ export const DeleteProfile = ({ user, onLoggedOut, token }) => {
         if (response.ok) {
           alert("Profile deleted");
           // window.location = "signup";
-          onLoggedOut();
+          logout();
           navigate("/signup");
         } else {
           alert("Something went wrong");
@@ -65,28 +69,6 @@ export const DeleteProfile = ({ user, onLoggedOut, token }) => {
           )}
         </AnimatePresence>
 
-        {/* {showModal && (
-          <>
-            <div
-              className="modal-backdrop"
-              onClick={() => setShowModal(false)}
-            ></div>
-            <div className="modal">
-              <div className="modal-content">
-                <p>Are you sure you want to delete your profile?</p>
-
-                <div className="modal-actions">
-                  <button onClick={() => setShowModal(false)}>
-                    No, bring me back
-                  </button>
-                  <button onClick={deleteProfileHandler}>
-                    Delete Profile{" "}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </>
-        )} */}
         <hr />
       </div>
     </>
