@@ -79,27 +79,6 @@ export const MainView = () => {
     setMoviesToRender(movies);
   };
 
-  // //update User
-  // const updateUser = () => {
-  //   fetch(
-  //     `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`,
-  //     {
-  //       method: "GET",
-  //       headers: { Authorization: `Bearer ${token}` },
-  //     }
-  //   )
-  //     .then((response) => response.json())
-  //     .then((updatedUser) => {
-  //       setUser(updatedUser);
-  //     })
-  //     .catch((error) => {
-  //       alert(
-  //         "Failed to update user information. Please try again later or check your network connection. " +
-  //           error
-  //       );
-  //     });
-  // };
-
   return (
     <>
       <AnimatePresence>

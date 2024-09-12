@@ -44,7 +44,7 @@ export const LoginView = () => {
           console.log(data.user.Username);
 
           setToken(data.token);
-          navigate("/databases");
+          navigate("/");
         } else {
           alert("Invalid username or password.");
         }
