@@ -112,24 +112,6 @@ export const MainView = () => {
               />
 
               <Route
-                path="/databases"
-                element={
-                  user ? (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Dropdown />
-                    </motion.div>
-                  ) : (
-                    <Navigate to="/login" replace />
-                  )
-                }
-              />
-
-              <Route
                 path="/signup"
                 element={
                   <>
@@ -166,6 +148,24 @@ export const MainView = () => {
                       </motion.div>
                     )}
                   </>
+                }
+              />
+
+              <Route
+                path="/databases"
+                element={
+                  user ? (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Dropdown />
+                    </motion.div>
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )
                 }
               />
 
@@ -222,7 +222,7 @@ export const MainView = () => {
                       <form className="CubWrap">
                         <div className="VerticalContainer">
                           <h1 className="CUB">
-                            <img
+                            {/* <img
                               as={Link}
                               to="/"
                               src={logo4}
@@ -231,7 +231,7 @@ export const MainView = () => {
                               height="40"
                               className="spin-image"
                               alt="React Bootstrap logo"
-                            />
+                            /> */}
                             <span className="heading-color-element blue">
                               C
                             </span>

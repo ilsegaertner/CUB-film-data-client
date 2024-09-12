@@ -2,6 +2,7 @@ import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./movie-view.scss";
+import { useNavigate } from "react-router";
 
 import Modal from "../modal/modal";
 
@@ -19,6 +20,8 @@ export const MovieView = ({ movies }) => {
   const [showGenreDescription, setShowGenreDescription] = useState(false);
   const [showDirectorBio, setShowDirectorBio] = useState(false);
 
+  const navigate = useNavigate();
+
   if (!movie) {
     return <p>Movie not found</p>;
   }
@@ -29,7 +32,7 @@ export const MovieView = ({ movies }) => {
     <>
       <form className="CubWrap" onSubmit={(e) => e.preventDefault()}>
         <div className="VerticalContainer">
-          <h1 className="CUB">
+          <h1 className="CUB movie-detail-heading">
             {movie.title} ({movie.year})
           </h1>
           <div className="movie-view-button-wrapper">
@@ -48,9 +51,11 @@ export const MovieView = ({ movies }) => {
               )}
             </button>
             <div>
-              <Link to={`/`}>
-                <button className="back-button">Back</button>
-              </Link>{" "}
+              {/* <Link to={`/`}> */}
+              <button className="back-button" onClick={() => navigate(-1)}>
+                Back
+              </button>
+              {/* </Link>{" "} */}
             </div>
           </div>
         </div>

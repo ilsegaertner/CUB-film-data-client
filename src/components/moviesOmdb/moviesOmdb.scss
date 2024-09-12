@@ -48,6 +48,10 @@ li {
   border-radius: var(--border-radius);
 }
 
+.OMDBWrap .CubDescription {
+  padding-top: var(--padding);
+}
+
 .omdb-heading {
   position: sticky;
   top: 0;
@@ -68,7 +72,7 @@ li {
   position: sticky;
   top: 0;
   background-color: var(--bg-color);
-  padding-top: var(--padding);
+  // padding-top: var(--padding);
 }
 
 .poster-wrapper {
@@ -106,6 +110,5 @@ li {
   .OMDBWrap .VerticalContainer {
     // grid-template-columns: 1fr;
     flex-direction: column;
-    
   }
 }
