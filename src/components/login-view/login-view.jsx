@@ -12,7 +12,6 @@ export const LoginView = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
-    // this prevents the default behaviour of the form which is to reload the entire page
     event.preventDefault();
 
     const data = {
@@ -31,7 +30,6 @@ export const LoginView = () => {
       .then((data) => {
         console.log("Login response: ", data);
         if (data.user && data.token) {
-          // setUser(data.user);
           setUser({
             id: data.user._id,
             Username: data.user.Username,
