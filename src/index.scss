@@ -3,7 +3,7 @@
   --border: 0.1px solid var(--color-main);
   --gap: 10px;
   --border-radius: 4px;
-  --font-family: "Helvetica";
+  --font-family: "Geist";
   // --color-main: #191919;
   --color-main: #3b387d;
   --color-main-transparent: #19191982;
@@ -30,7 +30,8 @@
   --shadow-glow: 0px 0px 1px var(--color-main);
   --turquiose: #2bc3c8;
 
-  --h1: 36.49px;
+  // --h1: 36.49px;
+  --h1: 71.49px;
   --h2: 32.44px;
   --h3: 28.83px;
   --h4: 25.36px;
@@ -44,6 +45,18 @@
 
   --box-shadow-transparent: 0px 0px 4px 0px var(--color-main-transparent);
   --element-focus: 0px 0px 4px 0px var(--color-main-transparent);
+}
+
+@font-face {
+  font-family: Geist;
+  src: url("../src/assets/Geist/Geist-Regular.otf") format("otf");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Geist;
+  src: url("../src/assets/Geist/Geist-Regular.woff2") format("woff");
+  font-weight: normal;
 }
 
 html {
@@ -214,7 +227,9 @@ hr {
   position: sticky;
   top: -1px;
   background: var(--bg-color);
-  padding: var(--padding);
+  // padding: var(--padding);
+  padding-bottom: var(--padding);
+  padding-inline: var(--padding);
   display: flex;
   // margin-bottom: 5vh;
   flex-direction: column;
@@ -236,7 +251,7 @@ hr {
 }
 
 .CubWrap h1 {
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
   line-height: 1.1;
 }
 
@@ -244,7 +259,7 @@ hr {
   letter-spacing: var(--letter-spacing-normal);
   color: var(--color-main);
   font-weight: 100;
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
 }
 
 input {
@@ -437,16 +452,26 @@ p {
     grid-template-columns: 1fr;
   }
 
-  // .nav {
-  //   grid-area: auto;
-  //   position: relative;
-  // }
-
   .left-side {
     grid-area: auto;
   }
 
+  .CubWrap h1 {
+    margin-bottom: 30px;
+    line-height: 0.6;
+  }
+
   .CubWrap {
-    // top: 72px;
+    position: relative;
+  }
+
+  .movie-detail-heading {
+    margin-bottom: 10px !important;
+    line-height: 1 !important;
+  }
+
+  h1,
+  .heading-color-element {
+    font-size: 52.49px;
   }
 }
