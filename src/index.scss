@@ -5,7 +5,8 @@
   --border-radius: 4px;
   --font-family: "Geist";
   // --color-main: #191919;
-  --color-main: #3b387d;
+  // --color-main: #3b387d;
+  --color-main: #232325;
   --color-main-transparent: #19191982;
   --color-main-opaque: #5d5d7a;
   // --color-main-opaque2: #6d6d91;
@@ -21,11 +22,16 @@
   --letter-spacing-normal: 0.3px;
   --letter-spacing-small: -0.5px;
   // --blue: #4e6371;
-  --blue: #f3faff;
-  --green: #f4f6ff;
+  // --blue: #f3faff;
+  --blue: #94bad6;
   // --green: #f4f6ff;
-  --red: #ea4d4d;
-  --yellow: #e9f244;
+  --green: #8b8e9d;
+  // --green: #f4f6ff;
+  // --red: #ea4d4d;
+
+  --red: #6a4d4d;
+  // --yellow: #e9f244;
+  --yellow: #606246;
   --orange: #efc715;
   --shadow-glow: 0px 0px 1px var(--color-main);
   --turquiose: #2bc3c8;
@@ -91,8 +97,9 @@ h1 {
   font-size: var(--h1);
   letter-spacing: var(--letter-spacing-small);
   // color: var(--color-main);
-  color: var(--bg-color);
-  text-shadow: 0px 0px 2px var(--color-main);
+  // color: var(--bg-color);
+  color: var(--color-colorful);
+  // text-shadow: 0px 0px 2px var(--color-main);
 }
 
 button {
@@ -172,7 +179,8 @@ hr {
 .white {
   // color: var(--color-main);
   // color: #ffdfdf;
-  color: white;
+  // color: white;
+  color: var(--color-main);
 }
 
 .green {

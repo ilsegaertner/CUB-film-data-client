@@ -124,7 +124,7 @@ export const MoviesFromOMDB = () => {
             </ul>
           </div>
         ) : (
-          <p>enter a new movie</p>
+          <p></p>
         )}
       </div>
     </>
