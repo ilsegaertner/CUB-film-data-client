@@ -1,7 +1,6 @@
 import React, { useState, useTransition } from "react";
-import { useNavigate, useLocation } from "react-router";
-import { Link } from "react-router-dom";
-import Modal from "../../modal/modal";
+import { useNavigate } from "react-router";
+
 import "./dropdown.scss";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -21,35 +20,6 @@ const Dropdown = () => {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-
-  // const ombdDirect = () => {
-  //   document.documentElement.style.setProperty("--color-main", "#f4f4f4");
-  //   document.documentElement.style.setProperty(
-  //     "--color-main-transparent",
-  //     "#f4f4f480"
-  //   );
-  //   document.documentElement.style.setProperty("--bg-color", "#191919");
-  //   document.documentElement.style.setProperty(
-  //     "--bg-color-transparent",
-  //     "#19191982"
-  //   );
-
-  //   navigate("/apimovies");
-  // };
-
-  // const cubDirect = () => {
-  //   document.documentElement.style.setProperty("--color-main", "#191919");
-  //   document.documentElement.style.setProperty(
-  //     "--color-main-transparent",
-  //     "#19191982"
-  //   );
-  //   document.documentElement.style.setProperty("--bg-color", "#f4f4f4");
-  //   document.documentElement.style.setProperty(
-  //     "--bg-color-transparent",
-  //     "#f4f4f480"
-  //   );
-  //   navigate("/");
-  // };
 
   return (
     <div className="dropdown">
