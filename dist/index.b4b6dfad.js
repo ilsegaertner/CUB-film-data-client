@@ -27474,7 +27474,7 @@ const MainView = ()=>{
                                         path: "/signup",
                                         element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                             children: user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Navigate), {
-                                                to: "/databases"
+                                                to: "/"
                                             }, void 0, false, {
                                                 fileName: "src/components/main-view/main-view.jsx",
                                                 lineNumber: 158,
@@ -27512,7 +27512,7 @@ const MainView = ()=>{
                                         path: "/login",
                                         element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                             children: user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Navigate), {
-                                                to: "/databases"
+                                                to: "/"
                                             }, void 0, false, {
                                                 fileName: "src/components/main-view/main-view.jsx",
                                                 lineNumber: 178,
@@ -27816,7 +27816,7 @@ const MainView = ()=>{
                 " ",
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footerDefault.default), {}, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 334,
+                    lineNumber: 321,
                     columnNumber: 9
                 }, undefined)
             ]

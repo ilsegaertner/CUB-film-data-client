@@ -155,7 +155,7 @@ export const MainView = () => {
                 element={
                   <>
                     {user ? (
-                      <Navigate to="/databases" />
+                      <Navigate to="/" />
                     ) : (
                       <motion.div
                         initial={{ opacity: 0 }}
@@ -175,7 +175,7 @@ export const MainView = () => {
                 element={
                   <>
                     {user ? (
-                      <Navigate to="/databases" />
+                      <Navigate to="/" />
                     ) : (
                       <motion.div
                         initial={{ opacity: 0 }}
@@ -316,19 +316,6 @@ export const MainView = () => {
                 }
               />
             </Routes>
-            {/* <ToastContainer
-              position="top-center"
-              autoClose={1800}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              draggable
-              theme="dark"
-              // toastId="005"
-              limit={1}
-              preventDuplicates={true}
-            /> */}
           </div>
         </div>{" "}
         <Footer />
