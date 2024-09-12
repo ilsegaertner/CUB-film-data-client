@@ -4,8 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 import { useUserContext } from "../../userContext";
 
 //import toast
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 import { MoviesFromOMDB } from "../moviesOmdb/moviesOmdb";
 import Footer from "../footer/footer";
@@ -25,19 +25,13 @@ import logo4 from "./../navigation-bar/logo4.svg";
 import Dropdown from "../ui/dropdown/dropdown";
 
 export const MainView = () => {
-  // const storedUser = JSON.parse(localStorage.getItem("user"));
-  // const storedToken = localStorage.getItem("token");
-  // const [movieId, setMovieId] = useState(null);
-  // const [user, setUser] = useState(storedUser ? storedUser : null); //added logic for persisting a Login Session
-  // const [token, setToken] = useState(storedToken ? storedToken : null); //added logic for persisting a Login Session
-  // const [userProfile, setUserProfile] = useState({});
   const [movies, setMovies] = useState([]);
-  const { user, setUser, token, logout } = useUserContext();
+  const { user, setUser, token } = useUserContext();
+
   // displaying filtered movies from search query
   const [moviesToRender, setMoviesToRender] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-
-  const location = useLocation();
+  const [loading, setLoading] = useState(true);
 
   //fetch Movies
   useEffect(() => {
@@ -65,6 +59,7 @@ export const MainView = () => {
         });
         setMovies(moviesFromApi);
         setMoviesToRender(moviesFromApi);
+        setLoading(false);
       });
   }, [token]);
 
@@ -84,26 +79,26 @@ export const MainView = () => {
     setMoviesToRender(movies);
   };
 
-  //update User
-  const updateUser = () => {
-    fetch(
-      `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`,
-      {
-        method: "GET",
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    )
-      .then((response) => response.json())
-      .then((updatedUser) => {
-        setUser(updatedUser);
-      })
-      .catch((error) => {
-        alert(
-          "Failed to update user information. Please try again later or check your network connection. " +
-            error
-        );
-      });
-  };
+  // //update User
+  // const updateUser = () => {
+  //   fetch(
+  //     `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`,
+  //     {
+  //       method: "GET",
+  //       headers: { Authorization: `Bearer ${token}` },
+  //     }
+  //   )
+  //     .then((response) => response.json())
+  //     .then((updatedUser) => {
+  //       setUser(updatedUser);
+  //     })
+  //     .catch((error) => {
+  //       alert(
+  //         "Failed to update user information. Please try again later or check your network connection. " +
+  //           error
+  //       );
+  //     });
+  // };
 
   return (
     <>
@@ -233,7 +228,7 @@ export const MainView = () => {
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.2 }}
                       >
-                        <MovieView updateUser={updateUser} movies={movies} />
+                        <MovieView movies={movies} />
                       </motion.div>
                     )}
                   </>
@@ -299,7 +294,9 @@ export const MainView = () => {
                         transition={{ duration: 0.2 }}
                       >
                         <div className="moviecard-wrap">
-                          {moviesToRender.length > 0 ? (
+                          {loading ? (
+                            <Spinner /> // Show spinner when loading
+                          ) : moviesToRender.length > 0 ? (
                             moviesToRender.map((movie) => (
                               <MovieCard
                                 key={movie.id}
@@ -308,7 +305,7 @@ export const MainView = () => {
                               />
                             ))
                           ) : (
-                            <Spinner />
+                            <p>No movies found.</p>
                           )}
                         </div>
                       </motion.div>
@@ -319,7 +316,7 @@ export const MainView = () => {
                 }
               />
             </Routes>
-            <ToastContainer
+            {/* <ToastContainer
               position="top-center"
               autoClose={1800}
               hideProgressBar={false}
@@ -331,7 +328,7 @@ export const MainView = () => {
               // toastId="005"
               limit={1}
               preventDuplicates={true}
-            />
+            /> */}
           </div>
         </div>{" "}
         <Footer />
