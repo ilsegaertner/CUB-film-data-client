@@ -323,6 +323,10 @@ input:hover {
   font-size: var(--h6);
 }
 
+#navbar-links button:hover {
+  box-shadow: none;
+}
+
 a {
   color: var(--bg-color);
 }
