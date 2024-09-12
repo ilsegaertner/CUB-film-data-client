@@ -1,13 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useUserContext } from "../../userContext";
 
-export const UpdateUser = ({ user, token }) => {
-  const [username, setUsername] = useState(user.Username);
+export const UpdateUser = () => {
+  const { user, token, setUser } = useUserContext();
+
+  // Initialize local state with user context values
+  const [username, setUsername] = useState(user?.Username);
   const [password, setPassword] = useState("");
-  const [email, setEmail] = useState(user.Email);
-  const [birthday, setBirthday] = useState(user.Birthday);
-  const [favouriteMovies, setFavouriteMovies] = useState(user.FavouriteMovies);
+  const [email, setEmail] = useState(user?.Email || "");
+  const [birthday, setBirthday] = useState(user?.Birthday || "");
+
+  // Effect to keep form values in sync when user changes
+  useEffect(() => {
+    if (user) {
+      setUsername(user.Username || "");
+      setEmail(user.Email || "");
+      setBirthday(user.Birthday || "");
+    }
+  }, [user]);
 
   const showToastSuccess = () => {
     toast.success("Your profile was updated.");
@@ -34,15 +46,13 @@ export const UpdateUser = ({ user, token }) => {
 
     const data = {
       Username: username,
-      Password: password,
+      Password: password || undefined, // Send password only if provided
       Email: email,
       Birthday: birthday,
-      FavouriteMovies: favouriteMovies,
     };
 
-    if (!user.Username || !user.Email) {
-      alert("Username and Email are required.");
-      return;
+    if (password) {
+      data.Password = password;
     }
 
     fetch(
@@ -59,15 +69,36 @@ export const UpdateUser = ({ user, token }) => {
       .then((response) => {
         console.log(data);
         if (response.ok) {
-          showToastSuccess();
+          return response.json();
+          // showToastSuccess();
+        } else if (response.status === 400) {
+          showToastFail(
+            "Invalid data provided. Please check the form and try again."
+          );
+          throw new Error("Validation failed");
+        } else if (response.status === 401) {
+          showToastFail("You are not authorized to perform this action.");
+          throw new Error("Unauthorized access");
+        } else if (response.status === 500) {
+          showToastFail("A server error occurred. Please try again later.");
+          throw new Error("Server error");
         } else {
-          showToastFail();
-          throw new Error("Form submission failed.");
+          showToastFail("Failed to update profile. Please try again.");
+          throw new Error("Unknown error");
         }
       })
-
+      .then((updatedUser) => {
+        // Update the user in the context with new values
+        setUser({
+          ...user,
+          Username: updatedUser.Username,
+          Email: updatedUser.Email,
+          Birthday: updatedUser.Birthday,
+        });
+        showToastSuccess();
+      })
       .catch((error) => {
-        console.error("Error submitting form", error);
+        console.error("Error updating profile", error);
         showToastFail();
       });
   };
