@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./login-view.scss";
 import { useUserContext } from "../../userContext";
 import { useNavigate } from "react-router";
@@ -30,10 +30,21 @@ export const LoginView = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log("Login response: ", data);
-        if (data.user) {
-          setUser(data.user);
+        if (data.user && data.token) {
+          // setUser(data.user);
+          setUser({
+            id: data.user._id,
+            Username: data.user.Username,
+            Email: data.user.Email,
+            Birthday: data.user.Birthday,
+            FavouriteMovies: data.user.FavouriteMovies,
+          });
+
+          console.log(data.user);
+          console.log(data.user.Username);
+
           setToken(data.token);
-          navigate("/");
+          navigate("/databases");
         } else {
           alert("Invalid username or password.");
         }
