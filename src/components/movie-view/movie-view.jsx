@@ -2,14 +2,16 @@ import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./movie-view.scss";
-import { addFavouriteHandler } from "../favouriteHandler";
-import { removeFavouriteHandler } from "../favouriteHandler";
+
 import Modal from "../modal/modal";
+
+import { useUserContext } from "../../userContext";
 
 import heartFilled from "../../assets/heart-filled.png";
 import heart from "../../assets/heart.png";
 
-export const MovieView = ({ movies, setUser, user, token, updateUser }) => {
+export const MovieView = ({ movies }) => {
+  const { toggleFavourites, user } = useUserContext();
   const { movieTitle } = useParams(); // useParams allows us to use the URL (which is how our backend is setup for movieView)
   const movie = movies.find((m) => m.title === movieTitle);
   const movieId = movie ? movie.id : null;
@@ -17,17 +19,15 @@ export const MovieView = ({ movies, setUser, user, token, updateUser }) => {
   const [showGenreDescription, setShowGenreDescription] = useState(false);
   const [showDirectorBio, setShowDirectorBio] = useState(false);
 
-  // makes sure that we have our user stored and is parsed
-  useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    if (storedUser) {
-      setUser(storedUser);
-    }
-  }, []);
+  if (!movie) {
+    return <p>Movie not found</p>;
+  }
+
+  const isMovieInFavourites = user?.FavouriteMovies?.includes(movieId);
 
   return (
     <>
-      <form className="CubWrap">
+      <form className="CubWrap" onSubmit={(e) => e.preventDefault()}>
         <div className="VerticalContainer">
           <h1 className="CUB">
             {movie.title} ({movie.year})
@@ -35,19 +35,13 @@ export const MovieView = ({ movies, setUser, user, token, updateUser }) => {
           <div className="movie-view-button-wrapper">
             {" "}
             <button
+              type="button"
               className="addButton"
-              onClick={(e) => {
-                e.preventDefault();
-                const isMovieInFavourites =
-                  user.FavouriteMovies.includes(movieId);
-                if (isMovieInFavourites) {
-                  removeFavouriteHandler(movieId, user, token, updateUser);
-                } else {
-                  addFavouriteHandler(movieId, user, token, updateUser);
-                }
+              onClick={() => {
+                toggleFavourites(movieId);
               }}
             >
-              {user.FavouriteMovies.includes(movieId) ? (
+              {isMovieInFavourites ? (
                 <img src={heartFilled} width={15} />
               ) : (
                 <img src={heart} width={15} />
