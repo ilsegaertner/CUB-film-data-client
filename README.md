@@ -57,7 +57,7 @@ During the process the routes for the individual endpoints were determined, and 
 - Allows users to remove a movie from their list of favorites
 - Allows existing users to deregister
 
-<img width="412" alt="Bildschirmfoto 2023-10-12 um 15 20 50" src="https://raw.githubusercontent.com/ilsegaertner/CUB-film-data-client/alt-version-autumn-2024-context/src/assets/documentation/cub_film_data_screenshot2.png"><img width="412" alt="Bildschirmfoto 2023-10-12 um 15 21 05" src="https://raw.githubusercontent.com/ilsegaertner/CUB-film-data-client/alt-version-autumn-2024-context/src/assets/documentation/cub_film_data_screenshot5.png">
+<img width="350" alt="Bildschirmfoto 2023-10-12 um 15 20 50" src="https://raw.githubusercontent.com/ilsegaertner/CUB-film-data-client/alt-version-autumn-2024-context/src/assets/documentation/cub_film_data_screenshot2.png"><img width="350" alt="Bildschirmfoto 2023-10-12 um 15 21 05" src="https://raw.githubusercontent.com/ilsegaertner/CUB-film-data-client/alt-version-autumn-2024-context/src/assets/documentation/cub_film_data_screenshot5.png">
 
 ### Challenges
 
