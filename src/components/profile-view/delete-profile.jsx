@@ -7,7 +7,7 @@ import "./profile-view.scss";
 import Modal from "../modal/modal";
 import { AnimatePresence } from "framer-motion";
 
-import { useUserContext } from "../../userContext";
+import { useUserContext } from "../../UserContext";
 
 export const DeleteProfile = () => {
   const [showModal, setShowModal] = useState(false);
