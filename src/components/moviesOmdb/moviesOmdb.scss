@@ -25,6 +25,7 @@
 
 .api-wrapper h1 {
   margin-bottom: 10px;
+  line-height: 0.8;
 }
 
 ul,
@@ -37,6 +38,7 @@ li {
 .enter-search {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   // gap: var(--gap);
 }
 
@@ -107,8 +109,17 @@ li {
     padding-bottom: var(--padding);
   }
 
+  .api-wrapper h1 {
+    margin-bottom: 0;
+  }
+
+  .OMDBWrap .CubDescription {
+    padding-top: 0;
+  }
+
   .OMDBWrap .VerticalContainer {
     // grid-template-columns: 1fr;
     flex-direction: column;
+    gap: 0;
   }
 }
