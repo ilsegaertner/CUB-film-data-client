@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 
 import "../moviesOmdb/moviesOmdb.scss";
 
 import { API_KEY } from "../../config";
 
-import Dropdown from "../ui/dropdown/dropdown";
 import Spinner from "../ui/spinner";
 
 export const MoviesFromOMDB = () => {

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./login-view.scss";
-import { useUserContext } from "../../userContext";
+// import { useUserContext } from "../../userContext";
+import { useUserContext } from "../../UserContext";
+
 import { useNavigate } from "react-router";
 
 export const LoginView = () => {

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useUserContext } from "../../userContext";
+// import { useUserContext } from "../../userContext";
+import { useUserContext } from "../../UserContext";
+
 
 export const UpdateUser = () => {
   const { user, token, setUser } = useUserContext();

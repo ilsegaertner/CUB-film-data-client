@@ -6,7 +6,8 @@ import { MovieCard } from "../movie-card/movie-card";
 import { UpdateUser } from "./update-user";
 import { DeleteProfile } from "./delete-profile";
 
-import { useUserContext } from "../../userContext";
+// import { useUserContext } from "../../userContext";
+import { useUserContext } from "../../UserContext";
 
 export const ProfileView = ({ movies }) => {
   const { user, setUser, token } = useUserContext();

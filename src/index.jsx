@@ -7,7 +7,9 @@ import { ToastContainer } from "react-toastify";
 // Import statement to indicate that you need to bundle `./index.scss`
 import "./index.scss";
 import { StrictMode } from "react";
-import { UserProvider } from "./userContext";
+// import { UserProvider } from "./userContext";
+import { UserProvider } from "./UserContext";
+
 
 // Main component (will eventually use all the others)
 const App = () => {

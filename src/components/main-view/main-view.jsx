@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Link, useLocation } from "react-router-dom";
-import { useUserContext } from "../../userContext";
+// import { useUserContext } from "../../userContext";
+import { useUserContext } from "../../UserContext";
 
 //import toast
 // import { ToastContainer, toast } from "react-toastify";

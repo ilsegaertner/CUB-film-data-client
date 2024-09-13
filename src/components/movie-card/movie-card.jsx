@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { useUserContext } from "../../userContext";
+// import { useUserContext } from "../../userContext";
+import { useUserContext } from "../../UserContext";
 
 import heart from "../../assets/heart.png";
 import heartFilled from "../../assets/heart-filled.png";

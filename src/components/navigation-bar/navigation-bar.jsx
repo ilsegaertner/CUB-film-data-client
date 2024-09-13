@@ -2,7 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import logo4 from "./logo4.svg";
 import Modal from "../modal/modal";
 import React, { useState, useTransition } from "react";
-import { useUserContext } from "../../userContext";
+// import { useUserContext } from "../../userContext";
+import { useUserContext } from "../../UserContext";
 
 export const NavigationBar = () => {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
