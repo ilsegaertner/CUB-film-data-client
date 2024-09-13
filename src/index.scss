@@ -231,6 +231,30 @@ hr {
   // align-items: stretch;
 }
 
+.gradient-omdb {
+  background: linear-gradient(
+    to right,
+    var(--red) 0%,
+    var(--yellow) 50%,
+    var(--orange) 80%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-cub {
+  background: linear-gradient(
+    to right,
+    var(--blue) 0%,
+    var(--color-main) 50%,
+    var(--green) 80%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 .CubWrap {
   position: sticky;
   top: -1px;
@@ -258,6 +282,10 @@ hr {
   font-weight: 200;
 }
 
+.CUB {
+  flex: 1;
+}
+
 .CubWrap h1 {
   // margin-bottom: 10px;
   line-height: 1.1;
@@ -267,7 +295,8 @@ hr {
   letter-spacing: var(--letter-spacing-normal);
   color: var(--color-main);
   font-weight: 100;
-  // margin-bottom: 20px;
+  flex: 1;
+  margin-top: var(--padding);
 }
 
 input {
@@ -443,6 +472,7 @@ p {
 @media (max-width: 600px) {
   .moviecard-wrap {
     grid-template-columns: 1fr;
+    margin-top: 0;
   }
 
   .wrapper {
@@ -464,10 +494,10 @@ p {
     grid-area: auto;
   }
 
-  .CubWrap h1 {
-    margin-bottom: 30px;
-    line-height: 0.6;
-  }
+  // .CubWrap h1 {
+  //   margin-bottom: 30px;
+  //   line-height: 0.6;
+  // }
 
   .CubWrap {
     position: relative;
