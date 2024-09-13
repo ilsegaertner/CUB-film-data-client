@@ -18,7 +18,7 @@
 
 .dropdown-menu {
   // z-index: 1;
-  background-color: var(--bg-color);
+  // background-color: var(--bg-color);
   min-width: 96%;
   padding: 10px;
   /* display: grid; */
@@ -34,11 +34,14 @@
   text-align: left;
   background: var(--bg-color);
   border: none;
+  box-shadow: none;
+  font-size: var(--h2);
   cursor: pointer;
   padding: var(--padding);
-  color: var(--color-main);
+  color: var(--bg-color);
 }
 
 .dropdown-item:hover {
   background-color: #ddd;
+  box-shadow: none;
 }
