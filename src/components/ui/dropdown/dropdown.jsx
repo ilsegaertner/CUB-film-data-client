@@ -41,13 +41,13 @@ const Dropdown = () => {
               {/* Button inside the dropdown */}
               <button
                 onClick={() => handleNavigation("/")}
-                className="dropdown-item"
+                className="dropdown-item gradient-cub"
               >
                 CUB
               </button>
               <button
                 onClick={() => handleNavigation("/apimovies")}
-                className="dropdown-item"
+                className="dropdown-item gradient-omdb"
               >
                 OMBD
               </button>
