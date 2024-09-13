@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Container, Col, Row, Card } from "react-bootstrap";
 import "./profile-view.scss";
 
 import { UserInfo } from "./user-info";
@@ -7,22 +6,25 @@ import { MovieCard } from "../movie-card/movie-card";
 import { UpdateUser } from "./update-user";
 import { DeleteProfile } from "./delete-profile";
 
-export const ProfileView = ({
-  token,
-  movies,
-  handleSubmit,
-  userProfile,
-  setUserProfile,
-  onLoggedOut,
+import { useUserContext } from "../../userContext";
 
-  user,
-  title,
-  updateUser,
-  movie,
-}) => {
-  // fetch userProfile and update it with setUserProfile
+export const ProfileView = ({ movies }) => {
+  const { user, setUser, token } = useUserContext();
+
   useEffect(() => {
-    if (!user || !token) return;
+    console.log("User in ProfileView:", user); // Log the entire user object
+    console.log("Username:", user?.Username); // Check the Username field
+    console.log("Token:", token);
+
+    if (!user || !user.Username || !token) {
+      console.log("No user or token available.", { user, token });
+      return;
+    }
+
+    console.log("Username:", user.Username); // Check the actual value of Username
+
+    // console.log("Token used for request:", token);
+    // console.log("User:", user);
 
     fetch(
       `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`,
@@ -31,89 +33,57 @@ export const ProfileView = ({
       }
     )
       .then((response) => {
+        console.log("Response:", response); // Check status
         if (!response.ok) {
           throw new Error("Failed to fetch user data");
         }
         return response.json();
       })
       .then((data) => {
-        setUserProfile({
+        console.log("Received data:", data); // Log the received data
+        if (!data) {
+          throw new Error("Received null or invalid data");
+        }
+        setUser({
           id: data._id,
-          username: data.Username,
-          email: data.Email,
-          birthday: data.Birthday,
-          favouriteMovies: data.FavouriteMovies || [],
+          Username: data.Username,
+          Email: data.Email,
+          Birthday: data.Birthday,
+          FavouriteMovies: data.FavouriteMovies || [],
         });
       })
       .catch((error) => {
         console.error("Error fetching user data", error);
       });
-  }, [token, user]);
+  }, [token]);
+
+  console.log(user);
 
   // Filters based on the user's favorite Movies array
-  let favouriteMovieList = user.FavouriteMovies
+  let favouriteMovieList = user?.FavouriteMovies?.length
     ? movies.filter((movie) => user.FavouriteMovies.includes(movie.id))
     : [];
-  console.log(user);
-  console.log(movies);
 
   return (
-    <Container className="profileContainer">
-      <Row className="justify-content-lg-between">
-        <Col xs={12} sm={12} lg={3}>
-          <Card>
-            <Card.Body className="profilecard1">
-              <UserInfo user={user} />
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col xs={12} sm={12} lg={5}>
-          <Card>
-            <Card.Body className="profilecard2">
-              <UpdateUser
-                user={user}
-                token={token}
-                handleSubmit={handleSubmit}
-                updateUser={updateUser}
-                userProfile={userProfile}
-                setUserProfile={setUserProfile}
-              />
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col xs={1} sm={12} lg={1}>
-          <DeleteProfile user={user} onLoggedOut={onLoggedOut} token={token} />
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={12} sm={12} lg={12}>
-          <Card>
-            <Card.Body>
-              <Row>
-                <Col xs={12}>
-                  <h2>Favorite Movies</h2>
-                </Col>
-              </Row>
-              <Row>
-                {favouriteMovieList.map((movie, id) => {
-                  return (
-                    <Col xs={12} md={6} lg={3} key={id} className="fav-movie">
-                      <MovieCard
-                        user={user}
-                        setUserProfile={setUserProfile}
-                        updateUser={updateUser}
-                        movie={movie}
-                        token={token}
-                        movieId={movie.id}
-                      />
-                    </Col>
-                  );
-                })}
-              </Row>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+    <div className="profileContainer">
+      <section className="profile-info-grid">
+        <UserInfo />
+
+        <UpdateUser />
+        <DeleteProfile />
+      </section>
+      <section className="fav-movies-section">
+        <h2>Likes</h2>
+        <div className="fav-movie-wrapper">
+          {favouriteMovieList.map((movie, id) => {
+            return (
+              <div className="fav-movie" key={movie.id}>
+                <MovieCard movie={movie} />
+              </div>
+            );
+          })}
+        </div>
+      </section>
+    </div>
   );
 };

@@ -1,51 +1,87 @@
-.fav-movie {
-  margin-bottom: 15px;
-  figure {
-    position: relative;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    margin: auto;
-    width: 100%;
-    img {
-      display: block;
-      height: 437px;
-      margin: auto;
-    }
-    figcaption {
-      text-align: center;
-    }
-  }
-  button.btn {
-    // display: block;
-    // margin: auto;
-    margin: 12px auto 0 0;
-  }
-}
-
-.card {
-  margin-bottom: 15px;
-}
-
-// .card-body:nth-of-type(odd) {
-//   background-color: #f8f9fa;
-// }
-
-.profilecard1 {
-  background-color: #f8f9fa;
-}
-
-.profilecard2 {
-  background-color: #bbb3b0;
-}
-
-// .deleteButton {
-//   display: grid;
-//   grid-template-columns: 2fr 2fr;
-//   gap: 50%;
-//   margin: auto;
-// }
-
 .profileContainer {
-  padding: 20px;
+  padding-right: var(--padding);
+  margin-bottom: 20px;
+}
+
+.user-info {
+  padding: var(--padding);
+  position: sticky;
+  top: 0;
+}
+
+.user-info h4 {
+  font-size: var(--h4);
+  padding-bottom: 10px;
+  letter-spacing: var(--letter-spacing-small);
+  text-shadow: var(--shadow-glow);
+}
+
+.delete-action {
+  grid-column: 2/2;
+  padding: var(--padding);
+}
+
+.updateUser-wrapper * {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-bottom: 5px;
+  border-radius: var(--border-radius);
+}
+
+.updateUser-wrapper input {
+  border: var(--border);
+}
+
+.updateUser-wrapper label {
+  font-weight: 100;
+}
+
+.updateUser-wrapper h4 {
+  font-size: var(--h4);
+  padding-bottom: 10px;
+  letter-spacing: var(--letter-spacing-small);
+  text-shadow: var(--shadow-glow);
+}
+
+.profile-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  height: 673px;
+  grid-template-rows: 1fr 1fr;
+  gap: var(--gap);
+}
+
+.profile-info-grid p {
+  font-weight: 100;
+}
+
+.fav-movie-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 20px;
+  padding: var(--padding);
+  margin-bottom: 25vh;
+}
+
+.modal-content h6 {
+  margin: 0;
+  font-weight: 100;
+  margin-bottom: 20px;
+  font-size: var(--tiny);
+}
+
+.fav-movies-section h2 {
+  font-size: var(--h4);
+  padding: var(--padding);
+  margin: 0;
+  color: var(--color-main);
+  letter-spacing: var(--letter-spacing-small);
+  text-shadow: var(--shadow-glow);
+}
+
+@media (max-width: 600px) {
+  .user-info {
+    position: relative;
+  }
 }

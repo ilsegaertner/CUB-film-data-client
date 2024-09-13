@@ -1,79 +1,62 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
-import { Card, Figure, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { addFavouriteHandler } from "../favouriteHandler";
-import { removeFavouriteHandler } from "../favouriteHandler";
+
+import { useUserContext } from "../../userContext";
+
+import heart from "../../assets/heart.png";
+import heartFilled from "../../assets/heart-filled.png";
 
 import "./movie-card.scss";
 
-export const MovieCard = ({
-  movie,
-  user,
-  movieId,
-  updateUser,
-  token,
-  setUserProfile,
-}) => {
-  console.log(movieId);
+export const MovieCard = ({ movie }) => {
+  const { favouriteMovies, toggleFavourites } = useUserContext();
+  console.log("toggleFavourites in MovieCard:", toggleFavourites);
 
-  const [showGenreDescription, setShowGenreDescription] = useState(false);
-  const [showDirectorBio, setShowDirectorBio] = useState(false);
+  const [isMovieInFavourites, setIsMovieInFavourites] = useState(false);
 
-  const [isMovieInFavourites, setIsMovieInFavourites] = useState(
-    user.FavouriteMovies.includes(movieId)
-  );
+  const context = useUserContext();
+  console.log("Context in MovieCard:", context);
 
-  const toggleFavourite = () => {
-    if (isMovieInFavourites) {
-      removeFavouriteHandler(movieId, user, token, updateUser);
-    } else {
-      addFavouriteHandler(movieId, user, token, updateUser);
+  useEffect(() => {
+    if (favouriteMovies) {
+      setIsMovieInFavourites(favouriteMovies.includes(movie.id));
     }
-    setIsMovieInFavourites(!isMovieInFavourites); // Toggle the local state
-  };
-
-  const toggleDirectorBio = () => {
-    setShowDirectorBio(!showDirectorBio);
-  };
+  }, [favouriteMovies, movie.id]);
 
   return (
-    <Card className="fav-movie">
-      <Figure>
-        <Link to={`/movies/${movie.title}`} style={{ textDecoration: "none" }}>
-          <Figure.Image
-            className="figure-img img-fluid rounded"
-            variant="top"
-            src={movie.image}
-            key={movie.id}
-          />
-        </Link>
-        <Card.Body>
-          <>
-            <Link
-              to={`/movies/${movie.title}`}
-              style={{ textDecoration: "none" }}
-            >
-              <Card.Title>
-                {movie.title} ({movie.year})
-              </Card.Title>{" "}
-            </Link>
-            <span
-              // onClick={() => setShowDirectorBio(!showDirectorBio)}
-              style={{ textDecoration: "none" }}
-            >
-              {movie.director}
-            </span>{" "}
-            <Button className="addButton" onClick={toggleFavourite}>
-              {isMovieInFavourites
-                ? "Remove from Favourites"
-                : "Add to Favourites"}
-            </Button>
-          </>
-        </Card.Body>
-      </Figure>
-    </Card>
+    <>
+      <div className="movie-card">
+        <div className="movie-image-wrapper">
+          <Link to={`/movies/${movie.title}`}>
+            <img src={movie.image} className="movie-image" />
+          </Link>
+        </div>
+
+        <div className="movie-content">
+          <Link to={`/movies/${movie.title}`}>
+            <div className="movie-title">
+              {movie.title} ({movie.year})
+            </div>
+          </Link>
+          <span>{movie.director}</span>{" "}
+        </div>
+        <button
+          className="addButton"
+          onClick={() => {
+            console.log("ToggledFavourites MovieId:", movie.id);
+            toggleFavourites(movie.id);
+          }}
+        >
+          {isMovieInFavourites ? (
+            <img src={heartFilled} width={20} />
+          ) : (
+            <img src={heart} width={20} />
+          )}
+        </button>
+      </div>
+    </>
   );
 };
 

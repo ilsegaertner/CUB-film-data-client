@@ -1,42 +1,54 @@
-import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+import React, { useState, useEffect } from "react";
+import "./login-view.scss";
+import { useUserContext } from "../../userContext";
+import { useNavigate } from "react-router";
 
-export const LoginView = ({ onLoggedIn }) => {
+export const LoginView = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const { setUser, setToken } = useUserContext();
+
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
-    // this prevents the default behaviour of the form which is to reload the entire page
     event.preventDefault();
 
     const data = {
-      access: username,
-      secret: password,
+      Username: username,
+      Password: password,
     };
 
-    fetch(
-      `https://cub-film-data-dc72bcc7ff05.herokuapp.com/login?Username=${username}&Password=${password}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: JSON.stringify(data),
-      }
-    )
+    fetch("https://cub-film-data-dc72bcc7ff05.herokuapp.com/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Login response: " + data);
-        if (data.user) {
-          localStorage.setItem("user", JSON.stringify(data.user)); //Persisting a Login Session via local storage
-          localStorage.setItem("token", data.token);
-          onLoggedIn(data.user, data.token);
+        console.log("Login response: ", data);
+        if (data.user && data.token) {
+          setUser({
+            id: data.user._id,
+            Username: data.user.Username,
+            Email: data.user.Email,
+            Birthday: data.user.Birthday,
+            FavouriteMovies: data.user.FavouriteMovies,
+          });
+
+          console.log(data.user);
+          console.log(data.user.Username);
+
+          setToken(data.token);
+          navigate("/");
         } else {
-          alert("No such user");
+          alert("Invalid username or password.");
         }
       })
       .catch((e) => {
+        console.error("Login failed:", e);
         alert(
           "Login failed. Please check your username and password or try again later."
         );
@@ -45,13 +57,13 @@ export const LoginView = ({ onLoggedIn }) => {
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group>
-          <Form.Label>Login:</Form.Label>
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formUsername">
-          <Form.Label>Username:</Form.Label>
-          <Form.Control
+      <form onSubmit={handleSubmit} className="login-form">
+        <h2>
+          <label>Login</label>
+        </h2>
+        <div className="formUsername">
+          <label>Username:</label>
+          <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -59,10 +71,10 @@ export const LoginView = ({ onLoggedIn }) => {
             placeholder="Enter your username"
             required
           />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formPassword">
-          <Form.Label>Password:</Form.Label>
-          <Form.Control
+        </div>
+        <div className="formPassword">
+          <label>Password:</label>
+          <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -70,11 +82,9 @@ export const LoginView = ({ onLoggedIn }) => {
             placeholder="Password"
             required
           />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
     </>
   );
 };

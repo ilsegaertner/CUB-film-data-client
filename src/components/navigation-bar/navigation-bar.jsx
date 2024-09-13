@@ -1,56 +1,116 @@
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import { Link } from "react-router-dom";
-import logo from "./logo.svg";
-import logo3 from "./logo3.svg";
+import { Link, useNavigate } from "react-router-dom";
 import logo4 from "./logo4.svg";
+import Modal from "../modal/modal";
+import React, { useState, useTransition } from "react";
+import { useUserContext } from "../../userContext";
 
-export const NavigationBar = ({ user, onLoggedOut }) => {
-  const navbarStyle = {
-    boxShadow: "0px 4px 12px #b7b7b759",
+export const NavigationBar = () => {
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [isPending, startTransition] = useTransition();
+  const navigate = useNavigate();
+
+  const { user, logout } = useUserContext();
+
+  const handleLogoutClick = () => {
+    setShowLogoutModal(true);
+  };
+
+  const handleConfirmLogout = () => {
+    logout();
+    setShowLogoutModal(false);
+    navigate("/login");
+  };
+  const handleCancelLogout = () => {
+    setShowLogoutModal(false);
+  };
+
+  const handleNavigation = (path) => {
+    startTransition(() => {
+      navigate(path);
+    });
   };
 
   return (
-    <Navbar expand="lg" className="bg-body-tertiary" style={navbarStyle}>
-      <Container>
-        <Navbar.Brand as={Link} to="/">
-          <img
-            src={logo4}
-            width="40"
-            height="40"
-            className="d-inline-block align-right"
-            alt="React Bootstrap logo"
-          />
-          {/* CUB Film Data */}
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            {!user && (
-              <>
-                <Nav.Link as={Link} to="/login">
-                  Login
-                </Nav.Link>
-                <Nav.Link as={Link} to="/signup">
-                  Signup
-                </Nav.Link>
-              </>
-            )}
-            {user && (
-              <>
-                <Nav.Link as={Link} to="/">
-                  Home
-                </Nav.Link>
-                <Nav.Link as={Link} to="/profile">
-                  Profile
-                </Nav.Link>
-                <Nav.Link onClick={onLoggedOut}>Logout</Nav.Link>
-              </>
-            )}
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <div className="nav-wrapper">
+      <img
+        // as={Link}
+        onClick={() => handleNavigation("/")}
+        to="/"
+        src={logo4}
+        alt="Cub Film-Data logo"
+        width="40"
+        height="40"
+        className="spin-image"
+      />
+
+      <div id="navbar-links">
+        {!user && (
+          <>
+            <button
+              className="navigation-link-button"
+              onClick={() => handleNavigation("/login")}
+            >
+              Login
+            </button>
+            <button
+              className="navigation-link-button"
+              onClick={() => handleNavigation("/signup")}
+            >
+              Signup
+            </button>
+          </>
+        )}
+        {user && (
+          <>
+            <button
+              className="navigation-link-button"
+              onClick={() => handleNavigation("/")}
+            >
+              Home
+            </button>
+            <button
+              className="navigation-link-button"
+              onClick={() => handleNavigation("/profile")}
+            >
+              Profile
+            </button>
+            <button
+              className="navigation-link-button"
+              onClick={() => handleNavigation("/databases")}
+            >
+              Libraries
+            </button>
+            <button
+              className="navigation-link-button"
+              onClick={handleLogoutClick}
+            >
+              Logout
+            </button>
+            <Modal show={showLogoutModal} onClose={handleCancelLogout}>
+              <div>
+                <h2>Confirm Logout</h2>
+                <p className="logout-question-paragraph">
+                  Are you sure you want to log out?
+                </p>
+                <div className="modal-actions">
+                  <button
+                    onClick={handleCancelLogout}
+                    className="modal-button-cancel"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleConfirmLogout}
+                    className="modal-button-confirm"
+                  >
+                    Yes, Logout
+                  </button>
+                </div>
+              </div>
+            </Modal>
+          </>
+        )}
+      </div>
+    </div>
   );
 };

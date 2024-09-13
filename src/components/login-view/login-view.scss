@@ -1,0 +1,37 @@
+.login-form {
+  padding: var(--padding);
+  gap: var(--gap);
+  color: var(--color-main);
+
+  display: grid;
+  height: 80dvh;
+  align-content: center;
+  grid-template-columns: 1fr;
+  max-width: 42vw;
+  min-width: 352px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.login-form button {
+  margin-top: 20px;
+}
+
+.login-form h2 {
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+// .login-form label {
+//   margin-bottom: 5px;
+// }
+
+.formUsername,
+.formPassword {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  border: none;
+}

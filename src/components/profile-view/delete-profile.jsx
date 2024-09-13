@@ -1,12 +1,21 @@
 import React from "react";
 import { useState } from "react";
-import { Button, Card, Modal } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+// import { Button, Card, Modal } from "react-bootstrap";
 import "./profile-view.scss";
 
-export const DeleteProfile = ({ user, onLoggedOut, token }) => {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+import Modal from "../modal/modal";
+import { AnimatePresence } from "framer-motion";
+
+import { useUserContext } from "../../userContext";
+
+export const DeleteProfile = () => {
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
+
+  const { user, token, logout } = useUserContext();
+
+  // const handleClose = () => setShowModal(false);
 
   const deleteProfileHandler = () => {
     fetch(
@@ -16,39 +25,52 @@ export const DeleteProfile = ({ user, onLoggedOut, token }) => {
       .then((response) => {
         if (response.ok) {
           alert("Profile deleted");
-          window.location = "signup";
-          onLoggedOut();
+          // window.location = "signup";
+          logout();
+          navigate("/signup");
         } else {
           alert("Something went wrong");
         }
       })
       .catch((error) => {
         console.error("Error deleting profile:", error);
-        alert("Something went wrong" + error);
+        alert("Something went wrong" + error.message);
       });
   };
 
   return (
     <>
-      <Card>
-        <Button variant="primary" onClick={handleShow} className="deleteButton">
+      <div className="delete-action">
+        <button onClick={() => setShowModal(true)} className="deleteButton">
           Delete Profile
-        </Button>
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Delete account</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>Are you sure you want to delete your profile?</Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              No, bring me back
-            </Button>
-            <Button variant="primary" onClick={deleteProfileHandler}>
-              Delete Profile{" "}
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </Card>
+        </button>
+
+        <AnimatePresence>
+          {showModal && (
+            <Modal show={showModal} onClose={() => setShowModal(false)}>
+              {" "}
+              <h3>Are you sure you want to delete your profile?</h3>
+              <h6>! This action cannot be undone</h6>
+              <div className="modal-actions">
+                <button
+                  className="modal-button-decline"
+                  onClick={() => setShowModal(false)}
+                >
+                  No, bring me back
+                </button>
+                <button
+                  className="modal-button-destructive"
+                  onClick={deleteProfileHandler}
+                >
+                  Delete Profile
+                </button>
+              </div>
+            </Modal>
+          )}
+        </AnimatePresence>
+
+        <hr />
+      </div>
     </>
   );
 };

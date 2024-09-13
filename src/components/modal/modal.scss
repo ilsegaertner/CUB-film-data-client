@@ -1,0 +1,72 @@
+/* modal.scss */
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  // background-color: rgba(0, 0, 0, 0.5);
+  background-color: #000000b7;
+  z-index: 999;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--bg-color);
+  padding: 20px;
+  box-shadow: var(--box-shadow-transparent);
+  z-index: 1000;
+  width: 80%;
+  max-width: 500px;
+  border-radius: var(--border-radius);
+}
+
+.modal-content {
+  // margin-bottom: 20px;
+}
+
+.modal-content h3 {
+  margin: 0;
+  margin-bottom: var(--padding);
+  letter-spacing: var(--letter-spacing-small);
+  color: var(--color-main);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--gap);
+}
+
+.modal-button {
+  color: var(--bg-color);
+  cursor: pointer;
+  background-color: var(--color-main);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: var(--padding);
+}
+
+.modal-button:hover {
+  background-color: var(--color-colorful);
+  color: var(--color-main);
+}
+
+.modal-content h2 {
+  color: var(--color-main);
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.modal-button-back {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 42px;
+  // margin-top: 5px;
+  // margin-right: 5px;
+}

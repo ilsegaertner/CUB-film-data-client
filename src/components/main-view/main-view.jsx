@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { Row, Col, Form, NavbarBrand, ToastContainer } from "react-bootstrap";
+import { Link, useLocation } from "react-router-dom";
+import { useUserContext } from "../../userContext";
 
 //import toast
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
+
+import { MoviesFromOMDB } from "../moviesOmdb/moviesOmdb";
+import Footer from "../footer/footer";
 
 // import components
 import { MovieCard } from "../movie-card/movie-card";
@@ -14,21 +18,20 @@ import { SignupView } from "../signup-view/signup-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 
+import { AnimatePresence, motion } from "framer-motion";
+
+import Spinner from "../ui/spinner";
+import logo4 from "./../navigation-bar/logo4.svg";
+import Dropdown from "../ui/dropdown/dropdown";
+
 export const MainView = () => {
-  const storedUser = JSON.parse(localStorage.getItem("user"));
-  const storedToken = localStorage.getItem("token");
-
   const [movies, setMovies] = useState([]);
-  const [movieId, setMovieId] = useState(null);
-
-  const [user, setUser] = useState(storedUser ? storedUser : null); //added logic for persisting a Login Session
-  const [token, setToken] = useState(storedToken ? storedToken : null); //added logic for persisting a Login Session
-
-  const [userProfile, setUserProfile] = useState({});
+  const { user, setUser, token } = useUserContext();
 
   // displaying filtered movies from search query
   const [moviesToRender, setMoviesToRender] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [loading, setLoading] = useState(true);
 
   //fetch Movies
   useEffect(() => {
@@ -55,8 +58,8 @@ export const MainView = () => {
           };
         });
         setMovies(moviesFromApi);
-        setMovieId(moviesFromApi[0]?.id); // Set the movieId from the fetched movies
         setMoviesToRender(moviesFromApi);
+        setLoading(false);
       });
   }, [token]);
 
@@ -75,208 +78,229 @@ export const MainView = () => {
     setSearchQuery("");
     setMoviesToRender(movies);
   };
-  const filteredMovies = moviesToRender.filter(
-    (movie) =>
-      movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      movie.director.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
-  //style of searchbar
-  const searchbarStyle = {
-    boxShadow: "0px 1px 4px #dbdbdb",
-  };
-
-  // handle logOut
-  const onLoggedOut = () => {
-    setUser(null);
-    setToken(null);
-    localStorage.clear();
-  };
-
-  //update User
-  const updateUser = () => {
-    fetch(
-      `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`,
-      {
-        method: "GET",
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    )
-      .then((response) => response.json())
-      .then((user) => {
-        setUser(user);
-      })
-      .catch((error) => {
-        alert(
-          "Failed to update user information. Please try again later or check your network connection. " +
-            error
-        );
-      });
-  };
 
   return (
-    <BrowserRouter>
-      <NavigationBar user={user} onLoggedOut={onLoggedOut} />
-      <Row className="justify-content-md-center">
-        <Routes>
-          <Route
-            path="/signup"
-            element={
-              <>
-                {user ? (
-                  <Navigate to="/" />
-                ) : (
-                  <Col md={5}>
-                    <SignupView />
-                  </Col>
-                )}
-              </>
-            }
-          />
+    <>
+      <AnimatePresence>
+        {/* // <BrowserRouter> */}
+        <div className="bg-poster"></div>
+        <div className="wrapper">
+          <div className="left-side">
+            <div className="nav">
+              <NavigationBar />
+            </div>
+          </div>
 
-          <Route
-            path="/login"
-            element={
-              <>
-                {user ? (
-                  <Navigate to="/" />
-                ) : (
-                  <Col md={5}>
-                    <LoginView
-                      onLoggedIn={(user, token) => {
-                        setUser(user), setToken(token);
-                      }}
-                    />
-                  </Col>
-                )}
-              </>
-            }
-          />
-
-          {/* Profile  */}
-          <Route
-            path="/profile"
-            element={
-              user ? (
-                <>
-                  <ProfileView
-                    user={user}
-                    movies={movies}
-                    token={storedToken}
-                    updateUser={updateUser}
-                    setUserProfile={setUserProfile}
-                    onLoggedOut={() => {
-                      setUser(null), setToken(null), localStorage.clear();
-                    }}
-                  />
-                </>
-              ) : (
-                <Navigate to="/login" replace />
-              )
-            }
-          />
-
-          <Route
-            path="/movies/:movieTitle"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
-                  <Col>The list is empty!</Col>
-                ) : (
-                  <Col md={8}>
-                    <MovieView
-                      user={user}
-                      setUser={setUser}
-                      updateUser={updateUser}
-                      movies={movies}
-                      token={token}
-                    />
-                  </Col>
-                )}
-              </>
-            }
-          />
-
-          <Route
-            path="/"
-            element={
-              <>
-                <Form className="CubWrap">
-                  <div className="VerticalContainer">
-                    <span className="CUB">CUB Film Data</span>
-                  </div>
-                  <span className="CubDescription">
-                    Browse{" "}
-                    <span style={{ fontFamily: "monospace", color: "#43523e" }}>
-                      - CUB FILM DATA -
-                    </span>{" "}
-                    for arthouse classics and look for facts about your favorite
-                    movies
-                  </span>
-                  <Form.Control
-                    size="lg"
-                    type="text"
-                    style={searchbarStyle}
-                    placeholder="Search movies..."
-                    class="bg-body-tertiary navbar navbar-expand-lg navbar-light searchMovies form-control-lg mr-sm-2"
-                    value={searchQuery}
-                    onChange={handleSearchInputChange}
-                  />
-                  {searchQuery && (
-                    <button
-                      className="clear-button"
-                      onClick={() => handleClearSearch()}
+          <div className="right-side">
+            <Routes>
+              <Route
+                path="/apimovies"
+                element={
+                  user ? (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.2 }}
                     >
-                      X
-                    </button>
-                  )}
-                </Form>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : moviesToRender.length === 0 ? (
-                  <Col>The list is empty!</Col>
-                ) : (
+                      <MoviesFromOMDB />{" "}
+                    </motion.div>
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )
+                }
+              />
+
+              <Route
+                path="/signup"
+                element={
                   <>
-                    {moviesToRender.map((movie) => (
-                      <Col
-                        className="mb-5"
-                        key={movie.id}
-                        md={11}
-                        sm={12}
-                        lg={3}
+                    {user ? (
+                      <Navigate to="/" />
+                    ) : (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
                       >
-                        <MovieCard
-                          key={movie.id}
-                          movie={movie}
-                          movieId={movie.id}
-                          user={user}
-                          updateUser={updateUser}
-                          token={token}
-                        />
-                      </Col>
-                    ))}
+                        <SignupView />
+                      </motion.div>
+                    )}
                   </>
-                )}
-              </>
-            }
-          />
-        </Routes>
-        <ToastContainer
-          position="top-center"
-          autoClose={1800}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          draggable
-          theme="dark"
-          // toastId="005"
-          limit={1}
-          preventDuplicates={true}
-        />
-      </Row>
-    </BrowserRouter>
+                }
+              />
+
+              <Route
+                path="/login"
+                element={
+                  <>
+                    {user ? (
+                      <Navigate to="/" />
+                    ) : (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <LoginView />
+                      </motion.div>
+                    )}
+                  </>
+                }
+              />
+
+              <Route
+                path="/databases"
+                element={
+                  user ? (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Dropdown />
+                    </motion.div>
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )
+                }
+              />
+
+              {/* Profile  */}
+              <Route
+                path="/profile"
+                element={
+                  user ? (
+                    <>
+                      {" "}
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <ProfileView movies={movies} />
+                      </motion.div>
+                    </>
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )
+                }
+              />
+
+              <Route
+                path="/movies/:movieTitle"
+                element={
+                  <>
+                    {!user ? (
+                      <Navigate to="/login" replace />
+                    ) : movies.length === 0 ? (
+                      <Spinner />
+                    ) : (
+                      // <div className="error">The list is empty!</div>
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <MovieView movies={movies} />
+                      </motion.div>
+                    )}
+                  </>
+                }
+              />
+
+              <Route
+                path="/"
+                element={
+                  user ? (
+                    <>
+                      <form className="CubWrap">
+                        <div className="VerticalContainer">
+                          <h1 className="CUB">
+                            {/* <img
+                              as={Link}
+                              to="/"
+                              src={logo4}
+                              style={{ marginRight: 10, width: 30, height: 30 }}
+                              width="40"
+                              height="40"
+                              className="spin-image"
+                              alt="React Bootstrap logo"
+                            /> */}
+                            <span className="heading-color-element blue">
+                              C
+                            </span>
+                            <span className="heading-color-element white">
+                              U
+                            </span>
+                            <span className="heading-color-element green">
+                              B
+                            </span>{" "}
+                            Film Data
+                          </h1>
+                          <span className="CubDescription">
+                            Browse our inhouse database for arthouse classics
+                            and save your favorite movies
+                          </span>
+                        </div>
+
+                        <input
+                          size="lg"
+                          type="text"
+                          placeholder="Search movies..."
+                          className="search-movies"
+                          value={searchQuery}
+                          onChange={handleSearchInputChange}
+                        />
+                        {searchQuery && (
+                          <button
+                            className="clear-button"
+                            onClick={() => handleClearSearch()}
+                          >
+                            X
+                          </button>
+                        )}
+                      </form>
+
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <div className="moviecard-wrap">
+                          {loading ? (
+                            <Spinner /> // Show spinner when loading
+                          ) : moviesToRender.length > 0 ? (
+                            moviesToRender.map((movie) => (
+                              <MovieCard
+                                key={movie.id}
+                                movie={movie}
+                                token={token}
+                              />
+                            ))
+                          ) : (
+                            <p>No movies found.</p>
+                          )}
+                        </div>
+                      </motion.div>
+                    </>
+                  ) : (
+                    <Navigate to="/login" replace />
+                  )
+                }
+              />
+            </Routes>
+          </div>
+        </div>{" "}
+        <Footer />
+        {/* </BrowserRouter> */}
+      </AnimatePresence>
+    </>
   );
 };
