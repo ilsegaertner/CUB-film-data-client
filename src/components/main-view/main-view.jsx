@@ -243,11 +243,12 @@ export const MainView = () => {
                             </span>{" "}
                             Film Data
                           </h1>
+                          <span className="CubDescription">
+                            Browse our inhouse database for arthouse classics
+                            and save your favorite movies
+                          </span>
                         </div>
-                        <span className="CubDescription">
-                          Browse our inhouse database for arthouse classics and
-                          save your favorite movies
-                        </span>
+
                         <input
                           size="lg"
                           type="text"
