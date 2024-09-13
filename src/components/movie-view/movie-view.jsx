@@ -6,7 +6,7 @@ import { useNavigate } from "react-router";
 
 import Modal from "../modal/modal";
 
-import { useUserContext } from "../../userContext";
+import { useUserContext } from "../../UserContext";
 
 import heartFilled from "../../assets/heart-filled.png";
 import heart from "../../assets/heart.png";
