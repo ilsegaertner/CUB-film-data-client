@@ -7,7 +7,6 @@ export const UserInfo = () => {
   const { user } = useUserContext();
   const { Username, Email } = user || {};
 
-  console.log("UserInfoUser:", user);
 
   return (
     <div className="user-info">
