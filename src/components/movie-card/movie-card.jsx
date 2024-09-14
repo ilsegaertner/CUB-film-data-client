@@ -13,12 +13,10 @@ import "./movie-card.scss";
 
 export const MovieCard = ({ movie }) => {
   const { favouriteMovies, toggleFavourites } = useUserContext();
-  console.log("toggleFavourites in MovieCard:", toggleFavourites);
 
   const [isMovieInFavourites, setIsMovieInFavourites] = useState(false);
 
   const context = useUserContext();
-  console.log("Context in MovieCard:", context);
 
   useEffect(() => {
     if (favouriteMovies) {
@@ -46,7 +44,6 @@ export const MovieCard = ({ movie }) => {
         <button
           className="addButton"
           onClick={() => {
-            console.log("ToggledFavourites MovieId:", movie.id);
             toggleFavourites(movie.id);
           }}
         >
