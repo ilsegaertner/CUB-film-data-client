@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 
 import "../moviesOmdb/moviesOmdb.scss";
 
@@ -27,35 +27,12 @@ export const MoviesFromOMDB = () => {
       );
       const data = await response.json();
       setMovieData(data);
-      console.log("Api test, data:", data);
     } catch (error) {
       console.error(error);
     } finally {
       setLoading(false);
     }
   };
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     console.log("Component mounted, useEffect called"); // Log to check if useEffect runs
-
-  //     try {
-  //       const response = await fetch(
-  //         `https://www.omdbapi.com/?apikey=59e62a8f&t=${query}`
-  //       );
-  //       const data = await response.json();
-  //       setMovieData(data);
-  //       console.log("Api test, data:", data);
-  //     } catch (error) {
-  //       console.error(error);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
-
-  console.log("Api test, movies:", movieData);
 
   const movieRatings = movieData.Ratings;
 
