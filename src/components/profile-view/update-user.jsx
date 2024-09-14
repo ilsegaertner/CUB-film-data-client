@@ -69,7 +69,6 @@ export const UpdateUser = () => {
       }
     )
       .then((response) => {
-        console.log(data);
         if (response.ok) {
           return response.json();
           // showToastSuccess();
@@ -104,7 +103,6 @@ export const UpdateUser = () => {
         showToastFail();
       });
   };
-  console.log(user);
 
   return (
     <form onSubmit={handleSubmit} className="updateUser-wrapper">
