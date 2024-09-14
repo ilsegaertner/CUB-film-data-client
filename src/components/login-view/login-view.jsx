@@ -30,7 +30,6 @@ export const LoginView = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Login response: ", data);
         if (data.user && data.token) {
           setUser({
             id: data.user._id,
@@ -39,9 +38,6 @@ export const LoginView = () => {
             Birthday: data.user.Birthday,
             FavouriteMovies: data.user.FavouriteMovies,
           });
-
-          console.log(data.user);
-          console.log(data.user.Username);
 
           setToken(data.token);
           navigate("/");
