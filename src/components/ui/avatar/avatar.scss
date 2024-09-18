@@ -1,0 +1,26 @@
+.avatar-preview {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.avatar-input {
+  padding: 0;
+  box-shadow: none;
+  display: none;
+}
+
+.avatar-input:hover {
+  box-shadow: none;
+}
+
+.custom-file-upload {
+  font-size: var(--small);
+  font-style: italic;
+  color: var(--bg-color-gray);
+}
+
+.custom-file-upload:hover {
+  cursor: pointer;
+}
