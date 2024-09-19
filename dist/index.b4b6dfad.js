@@ -34995,17 +34995,53 @@ const UserProvider = ({ children })=>{
     const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
     const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
     const [favouriteMovies, setFavouriteMovies] = (0, _react.useState)(user?.FavouriteMovies || []);
+    const fetchUserData = async (token, username)=>{
+        if (!token || !username) return;
+        try {
+            const response = await fetch(`https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${username}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            if (!response.ok) throw new Error("User data could not be fetched");
+            const data = await response.json();
+            setUser({
+                id: data._id,
+                Username: data.Username,
+                Email: data.Email,
+                Birthday: data.Birthday,
+                FavouriteMovies: data.FavouriteMovies || [],
+                Avatar: data.Avatar || (0, _defaultAvatarJpgDefault.default)
+            });
+            setFavouriteMovies(data.FavouriteMovies || []);
+        // return data;
+        } catch (error) {
+            console.error("Error fetching user data", error);
+            setUser(null);
+            throw error;
+        }
+    };
+    (0, _react.useEffect)(()=>{
+        if (!token || !user?.Username) {
+            setUser(null);
+            return;
+        }
+        const getUserData = async ()=>{
+            try {
+                await fetchUserData(token, user.Username);
+            } catch (error) {
+                console.error("Error fetching user data", error);
+            }
+        };
+        getUserData();
+    }, [
+        token,
+        user?.Username
+    ]);
     // update local storage whenever user or token changes
     (0, _react.useEffect)(()=>{
         if (user) {
-            localStorage.setItem("user", JSON.stringify({
-                id: user.id,
-                Username: user.Username,
-                Email: user.Email,
-                Birthday: user.Birthday,
-                FavouriteMovies: user.FavouriteMovies || [],
-                Avatar: user.Avatar || (0, _defaultAvatarJpgDefault.default)
-            }));
+            localStorage.setItem("user", JSON.stringify(user));
             setFavouriteMovies(user.FavouriteMovies || []);
         } else {
             localStorage.removeItem("user");
@@ -35027,7 +35063,7 @@ const UserProvider = ({ children })=>{
                         Authorization: `Bearer ${token}`
                     }
                 });
-                if (!response.ok) throw new Error("Failed to remove from favorites: ", response.statusText);
+                if (!response.ok) throw new Error(`Failed to remove from favorites: ${response.statusText}`);
                 setUser({
                     ...user,
                     FavouriteMovies: user.FavouriteMovies.filter((id)=>id !== movieId)
@@ -35079,11 +35115,11 @@ const UserProvider = ({ children })=>{
         children: children
     }, void 0, false, {
         fileName: "src/UserContext.js",
-        lineNumber: 110,
+        lineNumber: 144,
         columnNumber: 5
     }, undefined);
 };
-_s1(UserProvider, "goKpnDNQCZbutwEOufYske0tWLQ=");
+_s1(UserProvider, "isr3URjSyYzePpIcIczj310Snkk=");
 _c = UserProvider;
 var _c;
 $RefreshReg$(_c, "UserProvider");
@@ -35093,7 +35129,7 @@ $RefreshReg$(_c, "UserProvider");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-toastify":"kSvyQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../src/assets/defaultAvatar.jpg":"5buCr"}],"kSvyQ":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-toastify":"kSvyQ","../src/assets/defaultAvatar.jpg":"5buCr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"kSvyQ":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Bounce", ()=>R);
@@ -35726,7 +35762,45 @@ function clsx() {
 }
 exports.default = clsx;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"km3Ru":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5buCr":[function(require,module,exports) {
+module.exports = require("e92745b34252dfd3").getBundleURL("byUka") + "defaultAvatar.bf94cdf7.jpg" + "?" + Date.now();
+
+},{"e92745b34252dfd3":"lgJ39"}],"lgJ39":[function(require,module,exports) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return "/";
+}
+function getBaseURL(url) {
+    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
+}
+// TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error("Origin not found");
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"km3Ru":[function(require,module,exports) {
 "use strict";
 var Refresh = require("7422ead32dcc1e6b");
 function debounce(func, delay) {
@@ -35864,45 +35938,7 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"7422ead32dcc1e6b":"786KC"}],"5buCr":[function(require,module,exports) {
-module.exports = require("e92745b34252dfd3").getBundleURL("byUka") + "defaultAvatar.bf94cdf7.jpg" + "?" + Date.now();
-
-},{"e92745b34252dfd3":"lgJ39"}],"lgJ39":[function(require,module,exports) {
-"use strict";
-var bundleURL = {};
-function getBundleURLCached(id) {
-    var value = bundleURL[id];
-    if (!value) {
-        value = getBundleURL();
-        bundleURL[id] = value;
-    }
-    return value;
-}
-function getBundleURL() {
-    try {
-        throw new Error();
-    } catch (err) {
-        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
-        if (matches) // The first two stack frames will be this function and getBundleURLCached.
-        // Use the 3rd one, which will be a runtime in the original bundle.
-        return getBaseURL(matches[2]);
-    }
-    return "/";
-}
-function getBaseURL(url) {
-    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
-}
-// TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
-function getOrigin(url) {
-    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
-    if (!matches) throw new Error("Origin not found");
-    return matches[0];
-}
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-exports.getOrigin = getOrigin;
-
-},{}],"hFeSt":[function(require,module,exports) {
+},{"7422ead32dcc1e6b":"786KC"}],"hFeSt":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$2ddd = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -48949,7 +48985,7 @@ const LoginView = ()=>{
                     Username: data.user.Username,
                     Email: data.user.Email,
                     Birthday: data.user.Birthday,
-                    FavouriteMovies: data.user.FavouriteMovies
+                    FavouriteMovies: data.user.FavouriteMovies || []
                 });
                 setToken(data.token);
                 navigate("/");
@@ -49423,6 +49459,10 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _avatar = require("../ui/avatar/avatar");
 var _avatarDefault = parcelHelpers.interopDefault(_avatar);
+var _userSvg = require("../../assets/icons/user.svg");
+var _userSvgDefault = parcelHelpers.interopDefault(_userSvg);
+var _mailSvg = require("../../assets/icons/mail.svg");
+var _mailSvgDefault = parcelHelpers.interopDefault(_mailSvg);
 // import { useUserContext } from "../../userContext";
 var _userContext = require("../../UserContext");
 var _s = $RefreshSig$();
@@ -49430,6 +49470,7 @@ const UserInfo = ()=>{
     _s();
     const { user } = (0, _userContext.useUserContext)();
     const { Username, Email } = user || {};
+    console.log("User info", user);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "user-info",
         children: [
@@ -49437,34 +49478,49 @@ const UserInfo = ()=>{
                 children: "Your Info"
             }, void 0, false, {
                 fileName: "src/components/profile-view/user-info.jsx",
-                lineNumber: 13,
+                lineNumber: 18,
                 columnNumber: 7
             }, undefined),
             user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _avatarDefault.default), {}, void 0, false, {
                         fileName: "src/components/profile-view/user-info.jsx",
-                        lineNumber: 16,
+                        lineNumber: 21,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                         children: [
-                            "Name: ",
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                                src: (0, _userSvgDefault.default),
+                                width: 20
+                            }, void 0, false, {
+                                fileName: "src/components/profile-view/user-info.jsx",
+                                lineNumber: 23,
+                                columnNumber: 13
+                            }, undefined),
                             Username
                         ]
                     }, void 0, true, {
                         fileName: "src/components/profile-view/user-info.jsx",
-                        lineNumber: 17,
+                        lineNumber: 22,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                         children: [
-                            "E-mail: ",
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                                src: (0, _mailSvgDefault.default),
+                                width: 20
+                            }, void 0, false, {
+                                fileName: "src/components/profile-view/user-info.jsx",
+                                lineNumber: 28,
+                                columnNumber: 13
+                            }, undefined),
+                            " ",
                             Email
                         ]
                     }, void 0, true, {
                         fileName: "src/components/profile-view/user-info.jsx",
-                        lineNumber: 19,
+                        lineNumber: 27,
                         columnNumber: 11
                     }, undefined)
                 ]
@@ -49472,18 +49528,18 @@ const UserInfo = ()=>{
                 children: "No user data available."
             }, void 0, false, {
                 fileName: "src/components/profile-view/user-info.jsx",
-                lineNumber: 22,
+                lineNumber: 32,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
                 fileName: "src/components/profile-view/user-info.jsx",
-                lineNumber: 24,
+                lineNumber: 34,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/profile-view/user-info.jsx",
-        lineNumber: 12,
+        lineNumber: 17,
         columnNumber: 5
     }, undefined);
 };
@@ -49501,7 +49557,7 @@ $RefreshReg$(_c, "UserInfo");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../UserContext":"4hoFp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../ui/avatar/avatar":"2hORL"}],"2hORL":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../ui/avatar/avatar":"2hORL","../../UserContext":"4hoFp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../assets/icons/mail.svg":"fWfsh","../../assets/icons/user.svg":"EAMwp"}],"2hORL":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$f093 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -49518,6 +49574,8 @@ var _spinner = require("../spinner");
 var _spinnerDefault = parcelHelpers.interopDefault(_spinner);
 var _avatarScss = require("./avatar.scss");
 var _userContext = require("../../../UserContext");
+var _imageUpSvg = require("../../../assets/icons/image-up.svg");
+var _imageUpSvgDefault = parcelHelpers.interopDefault(_imageUpSvg);
 var _s = $RefreshSig$();
 const Avatar = ()=>{
     _s();
@@ -49567,7 +49625,7 @@ const Avatar = ()=>{
         className: "avatar-upload",
         children: loading ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _spinnerDefault.default), {}, void 0, false, {
             fileName: "src/components/ui/avatar/avatar.jsx",
-            lineNumber: 58,
+            lineNumber: 59,
             columnNumber: 9
         }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
             children: [
@@ -49577,7 +49635,7 @@ const Avatar = ()=>{
                     className: "avatar-preview"
                 }, void 0, false, {
                     fileName: "src/components/ui/avatar/avatar.jsx",
-                    lineNumber: 62,
+                    lineNumber: 63,
                     columnNumber: 13
                 }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: [
@@ -49586,7 +49644,7 @@ const Avatar = ()=>{
                     ]
                 }, void 0, true, {
                     fileName: "src/components/ui/avatar/avatar.jsx",
-                    lineNumber: 64,
+                    lineNumber: 65,
                     columnNumber: 13
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -49597,16 +49655,23 @@ const Avatar = ()=>{
                     onChange: handleLoadAvatar
                 }, void 0, false, {
                     fileName: "src/components/ui/avatar/avatar.jsx",
-                    lineNumber: 67,
+                    lineNumber: 68,
                     columnNumber: 11
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                     htmlFor: "file-input",
                     className: "custom-file-upload",
-                    children: avatar ? "Change image" : "Upload An Avatar"
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                        src: (0, _imageUpSvgDefault.default),
+                        width: 20
+                    }, void 0, false, {
+                        fileName: "src/components/ui/avatar/avatar.jsx",
+                        lineNumber: 76,
+                        columnNumber: 13
+                    }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/ui/avatar/avatar.jsx",
-                    lineNumber: 74,
+                    lineNumber: 75,
                     columnNumber: 11
                 }, undefined),
                 error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -49614,14 +49679,14 @@ const Avatar = ()=>{
                     children: error
                 }, void 0, false, {
                     fileName: "src/components/ui/avatar/avatar.jsx",
-                    lineNumber: 78,
+                    lineNumber: 79,
                     columnNumber: 21
                 }, undefined)
             ]
         }, void 0, true)
     }, void 0, false, {
         fileName: "src/components/ui/avatar/avatar.jsx",
-        lineNumber: 56,
+        lineNumber: 57,
         columnNumber: 5
     }, undefined);
 };
@@ -49640,7 +49705,16 @@ $RefreshReg$(_c, "Avatar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../../assets/defaultAvatar.jpg":"5buCr","../spinner":"2TUv3","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./avatar.scss":"9b9SR","../../../UserContext":"4hoFp"}],"9b9SR":[function() {},{}],"2SBwg":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../../assets/defaultAvatar.jpg":"5buCr","../spinner":"2TUv3","./avatar.scss":"9b9SR","../../../UserContext":"4hoFp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../../assets/icons/image-up.svg":"9mdEY"}],"9b9SR":[function() {},{}],"9mdEY":[function(require,module,exports) {
+module.exports = require("142250af2605d38a").getBundleURL("byUka") + "image-up.bec1bfe1.svg" + "?" + Date.now();
+
+},{"142250af2605d38a":"lgJ39"}],"fWfsh":[function(require,module,exports) {
+module.exports = require("ec2f7ae2b7e53c97").getBundleURL("byUka") + "mail.176f2887.svg" + "?" + Date.now();
+
+},{"ec2f7ae2b7e53c97":"lgJ39"}],"EAMwp":[function(require,module,exports) {
+module.exports = require("5812e1afad9a4c53").getBundleURL("byUka") + "user.2dd87c56.svg" + "?" + Date.now();
+
+},{"5812e1afad9a4c53":"lgJ39"}],"2SBwg":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$95d1 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;

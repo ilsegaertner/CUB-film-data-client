@@ -1,5 +1,8 @@
 import React from "react";
 import Avatar from "../ui/avatar/avatar";
+import userIcon from "../../assets/icons/user.svg";
+import emailIcon from "../../assets/icons/mail.svg";
+
 
 // import { useUserContext } from "../../userContext";
 import { useUserContext } from "../../UserContext";
@@ -8,15 +11,22 @@ export const UserInfo = () => {
   const { user } = useUserContext();
   const { Username, Email } = user || {};
 
+  console.log("User info", user);
+
   return (
     <div className="user-info">
       <h4>Your Info</h4>
       {user ? (
         <>
           <Avatar />
-          <p>Name: {Username}</p>
+          <p>
+            <img src={userIcon} width={20} />
+            {Username}
+          </p>
 
-          <p>E-mail: {Email}</p>
+          <p>
+            <img src={emailIcon} width={20} /> {Email}
+          </p>
         </>
       ) : (
         <p>No user data available.</p>

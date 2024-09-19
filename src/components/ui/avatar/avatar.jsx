@@ -3,6 +3,7 @@ import defaultAvatar from "../../../assets/defaultAvatar.jpg";
 import Spinner from "../spinner";
 import "./avatar.scss";
 import { useUserContext } from "../../../UserContext";
+import imageUploadIcon from "../../../assets/icons/image-up.svg";
 
 const Avatar = () => {
   const { user, setUser } = useUserContext();
@@ -72,7 +73,7 @@ const Avatar = () => {
             onChange={handleLoadAvatar}
           />
           <label htmlFor="file-input" className="custom-file-upload">
-            {avatar ? "Change image" : "Upload An Avatar"}
+            <img src={imageUploadIcon} width={20} />
           </label>
 
           {error && <p className="error">{error}</p>}
