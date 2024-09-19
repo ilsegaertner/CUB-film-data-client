@@ -29,7 +29,7 @@ export const MovieCard = ({ movie }) => {
       <div className="movie-card">
         <div className="movie-image-wrapper">
           <Link to={`/movies/${movie.title}`}>
-            <img src={movie.image} className="movie-image" />
+            <img src={movie.image} className="movie-image" loading="lazy" />
           </Link>
         </div>
 
