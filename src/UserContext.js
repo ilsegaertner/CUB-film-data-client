@@ -19,20 +19,55 @@ export const UserProvider = ({ children }) => {
     user?.FavouriteMovies || []
   );
 
+  const fetchUserData = async (token, username) => {
+    if (!token || !username) return;
+    try {
+      const response = await fetch(
+        `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${username}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      if (!response.ok) {
+        throw new Error("User data could not be fetched");
+      }
+      const data = await response.json();
+      setUser({
+        id: data._id,
+        Username: data.Username,
+        Email: data.Email,
+        Birthday: data.Birthday,
+        FavouriteMovies: data.FavouriteMovies || [],
+        Avatar: data.Avatar || defaultAvatar,
+      });
+      setFavouriteMovies(data.FavouriteMovies || []);
+      // return data;
+    } catch (error) {
+      console.error("Error fetching user data", error);
+      setUser(null);
+      throw error;
+    }
+  };
+
+  useEffect(() => {
+    if (!token || !user?.Username) {
+      setUser(null);
+      return;
+    }
+    const getUserData = async () => {
+      try {
+        await fetchUserData(token, user.Username);
+      } catch (error) {
+        console.error("Error fetching user data", error);
+      }
+    };
+    getUserData();
+  }, [token, user?.Username]);
+
   // update local storage whenever user or token changes
   useEffect(() => {
     if (user) {
-      localStorage.setItem(
-        "user",
-        JSON.stringify({
-          id: user.id,
-          Username: user.Username,
-          Email: user.Email,
-          Birthday: user.Birthday,
-          FavouriteMovies: user.FavouriteMovies || [],
-          Avatar: user.Avatar || defaultAvatar,
-        })
-      );
+      localStorage.setItem("user", JSON.stringify(user));
       setFavouriteMovies(user.FavouriteMovies || []);
     } else {
       localStorage.removeItem("user");
@@ -61,8 +96,7 @@ export const UserProvider = ({ children }) => {
 
         if (!response.ok) {
           throw new Error(
-            "Failed to remove from favorites: ",
-            response.statusText
+            `Failed to remove from favorites: ${response.statusText}`
           );
         }
 

@@ -36,7 +36,7 @@ export const LoginView = () => {
             Username: data.user.Username,
             Email: data.user.Email,
             Birthday: data.user.Birthday,
-            FavouriteMovies: data.user.FavouriteMovies,
+            FavouriteMovies: data.user.FavouriteMovies || [],
           });
 
           setToken(data.token);
