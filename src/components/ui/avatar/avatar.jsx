@@ -5,7 +5,7 @@ import "./avatar.scss";
 import { useUserContext } from "../../../UserContext";
 
 const Avatar = () => {
-  const { user } = useUserContext();
+  const { user, setUser } = useUserContext();
   const { Username } = user || {};
 
   const initials = Username
@@ -13,7 +13,7 @@ const Avatar = () => {
         .map((name) => name[0].toUpperCase())
         .join("")
     : "";
-  const [avatar, setAvatar] = useState();
+  const [avatar, setAvatar] = useState(user?.Avatar || defaultAvatar);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -30,17 +30,21 @@ const Avatar = () => {
         setError(
           "Invalid file type. Please select a JPEG, PNG, or WebP image."
         );
+        setLoading(false);
         return;
       }
 
       if (file.size > 2 * 1024 * 1024) {
         setError("File size exceeds 2MB");
+        setLoading(false);
         return;
       }
 
       const reader = new FileReader();
       reader.onloadend = () => {
-        setAvatar(reader.result);
+        const newAvatar = reader.result;
+        setAvatar(newAvatar);
+        setUser((prevUser) => ({ ...prevUser, Avatar: newAvatar }));
         setError("");
         setLoading(false);
       };
@@ -67,15 +71,9 @@ const Avatar = () => {
             className="avatar-input"
             onChange={handleLoadAvatar}
           />
-          {avatar ? (
-            <label htmlFor="file-input" className="custom-file-upload">
-              Change image
-            </label>
-          ) : (
-            <label htmlFor="file-input" className="custom-file-upload">
-              Upload An Avatar
-            </label>
-          )}
+          <label htmlFor="file-input" className="custom-file-upload">
+            {avatar ? "Change image" : "Upload An Avatar"}
+          </label>
 
           {error && <p className="error">{error}</p>}
         </>

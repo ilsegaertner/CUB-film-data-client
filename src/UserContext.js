@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
+import defaultAvatar from "../src/assets/defaultAvatar.jpg";
+
 // create a new context
 const UserContext = createContext();
 
@@ -28,6 +30,7 @@ export const UserProvider = ({ children }) => {
           Email: user.Email,
           Birthday: user.Birthday,
           FavouriteMovies: user.FavouriteMovies || [],
+          Avatar: user.Avatar || defaultAvatar,
         })
       );
       setFavouriteMovies(user.FavouriteMovies || []);
@@ -42,6 +45,8 @@ export const UserProvider = ({ children }) => {
       localStorage.removeItem("token", token);
     }
   }, [user, token]);
+
+  console.log(user);
 
   const toggleFavourites = async (movieId) => {
     try {

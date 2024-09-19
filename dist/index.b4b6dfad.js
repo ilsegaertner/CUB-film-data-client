@@ -34978,6 +34978,8 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactToastify = require("react-toastify");
+var _defaultAvatarJpg = require("../src/assets/defaultAvatar.jpg");
+var _defaultAvatarJpgDefault = parcelHelpers.interopDefault(_defaultAvatarJpg);
 var _s = $RefreshSig$(), _s1 = $RefreshSig$();
 // create a new context
 const UserContext = /*#__PURE__*/ (0, _react.createContext)();
@@ -35001,7 +35003,8 @@ const UserProvider = ({ children })=>{
                 Username: user.Username,
                 Email: user.Email,
                 Birthday: user.Birthday,
-                FavouriteMovies: user.FavouriteMovies || []
+                FavouriteMovies: user.FavouriteMovies || [],
+                Avatar: user.Avatar || (0, _defaultAvatarJpgDefault.default)
             }));
             setFavouriteMovies(user.FavouriteMovies || []);
         } else {
@@ -35014,6 +35017,7 @@ const UserProvider = ({ children })=>{
         user,
         token
     ]);
+    console.log(user);
     const toggleFavourites = async (movieId)=>{
         try {
             if (favouriteMovies.includes(movieId)) {
@@ -35075,7 +35079,7 @@ const UserProvider = ({ children })=>{
         children: children
     }, void 0, false, {
         fileName: "src/UserContext.js",
-        lineNumber: 105,
+        lineNumber: 110,
         columnNumber: 5
     }, undefined);
 };
@@ -35089,7 +35093,7 @@ $RefreshReg$(_c, "UserProvider");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-toastify":"kSvyQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"kSvyQ":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-toastify":"kSvyQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../src/assets/defaultAvatar.jpg":"5buCr"}],"kSvyQ":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Bounce", ()=>R);
@@ -35860,7 +35864,45 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"7422ead32dcc1e6b":"786KC"}],"hFeSt":[function(require,module,exports) {
+},{"7422ead32dcc1e6b":"786KC"}],"5buCr":[function(require,module,exports) {
+module.exports = require("e92745b34252dfd3").getBundleURL("byUka") + "defaultAvatar.bf94cdf7.jpg" + "?" + Date.now();
+
+},{"e92745b34252dfd3":"lgJ39"}],"lgJ39":[function(require,module,exports) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return "/";
+}
+function getBaseURL(url) {
+    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
+}
+// TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error("Origin not found");
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"hFeSt":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$2ddd = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -37288,42 +37330,7 @@ module.exports = checkPropTypes;
 },{"24ba1e58d167a82c":"jZTZJ","898bc82f39d83f7c":"fqKuf"}],"eBr1X":[function(require,module,exports) {
 module.exports = require("b0430fe756b3f831").getBundleURL("byUka") + "heart.be4129d0.png" + "?" + Date.now();
 
-},{"b0430fe756b3f831":"lgJ39"}],"lgJ39":[function(require,module,exports) {
-"use strict";
-var bundleURL = {};
-function getBundleURLCached(id) {
-    var value = bundleURL[id];
-    if (!value) {
-        value = getBundleURL();
-        bundleURL[id] = value;
-    }
-    return value;
-}
-function getBundleURL() {
-    try {
-        throw new Error();
-    } catch (err) {
-        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
-        if (matches) // The first two stack frames will be this function and getBundleURLCached.
-        // Use the 3rd one, which will be a runtime in the original bundle.
-        return getBaseURL(matches[2]);
-    }
-    return "/";
-}
-function getBaseURL(url) {
-    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
-}
-// TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
-function getOrigin(url) {
-    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
-    if (!matches) throw new Error("Origin not found");
-    return matches[0];
-}
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-exports.getOrigin = getOrigin;
-
-},{}],"2LSDc":[function(require,module,exports) {
+},{"b0430fe756b3f831":"lgJ39"}],"2LSDc":[function(require,module,exports) {
 module.exports = require("95f23918e32d0b4f").getBundleURL("byUka") + "heart-filled.daf99c43.png" + "?" + Date.now();
 
 },{"95f23918e32d0b4f":"lgJ39"}],"d6HH4":[function() {},{}],"ggaUx":[function(require,module,exports) {
@@ -49275,36 +49282,43 @@ var _userInfo = require("./user-info");
 var _movieCard = require("../movie-card/movie-card");
 var _updateUser = require("./update-user");
 var _deleteProfile = require("./delete-profile");
-// import { useUserContext } from "../../userContext";
 var _userContext = require("../../UserContext");
 var _s = $RefreshSig$();
 const ProfileView = ({ movies })=>{
     _s();
     const { user, setUser, token } = (0, _userContext.useUserContext)();
-    (0, _react.useEffect)(()=>{
-        if (!user || !user.Username || !token) return;
-        fetch(`https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }).then((response)=>{
-            if (!response.ok) throw new Error("Failed to fetch user data");
-            return response.json();
-        }).then((data)=>{
-            if (!data) throw new Error("Received null or invalid data");
-            setUser({
-                id: data._id,
-                Username: data.Username,
-                Email: data.Email,
-                Birthday: data.Birthday,
-                FavouriteMovies: data.FavouriteMovies || []
-            });
-        }).catch((error)=>{
-            console.error("Error fetching user data", error);
-        });
-    }, [
-        token
-    ]);
+    // useEffect(() => {
+    //   if (!user || !user.Username || !token) {
+    //     return;
+    //   }
+    //   fetch(
+    //     `https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${user.Username}`,
+    //     {
+    //       headers: { Authorization: `Bearer ${token}` },
+    //     }
+    //   )
+    //     .then((response) => {
+    //       if (!response.ok) {
+    //         throw new Error("Failed to fetch user data");
+    //       }
+    //       return response.json();
+    //     })
+    //     .then((data) => {
+    //       if (!data) {
+    //         throw new Error("Received null or invalid data");
+    //       }
+    //       setUser({
+    //         id: data._id,
+    //         Username: data.Username,
+    //         Email: data.Email,
+    //         Birthday: data.Birthday,
+    //         FavouriteMovies: data.FavouriteMovies || [],
+    //       });
+    //     })
+    //     .catch((error) => {
+    //       console.error("Error fetching user data", error);
+    //     });
+    // }, [token]);
     // Filters based on the user's favorite Movies array
     let favouriteMovieList = user?.FavouriteMovies?.length ? movies.filter((movie)=>user.FavouriteMovies.includes(movie.id)) : [];
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -49315,23 +49329,23 @@ const ProfileView = ({ movies })=>{
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _userInfo.UserInfo), {}, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 57,
+                        lineNumber: 56,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _updateUser.UpdateUser), {}, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 59,
+                        lineNumber: 58,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _deleteProfile.DeleteProfile), {}, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 60,
+                        lineNumber: 59,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 56,
+                lineNumber: 55,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -49341,7 +49355,7 @@ const ProfileView = ({ movies })=>{
                         children: "Likes"
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 63,
+                        lineNumber: 62,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -49353,34 +49367,34 @@ const ProfileView = ({ movies })=>{
                                     movie: movie
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                    lineNumber: 68,
+                                    lineNumber: 67,
                                     columnNumber: 17
                                 }, undefined)
                             }, movie.id, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 67,
+                                lineNumber: 66,
                                 columnNumber: 15
                             }, undefined);
                         })
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 64,
+                        lineNumber: 63,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 62,
+                lineNumber: 61,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/profile-view/profile-view.jsx",
-        lineNumber: 55,
+        lineNumber: 54,
         columnNumber: 5
     }, undefined);
 };
-_s(ProfileView, "4MWy03tQa8XSvsvV35afRoeLPYI=", false, function() {
+_s(ProfileView, "6its63/Z452Gu6oB/YHVvbNjhLQ=", false, function() {
     return [
         (0, _userContext.useUserContext)
     ];
@@ -49507,10 +49521,10 @@ var _userContext = require("../../../UserContext");
 var _s = $RefreshSig$();
 const Avatar = ()=>{
     _s();
-    const { user } = (0, _userContext.useUserContext)();
+    const { user, setUser } = (0, _userContext.useUserContext)();
     const { Username } = user || {};
     const initials = Username ? Username.split(" ").map((name)=>name[0].toUpperCase()).join("") : "";
-    const [avatar, setAvatar] = (0, _react.useState)();
+    const [avatar, setAvatar] = (0, _react.useState)(user?.Avatar || (0, _defaultAvatarJpgDefault.default));
     const [error, setError] = (0, _react.useState)("");
     const [loading, setLoading] = (0, _react.useState)(false);
     const handleLoadAvatar = (event)=>{
@@ -49527,15 +49541,22 @@ const Avatar = ()=>{
             ];
             if (!validTypes.includes(fileType)) {
                 setError("Invalid file type. Please select a JPEG, PNG, or WebP image.");
+                setLoading(false);
                 return;
             }
             if (file.size > 2097152) {
                 setError("File size exceeds 2MB");
+                setLoading(false);
                 return;
             }
             const reader = new FileReader();
             reader.onloadend = ()=>{
-                setAvatar(reader.result);
+                const newAvatar = reader.result;
+                setAvatar(newAvatar);
+                setUser((prevUser)=>({
+                        ...prevUser,
+                        Avatar: newAvatar
+                    }));
                 setError("");
                 setLoading(false);
             };
@@ -49546,7 +49567,7 @@ const Avatar = ()=>{
         className: "avatar-upload",
         children: loading ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _spinnerDefault.default), {}, void 0, false, {
             fileName: "src/components/ui/avatar/avatar.jsx",
-            lineNumber: 54,
+            lineNumber: 58,
             columnNumber: 9
         }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
             children: [
@@ -49556,7 +49577,7 @@ const Avatar = ()=>{
                     className: "avatar-preview"
                 }, void 0, false, {
                     fileName: "src/components/ui/avatar/avatar.jsx",
-                    lineNumber: 58,
+                    lineNumber: 62,
                     columnNumber: 13
                 }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: [
@@ -49565,7 +49586,7 @@ const Avatar = ()=>{
                     ]
                 }, void 0, true, {
                     fileName: "src/components/ui/avatar/avatar.jsx",
-                    lineNumber: 60,
+                    lineNumber: 64,
                     columnNumber: 13
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -49576,43 +49597,35 @@ const Avatar = ()=>{
                     onChange: handleLoadAvatar
                 }, void 0, false, {
                     fileName: "src/components/ui/avatar/avatar.jsx",
-                    lineNumber: 63,
+                    lineNumber: 67,
                     columnNumber: 11
                 }, undefined),
-                avatar ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                     htmlFor: "file-input",
                     className: "custom-file-upload",
-                    children: "Change image"
+                    children: avatar ? "Change image" : "Upload An Avatar"
                 }, void 0, false, {
                     fileName: "src/components/ui/avatar/avatar.jsx",
-                    lineNumber: 71,
-                    columnNumber: 13
-                }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                    htmlFor: "file-input",
-                    className: "custom-file-upload",
-                    children: "Upload An Avatar"
-                }, void 0, false, {
-                    fileName: "src/components/ui/avatar/avatar.jsx",
-                    lineNumber: 75,
-                    columnNumber: 13
+                    lineNumber: 74,
+                    columnNumber: 11
                 }, undefined),
                 error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     className: "error",
                     children: error
                 }, void 0, false, {
                     fileName: "src/components/ui/avatar/avatar.jsx",
-                    lineNumber: 80,
+                    lineNumber: 78,
                     columnNumber: 21
                 }, undefined)
             ]
         }, void 0, true)
     }, void 0, false, {
         fileName: "src/components/ui/avatar/avatar.jsx",
-        lineNumber: 52,
+        lineNumber: 56,
         columnNumber: 5
     }, undefined);
 };
-_s(Avatar, "OWXyJwZRw5sIvJenOdBjBcda7mU=", false, function() {
+_s(Avatar, "+EczvLHmtl3J3JoGyha/y20Pel8=", false, function() {
     return [
         (0, _userContext.useUserContext)
     ];
@@ -49627,10 +49640,7 @@ $RefreshReg$(_c, "Avatar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../../assets/defaultAvatar.jpg":"5buCr","../spinner":"2TUv3","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./avatar.scss":"9b9SR","../../../UserContext":"4hoFp"}],"5buCr":[function(require,module,exports) {
-module.exports = require("e92745b34252dfd3").getBundleURL("byUka") + "defaultAvatar.bf94cdf7.jpg" + "?" + Date.now();
-
-},{"e92745b34252dfd3":"lgJ39"}],"9b9SR":[function() {},{}],"2SBwg":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../../assets/defaultAvatar.jpg":"5buCr","../spinner":"2TUv3","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./avatar.scss":"9b9SR","../../../UserContext":"4hoFp"}],"9b9SR":[function() {},{}],"2SBwg":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$95d1 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
