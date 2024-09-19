@@ -18,8 +18,10 @@ export const UserProvider = ({ children }) => {
   const [favouriteMovies, setFavouriteMovies] = useState(
     user?.FavouriteMovies || []
   );
+  const [avatar, setAvatar] = useState(defaultAvatar);
 
   const fetchUserData = async (token, username) => {
+    console.log("Token in MainView",token);
     if (!token || !username) return;
     try {
       const response = await fetch(
@@ -38,12 +40,16 @@ export const UserProvider = ({ children }) => {
         Email: data.Email,
         Birthday: data.Birthday,
         FavouriteMovies: data.FavouriteMovies || [],
-        Avatar: data.Avatar || defaultAvatar,
       });
+
+      setAvatar(
+        data.Avatar ? `data:image/*;base64,${data.Avatar}` : defaultAvatar
+      );
       setFavouriteMovies(data.FavouriteMovies || []);
       // return data;
     } catch (error) {
       console.error("Error fetching user data", error);
+      setAvatar(defaultAvatar);
       setUser(null);
       throw error;
     }
@@ -52,6 +58,7 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     if (!token || !user?.Username) {
       setUser(null);
+      setAvatar(defaultAvatar);
       return;
     }
     const getUserData = async () => {
@@ -67,7 +74,8 @@ export const UserProvider = ({ children }) => {
   // update local storage whenever user or token changes
   useEffect(() => {
     if (user) {
-      localStorage.setItem("user", JSON.stringify(user));
+      const { Avatar, ...userWithoutAvatar } = user;
+      localStorage.setItem("user", JSON.stringify(userWithoutAvatar));
       setFavouriteMovies(user.FavouriteMovies || []);
     } else {
       localStorage.removeItem("user");
@@ -80,8 +88,6 @@ export const UserProvider = ({ children }) => {
       localStorage.removeItem("token", token);
     }
   }, [user, token]);
-
-  console.log(user);
 
   const toggleFavourites = async (movieId) => {
     try {
@@ -136,6 +142,7 @@ export const UserProvider = ({ children }) => {
   const logout = () => {
     setUser(null);
     setToken(null);
+    setAvatar(defaultAvatar);
     setFavouriteMovies([]);
     localStorage.clear();
   };
@@ -149,6 +156,8 @@ export const UserProvider = ({ children }) => {
         setToken,
         favouriteMovies,
         setFavouriteMovies,
+        avatar,
+        setAvatar,
         toggleFavourites,
         logout,
       }}
