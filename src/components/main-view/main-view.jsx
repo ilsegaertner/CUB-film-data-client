@@ -36,12 +36,21 @@ export const MainView = () => {
 
   //fetch Movies
   useEffect(() => {
+    console.log("Token", token);
+    console.log("User:", user);
     if (!token) return;
 
     fetch("https://cub-film-data-dc72bcc7ff05.herokuapp.com/movies", {
       headers: { Authorization: `Bearer ${token}` },
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          return response.text().then((text) => {
+            throw new Error(`Error ${response.status}: ${text}`);
+          });
+        }
+        return response.json();
+      })
       .then((data) => {
         const moviesFromApi = data.map((movie) => {
           return {
