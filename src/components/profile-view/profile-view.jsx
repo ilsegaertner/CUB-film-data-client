@@ -9,7 +9,7 @@ import { DeleteProfile } from "./delete-profile";
 import { useUserContext } from "../../UserContext";
 
 export const ProfileView = ({ movies }) => {
-  const { user, setUser, token } = useUserContext();
+  const { user } = useUserContext();
 
   // useEffect(() => {
   //   if (!user || !user.Username || !token) {
