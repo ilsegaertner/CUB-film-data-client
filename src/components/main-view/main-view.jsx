@@ -36,8 +36,6 @@ export const MainView = () => {
 
   //fetch Movies
   useEffect(() => {
-    console.log("Token", token);
-    console.log("User:", user);
     if (!token) return;
 
     fetch("https://cub-film-data-dc72bcc7ff05.herokuapp.com/movies", {
