@@ -27355,34 +27355,80 @@ const MainView = ()=>{
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "wrapper",
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "left-side",
-                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "nav",
-                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationBar.NavigationBar), {}, void 0, false, {
-                                    fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 98,
-                                    columnNumber: 15
-                                }, undefined)
-                            }, void 0, false, {
-                                fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 97,
-                                columnNumber: 13
-                            }, undefined)
-                        }, void 0, false, {
+                    className: "left-side",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "nav",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationBar.NavigationBar), {}, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 96,
-                            columnNumber: 11
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "right-side",
-                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Routes), {
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
-                                        path: "/apimovies",
-                                        element: user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _framerMotion.motion).div, {
+                            lineNumber: 97,
+                            columnNumber: 13
+                        }, undefined)
+                    }, void 0, false, {
+                        fileName: "src/components/main-view/main-view.jsx",
+                        lineNumber: 96,
+                        columnNumber: 11
+                    }, undefined)
+                }, void 0, false, {
+                    fileName: "src/components/main-view/main-view.jsx",
+                    lineNumber: 95,
+                    columnNumber: 9
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "wrapper",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "right-side",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Routes), {
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
+                                    path: "/apimovies",
+                                    element: user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _framerMotion.motion).div, {
+                                        initial: {
+                                            opacity: 0
+                                        },
+                                        animate: {
+                                            opacity: 1
+                                        },
+                                        exit: {
+                                            opacity: 0
+                                        },
+                                        transition: {
+                                            duration: 0.2
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _moviesOmdb.MoviesFromOMDB), {}, void 0, false, {
+                                                fileName: "src/components/main-view/main-view.jsx",
+                                                lineNumber: 113,
+                                                columnNumber: 23
+                                            }, void 0),
+                                            " "
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "src/components/main-view/main-view.jsx",
+                                        lineNumber: 107,
+                                        columnNumber: 21
+                                    }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Navigate), {
+                                        to: "/login",
+                                        replace: true
+                                    }, void 0, false, {
+                                        fileName: "src/components/main-view/main-view.jsx",
+                                        lineNumber: 116,
+                                        columnNumber: 21
+                                    }, void 0)
+                                }, void 0, false, {
+                                    fileName: "src/components/main-view/main-view.jsx",
+                                    lineNumber: 103,
+                                    columnNumber: 15
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
+                                    path: "/signup",
+                                    element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                        children: user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Navigate), {
+                                            to: "/"
+                                        }, void 0, false, {
+                                            fileName: "src/components/main-view/main-view.jsx",
+                                            lineNumber: 126,
+                                            columnNumber: 23
+                                        }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _framerMotion.motion).div, {
                                             initial: {
                                                 opacity: 0
                                             },
@@ -27395,110 +27441,32 @@ const MainView = ()=>{
                                             transition: {
                                                 duration: 0.2
                                             },
-                                            children: [
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _moviesOmdb.MoviesFromOMDB), {}, void 0, false, {
-                                                    fileName: "src/components/main-view/main-view.jsx",
-                                                    lineNumber: 114,
-                                                    columnNumber: 23
-                                                }, void 0),
-                                                " "
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 108,
-                                            columnNumber: 21
-                                        }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Navigate), {
-                                            to: "/login",
-                                            replace: true
+                                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signupView.SignupView), {}, void 0, false, {
+                                                fileName: "src/components/main-view/main-view.jsx",
+                                                lineNumber: 134,
+                                                columnNumber: 25
+                                            }, void 0)
                                         }, void 0, false, {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 117,
-                                            columnNumber: 21
+                                            lineNumber: 128,
+                                            columnNumber: 23
                                         }, void 0)
-                                    }, void 0, false, {
-                                        fileName: "src/components/main-view/main-view.jsx",
-                                        lineNumber: 104,
-                                        columnNumber: 15
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
-                                        path: "/signup",
-                                        element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-                                            children: user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Navigate), {
-                                                to: "/"
-                                            }, void 0, false, {
-                                                fileName: "src/components/main-view/main-view.jsx",
-                                                lineNumber: 127,
-                                                columnNumber: 23
-                                            }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _framerMotion.motion).div, {
-                                                initial: {
-                                                    opacity: 0
-                                                },
-                                                animate: {
-                                                    opacity: 1
-                                                },
-                                                exit: {
-                                                    opacity: 0
-                                                },
-                                                transition: {
-                                                    duration: 0.2
-                                                },
-                                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signupView.SignupView), {}, void 0, false, {
-                                                    fileName: "src/components/main-view/main-view.jsx",
-                                                    lineNumber: 135,
-                                                    columnNumber: 25
-                                                }, void 0)
-                                            }, void 0, false, {
-                                                fileName: "src/components/main-view/main-view.jsx",
-                                                lineNumber: 129,
-                                                columnNumber: 23
-                                            }, void 0)
-                                        }, void 0, false)
-                                    }, void 0, false, {
-                                        fileName: "src/components/main-view/main-view.jsx",
-                                        lineNumber: 122,
-                                        columnNumber: 15
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
-                                        path: "/login",
-                                        element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-                                            children: user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Navigate), {
-                                                to: "/"
-                                            }, void 0, false, {
-                                                fileName: "src/components/main-view/main-view.jsx",
-                                                lineNumber: 147,
-                                                columnNumber: 23
-                                            }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _framerMotion.motion).div, {
-                                                initial: {
-                                                    opacity: 0
-                                                },
-                                                animate: {
-                                                    opacity: 1
-                                                },
-                                                exit: {
-                                                    opacity: 0
-                                                },
-                                                transition: {
-                                                    duration: 0.2
-                                                },
-                                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {}, void 0, false, {
-                                                    fileName: "src/components/main-view/main-view.jsx",
-                                                    lineNumber: 155,
-                                                    columnNumber: 25
-                                                }, void 0)
-                                            }, void 0, false, {
-                                                fileName: "src/components/main-view/main-view.jsx",
-                                                lineNumber: 149,
-                                                columnNumber: 23
-                                            }, void 0)
-                                        }, void 0, false)
-                                    }, void 0, false, {
-                                        fileName: "src/components/main-view/main-view.jsx",
-                                        lineNumber: 142,
-                                        columnNumber: 15
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
-                                        path: "/databases",
-                                        element: user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _framerMotion.motion).div, {
+                                    }, void 0, false)
+                                }, void 0, false, {
+                                    fileName: "src/components/main-view/main-view.jsx",
+                                    lineNumber: 121,
+                                    columnNumber: 15
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
+                                    path: "/login",
+                                    element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                        children: user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Navigate), {
+                                            to: "/"
+                                        }, void 0, false, {
+                                            fileName: "src/components/main-view/main-view.jsx",
+                                            lineNumber: 146,
+                                            columnNumber: 23
+                                        }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _framerMotion.motion).div, {
                                             initial: {
                                                 opacity: 0
                                             },
@@ -27511,87 +27479,64 @@ const MainView = ()=>{
                                             transition: {
                                                 duration: 0.2
                                             },
-                                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _dropdownDefault.default), {}, void 0, false, {
+                                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {}, void 0, false, {
                                                 fileName: "src/components/main-view/main-view.jsx",
-                                                lineNumber: 172,
-                                                columnNumber: 23
+                                                lineNumber: 154,
+                                                columnNumber: 25
                                             }, void 0)
                                         }, void 0, false, {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 166,
-                                            columnNumber: 21
-                                        }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Navigate), {
-                                            to: "/login",
-                                            replace: true
-                                        }, void 0, false, {
+                                            lineNumber: 148,
+                                            columnNumber: 23
+                                        }, void 0)
+                                    }, void 0, false)
+                                }, void 0, false, {
+                                    fileName: "src/components/main-view/main-view.jsx",
+                                    lineNumber: 141,
+                                    columnNumber: 15
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
+                                    path: "/databases",
+                                    element: user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _framerMotion.motion).div, {
+                                        initial: {
+                                            opacity: 0
+                                        },
+                                        animate: {
+                                            opacity: 1
+                                        },
+                                        exit: {
+                                            opacity: 0
+                                        },
+                                        transition: {
+                                            duration: 0.2
+                                        },
+                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _dropdownDefault.default), {}, void 0, false, {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 175,
-                                            columnNumber: 21
+                                            lineNumber: 171,
+                                            columnNumber: 23
                                         }, void 0)
                                     }, void 0, false, {
                                         fileName: "src/components/main-view/main-view.jsx",
-                                        lineNumber: 162,
-                                        columnNumber: 15
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
-                                        path: "/profile",
-                                        element: user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-                                            children: [
-                                                " ",
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _framerMotion.motion).div, {
-                                                    initial: {
-                                                        opacity: 0
-                                                    },
-                                                    animate: {
-                                                        opacity: 1
-                                                    },
-                                                    exit: {
-                                                        opacity: 0
-                                                    },
-                                                    transition: {
-                                                        duration: 0.2
-                                                    },
-                                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _profileView.ProfileView), {
-                                                        movies: movies
-                                                    }, void 0, false, {
-                                                        fileName: "src/components/main-view/main-view.jsx",
-                                                        lineNumber: 193,
-                                                        columnNumber: 25
-                                                    }, void 0)
-                                                }, void 0, false, {
-                                                    fileName: "src/components/main-view/main-view.jsx",
-                                                    lineNumber: 187,
-                                                    columnNumber: 23
-                                                }, void 0)
-                                            ]
-                                        }, void 0, true) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Navigate), {
-                                            to: "/login",
-                                            replace: true
-                                        }, void 0, false, {
-                                            fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 197,
-                                            columnNumber: 21
-                                        }, void 0)
+                                        lineNumber: 165,
+                                        columnNumber: 21
+                                    }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Navigate), {
+                                        to: "/login",
+                                        replace: true
                                     }, void 0, false, {
                                         fileName: "src/components/main-view/main-view.jsx",
-                                        lineNumber: 181,
-                                        columnNumber: 15
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
-                                        path: "/movies/:movieTitle",
-                                        element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-                                            children: !user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Navigate), {
-                                                to: "/login",
-                                                replace: true
-                                            }, void 0, false, {
-                                                fileName: "src/components/main-view/main-view.jsx",
-                                                lineNumber: 207,
-                                                columnNumber: 23
-                                            }, void 0) : movies.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _spinnerDefault.default), {}, void 0, false, {
-                                                fileName: "src/components/main-view/main-view.jsx",
-                                                lineNumber: 209,
-                                                columnNumber: 23
-                                            }, void 0) : // <div className="error">The list is empty!</div>
+                                        lineNumber: 174,
+                                        columnNumber: 21
+                                    }, void 0)
+                                }, void 0, false, {
+                                    fileName: "src/components/main-view/main-view.jsx",
+                                    lineNumber: 161,
+                                    columnNumber: 15
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
+                                    path: "/profile",
+                                    element: user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                        children: [
+                                            " ",
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _framerMotion.motion).div, {
                                                 initial: {
                                                     opacity: 0
@@ -27605,189 +27550,242 @@ const MainView = ()=>{
                                                 transition: {
                                                     duration: 0.2
                                                 },
-                                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
+                                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _profileView.ProfileView), {
                                                     movies: movies
                                                 }, void 0, false, {
                                                     fileName: "src/components/main-view/main-view.jsx",
-                                                    lineNumber: 218,
+                                                    lineNumber: 192,
                                                     columnNumber: 25
                                                 }, void 0)
                                             }, void 0, false, {
                                                 fileName: "src/components/main-view/main-view.jsx",
-                                                lineNumber: 212,
+                                                lineNumber: 186,
                                                 columnNumber: 23
                                             }, void 0)
-                                        }, void 0, false)
+                                        ]
+                                    }, void 0, true) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Navigate), {
+                                        to: "/login",
+                                        replace: true
                                     }, void 0, false, {
                                         fileName: "src/components/main-view/main-view.jsx",
-                                        lineNumber: 202,
-                                        columnNumber: 15
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
-                                        path: "/",
-                                        element: user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-                                            children: [
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
-                                                    className: "CubWrap",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                            className: "VerticalContainer",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                                                                    className: "CUB",
-                                                                    children: [
-                                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                                            className: "heading-color-element blue",
-                                                                            children: "C"
-                                                                        }, void 0, false, {
-                                                                            fileName: "src/components/main-view/main-view.jsx",
-                                                                            lineNumber: 243,
-                                                                            columnNumber: 29
-                                                                        }, void 0),
-                                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                                            className: "heading-color-element white",
-                                                                            children: "U"
-                                                                        }, void 0, false, {
-                                                                            fileName: "src/components/main-view/main-view.jsx",
-                                                                            lineNumber: 246,
-                                                                            columnNumber: 29
-                                                                        }, void 0),
-                                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                                            className: "heading-color-element green",
-                                                                            children: "B"
-                                                                        }, void 0, false, {
-                                                                            fileName: "src/components/main-view/main-view.jsx",
-                                                                            lineNumber: 249,
-                                                                            columnNumber: 29
-                                                                        }, void 0),
-                                                                        " ",
-                                                                        "Film Data"
-                                                                    ]
-                                                                }, void 0, true, {
-                                                                    fileName: "src/components/main-view/main-view.jsx",
-                                                                    lineNumber: 232,
-                                                                    columnNumber: 27
-                                                                }, void 0),
-                                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                                    className: "CubDescription",
-                                                                    children: "Browse our inhouse database for arthouse classics and save your favorite movies"
-                                                                }, void 0, false, {
-                                                                    fileName: "src/components/main-view/main-view.jsx",
-                                                                    lineNumber: 254,
-                                                                    columnNumber: 27
-                                                                }, void 0)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "src/components/main-view/main-view.jsx",
-                                                            lineNumber: 231,
-                                                            columnNumber: 25
-                                                        }, void 0),
-                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                                            size: "lg",
-                                                            type: "text",
-                                                            placeholder: "Search movies...",
-                                                            className: "search-movies",
-                                                            value: searchQuery,
-                                                            onChange: handleSearchInputChange
-                                                        }, void 0, false, {
-                                                            fileName: "src/components/main-view/main-view.jsx",
-                                                            lineNumber: 260,
-                                                            columnNumber: 25
-                                                        }, void 0),
-                                                        searchQuery && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                                            className: "clear-button",
-                                                            onClick: ()=>handleClearSearch(),
-                                                            children: "X"
-                                                        }, void 0, false, {
-                                                            fileName: "src/components/main-view/main-view.jsx",
-                                                            lineNumber: 269,
-                                                            columnNumber: 27
-                                                        }, void 0)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "src/components/main-view/main-view.jsx",
-                                                    lineNumber: 230,
-                                                    columnNumber: 23
-                                                }, void 0),
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _framerMotion.motion).div, {
-                                                    initial: {
-                                                        opacity: 0
-                                                    },
-                                                    animate: {
-                                                        opacity: 1
-                                                    },
-                                                    exit: {
-                                                        opacity: 0
-                                                    },
-                                                    transition: {
-                                                        duration: 0.2
-                                                    },
-                                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                        className: "moviecard-wrap",
-                                                        children: loading ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _spinnerDefault.default), {}, void 0, false, {
-                                                            fileName: "src/components/main-view/main-view.jsx",
-                                                            lineNumber: 286,
-                                                            columnNumber: 29
-                                                        }, void 0) // Show spinner when loading
-                                                         : moviesToRender.length > 0 ? moviesToRender.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
-                                                                movie: movie,
-                                                                token: token
-                                                            }, movie.id, false, {
-                                                                fileName: "src/components/main-view/main-view.jsx",
-                                                                lineNumber: 289,
-                                                                columnNumber: 31
-                                                            }, void 0)) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                                            children: "No movies found."
-                                                        }, void 0, false, {
-                                                            fileName: "src/components/main-view/main-view.jsx",
-                                                            lineNumber: 296,
-                                                            columnNumber: 29
-                                                        }, void 0)
-                                                    }, void 0, false, {
-                                                        fileName: "src/components/main-view/main-view.jsx",
-                                                        lineNumber: 284,
-                                                        columnNumber: 25
-                                                    }, void 0)
-                                                }, void 0, false, {
-                                                    fileName: "src/components/main-view/main-view.jsx",
-                                                    lineNumber: 278,
-                                                    columnNumber: 23
-                                                }, void 0)
-                                            ]
-                                        }, void 0, true) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Navigate), {
+                                        lineNumber: 196,
+                                        columnNumber: 21
+                                    }, void 0)
+                                }, void 0, false, {
+                                    fileName: "src/components/main-view/main-view.jsx",
+                                    lineNumber: 180,
+                                    columnNumber: 15
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
+                                    path: "/movies/:movieTitle",
+                                    element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                        children: !user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Navigate), {
                                             to: "/login",
                                             replace: true
                                         }, void 0, false, {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 302,
-                                            columnNumber: 21
+                                            lineNumber: 206,
+                                            columnNumber: 23
+                                        }, void 0) : movies.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _spinnerDefault.default), {}, void 0, false, {
+                                            fileName: "src/components/main-view/main-view.jsx",
+                                            lineNumber: 208,
+                                            columnNumber: 23
+                                        }, void 0) : // <div className="error">The list is empty!</div>
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _framerMotion.motion).div, {
+                                            initial: {
+                                                opacity: 0
+                                            },
+                                            animate: {
+                                                opacity: 1
+                                            },
+                                            exit: {
+                                                opacity: 0
+                                            },
+                                            transition: {
+                                                duration: 0.2
+                                            },
+                                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
+                                                movies: movies
+                                            }, void 0, false, {
+                                                fileName: "src/components/main-view/main-view.jsx",
+                                                lineNumber: 217,
+                                                columnNumber: 25
+                                            }, void 0)
+                                        }, void 0, false, {
+                                            fileName: "src/components/main-view/main-view.jsx",
+                                            lineNumber: 211,
+                                            columnNumber: 23
                                         }, void 0)
+                                    }, void 0, false)
+                                }, void 0, false, {
+                                    fileName: "src/components/main-view/main-view.jsx",
+                                    lineNumber: 201,
+                                    columnNumber: 15
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
+                                    path: "/",
+                                    element: user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
+                                                className: "CubWrap",
+                                                children: [
+                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                        className: "VerticalContainer",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                                                                className: "CUB",
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                                        className: "heading-color-element blue",
+                                                                        children: "C"
+                                                                    }, void 0, false, {
+                                                                        fileName: "src/components/main-view/main-view.jsx",
+                                                                        lineNumber: 242,
+                                                                        columnNumber: 29
+                                                                    }, void 0),
+                                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                                        className: "heading-color-element white",
+                                                                        children: "U"
+                                                                    }, void 0, false, {
+                                                                        fileName: "src/components/main-view/main-view.jsx",
+                                                                        lineNumber: 245,
+                                                                        columnNumber: 29
+                                                                    }, void 0),
+                                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                                        className: "heading-color-element green",
+                                                                        children: "B"
+                                                                    }, void 0, false, {
+                                                                        fileName: "src/components/main-view/main-view.jsx",
+                                                                        lineNumber: 248,
+                                                                        columnNumber: 29
+                                                                    }, void 0),
+                                                                    " ",
+                                                                    "Film Data"
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "src/components/main-view/main-view.jsx",
+                                                                lineNumber: 231,
+                                                                columnNumber: 27
+                                                            }, void 0),
+                                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                                className: "CubDescription",
+                                                                children: "Browse our inhouse database for arthouse classics and save your favorite movies"
+                                                            }, void 0, false, {
+                                                                fileName: "src/components/main-view/main-view.jsx",
+                                                                lineNumber: 253,
+                                                                columnNumber: 27
+                                                            }, void 0)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "src/components/main-view/main-view.jsx",
+                                                        lineNumber: 230,
+                                                        columnNumber: 25
+                                                    }, void 0),
+                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                        size: "lg",
+                                                        type: "text",
+                                                        placeholder: "Search movies...",
+                                                        className: "search-movies",
+                                                        value: searchQuery,
+                                                        onChange: handleSearchInputChange
+                                                    }, void 0, false, {
+                                                        fileName: "src/components/main-view/main-view.jsx",
+                                                        lineNumber: 259,
+                                                        columnNumber: 25
+                                                    }, void 0),
+                                                    searchQuery && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                                        className: "clear-button",
+                                                        onClick: ()=>handleClearSearch(),
+                                                        children: "X"
+                                                    }, void 0, false, {
+                                                        fileName: "src/components/main-view/main-view.jsx",
+                                                        lineNumber: 268,
+                                                        columnNumber: 27
+                                                    }, void 0)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "src/components/main-view/main-view.jsx",
+                                                lineNumber: 229,
+                                                columnNumber: 23
+                                            }, void 0),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _framerMotion.motion).div, {
+                                                initial: {
+                                                    opacity: 0
+                                                },
+                                                animate: {
+                                                    opacity: 1
+                                                },
+                                                exit: {
+                                                    opacity: 0
+                                                },
+                                                transition: {
+                                                    duration: 0.2
+                                                },
+                                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                    className: "moviecard-wrap",
+                                                    children: loading ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _spinnerDefault.default), {}, void 0, false, {
+                                                        fileName: "src/components/main-view/main-view.jsx",
+                                                        lineNumber: 285,
+                                                        columnNumber: 29
+                                                    }, void 0) // Show spinner when loading
+                                                     : moviesToRender.length > 0 ? moviesToRender.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                                                            movie: movie,
+                                                            token: token
+                                                        }, movie.id, false, {
+                                                            fileName: "src/components/main-view/main-view.jsx",
+                                                            lineNumber: 288,
+                                                            columnNumber: 31
+                                                        }, void 0)) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                                        children: "No movies found."
+                                                    }, void 0, false, {
+                                                        fileName: "src/components/main-view/main-view.jsx",
+                                                        lineNumber: 295,
+                                                        columnNumber: 29
+                                                    }, void 0)
+                                                }, void 0, false, {
+                                                    fileName: "src/components/main-view/main-view.jsx",
+                                                    lineNumber: 283,
+                                                    columnNumber: 25
+                                                }, void 0)
+                                            }, void 0, false, {
+                                                fileName: "src/components/main-view/main-view.jsx",
+                                                lineNumber: 277,
+                                                columnNumber: 23
+                                            }, void 0)
+                                        ]
+                                    }, void 0, true) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Navigate), {
+                                        to: "/login",
+                                        replace: true
                                     }, void 0, false, {
                                         fileName: "src/components/main-view/main-view.jsx",
-                                        lineNumber: 225,
-                                        columnNumber: 15
-                                    }, undefined)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 103,
-                                columnNumber: 13
-                            }, undefined)
-                        }, void 0, false, {
+                                        lineNumber: 301,
+                                        columnNumber: 21
+                                    }, void 0)
+                                }, void 0, false, {
+                                    fileName: "src/components/main-view/main-view.jsx",
+                                    lineNumber: 224,
+                                    columnNumber: 15
+                                }, undefined)
+                            ]
+                        }, void 0, true, {
                             fileName: "src/components/main-view/main-view.jsx",
                             lineNumber: 102,
-                            columnNumber: 11
+                            columnNumber: 13
                         }, undefined)
-                    ]
-                }, void 0, true, {
+                    }, void 0, false, {
+                        fileName: "src/components/main-view/main-view.jsx",
+                        lineNumber: 101,
+                        columnNumber: 11
+                    }, undefined)
+                }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 95,
+                    lineNumber: 100,
                     columnNumber: 9
                 }, undefined),
                 " ",
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footerDefault.default), {}, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 309,
+                    lineNumber: 308,
                     columnNumber: 9
                 }, undefined)
             ]
@@ -35002,7 +35000,6 @@ const UserProvider = ({ children })=>{
     const [favouriteMovies, setFavouriteMovies] = (0, _react.useState)(user?.FavouriteMovies || []);
     const [avatar, setAvatar] = (0, _react.useState)((0, _defaultAvatarJpgDefault.default));
     const fetchUserData = async (token, username)=>{
-        console.log("Token in MainView", token);
         if (!token || !username) return;
         try {
             const response = await fetch(`https://cub-film-data-dc72bcc7ff05.herokuapp.com/users/${username}`, {
@@ -35127,7 +35124,7 @@ const UserProvider = ({ children })=>{
         children: children
     }, void 0, false, {
         fileName: "src/UserContext.js",
-        lineNumber: 151,
+        lineNumber: 150,
         columnNumber: 5
     }, undefined);
 };
