@@ -37,7 +37,7 @@
 
 .movie-view-wrapper {
   display: grid;
-  grid-template-columns: 1fr 2fr 0.5fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: calc(var(--gap) * 4);
 }
 

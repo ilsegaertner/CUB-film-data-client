@@ -18,6 +18,9 @@
   align-content: space-between;
   justify-items: flex-start;
   position: relative;
+  grid-row: span 2;
+  grid-template-columns: subgrid;
+  grid-template-rows: subgrid;
 }
 
 .movie-card:hover {
