@@ -1,6 +1,6 @@
 .movie-image-wrapper img {
   // max-width: 300px;
-  aspect-ratio: 14/21;
+  aspect-ratio: 14/18;
 }
 
 .movie-card {
@@ -18,6 +18,9 @@
   align-content: space-between;
   justify-items: flex-start;
   position: relative;
+  grid-row: span 2;
+  grid-template-columns: subgrid;
+  grid-template-rows: subgrid;
 }
 
 .movie-card:hover {
@@ -31,6 +34,7 @@
 .movie-image {
   width: 100%;
   // height: 200px; /* Fixed height for consistency */
+  object-position: top;
   object-fit: cover; /* Maintain aspect ratio, fill the container */
   border-radius: var(--border-radius); /* Rounded corners only on the top */
 }
@@ -44,7 +48,9 @@
 }
 
 .movie-content span {
-  font-size: var(--small);
+  // font-size: var(--small);
+  font-size: 14px;
+  line-height: 0.1px;
   color: var(--bg-color-gray);
   font-weight: 200;
   letter-spacing: var(--letter-spacing-normal);
@@ -52,6 +58,7 @@
 
 .movie-content {
   min-height: 70px;
+  line-height: 14.4px;
 }
 
 .addButton {

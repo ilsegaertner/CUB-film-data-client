@@ -21,7 +21,6 @@ export const UserProvider = ({ children }) => {
   const [avatar, setAvatar] = useState(defaultAvatar);
 
   const fetchUserData = async (token, username) => {
-    console.log("Token in MainView",token);
     if (!token || !username) return;
     try {
       const response = await fetch(

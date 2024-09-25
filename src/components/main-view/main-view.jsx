@@ -92,13 +92,12 @@ export const MainView = () => {
       <AnimatePresence>
         {/* // <BrowserRouter> */}
         <div className="bg-poster"></div>
-        <div className="wrapper">
-          <div className="left-side">
-            <div className="nav">
-              <NavigationBar />
-            </div>
+        <div className="left-side">
+          <div className="nav">
+            <NavigationBar />
           </div>
-
+        </div>
+        <div className="wrapper">
           <div className="right-side">
             <Routes>
               <Route
@@ -228,7 +227,7 @@ export const MainView = () => {
                   user ? (
                     <>
                       <form className="CubWrap">
-                        <div className="VerticalContainer">
+                        <div className="VerticalContainer1">
                           <h1 className="CUB">
                             {/* <img
                               as={Link}
