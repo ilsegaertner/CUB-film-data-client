@@ -227,7 +227,7 @@ export const MainView = () => {
                   user ? (
                     <>
                       <form className="CubWrap">
-                        <div className="VerticalContainer">
+                        <div className="VerticalContainer1">
                           <h1 className="CUB">
                             {/* <img
                               as={Link}

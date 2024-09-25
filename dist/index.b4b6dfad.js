@@ -27630,7 +27630,7 @@ const MainView = ()=>{
                                                 className: "CubWrap",
                                                 children: [
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                        className: "VerticalContainer",
+                                                        className: "VerticalContainer1",
                                                         children: [
                                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                                                                 className: "CUB",
