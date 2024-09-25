@@ -384,6 +384,12 @@ input:hover {
   box-shadow: none;
 }
 
+@media all and (max-width: 375px) {
+  #navbar-links {
+    gap: 5px;
+  }
+}
+
 a {
   color: var(--bg-color);
 }
