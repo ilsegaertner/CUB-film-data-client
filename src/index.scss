@@ -206,7 +206,7 @@ hr {
 
 .moviecard-wrap {
   display: grid;
-  gap: 30px;
+  gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(min(170px, 250px), 1fr));
   grid-template-rows: 1fr auto;
   padding: var(--padding);
