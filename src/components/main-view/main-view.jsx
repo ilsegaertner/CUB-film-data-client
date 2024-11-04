@@ -1,12 +1,7 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { Link, useLocation } from "react-router-dom";
-// import { useUserContext } from "../../userContext";
-import { useUserContext } from "../../UserContext";
+import { Routes, Route, Navigate } from "react-router-dom";
 
-//import toast
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import { useUserContext } from "../../UserContext";
 
 import { MoviesFromOMDB } from "../moviesOmdb/moviesOmdb";
 import Footer from "../footer/footer";
@@ -22,7 +17,6 @@ import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { AnimatePresence, motion } from "framer-motion";
 
 import Spinner from "../ui/spinner";
-import logo4 from "./../navigation-bar/logo4.svg";
 import Dropdown from "../ui/dropdown/dropdown";
 
 export const MainView = () => {
